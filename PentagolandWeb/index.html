@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conoce Pentagoland, un proyecto hispano de SCP: Secret Laboratory: su forma de jugar, sus principios y lo que estamos preparando."
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:title" content="Pentagoland | SCP: Secret Laboratory" />
+    <meta
+      property="og:description"
+      content="Un proyecto hispano de SCP: Secret Laboratory, hecho para jugar en comunidad y crecer con calma."
+    />
+    <meta property="og:type" content="website" />
+    <title>Pentagoland | SCP: Secret Laboratory</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="#inicio" class="brand" aria-label="Volver al inicio de Pentagoland">
+            <img class="brand-mark" src="assets/pentagoland-mark.svg" alt="Logo de Pentagoland" />
+            <span class="brand-text">Pentagoland</span>
+          </a>
+
+          <nav class="main-nav" aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#estado-servidores">Servidores</a>
+            <a href="#guia">Cómo jugar</a>
+            <a href="#normas">Normas</a>
+            <a href="#roadmap">Lo que viene</a>
+            <a href="#comunidad">Comunidad</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section id="inicio" class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy reveal">
+              <p class="eyebrow">SCP: Secret Laboratory · Proyecto hispano</p>
+              <h1>Un buen servidor empieza por cómo te hace sentir al entrar.</h1>
+              <p class="lead">
+                Pentagoland es un proyecto de comunidad para jugar, pasarlo bien y construir algo que dure.
+                Estamos preparando el servidor y su espacio web con una idea sencilla: que todo sea fácil de
+                entender, también para quien llega por primera vez.
+              </p>
+
+              <div class="cta-row">
+                <a class="button primary" href="#guia">Ver cómo jugar</a>
+                <a class="button secondary" href="#contacto">Dejar una sugerencia</a>
+              </div>
+
+              <ul class="hero-points" aria-label="Características principales">
+                <li>Comunidad en español</li>
+                <li>Reglas claras y trato respetuoso</li>
+                <li>Sin cambios innecesarios al juego base</li>
+              </ul>
+            </div>
+
+            <figure class="hero-artwork reveal">
+              <img
+                src="assets/containment-corridor.svg"
+                alt="Ilustración original de un pasillo de contención futurista en tonos azules"
+                width="720"
+                height="620"
+                fetchpriority="high"
+              />
+              <figcaption class="artwork-caption">
+                <span class="artwork-caption-mark" aria-hidden="true"></span>
+                <span>Un lugar para tus próximas historias</span>
+                <span class="artwork-caption-code">PL-01</span>
+              </figcaption>
+              <span class="artwork-stamp" aria-hidden="true">PENTAGOLAND<br />SECURE AREA</span>
+            </figure>
+          </div>
+        </section>
+
+        <section id="estado-servidores" class="section server-status-section">
+          <div class="container">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Estado en directo</p>
+              <h2>Estado Servidores</h2>
+              <p class="section-intro">
+                Cuando conectemos una fuente de estado, aquí podrás ver si el servidor está disponible y quién
+                está jugando. De momento es solo una vista previa: no muestra datos reales.
+              </p>
+            </div>
+
+            <article class="server-card reveal" aria-labelledby="server-card-title">
+              <div class="server-card-header">
+                <div>
+                  <p class="server-kicker">SCP: Secret Laboratory</p>
+                  <h3 id="server-card-title">Pentagoland</h3>
+                </div>
+                <span class="server-state is-preview" id="server-state" role="status">
+                  <span class="server-state-dot" aria-hidden="true"></span>
+                  <span id="server-state-label">Vista previa</span>
+                </span>
+              </div>
+
+              <div class="server-summary">
+                <div class="server-player-total" aria-label="Jugadores conectados, datos de ejemplo">
+                  <span class="server-player-number" id="server-player-count">0</span>
+                  <span class="server-player-capacity">/ <span id="server-player-capacity">30</span></span>
+                  <span class="server-player-caption">jugadores conectados</span>
+                </div>
+                <p class="server-summary-note" id="server-summary-note">
+                  Maqueta: 0/30 es un ejemplo visual, no indica la capacidad ni el estado real del servidor.
+                </p>
+              </div>
+
+              <div class="server-list-header">
+                <h4>Jugadores en línea</h4>
+                <span id="server-list-count">0 en línea</span>
+              </div>
+              <ol class="server-player-list" id="server-player-list" aria-live="polite">
+                <li class="server-empty-state">
+                  Los nombres aparecerán aquí cuando conectemos el estado real del servidor.
+                </li>
+              </ol>
+
+              <div class="server-card-footer">
+                <span id="server-updated-at">Última actualización: todavía no disponible</span>
+                <span>Dirección: por anunciar</span>
+              </div>
+            </article>
+
+            <p class="server-privacy-note reveal">
+              La lista futura solo se activará si se puede obtener de forma fiable y publicar los nombres es
+              apropiado. Esta página no se conecta al juego ni consulta datos por su cuenta.
+            </p>
+          </div>
+        </section>
+
+        <section class="section story-section" aria-labelledby="story-title">
+          <div class="container story-grid">
+            <div class="story-copy reveal">
+              <p class="eyebrow">Cuando empiece la ronda</p>
+              <h2 id="story-title">Pasillos conocidos. Historias distintas cada noche.</h2>
+              <p>
+                Eso es lo que nos gusta de SCP:SL: entras pensando que sabes cómo irá la partida y, cinco minutos
+                después, ya estás improvisando con gente que acabas de conocer.
+              </p>
+              <p class="story-aside">La web irá contando el resto cuando haya partidas que contar.</p>
+            </div>
+
+            <figure class="trailer-card reveal">
+              <img
+                src="assets/night-shift.svg"
+                alt="Ilustración original nocturna de una instalación de investigación iluminada"
+                width="1200"
+                height="680"
+                loading="lazy"
+              />
+              <span class="trailer-label">PENTAGOLAND · ARCHIVO 01</span>
+              <span class="trailer-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M8 5.8c0-.78.85-1.26 1.52-.85l9.1 5.59a1 1 0 0 1 0 1.7l-9.1 5.6A1 1 0 0 1 8 17V5.8Z" fill="currentColor"/>
+                </svg>
+              </span>
+              <figcaption>
+                <span>Una primera mirada al universo del servidor</span>
+                <strong>Vídeo próximamente</strong>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="guia" class="section alt-section">
+          <div class="container">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Si acabas de llegar</p>
+              <h2>Lo básico, sin tener que buscarlo por todas partes.</h2>
+              <p class="section-intro">
+                Cuando el servidor abra, aquí tendrás los pasos para entrar. Mientras tanto, dejamos claro qué
+                información falta y qué puedes esperar.
+              </p>
+            </div>
+
+            <div class="feature-grid">
+              <article class="feature-card reveal">
+                <div class="feature-icon">01</div>
+                <h3>Necesitas SCP:SL</h3>
+                <p>El servidor está pensado para SCP: Secret Laboratory. La versión compatible se indicará aquí antes de la apertura.</p>
+              </article>
+              <article class="feature-card reveal">
+                <div class="feature-icon">02</div>
+                <h3>La dirección se anunciará</h3>
+                <p>No publiques ni uses una IP copiada de otra fuente. Pondremos aquí la dirección oficial cuando esté confirmada.</p>
+              </article>
+              <article class="feature-card reveal">
+                <div class="feature-icon">03</div>
+                <h3>Entra y pregunta</h3>
+                <p>Si eres nuevo, no pasa nada por no conocer cada detalle. La idea es que las normas y el equipo te ayuden a orientarte.</p>
+              </article>
+            </div>
+
+            <div class="opening-note reveal">
+              <span class="opening-note-mark" aria-hidden="true">i</span>
+              <p><strong>Antes de abrir:</strong> aquí añadiremos dirección, versión y enlace de comunidad. No hay conexión de juego ni invitación de Discord activa en esta página todavía.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="normas" class="section">
+          <div class="container two-col">
+            <div class="content-block reveal">
+              <p class="eyebrow">Una idea sencilla</p>
+              <h2>Ven a jugar. Ayuda a que los demás también disfruten.</h2>
+              <p>
+                Las normas completas dependerán de cómo funcione el servidor cuando esté abierto. Estos son los
+                mínimos que queremos cuidar desde el primer día.
+              </p>
+            </div>
+            <div class="info-card reveal">
+              <h3>Acuerdos de la comunidad</h3>
+              <ul class="check-list compact-list">
+                <li>Trata a otras personas con respeto, incluso cuando una ronda salga mal.</li>
+                <li>No uses trampas, exploits ni ventajas injustas.</li>
+                <li>Evita el spam, el acoso y el contenido que arruine la partida.</li>
+                <li>Si algo te preocupa, cuéntaselo al staff por los canales oficiales.</li>
+              </ul>
+              <p class="small-note">Las sanciones y el sistema de apelaciones se publicarán junto con las normas definitivas.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="roadmap" class="section">
+          <div class="container">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Lo que viene después</p>
+              <h2>Hay ideas apuntadas; las iremos haciendo cuando tenga sentido.</h2>
+              <p class="section-intro">
+                Esto es una lista de trabajo, no un calendario ni una promesa de fechas. Primero queremos que lo
+                esencial funcione bien.
+              </p>
+            </div>
+
+            <div class="timeline">
+              <article class="timeline-item reveal">
+                <span class="phase">Por preparar</span>
+                <h3>Guía de entrada y normas</h3>
+                <p>Publicar los datos reales del servidor, requisitos, reglas completas y cómo contactar con el staff.</p>
+              </article>
+
+              <article class="timeline-item reveal">
+                <span class="phase">Más adelante</span>
+                <h3>Discord y avisos</h3>
+                <p>Añadir un enlace de invitación verificado y un lugar para noticias o cambios importantes.</p>
+              </article>
+
+              <article class="timeline-item reveal">
+                <span class="phase">Si hace falta</span>
+                <h3>Herramientas con sentido</h3>
+                <p>Documentar qué extensiones se usan y probar que no interfieran con la experiencia base del juego.</p>
+              </article>
+
+              <article class="timeline-item reveal">
+                <span class="phase">A futuro</span>
+                <h3>Comunidad y sugerencias</h3>
+                <p>Dar espacio a eventos, ideas y mejoras propuestas por quienes juegan, sin llenar la web de ruido.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" class="section alt-section">
+          <div class="container">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2>Respuestas rápidas a lo que seguramente te preguntarías.</h2>
+            </div>
+
+            <div class="faq-list reveal">
+              <details class="faq-item">
+                <summary>¿El servidor ya está abierto?</summary>
+                <p>La web está en preparación. Cuando el servidor esté listo, publicaremos aquí su dirección y los datos para entrar.</p>
+              </details>
+              <details class="faq-item">
+                <summary>¿Necesito instalar algo aparte del juego?</summary>
+                <p>Por ahora no podemos confirmarlo. Si hiciera falta algún requisito adicional, lo explicaremos aquí con instrucciones claras.</p>
+              </details>
+              <details class="faq-item">
+                <summary>¿Puedo proponer una idea o reportar un problema?</summary>
+                <p>Sí. El formulario de abajo está preparado visualmente, pero aún no envía mensajes. Añadiremos un canal de contacto verificado antes de activarlo.</p>
+              </details>
+              <details class="faq-item">
+                <summary>¿Qué pasa con los plugins y las actualizaciones?</summary>
+                <p>Se revisarán con cuidado. No instalaremos complementos solo por añadir funciones: la estabilidad y las actualizaciones del juego tienen prioridad.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="comunidad" class="section community">
+          <div class="container community-grid">
+            <div class="community-copy reveal">
+              <p class="eyebrow">Comunidad</p>
+              <h2>Un sitio para jugar en español y sentirse parte de la comunidad.</h2>
+              <p>
+                Queremos que sea fácil encontrar la información importante y saber dónde pedir ayuda. Los enlaces
+                aparecerán aquí cuando estén listos y comprobados.
+              </p>
+            </div>
+
+            <div class="community-cards reveal">
+              <article class="community-card">
+                <span>Discord</span>
+                <strong>Invitación pendiente</strong>
+                <small>No hay enlace público activo todavía. Lo añadiremos aquí cuando esté verificado.</small>
+              </article>
+
+              <article class="community-card">
+                <span>Plugins</span>
+                <strong>Lista en preparación</strong>
+                <small>Publicaremos las extensiones usadas y sus requisitos cuando estén probadas en el servidor.</small>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contacto" class="section contact-section">
+          <div class="container contact-grid">
+            <div class="content-block reveal">
+              <p class="eyebrow">Contacto</p>
+              <h2>¿Tienes una idea, una duda o algo que contarnos?</h2>
+              <p>
+                Nos interesa más una sugerencia concreta que un mensaje perfecto. Este formulario todavía no está
+                conectado a ningún servicio, así que no enviará ni guardará tus datos.
+              </p>
+              <p class="small-note">No incluyas contraseñas, datos privados ni información sensible.</p>
+            </div>
+
+            <form class="contact-form reveal" id="contact-form">
+              <div class="form-field">
+                <label for="contact-name">Cómo te llamas <span>(opcional)</span></label>
+                <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" />
+              </div>
+              <div class="form-field">
+                <label for="contact-email">Tu correo <span>(opcional)</span></label>
+                <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" />
+              </div>
+              <div class="form-field">
+                <label for="contact-topic">¿Sobre qué nos escribes?</label>
+                <select id="contact-topic" name="topic" required>
+                  <option value="" selected disabled>Elige un tema</option>
+                  <option value="suggestion">Una sugerencia</option>
+                  <option value="question">Una pregunta</option>
+                  <option value="problem">Un problema en el servidor</option>
+                  <option value="other">Otra cosa</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="contact-message">Tu mensaje</label>
+                <textarea id="contact-message" name="message" rows="5" maxlength="2000" required></textarea>
+                <span class="field-hint">Máximo 2000 caracteres.</span>
+              </div>
+              <button class="button primary form-submit" type="submit">Comprobar campos</button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite">
+                Formulario de muestra: no se enviará ningún mensaje.
+              </p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <div>
+            <a href="#inicio" class="brand footer-brand" aria-label="Ir al inicio">
+              <img class="brand-mark" src="assets/pentagoland-mark.svg" alt="Logo de Pentagoland" />
+              <span class="brand-text">Pentagoland</span>
+            </a>
+          </div>
+
+          <div class="footer-links" aria-label="Enlaces del sitio">
+            <a href="#estado-servidores">Estado Servidores</a>
+            <a href="#guia">Cómo jugar</a>
+            <a href="#faq">Preguntas</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#comunidad">Comunidad</a>
+          </div>
+
+          <div class="footer-meta">
+            <span>Discord: próximamente</span>
+            <a href="#contacto">Contacto</a>
+            <a href="#roadmap">Mejoras futuras</a>
+          </div>
+        </div>
+        <div class="container footer-bottom">
+          <span>© <span id="year"></span> Pentagoland</span>
+          <span>Proyecto independiente de SCP: Secret Laboratory</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
