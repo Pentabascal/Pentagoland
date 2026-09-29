@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Pentagoland.Utilities</RootNamespace>
+    <AssemblyName>PentagolandCore</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <Version>4.0.0</Version>
+    <Title>Pentagoland Core</Title>
+    <FileAlignment>512</FileAlignment>
+    <NoWarn>$(NoWarn);CS0618;CS0169;CS4014</NoWarn>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <EXILED_DIR Condition="'$(EXILED_DIR)' == ''">$([System.Environment]::GetEnvironmentVariable('EXILED_DIR'))</EXILED_DIR>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Plugins/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(EXILED_DIR)' != '' and Exists('$(EXILED_DIR)\Exiled.API.dll') and Exists('$(EXILED_DIR)\Exiled.Events.dll')">
+    <Compile Remove="Exiled.Stubs/**/*.cs" />
+    <Reference Include="Exiled.API">
+      <HintPath>$(EXILED_DIR)\Exiled.API.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Exiled.Events">
+      <HintPath>$(EXILED_DIR)\Exiled.Events.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Exiled.Loader">
+      <HintPath>$(EXILED_DIR)\Exiled.Loader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
