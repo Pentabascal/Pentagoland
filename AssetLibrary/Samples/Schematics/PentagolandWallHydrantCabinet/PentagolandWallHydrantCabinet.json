@@ -1,0 +1,167 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Recess cabinet",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.66,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.78,
+        "y": 1.28,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Door frame",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.66,
+        "z": -0.115
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.67,
+        "y": 1.12,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Red door",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.66,
+        "z": -0.135
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.59,
+        "y": 1.04,
+        "z": 0.018
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#79383A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Hose reel",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.62,
+        "z": -0.16
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.4,
+        "y": 0.09,
+        "z": 0.4
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Nozzle",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.22,
+        "y": 0.38,
+        "z": -0.17
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.11,
+        "y": 0.17,
+        "z": 0.07
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#8EB8BE",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Header marking",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 1.1,
+        "z": -0.16
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.42,
+        "y": 0.07,
+        "z": 0.02
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

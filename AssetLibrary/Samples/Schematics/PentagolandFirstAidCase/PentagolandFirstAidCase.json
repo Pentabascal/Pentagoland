@@ -1,0 +1,71 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Medical wall case",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.40, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.64, "y": 0.78, "z": 0.20 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Medical case door",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.40, "z": -0.11 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.54, "y": 0.67, "z": 0.035 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#293744", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Medical case rose header",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.64, "z": -0.13 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.45, "y": 0.09, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Medical cross vertical",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.39, "z": -0.16 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.075, "y": 0.29, "z": 0.012 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#66856A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Medical cross horizontal",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.39, "z": -0.162 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.29, "y": 0.075, "z": 0.014 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#66856A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Medical case status strip",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.12, "z": -0.13 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.36, "y": 0.035, "z": 0.016 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 1 }
+    }
+  ]
+}

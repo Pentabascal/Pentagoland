@@ -1,0 +1,140 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Armored backing",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.44,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.84,
+        "y": 0.88,
+        "z": 0.14
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Inset sign face",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.44,
+        "z": -0.08
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.72,
+        "y": 0.76,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Header bar",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.73,
+        "z": -0.1
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.55,
+        "y": 0.09,
+        "z": 0.02
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#79383A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Hazard icon field",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.45,
+        "z": -0.105
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.3,
+        "y": 0.28,
+        "z": 0.018
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Classification line",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.2,
+        "z": -0.105
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.48,
+        "y": 0.025,
+        "z": 0.015
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

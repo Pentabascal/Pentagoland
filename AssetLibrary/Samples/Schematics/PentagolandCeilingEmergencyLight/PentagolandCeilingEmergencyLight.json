@@ -1,0 +1,113 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Mounting plate",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.02,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.6,
+        "y": 0.08,
+        "z": 0.26
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Light housing",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": -0.08,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.52,
+        "y": 0.16,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Diffuser",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": -0.17,
+        "z": -0.005
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.42,
+        "y": 0.035,
+        "z": 0.15
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Left end cap",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -0.25,
+        "y": -0.08,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.06,
+        "y": 0.14,
+        "z": 0.22
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Cargo crate body",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.42, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.90, "y": 0.76, "z": 0.78 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo crate front panel",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.42, "z": -0.402 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.72, "y": 0.56, "z": 0.025 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#293744", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo crate vertical braces",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.25, "y": 0.42, "z": -0.425 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.05, "y": 0.52, "z": 0.025 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#71808A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo crate center brace",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.25, "y": 0.42, "z": -0.425 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.05, "y": 0.52, "z": 0.025 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#71808A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo inventory label",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.18, "z": -0.43 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.30, "y": 0.08, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo crate top lid",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.82, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.84, "y": 0.06, "z": 0.72 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#35434D", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cargo crate tamper seal",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.78, "z": -0.37 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.16, "y": 0.04, "z": 0.015 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    }
+  ]
+}

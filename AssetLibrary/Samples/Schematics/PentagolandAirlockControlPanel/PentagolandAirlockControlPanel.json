@@ -1,0 +1,113 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Panel enclosure",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.65,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.48,
+        "y": 1.12,
+        "z": 0.18
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Inset face",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.66,
+        "z": -0.1
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.39,
+        "y": 0.92,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Authorization key",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.57,
+        "z": -0.15
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.1,
+        "y": 0.035,
+        "z": 0.1
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#8EB8BE",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Emergency release cover",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.3,
+        "z": -0.14
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.23,
+        "y": 0.12,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#B34238",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

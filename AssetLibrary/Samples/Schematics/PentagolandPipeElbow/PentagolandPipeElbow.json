@@ -1,0 +1,167 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Vertical pipe",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.58,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.24,
+        "y": 1.16,
+        "z": 0.24
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Horizontal pipe",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.42,
+        "y": 0.06,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.24,
+        "y": 0.84,
+        "z": 0.24
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Vertical flange",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.16,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.38,
+        "y": 0.1,
+        "z": 0.38
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Horizontal flange",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.76,
+        "y": 0.06,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.38,
+        "y": 0.1,
+        "z": 0.38
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Flow marker vertical",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.72,
+        "z": -0.13
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.11,
+        "y": 0.12,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Flow marker horizontal",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.4,
+        "y": 0.06,
+        "z": -0.13
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.12,
+        "y": 0.1,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#8EB8BE",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

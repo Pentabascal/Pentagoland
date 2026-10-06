@@ -1,0 +1,140 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Wall housing",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.7,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.46,
+        "y": 1.3,
+        "z": 0.18
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#79383A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Door inset",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.7,
+        "z": -0.1
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.34,
+        "y": 1.14,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Speaker grille",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 1.05,
+        "z": -0.13
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.21,
+        "y": 0.1,
+        "z": 0.018
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Handset",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.7,
+        "z": -0.17
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.1,
+        "y": 0.4,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#BEC6C5",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Call button",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.38,
+        "z": -0.14
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.18,
+        "y": 0.12,
+        "z": 0.03
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

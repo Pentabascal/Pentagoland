@@ -1,0 +1,113 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Locker carcass",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 1.0,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.84,
+        "y": 2.0,
+        "z": 0.62
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Left door",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -0.205,
+        "y": 1.02,
+        "z": -0.33
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.38,
+        "y": 1.82,
+        "z": 0.035
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#35434D",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Right door",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.205,
+        "y": 1.02,
+        "z": -0.33
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.38,
+        "y": 1.82,
+        "z": 0.035
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 1
+      }
+    },
+    {
+      "Name": "Base plinth",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0,
+        "y": 0.08,
+        "z": 0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.94,
+        "y": 0.16,
+        "z": 0.7
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#71808A",
+        "PrimitiveFlags": 1
+      }
+    }
+  ]
+}

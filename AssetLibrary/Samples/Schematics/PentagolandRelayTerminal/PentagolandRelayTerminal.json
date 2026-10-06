@@ -1,0 +1,192 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Relay terminal lower housing",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.22, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.02, "y": 0.44, "z": 0.72 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Relay terminal top deck",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.49, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.14, "y": 0.12, "z": 0.82 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#293744", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Relay terminal support",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.88, "z": 0.10 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.34, "y": 0.72, "z": 0.42 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#111923", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Relay terminal support accent",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.94, "z": -0.116 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.20, "y": 0.42, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Relay display outer housing",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.48, "z": 0.02 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.16, "y": 0.82, "z": 0.22 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#111923", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Relay display glass",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.48, "z": -0.103 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.97, "y": 0.65, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#102131", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display rose status line",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.245, "y": 1.755, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.40, "y": 0.018, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display violet status line",
+      "ObjectId": 8,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.105, "y": 1.755, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.22, "y": 0.018, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display cyan status line",
+      "ObjectId": 9,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.337, "y": 1.755, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.16, "y": 0.018, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display label light",
+      "ObjectId": 10,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.24, "y": 1.63, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.39, "y": 0.014, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#BEC6C5", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display telemetry bar one",
+      "ObjectId": 11,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.32, "y": 1.405, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.22, "y": 0.022, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display telemetry bar two",
+      "ObjectId": 12,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.245, "y": 1.36, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.37, "y": 0.016, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display telemetry bar three",
+      "ObjectId": 13,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.285, "y": 1.32, "z": -0.117 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.29, "y": 0.016, "z": 0.008 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Display online indicator",
+      "ObjectId": 14,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.505, "y": 1.79, "z": -0.105 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.05, "y": 0.05, "z": 0.02 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#66856A", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Control key one",
+      "ObjectId": 15,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.32, "y": 0.555, "z": -0.409 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.09, "y": 0.09, "z": 0.045 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#8EB8BE", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Control key two",
+      "ObjectId": 16,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.555, "z": -0.409 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.09, "y": 0.09, "z": 0.045 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#526F78", "PrimitiveFlags": 1, "Static": true }
+    },
+    {
+      "Name": "Control key three",
+      "ObjectId": 17,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.32, "y": 0.555, "z": -0.409 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.09, "y": 0.09, "z": 0.045 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#D18A3B", "PrimitiveFlags": 1, "Static": true }
+    }
+  ]
+}

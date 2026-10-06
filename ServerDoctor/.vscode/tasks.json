@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Server Doctor: safety tests",
+      "type": "shell",
+      "command": "${workspaceFolder}\\build.cmd",
+      "args": [
+        "test"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Server Doctor: build plugin",
+      "type": "shell",
+      "command": "${workspaceFolder}\\build.cmd",
+      "args": [
+        "${env:SL_REFERENCES}"
+      ],
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    }
+  ]
+}

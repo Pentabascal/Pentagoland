@@ -1,0 +1,71 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Camera mounting plate",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.73, "z": 0.02 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.18, "y": 0.12, "z": 0.22 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#71808A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Camera support arm",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.68, "z": -0.10 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.12, "y": 0.10, "z": 0.16 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "CCTV housing",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.57, "z": -0.20 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.40, "y": 0.25, "z": 0.36 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#293744", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "CCTV lens bezel",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.57, "z": -0.395 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.20, "y": 0.20, "z": 0.045 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#71808A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "CCTV lens glass",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.57, "z": -0.424 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.14, "y": 0.14, "z": 0.02 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#8EB8BE", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Recording indicator",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.14, "y": 0.67, "z": -0.395 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.035, "y": 0.035, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    }
+  ]
+}

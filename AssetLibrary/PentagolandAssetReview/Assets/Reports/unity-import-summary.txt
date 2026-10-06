@@ -1,0 +1,6 @@
+Editor version: 6000.6.4f1
+Render FBX: 81
+Successful imports: 81
+Collision proxy FBX, kept separate and unassigned: 81
+Failures: 0
+This is an offline import/visual review, not a game compatibility, physics, or performance test.
