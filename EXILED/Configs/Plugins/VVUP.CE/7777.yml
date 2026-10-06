@@ -1,0 +1,89 @@
+is_enabled: true
+debug: false
+# Default Location Escape Handlers
+default_escape_handler:
+- original_role: Scientist
+  new_role: NtfSpecialist
+  detained: false
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+- original_role: ClassD
+  new_role: NtfPrivate
+  detained: false
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+- original_role: ChaosConscript
+  new_role: NtfPrivate
+  detained: true
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+- original_role: ChaosRifleman
+  new_role: NtfPrivate
+  detained: true
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+- original_role: ChaosMarauder
+  new_role: NtfPrivate
+  detained: true
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+- original_role: ChaosRepressor
+  new_role: NtfPrivate
+  detained: true
+  escape_message: ''
+  use_hints: false
+  message_duration: 0
+# Custom Location Escape Handlers
+custom_escape_handlers:
+- position:
+    x: -39
+    y: 291
+    z: -36
+  handlers:
+  - original_role: ClassD
+    new_role: ChaosConscript
+    detained: false
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: Scientist
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: FacilityGuard
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: NtfSpecialist
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: NtfCaptain
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: NtfPrivate
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0
+  - original_role: NtfSergeant
+    new_role: ChaosConscript
+    detained: true
+    escape_message: ''
+    use_hints: false
+    message_duration: 0

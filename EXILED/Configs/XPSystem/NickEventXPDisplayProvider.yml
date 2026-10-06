@@ -1,0 +1,6 @@
+# Enable nick modifications?
+enabled: true
+# Use the NewNickname of the EventArgs instead of MyNick for %name%.
+useEvNewNick: true
+# The structure of the player nick. Variables: %lvl% - the level. %name% - the players nickname/name
+nickStructure: NIVEL %lvl% | %name%

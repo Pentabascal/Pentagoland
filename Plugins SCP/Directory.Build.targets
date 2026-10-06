@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48' or '$(TargetFrameworkVersion)' == 'v4.8'">
+    <TargetFrameworkRootPath Condition="'$(TargetFrameworkRootPath)' == '' and Exists('$(USERPROFILE)\.nuget\packages\microsoft.netframework.referenceassemblies.net48\1.0.3\build\.NETFramework\v4.8')">$(USERPROFILE)\.nuget\packages\microsoft.netframework.referenceassemblies.net48\1.0.3\build</TargetFrameworkRootPath>
+    <AssemblySearchPaths>$(AssemblySearchPaths);$(PentagolandReferenceSearchPaths)</AssemblySearchPaths>
+  </PropertyGroup>
+</Project>

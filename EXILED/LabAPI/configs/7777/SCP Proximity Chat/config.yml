@@ -1,0 +1,14 @@
+show_toggled_hint: true
+enabled: Chat de proximidad activado.
+disabled: Chat de proximidad desactivado.
+audio_settings:
+  is_spatial: true
+  volume: 1
+  min_distance: 1
+  max_distance: 15
+# Set to null to use the default condition (all SCPs except SCP-079 and SCP-3114).
+allowed_roles: 
+# Set to true if the receivers' voice modules should filter whether a player receives the message. Might mess with AudioSettings, but can counter cheaters.
+validate_receive: false
+# Set to false to disable spectators receiving Proximity Chat audio.
+audible_to_spectators: true

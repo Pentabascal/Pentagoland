@@ -1,0 +1,62 @@
+# ¿Activar las modificaciones de rango?
+enabled: true
+# Estructura del rango mostrado en el juego. Variables: %lvl% = nivel, %badge% = rango ganado y %oldbadge% = rango original del juego.
+badgeStructure: '<color=#ffd166>P%prestige%</color> <color=#78e2ff>%badge%</color> | %oldbadge%'
+# Igual que lo anterior, para quienes no tengan un rango. Si está vacío, se usa badgeStructure.
+badgeStructureNoBadge: '<color=#ffd166>P%prestige%</color> <color=#78e2ff>%badge%</color>'
+# ¿Sobrescribir el color si el jugador ya tiene un rango?
+overrideColor: false
+# Requerido para cumplir VSR.
+skipGlobalBadges: true
+# ¿Cambiar el funcionamiento de ocultar rangos?
+editBadgeHiding: true
+# ¿Actualizar automáticamente el rango al usar los comandos para mostrarlo u ocultarlo?
+patchBadgeCommands: true
+# Rango para jugadores con DNT.
+dNTBadge:
+  text: (DNT) jugador anónimo
+  color: Nickel
+# Umbral de nivel y rango. Puedes añadir más entradas. Si aparece TAG FAIL, cambia el color o elimina caracteres especiales.
+badges:
+  0:
+    text: Visitante
+    color: cyan
+  1:
+    text: Iniciado
+    color: orange
+  5:
+    text: Principiante
+    color: yellow
+  10:
+    text: Aprendiz
+    color: green
+  15:
+    text: Superviviente
+    color: green
+  20:
+    text: Operativo
+    color: cyan
+  30:
+    text: Experimentado
+    color: magenta
+  40:
+    text: Veterano
+    color: magenta
+  50:
+    text: Élite
+    color: red
+  65:
+    text: Especialista
+    color: silver
+  80:
+    text: Maestro
+    color: magenta
+  100:
+    text: Leyenda
+    color: lime
+  125:
+    text: Mito
+    color: yellow
+  150:
+    text: Ascendido
+    color: aqua

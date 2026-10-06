@@ -1,0 +1,18 @@
+is_enabled: false
+debug: false
+# Download & apply remote translations.
+enable_translations: true
+# pl, en, de, fr, cs, sk, es, it, pt, ru, tr, zh, ko
+language: 'es'
+# Check GitHub releases on WaitingForPlayers.
+enable_auto_update: true
+# Only notify about new version.
+notify_only: false
+# Create .backup before overwrite.
+enable_backup: false
+# Show logs from addons.
+enable_logging: true
+# After downloading a new version restart server after round.
+restart_next_round: true
+# Enable RueI integration and replace UsefulHints ShowHint-based displays with RueI-based displays.
+enable_rue_i_integration: false

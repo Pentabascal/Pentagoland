@@ -1,0 +1,529 @@
+# DATABASE CONFIGS - Database name
+database_name: 'ScpUtils'
+# Database IP - IP Address where you host the database
+database_ip: 'localhost'
+# Database port - Don't change unless you need it
+database_port: 27017
+# Database user
+database_user: 'user'
+# Database password - If you are using it locally password might be empty
+database_password: ''
+# Database auth mechanism
+database_auth_type: 'SCRAM-SHA-256'
+# Custom connection string - If modified it will ignore all other parameters, advanced users only
+custom_connection_string: 'none'
+# PLUGIN CONFIGS
+is_enabled: true
+# Should SCPs be warned for quitting or suicide?
+enable_s_c_p_suicide_auto_warn: true
+# Should round autorestart if there is only one player left?
+enable_round_restart_check: true
+# Are quits as SCP considered a warnable offence?
+quit_equals_suicide: false
+# Should SCPs be kicked for quitting or suicide after a certain threshold?
+auto_kick_on_s_c_p_suicide: true
+# Should SCPs be banned for quitting or suicide after a certain threshold?
+enable_s_c_p_suicide_auto_ban: false
+# Should SCPs be banned from playing again SCP (except 049-2) for X round after a certain threshold? If this is true EnableSCPSuicideAutoBan must be turned false
+enable_s_c_p_suicide_soft_ban: true
+# Should ban duration multiply after each ban for quit / suicide as SCP?
+multiply_ban_duration_each_ban: true
+# Should player preferences be reset after badge expire?
+reset_preferenced_on_badge_expire: true
+# Should a player with a banned game be autokicked?
+auto_kick_banned_names: true
+# Should Tutorials be considered as SCP? If true they will get warned for suicides / quits if enabled
+are_tutorials_s_c_p: false
+# Broadcast in admin chat auto kick and bans for quitting or suicide as SCP
+broadcast_sanctions: true
+# Broadcast in admin chat auto warns for quitting or suicide as SCP
+broadcast_warns: false
+# Should the nickname gets resetted if the user when joins doesn't have the permission to execute the command? You can bypass it using scputils_preference_persist command
+keep_name_without_permission: false
+# Should the color gets resetted if the user when joins doesn't have the permission to execute the command? You can bypass it using scputils_preference_persist command
+keep_color_without_permission: false
+# Should the badge visibility gets resetted if the user when joins doesn't have the permission to execute the command? You can bypass it using scputils_preference_persist command
+keep_badge_visibility_without_permission: false
+# Is 096's notify target feature enabled?
+scp096_target_notify_enabled: true
+# Notify last player alive?
+notify_last_player_alive: true
+# Ignore DNT requests?
+ignore_dnt_requests: false
+# Enable auto restart module?
+enable_auto_restart: false
+# Automute player if evasion is detected?
+auto_mute: false
+# Should a broadcast appear in case of multiaccount?
+multi_account_broadcast: false
+# Should only the owner of the handcuff (and the allies of the handcuffed players) be able to unhandcull?
+hand_cuff_ownership: false
+# Allow SCP swap?
+allow_s_c_p_swap: false
+# Allow SCP swap only if both SCPs are at full health? You must enable also allow_scp_swap option.
+allow_s_c_p_swap_only_full_health: true
+# Report command abuse in console?
+command_abuse_report: true
+# Should SCP-049-2 deaths should be broadcasted?
+scp0492_death_broadcast: false
+# Should respawn be granted only full health?
+respawn_only_full_health: true
+# Destroy dropped items during respawn time window
+respawn_window_destroy_item: true
+# Respawn hint informative message should be an Hint instead broadcast?
+respawn_informative_hint: true
+# Should rainbow tags be allowed? Player must have change color permission or an admin must set him the color using "pp" command.
+allow_rainbow_tags: true
+# Report mute evasions?
+report_mute_evasions: true
+# Autowarn message for suiciding as SCP
+suicide_warn_message:
+# The broadcast content
+  content: |-
+    <color=red>AVISO:
+    Según las reglas del servidor, suicidarse como SCP es una infracción; hacerlo demasiadas veces conllevará un baneo.</color>
+  # The broadcast duration
+  duration: 30
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Welcome message (if enabled)
+welcome_message:
+# The broadcast content
+  content: '<color=green>¡Bienvenido al servidor, %player%!</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Decontamination message (if enabled)
+decontamination_message:
+# The broadcast content
+  content: '<color=yellow>Ha comenzado la descontaminación</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: false
+# Suicide auto-kick reason (if enabled)
+suicide_kick_message: 'Suicidio como SCP'
+# Auto-kick message for using a restricted nickname
+auto_kick_banned_name_message: 'Usas un nombre restringido o demasiado parecido a uno restringido; cámbialo, por favor'
+# Suicide auto-ban reason (if enabled)
+auto_ban_message: 'Has superado el límite de suicidios como SCP'
+# Message if player is not authorized to use this command
+unauthorized_nick_name_change: '<color=red>Permiso denegado.</color>'
+# Message if player is not authorized to use this command
+unauthorized_color_change: '<color=red>Permiso denegado.</color>'
+# Message if player is not authorized to use this command
+unauthorized_badge_change_visibility: '<color=red>Permiso denegado.</color>'
+# Message if player is not authorized to use this command
+nickname_cooldown_message: '<color=red>Este comando está en enfriamiento; inténtalo de nuevo dentro de unos minutos.</color>'
+# Message if player try to change his nickname to a restricted one
+invalid_nickname_text: 'Este nombre está restringido por el propietario del servidor; utiliza otro nombre.'
+# Discord webhook url for mute evasion reports
+webhook_url: 'None'
+# Discord webhook bot nickname
+webhook_nickname: 'The Frontman'
+# Which broadcast should be shown when a SCP die?
+scp_death_message:
+# The broadcast content
+  content: '<color=blue>SCP %playername% (%scpname%) ha sido eliminado por %killername%. Causa de la muerte: %reason%</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Which broadcast should be shown when a SCP die?
+scp_suicide_message:
+# The broadcast content
+  content: '<color=blue>SCP %playername% (%scpname%) se ha suicidado. Causa de la muerte: %reason%</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Text shown if a player doesn't own the handcuffed player
+unhand_cuff_denied:
+# The broadcast content
+  content: '<color=blue>No tienes la custodia de este jugador, por lo que no puedes quitarle las esposas.</color>'
+  # The broadcast duration
+  duration: 8
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Auto-restart time if there is only one player in server (if enabled)
+auto_restart_time: 15
+# SCP-096 target message duration (if enabled)
+scp096_target_message_duration: 12
+# Last player alive message duration (if enabled)
+last_player_alive_message_duration: 12
+# Default duration for broadcast sent via scputils_broadcast command
+broadcast_duration: 12
+# Default duration for hints sent via scputils_broadcast command
+hints_duration: 12
+# Which is the minimun number of suicides before the player may not receive any kick o ban ignoring the SCP suicides / quit percentage? (if enabled)
+scp_suicide_tollerance: 5
+# SCP Suicide / Quit base ban duration (if enabled)
+auto_ban_duration: 15
+# SCP Suicide / Quit base number of auto-ban rounds (if enbaled)
+auto_ban_rounds_count: 2
+# Which is the max length of a nickname using change name command?
+nickname_max_length: 32
+# If 079 trigger tesla for how many seconds player shouldn't get warned for suicide? (2 is enough for most of servers)
+scp079_tesla_event_wait: 2
+# For bpt command, min seconds of gameplay to be considered the day as complete
+bpt_min_seconds: 1200
+# Change nickname cooldown in seconds
+change_nickname_cooldown: 120
+# Min players required on server for PT to be counted
+min_players_pt_count: 1
+# Max allowed time in seconds from start of round to send a SCP Swap request
+max_allowed_time_scp_swap_request: 60
+# Max allowed time in seconds from start of round to accept a scp swap request
+max_allowed_time_scp_swap_request_accept: 75
+# Max allowed swaps
+max_allowed_swaps: 1
+# Command cooldown in seconds
+command_cooldown_seconds: 5
+# Max allowed respawn command time, set to 0 to disable
+respawn_command_time: 45
+# List of session variables for custom SCPs, putting the id there will deny the swap
+denied_swap_custom_info:
+- '<color=#960018>SCP-20743</color>'
+- 'SCP-20743'
+- 'SCP-20743-1'
+- '<color=#960018>SCP-20743-1</color>'
+# Which quit / suicide percentage as SCP a player require before getting banned? (You can add tollerence in settings)
+auto_ban_threshold: 30.5
+# Which quit / suicide percentage as SCP a player require before getting kicked? (You can add tollerence in settings)
+auto_kick_threshold: 15.5
+# After how many seconds rainbow tag must change?
+rainbow_tag_seconds: 1.70000005
+# Which colors are restricted on .scputils_change_color command? Use command colors in game console to see them
+restricted_role_colors:
+- 'Color1'
+- 'Color2'
+# Which nicknames are restricted on .scputils_change_nickname command?
+banned_nick_names:
+- '@everyone'
+- '@here'
+- 'Admin'
+# Which ASNs should be blacklisted? Players to connect from blacklisted ASN should be whitelisted via scputils_whitelist_asn command (50889 is geforce now ASN)
+a_s_n_blacklist:
+- '50889'
+# Which ASNs should be ignored in multi-account detector? (50889 is geforce now ASN)
+a_s_n_whiteslist_multi_account:
+- '50889'
+# Which message non-whitelisted players should get while connecting from blacklisted ASN?
+asn_kick_message: 'El ASN desde el que te conectas está en la lista negra del servidor; contacta con el equipo para solicitar que se incluya en la lista blanca.'
+# Which message should be shown to who become SCP-096 target?
+scp096_target_notify_text: |-
+  <color=red>Atención:</color>
+  <color=purple>¡Te has convertido en objetivo de SCP-096!</color>
+# Which message should be shown to last player alive of a team?
+last_player_alive_notification_text: |-
+  <color=red>Atención:</color>
+  <color=purple>¡Eres el último jugador con vida de tu equipo!</color>
+# Which message should be shown for offline warns when a player rejoin?
+offline_warn_notification:
+# The broadcast content
+  content: |-
+    <color=red>Aviso posterior:</color>
+    <color=yellow>Has recibido un aviso por abandonar recientemente una partida como SCP; repetir este comportamiento puede conllevar un baneo.</color>
+  # The broadcast duration
+  duration: 30
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Which message should be shown to a player when he gets banned from playing SCP?
+round_ban_notification:
+# The broadcast content
+  content: |-
+    <color=red>Has sido expulsado:</color>
+    <color=yellow><size=27>No puedes jugar como SCP. Se te excluye de jugar como SCP durante %roundnumber% rondas por tus infracciones anteriores.</size></color>
+  # The broadcast duration
+  duration: 30
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Which message should be shown to a player when he spawns as SCP while being banned and replaced with another player?
+round_ban_spawn_notification:
+# The broadcast content
+  content: |-
+    <color=red>Tienes una sanción para jugar como SCP:</color>
+    <color=yellow><size=27>Has sido sustituido porque tienes una sanción activa para jugar como SCP. Debes ser sustituido durante %roundnumber% ronda(s) más antes de poder jugar como SCP.</size></color>
+  # The broadcast duration
+  duration: 30
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# SCP swap request broadcast
+swap_request_broadcast:
+# The broadcast content
+  content: '<color=blue>%player% (%scp%) quiere intercambiar su rol contigo. Para aceptar, abre la consola con la tecla ò y escribe .accept; para rechazar, escribe .deny. Te quedan %seconds% segundos.</color>'
+  # The broadcast duration
+  duration: 20
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# SCP swap request canceled broadcast
+swap_request_canceled_broadcast:
+# The broadcast content
+  content: '<color=blue>La solicitud de intercambio ha sido cancelada.</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# SCP swap request denied broadcast
+swap_request_denied_broadcast:
+# The broadcast content
+  content: '<color=blue>La solicitud de intercambio ha sido rechazada.</color>'
+  # The broadcast duration
+  duration: 12
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# SCP swap request informative broadcast
+swap_request_info_broadcast:
+# The broadcast content
+  content: '<color=blue>Eres un SCP. Durante %seconds% segundos puedes intercambiar tu rol con otro SCP usando el comando swap en ò. Usa .scplist para ver quién es SCP.</color>'
+  # The broadcast duration
+  duration: 15
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Respawn command info
+respawn_broadcast:
+# The broadcast content
+  content: '<color=blue>Si tu aparición se bloquea durante unos segundos, puedes usar el comando .respawn en la consola para reaparecer.</color>'
+  # The broadcast duration
+  duration: 10
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Which time of the day the server should perform autorestart task?
+auto_restart_time_task: '1:35:0'
+# Which text should be shown outside discord embed?
+extra_text: '@everyone'
+# Command cooldown text
+cooldown_message: '<color=red>¡Ha fallado la ejecución! Estás en periodo de enfriamiento o tienes los comandos bloqueados. Espera 5 segundos y vuelve a intentarlo. Si el error persiste, quizá se te haya prohibido usar comandos; abre la consola al entrar para consultar el motivo y la duración. Esta acción abusiva se ha comunicado al equipo.</color>'
+# From which groups plugin should ignore DNT flag?
+dnt_ignore_list:
+- 'testusergroup1'
+- 'testusergroup2'
+# Allowed classes to see MTF and Next respawn info
+allowed_mtf_info_team:
+- FoundationForces
+- Scientists
+- Dead
+# Allowed classes to see Chaos info and Next respawn info
+allowed_chaos_info_team:
+- ClassD
+- ChaosInsurgency
+- Dead
+# Allowed rainbowtag colors list
+allowed_rainbowtag_colors:
+- 'pink'
+- 'red'
+- 'default'
+- 'brown'
+- 'silver'
+- 'light_green'
+- 'crismon'
+- 'cyan'
+- 'aqua'
+- 'deep_pink'
+- 'tomato'
+- 'yellow'
+- 'magenta'
+- 'blue_green'
+- 'orange'
+- 'lime'
+- 'green'
+- 'emerald'
+- 'carmine'
+- 'nickel'
+- 'mint'
+- 'army_green'
+- 'pumpkin'
+# You have to add the team you want to protect from the target as key and enemy teams on the list as value, on github documentation you can see all the teams.
+cuffed_immunity_players:
+  ClassD:
+  - Scientists
+  - FoundationForces
+  Scientists:
+  - ClassD
+  - ChaosInsurgency
+# Indicates if the protected teams should be cuffed to get the protection, if you don't add a team it will get protection regardless
+cuffed_protected_teams:
+- ClassD
+- Scientists
+# Set the allowed list that players can chose to swap if said SCP is not spawned, the request will be granted immediately.
+allowed_swap_generation_list:
+- Scp049
+- Scp079
+- Scp096
+- Scp106
+- Scp173
+- Scp939
+- Scp3114
+# Set disallowed SCPs to use swap if said scp is not spawned, players can still use normal swap (for example 079 cannot become 173 if 173 is not spawned)
+disallowed_scps_swap_generation_list:
+- Scp0492
+- Scp079
+# Indicates in which zones the protected team is protected, Zone list: Surface, Entrance, HeavyContainment, LightContainment, Unspecified
+cuffed_safe_zones:
+  ClassD:
+  - Entrance
+  - Surface
+  - HeavyContainment
+  - LightContainment
+  - Other
+  - Unspecified
+  Scientists:
+  - Entrance
+  - Surface
+  - HeavyContainment
+  - LightContainment
+  - Other
+  - Unspecified
+# Translations for damage types
+damage_types_translations:
+  AK: AK
+  ASPHYXIATION: ASPHYXIATION
+  BLEEDING: BLEEDING
+  COM15: COM15
+  COM18: COM18
+  CROSSVEC: CROSSVEC
+  CRUSHED: CRUSHED
+  CUSTOM: CUSTOM
+  DECONTAMINATION: DECONTAMINATION
+  E11SR: E11SR
+  EXPLOSION: EXPLOSION
+  FALLDOWN: FALLDOWN
+  FEMURBREAKER: FEMURBREAKER
+  FIREARM: FIREARM
+  FRIENDLYFIREDETECTOR: FRIENDLYFIREDETECTOR
+  FSP9: FSP9
+  HYPOTHERMIA: HYPOTHERMIA
+  LOGICER: LOGICER
+  MICROHID: MICROHID
+  PARTICLEDISRUPTOR: PARTICLEDISRUPTOR
+  POCKETDIMENSION: POCKETDIMENSION
+  POISON: POISON
+  RECONTAINMENT: RECONTAINMENT
+  SCP: SCP
+  SCP018: SCP018
+  SCP049: SCP049
+  SCP0492: SCP0492
+  SCP096: SCP096
+  SCP106: SCP106
+  SCP173: SCP173
+  SCP207: SCP207
+  SCP939: SCP939
+  SEVEREDHANDS: SEVEREDHANDS
+  SHOTGUN: SHOTGUN
+  TESLA: TESLA
+  UNKNOWN: UNKNOWN
+  WARHEAD: WARHEAD
+  CARDIACARREST: CARDIACARREST
+  JAILBIRD: JAILBIRD
+  Scp3114: Scp3114
+# The command name for the unwarn command
+unwarn_command: 'scputils_player_unwarn'
+# The aliases for the unwarn command
+unwarn_command_aliases:
+- 'unwarn'
+- 'sunwarn'
+- 'su_player_unw'
+- 'su_punw'
+- 'su_puw'
+- 'scpu_player_unw'
+- 'scpu_punw'
+- 'scpu_puw'
+# The command name for the swap request command
+swap_request_command: 'scputils_swap_request'
+# The aliases for the swap request command
+swap_request_command_aliases:
+- 'swap'
+- 'swapr'
+- 'su_sr'
+- 'scpu_sr'
+- 'swap_request'
+# The command name for the swap request cancel command
+swap_request_cancel_command: 'scputils_swap_request_cancel'
+# The aliases for the swap request cancel command
+swap_request_cancel_command_aliases:
+- 'cancel'
+- 'su_src'
+- 'swaprc'
+- 'scpu_src'
+- 'swap_request_cancel'
+# The command name for the swap request accept command
+swap_request_accept_command: 'scputils_swap_request_accept'
+# The aliases for the swap request accept command
+swap_request_accept_command_aliases:
+- 'accept'
+- 'su_sra'
+- 'swapra'
+- 'scpu_sra'
+- 'swap_request_accept'
+# The command name for the swap request deny command
+swap_request_deny_command: 'scputils_swap_request_deny'
+# The aliases for the swap request deny command
+swap_request_deny_command_aliases:
+- 'deny'
+- 'su_srd'
+- 'swaprd'
+- 'scpu_srd'
+- 'swap_request_deny'
+# The command name for the respawn command
+respawn_command: 'scputils_respawn'
+# The aliases for the respawn command
+respawn_command_aliases:
+- 'respawn'
+- 'su_resp'
+- 'resp'
+# Broadcast to send to all online staff when player enter with more than 1 account
+alert_staff_broadcast_multi_account:
+# The broadcast content
+  content: |-
+    <size=40><color=red>Alert</color></size>
+    <size=35>Player <color=yellow>{player}</color> has entered with <color=yellow>{accountNumber}</color> accounts</size>
+    <size=30>Check console pressing <color=yellow>ò</color></size>
+  # The broadcast duration
+  duration: 10
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+# Broadcast to send to all online staff when player change IP
+alert_staff_broadcast_change_i_p:
+# The broadcast content
+  content: |-
+    <size=40><color=red>Alert</color></size>
+    <size=35>Player <color=yellow>{player}</color> has changed IP. <color=yellow>{oldIP}</color> to <color=yellow>{newIP}</color></size>
+    <size=35>Check console pressing <color=yellow>ò</color></size>
+  # The broadcast duration
+  duration: 10
+  # The broadcast type
+  type: Normal
+  # Indicates whether the broadcast should be shown
+  show: true
+debug: true

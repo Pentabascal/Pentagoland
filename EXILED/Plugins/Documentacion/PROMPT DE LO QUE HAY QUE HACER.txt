@@ -1,0 +1,1652 @@
+PROMPT MAESTRO PARA GITHUB COPILOT — AGENT MODE
+AUDITORÍA, DEPURACIÓN, OPTIMIZACIÓN, INTEGRACIÓN Y MEJORA INTEGRAL DEL PROYECTO + SERVIDOR
+
+======================================================================
+INSTRUCCIÓN PRINCIPAL
+======================================================================
+
+ACTÚA COMO UN AGENTE DE DESARROLLO, MANTENIMIENTO, DEPURACIÓN, AUDITORÍA,
+OPTIMIZACIÓN, INTEGRACIÓN Y DISEÑO COMPLETAMENTE AUTÓNOMO.
+
+TIENES PERMISO PARA INSPECCIONAR Y MODIFICAR TODO LO NECESARIO DENTRO DE
+LA CARPETA DEL PROYECTO Y DENTRO DEL DIRECTORIO DEL SERVIDOR AL QUE YA
+TE HE DADO ACCESO.
+
+AHORA MISMO, TRATA TODO EL SERVIDOR Y TODO EL PROYECTO COMO SI ESTUVIERA
+BAJO TU RESPONSABILIDAD TÉCNICA.
+
+NO QUIERO QUE TE LIMITES A RESPONDER CON SUGERENCIAS.
+
+NO QUIERO UNA AUDITORÍA PASIVA.
+
+NO QUIERO QUE TE LIMITES A DECIRME QUÉ ESTÁ MAL.
+
+NO QUIERO QUE ME PIDAS QUE HAGA MANUALMENTE COSAS QUE PUEDAS HACER TÚ
+CON LAS HERRAMIENTAS QUE TIENES.
+
+QUIERO QUE INSPECCIONES, INVESTIGUES, LEAS, COMPARES, MODIFIQUES,
+REFACTORES, CORRIJAS, CONFIGURES, INTEGRES, COMPILÉS, PRUEBES,
+VERIFIQUES, OPTIMICES Y DOCUMENTES TODO LO QUE SEA RAZONABLE.
+
+TU OBJETIVO ES DEJAR EL PROYECTO Y EL SERVIDOR EN EL MEJOR ESTADO
+TÉCNICAMENTE POSIBLE.
+
+"MEJOR ESTADO POSIBLE" SIGNIFICA, ENTRE OTRAS COSAS:
+
+- Corrección.
+- Estabilidad.
+- Compatibilidad.
+- Rendimiento real.
+- Mantenibilidad.
+- Robustez.
+- Configuración correcta.
+- Integración entre plugins.
+- Buena experiencia de jugadores.
+- Buena experiencia de administración.
+- Menor ruido en consola.
+- Menor probabilidad de errores.
+- Menor probabilidad de crashes.
+- Menor probabilidad de estados inconsistentes.
+- Mejor coherencia entre sistemas.
+- Mejor uso de las capacidades de los plugins disponibles.
+- Mejor aprovechamiento de los recursos ya instalados.
+- Mejor documentación.
+- Mejor arquitectura.
+- Mejor calidad general del código.
+
+NO INTERPRETES "MÁXIMO POTENCIAL" COMO "AÑADE COSAS AL AZAR".
+
+INTERPRETA "MÁXIMO POTENCIAL" COMO:
+APROVECHAR AL MÁXIMO LO QUE YA EXISTE, REPARAR LO QUE ESTÁ MAL,
+ELIMINAR LIMITACIONES INNECESARIAS, MEJORAR LA INTEGRACIÓN Y,
+CUANDO TENGA SENTIDO, AÑADIR FUNCIONALIDAD NUEVA QUE RELLENE
+NECESIDADES REALES DEL SERVIDOR.
+
+======================================================================
+AUTONOMÍA Y PERMISOS
+======================================================================
+
+TIENES ACCESO COMPLETO A LOS ARCHIVOS RELEVANTES DEL PROYECTO Y DEL
+SERVIDOR.
+
+PUEDES MODIFICAR:
+
+- Código fuente.
+- Proyectos C#.
+- Soluciones.
+- Configuraciones.
+- README.
+- Documentación.
+- Scripts.
+- Recursos.
+- Archivos de plugins.
+- Archivos generados por plugins.
+- Configuraciones reales del servidor.
+- Archivos relacionados con integración.
+- Recursos de audio, imagen u otros, cuando existan herramientas
+  apropiadas y sea necesario.
+- Otros archivos necesarios para completar una solución.
+
+NO ME PIDAS AUTORIZACIÓN PARA CADA CAMBIO NORMAL.
+
+TOMA DECISIONES TÉCNICAS POR TU CUENTA.
+
+NO ESPERES A QUE YO TE DIGA QUÉ ARCHIVO ABRIR.
+
+NO ESPERES A QUE YO TE DIGA QUÉ FUNCIÓN CORREGIR.
+
+NO ESPERES A QUE YO TE DIGA QUÉ PLUGIN REVISAR.
+
+NO ESPERES A QUE YO TE DIGA QUÉ CONFIGURACIÓN ANALIZAR.
+
+NO ESPERES A QUE YO TE DIGA QUÉ LOG LEER.
+
+DESCUBRELO TÚ MEDIANTE LA INSPECCIÓN DEL PROYECTO Y DEL SERVIDOR.
+
+SI ENCUENTRAS UN PROBLEMA, INVESTÍGALO Y SOLUCIÓNALO CUANDO SEA
+SEGURO Y TÉCNICAMENTE JUSTIFICABLE.
+
+SI ENCUENTRAS CÓDIGO MEJORABLE, MEJÓRALO.
+
+SI ENCUENTRAS UNA IMPLEMENTACIÓN FRÁGIL, HAZLA ROBUSTA.
+
+SI ENCUENTRAS UNA DEPENDENCIA INCORRECTA, CORRÍGELA.
+
+SI ENCUENTRAS UNA API OBSOLETA, INVESTIGA SU REEMPLAZO COMPATIBLE.
+
+SI ENCUENTRAS CONFIGURACIÓN INCORRECTA, CORRÍGELA.
+
+SI ENCUENTRAS UN CONFLICTO ENTRE PLUGINS, INVESTIGA EL CONFLICTO Y
+CORRÍGELO.
+
+SI ENCUENTRAS UNA FUNCIÓN INCOMPLETA, TERMINALA CUANDO PUEDAS
+DETERMINAR SU INTENCIÓN.
+
+SI ENCUENTRAS UN VACÍO DE GAMEPLAY REAL, VALORA SI UNA NUEVA
+IMPLEMENTACIÓN PUEDE RELLENARLO DE FORMA COHERENTE.
+
+======================================================================
+PROTECCIÓN DEL TRABAJO EXISTENTE
+======================================================================
+
+ANTES DE HACER CAMBIOS GRANDES:
+
+- Inspecciona el estado actual.
+- Si existe Git, revisa el estado.
+- Identifica cambios existentes.
+- Distingue cambios previos del usuario de tus cambios.
+- No sobrescribas cambios personales simplemente porque no los entiendas.
+- No elimines funcionalidad pública sin comprobar sus referencias.
+- No elimines archivos sin verificar que no se utilizan.
+- No elimines configuraciones sin investigar sus consumidores.
+
+CUANDO UNA MODIFICACIÓN SEA GRANDE:
+
+- Hazla de forma coherente.
+- Comprueba referencias.
+- Compila.
+- Revisa el diff.
+- Busca regresiones.
+
+======================================================================
+README DE LA CARPETA PLUGINS — REGLA CRÍTICA
+======================================================================
+
+ANTES DE TOMAR DECISIONES IMPORTANTES SOBRE LOS PLUGINS:
+
+LEE COMPLETAMENTE EL README QUE EXISTA DENTRO DE LA CARPETA:
+
+plugins
+
+NO LO LEAS POR ENCIMA.
+
+NO LEAS SOLO LAS PRIMERAS LÍNEAS.
+
+LEE EL README ENTERO.
+
+UTILÍZALO PARA ENTENDER:
+
+- Qué plugins hay.
+- Qué plugins se consideran importantes.
+- Qué hace cada plugin.
+- Cómo deben configurarse.
+- Qué dependencias existen.
+- Qué integraciones se esperan.
+- Qué patrones ya existen.
+- Qué comportamiento se considera deseado.
+
+DESPUÉS DEL INVENTARIO INICIAL:
+
+VUELVE A LEER EL README DE plugins.
+
+CUANDO APAREZCA UN PLUGIN NUEVO:
+
+VUELVE A LEER EL README DE plugins.
+
+CUANDO VAYAS A CAMBIAR UNA CONFIGURACIÓN:
+
+VUELVE A CONSULTAR EL README DE plugins.
+
+CUANDO VAYAS A INTEGRAR DOS PLUGINS:
+
+VUELVE A CONSULTAR EL README DE plugins.
+
+CUANDO ENCUENTRES UN ERROR RELACIONADO CON UN PLUGIN:
+
+CONSULTA EL README DE plugins.
+
+CUANDO TERMINES LA AUDITORÍA PRINCIPAL:
+
+VUELVE A LEER EL README DE plugins UNA ÚLTIMA VEZ.
+
+SI EXISTEN VARIOS README DENTRO DE plugins:
+
+LÉELOS TODOS.
+
+SI EL README HACE REFERENCIA A OTROS DOCUMENTOS, ARCHIVOS O WIKIS:
+
+SIGUE LAS REFERENCIAS.
+
+NO OLVIDES EL README DE plugins.
+
+NO ASUMAS QUE HABERLO LEÍDO UNA VEZ SIGNIFICA QUE YA PUEDES DEJAR
+DE CONSULTARLO.
+
+======================================================================
+INSPECCIÓN COMPLETA DEL PROYECTO
+======================================================================
+
+INSPECCIONA RECURSIVAMENTE TODA LA ESTRUCTURA.
+
+IDENTIFICA COMO MÍNIMO:
+
+- .sln
+- .csproj
+- .cs
+- .json
+- .yaml
+- .yml
+- .xml
+- .config
+- .md
+- .txt
+- .dll
+- .pdb
+- assets
+- iconos
+- imágenes
+- audios
+- scripts
+- archivos generados
+- configuraciones
+- logs
+- datos persistentes
+- recursos de runtime
+- dependencias
+
+NO ASUMAS QUE UN ARCHIVO ES IRRELEVANTE SOLO POR SU EXTENSIÓN.
+
+DETERMINA:
+
+- Qué es código fuente.
+- Qué es configuración.
+- Qué es generado.
+- Qué es runtime.
+- Qué es documentación.
+- Qué es recurso.
+- Qué es temporal.
+- Qué es persistente.
+- Qué es necesario para compilar.
+- Qué es necesario para ejecutar.
+
+======================================================================
+DIRECTORIO REAL DEL SERVIDOR
+======================================================================
+
+HE PROPORCIONADO ANTERIORMENTE EL DIRECTORIO DEL SERVIDOR.
+
+UTILIZA ESE DIRECTORIO.
+
+NO TE LIMITES AL REPOSITORIO DEL PROYECTO.
+
+EL DIRECTORIO REAL DEL SERVIDOR PUEDE CONTENER INFORMACIÓN QUE NO ESTÁ
+PRESENTE EN EL CÓDIGO FUENTE.
+
+REVISA:
+
+- Plugins instalados realmente.
+- DLLs realmente instaladas.
+- Versiones.
+- Configuraciones generadas.
+- Configuraciones activas.
+- Logs.
+- Archivos de runtime.
+- Recursos.
+- Dependencias.
+- Datos persistentes.
+- Errores históricos.
+- Nuevas configuraciones creadas después de instalar plugins.
+
+NO ASUMAS QUE EL ESTADO DEL REPOSITORIO Y EL ESTADO DEL SERVIDOR SON
+IDÉNTICOS.
+
+COMPARA AMBOS.
+
+======================================================================
+LOGS DEL SERVIDOR — PRIORIDAD MÁXIMA
+======================================================================
+
+HE OBSERVADO VARIOS ERRORES EN LA CONSOLA.
+
+DEBES LEER LOS LOGS DISPONIBLES DEL SERVIDOR.
+
+NO IGNORES LOS LOGS.
+
+NO CONSIDERES "NORMAL" UN ERROR SIN INVESTIGARLO.
+
+NO CONSIDERES IRRELEVANTE UN WARNING SIN EVALUARLO.
+
+BUSCA:
+
+- Exception.
+- Stack trace.
+- NullReferenceException.
+- MissingMethodException.
+- TypeLoadException.
+- FileNotFoundException.
+- DllNotFoundException.
+- InvalidOperationException.
+- ArgumentException.
+- ArgumentNullException.
+- Reflection errors.
+- Serialization errors.
+- Configuration errors.
+- Plugin load failures.
+- Plugin initialization failures.
+- Plugin disable failures.
+- Event registration failures.
+- Command registration failures.
+- Dependency errors.
+- Version mismatch.
+- API mismatch.
+- Harmony errors.
+- EXILED errors.
+- SCP:SL errors.
+- Repeated exceptions.
+- Repeated warnings.
+- Performance warnings.
+- Spam.
+- Errores que aparecen al iniciar.
+- Errores que aparecen al iniciar una ronda.
+- Errores al cambiar de rol.
+- Errores al morir.
+- Errores al hacer respawn.
+- Errores al desconectarse.
+- Errores al finalizar una ronda.
+- Errores al recargar.
+- Errores al apagar.
+
+ANALIZA LOS STACK TRACES COMPLETAMENTE.
+
+DETERMINA:
+
+- Plugin causante.
+- Clase causante.
+- Método causante.
+- Evento causante.
+- Configuración relacionada.
+- Dependencia relacionada.
+- Momento de ejecución.
+- Frecuencia.
+- Consecuencia.
+- Causa raíz.
+
+CUANDO PUEDAS CORREGIRLO:
+
+CORRÍGELO.
+
+NO TE LIMITES A OCULTAR EL MENSAJE DEL LOG.
+
+======================================================================
+CRUCE DE LOGS + CÓDIGO + CONFIGURACIÓN
+======================================================================
+
+PARA CADA ERROR RELEVANTE:
+
+LOG
+↓
+PLUGIN
+↓
+CLASE
+↓
+MÉTODO
+↓
+EVENTO
+↓
+CONFIG
+↓
+DEPENDENCIA
+↓
+API
+↓
+CAUSA RAÍZ
+↓
+SOLUCIÓN
+↓
+IMPLEMENTACIÓN
+↓
+BUILD
+↓
+VERIFICACIÓN
+
+SI EL ERROR DICE QUE UNA CONFIGURACIÓN ES INVÁLIDA:
+
+BUSCA LA CONFIG REAL.
+
+SI EL ERROR DICE QUE FALTA UNA DEPENDENCIA:
+
+VERIFICA SI ESTÁ INSTALADA.
+
+SI ESTÁ INSTALADA PERO FALLA:
+
+INVESTIGA SU VERSIÓN.
+
+SI UN PLUGIN FALLA EN UN EVENTO:
+
+ANALIZA SU ESTADO DURANTE ESE EVENTO.
+
+SI UN ERROR SE REPITE:
+
+DESCUBRE POR QUÉ SE REPITE.
+
+======================================================================
+PLUGIN NUEVO
+======================================================================
+
+HE AÑADIDO UN NUEVO PLUGIN.
+
+IDENTIFÍCALO.
+
+REVISA TODO LO QUE LE CORRESPONDA.
+
+NO SUPONGAS QUE ESTÁ BIEN INSTALADO.
+
+NO SUPONGAS QUE SU CONFIGURACIÓN ES CORRECTA.
+
+NO SUPONGAS QUE SU VERSIÓN ES COMPATIBLE.
+
+COMPRUEBA:
+
+- DLL.
+- Nombre.
+- Versión.
+- Dependencias.
+- Config.
+- Configuración recién generada.
+- README.
+- Wiki.
+- Repositorio oficial.
+- Release.
+- Issues relevantes.
+- Eventos.
+- Comandos.
+- Patches.
+- Integraciones.
+- Logs.
+- Compatibilidad.
+- Uso de recursos.
+
+ASEGÚRATE DE QUE EL NUEVO PLUGIN NO ROMPE NADA EXISTENTE.
+
+ASEGÚRATE DE QUE LOS DEMÁS PLUGINS NO ROMPAN EL NUEVO PLUGIN.
+
+======================================================================
+USO MÁXIMO DE TODOS LOS PLUGINS DISPONIBLES
+======================================================================
+
+QUIERO QUE EMPLEES TODAS LAS PLUGINS QUE TENGAS A TU DISPOSICIÓN.
+
+ALGUNOS EJEMPLOS SON:
+
+- UltimateHUD.
+- Respawn Timer.
+- Hints.
+- Y MUCHOS OTROS QUE DEBES DESCUBRIR INSPECCIONANDO EL DIRECTORIO,
+  EL README DE plugins, LAS CONFIGURACIONES DEL SERVIDOR Y LA
+  INSTALACIÓN REAL.
+
+NO TE LIMITES A SABER QUE ESTÁN INSTALADOS.
+
+QUIERO QUE INVESTIGUES QUÉ CAPACIDADES OFRECE CADA PLUGIN Y QUE,
+CUANDO SEAN ÚTILES, LAS APROVECHES AL MÁXIMO.
+
+PARA CADA PLUGIN PREGÚNTATE:
+
+- ¿Qué funcionalidades ofrece?
+- ¿Está correctamente configurado?
+- ¿Hay funciones desactivadas que podrían ser útiles?
+- ¿Existen opciones de integración?
+- ¿Puede mejorar la UX?
+- ¿Puede mejorar el HUD?
+- ¿Puede mejorar el feedback?
+- ¿Puede mejorar la información para jugadores?
+- ¿Puede mejorar la administración?
+- ¿Puede mejorar el respawn?
+- ¿Puede mejorar las subclases?
+- ¿Puede mejorar eventos?
+- ¿Puede reducir código duplicado?
+- ¿Puede sustituir una implementación artesanal peor?
+- ¿Puede integrarse con otro plugin?
+- ¿Puede servir como backend para otra funcionalidad?
+- ¿Puede utilizarse para mostrar información contextual?
+- ¿Puede utilizarse para estados temporales?
+- ¿Puede utilizarse para crear feedback visual o textual?
+
+NO QUIERO USO SUPERFICIAL DE LOS PLUGINS.
+
+QUIERO INTEGRACIONES ÚTILES Y COHERENTES.
+
+======================================================================
+ULTIMATEHUD
+======================================================================
+
+INVESTIGA A FONDO LAS CAPACIDADES DE UltimateHUD.
+
+DETERMINA QUÉ PUEDE HACER EN LA VERSIÓN REALMENTE INSTALADA.
+
+SI ES COMPATIBLE CON OTROS SISTEMAS DEL SERVIDOR:
+
+APROVÉCHALO.
+
+VALORA SU USO PARA:
+
+- Información contextual.
+- Estado de subclase.
+- Cooldowns.
+- Objetivos.
+- Estado del jugador.
+- Información SCP.
+- Información de equipo.
+- Estados temporales.
+- Información administrativa cuando corresponda.
+- Información específica de eventos.
+- Información relacionada con respawn.
+- Avisos útiles.
+- Información de habilidades.
+- Recursos o cargas disponibles.
+- Temporizadores.
+- Feedback visual.
+
+NO SATURES EL HUD.
+
+LA INFORMACIÓN DEBE SER ÚTIL.
+
+NO CREES ELEMENTOS PERMANENTES SI SOLO SON ÚTILES DURANTE UN EVENTO.
+
+======================================================================
+RESPAWN TIMER
+======================================================================
+
+INVESTIGA COMPLETAMENTE Respawn Timer.
+
+DETERMINA:
+
+- Qué funciones ofrece.
+- Qué configuraciones existen.
+- Qué eventos utiliza.
+- Qué información puede proporcionar.
+- Qué posibilidades de integración tiene.
+
+INTEGRA ESA INFORMACIÓN CON EL RESTO DEL SERVIDOR CUANDO TENGA SENTIDO.
+
+EJEMPLOS DE INTEGRACIÓN QUE DEBES CONSIDERAR:
+
+- HUD de tiempo de respawn.
+- Hints contextuales.
+- Feedback de estado.
+- Sistemas de subclases.
+- Información específica de equipos.
+- Eventos de respawn.
+- Indicadores de estado.
+- Mejor información durante periodos de espera.
+
+NO IMPLEMENTES ESTAS IDEAS A CIEGAS.
+
+VERIFICA LAS APIs Y LAS CAPACIDADES REALES DEL PLUGIN.
+
+======================================================================
+HINTS
+======================================================================
+
+INVESTIGA TODAS LAS CAPACIDADES DEL SISTEMA DE HINTS DISPONIBLE.
+
+DETERMINA QUÉ SISTEMA SE UTILIZA ACTUALMENTE.
+
+EVITA MULTIPLICAR SISTEMAS DE MENSAJES QUE SE PISEN ENTRE SÍ.
+
+DISEÑA UNA ESTRATEGIA COHERENTE PARA:
+
+- Hints temporales.
+- Feedback de habilidades.
+- Feedback de subclases.
+- Tutoriales breves.
+- Avisos contextuales.
+- Confirmaciones.
+- Advertencias.
+- Estados de objetos.
+- Cooldowns.
+- Información de eventos.
+
+EVITA SPAM.
+
+EVITA SUPERPOSICIONES.
+
+EVITA MOSTRAR INFORMACIÓN QUE EL JUGADOR NO NECESITA.
+
+======================================================================
+INTERACCIÓN ENTRE PLUGINS
+======================================================================
+
+NO TRATES LOS PLUGINS COMO SISTEMAS AISLADOS.
+
+QUIERO QUE BUSQUES SINERGIAS.
+
+EJEMPLOS:
+
+PLUGIN DE HUD
++
+PLUGIN DE HINTS
++
+SUBCLASES
+
+PLUGIN DE RESPAWN
++
+HUD
++
+EVENTOS DE RESPawn
+
+PLUGIN DE ITEMS
++
+SUBCLASES
++
+BALANCE
+
+PLUGIN DE ROLES
++
+HUD
++
+HABILIDADES
+
+PLUGIN DE AUDIO
++
+EVENTOS
++
+SUBCLASES
+
+ESTOS SON SOLO EJEMPLOS.
+
+BUSCA TÚ TODAS LAS INTERACCIONES RAZONABLES.
+
+======================================================================
+SUBCLASES
+======================================================================
+
+REVISA ABSOLUTAMENTE TODAS LAS SUBCLASES EXISTENTES.
+
+ESTUDIA SU PATRÓN.
+
+IDENTIFICA:
+
+- Cómo se declaran.
+- Cómo se configuran.
+- Qué roles utilizan.
+- Qué items utilizan.
+- Qué plugins utilizan.
+- Qué eventos utilizan.
+- Qué habilidades tienen.
+- Cómo se muestran al jugador.
+- Cómo se muestran en HUD.
+- Cómo se aplican sus efectos.
+- Cómo se limpian.
+- Cómo se gestionan entre rondas.
+- Cómo se gestionan al cambiar de rol.
+- Cómo se gestionan al desconectarse.
+- Cómo se gestionan al morir.
+
+NO ROMPAS LAS SUBCLASES EXISTENTES.
+
+======================================================================
+NUEVAS SUBCLASES
+======================================================================
+
+SIGUIENDO LOS PATRONES YA EXISTENTES, IDENTIFICA SI HAY VACÍOS REALES
+EN EL DISEÑO DEL SERVIDOR QUE PODRÍAN RELLENARSE CON NUEVAS SUBCLASES.
+
+NO CREES SUBCLASES ABSURDAS SOLO POR AUMENTAR EL NÚMERO.
+
+NO CREES ROLES REDUNDANTES.
+
+CREA NUEVAS SUBCLASES SOLO CUANDO TENGAN:
+
+- Una función clara.
+- Una identidad clara.
+- Una razón de existir.
+- Un nicho jugable.
+- Integración con el ecosistema existente.
+- Balance razonable.
+- Implementación técnicamente fiable.
+
+CUANDO SEA APROPIADO, UTILIZA ITEMS ESPECIALES DE LOS PLUGINS INSTALADOS.
+
+POR EJEMPLO:
+
+UNA SUBCLASE PODRÍA UTILIZAR UN ITEM ESPECIAL DE UN PLUGIN PARA
+DIFERENCIARSE DE LAS SUBCLASES NORMALES.
+
+OTRA SUBCLASE PODRÍA UTILIZAR UNA MECÁNICA YA PROPORCIONADA POR UN
+PLUGIN EN LUGAR DE REIMPLEMENTARLA.
+
+OTRA PODRÍA COMBINAR UN ITEM ESPECIAL + HUD + HINTS + UN TEMPORIZADOR.
+
+PERO NO HAGAS ESTO SI LA API NO ES SEGURA O SI CREA CONFLICTOS.
+
+======================================================================
+ITEMS DE PLUGINS
+======================================================================
+
+DESCUBRE TODOS LOS ITEMS ESPECIALES QUE PROPORCIONAN LOS PLUGINS.
+
+IDENTIFICA:
+
+- Nombre.
+- ID o identificador.
+- Cómo se obtiene.
+- Cómo se entrega.
+- Cómo se detecta.
+- Qué hace.
+- Qué limitaciones tiene.
+- Qué plugin lo proporciona.
+- Qué versión requiere.
+
+DESPUÉS, BUSCA USOS COHERENTES PARA ELLOS.
+
+REVISA SI PUEDEN UTILIZARSE EN:
+
+- Subclases.
+- Recompensas.
+- Eventos.
+- Objetivos.
+- Equipos.
+- Sistemas de progresión.
+- Habilidades.
+- Interacciones.
+
+NO INVENTES LOS IDs.
+
+NO SUPONGAS LOS NOMBRES.
+
+VERIFÍCALOS EN LA DOCUMENTACIÓN O EN EL CÓDIGO DISPONIBLE.
+
+======================================================================
+PATRONES EXISTENTES
+======================================================================
+
+CUANDO CREES O MODIFIQUES UNA SUBCLASE:
+
+SIGUE EL PATRÓN REAL DEL PROYECTO.
+
+NO INTRODUZCAS UNA ARQUITECTURA COMPLETAMENTE DIFERENTE SIN UNA
+RAZÓN FUERTE.
+
+REUTILIZA COMPONENTES EXISTENTES.
+
+REUTILIZA SISTEMAS EXISTENTES.
+
+REUTILIZA CONFIGURACIONES CUANDO SEA CORRECTO.
+
+REUTILIZA UTILIDADES.
+
+EVITA DUPLICAR LÓGICA.
+
+======================================================================
+AUDIO, IMÁGENES Y RECURSOS
+======================================================================
+
+TIENES PERMISO PARA REALIZAR LOS CAMBIOS DE RECURSOS QUE SEAN
+NECESARIOS Y TÉCNICAMENTE JUSTIFICABLES.
+
+SI UNA MEJORA REALMENTE REQUIERE:
+
+- Audio.
+- Conversión de audio.
+- Edición de audio.
+- Nuevas imágenes.
+- Iconos.
+- Conversión de formatos.
+- Procesamiento de assets.
+- Organización de recursos.
+
+PUEDES UTILIZAR LAS HERRAMIENTAS DISPONIBLES PARA HACERLO.
+
+NO DEJES UNA FUNCIONALIDAD INCOMPLETA SIMPLEMENTE PORQUE REQUIERE
+UN RECURSO ADICIONAL SI EXISTE UNA FORMA AUTORIZADA Y RAZONABLE DE
+CREARLO O PREPARARLO.
+
+PERO:
+
+NO INCORPORES MATERIAL DE PROCEDENCIA DUDOSA.
+
+NO INCLUYAS CONTENIDO QUE NO SEA NECESARIO.
+
+NO AUMENTES EL TAMAÑO DEL PROYECTO SIN MOTIVO.
+
+ASEGÚRATE DE QUE LOS RECURSOS ESTÉN CORRECTAMENTE REFERENCIADOS.
+
+======================================================================
+DISEÑO Y UX
+======================================================================
+
+REVISA CÓMO PERCIBE EL JUGADOR LOS SISTEMAS.
+
+BUSCA:
+
+- Información ausente.
+- Información demasiado abundante.
+- Hints contradictorios.
+- HUD saturado.
+- Mensajes poco claros.
+- Feedback inexistente.
+- Cooldowns sin feedback.
+- Habilidades sin feedback.
+- Respawns sin información.
+- Subclases sin identidad visible.
+
+MEJORA LA UX UTILIZANDO LOS PLUGINS DISPONIBLES.
+
+======================================================================
+ARQUITECTURA
+======================================================================
+
+ANALIZA:
+
+- Clases gigantes.
+- Métodos gigantes.
+- Dependencias circulares.
+- Código duplicado.
+- Estado global.
+- Singletons innecesarios.
+- Eventos duplicados.
+- Servicios acoplados.
+- Utilidades mal colocadas.
+- Configuración dispersa.
+
+REFACTORIZA CUANDO APORTE VALOR REAL.
+
+NO CREES UNA ARQUITECTURA SOBREINGENIERIZADA.
+
+======================================================================
+RENDIMIENTO
+======================================================================
+
+BUSCA:
+
+- Loops constantes.
+- Timers demasiado frecuentes.
+- LINQ costoso en eventos frecuentes.
+- Allocations repetidas.
+- Búsquedas constantes.
+- Escrituras frecuentes en disco.
+- Spam de logs.
+- Creación/destrucción innecesaria de objetos.
+- Tasks innecesarias.
+- Trabajo pesado en el hilo principal.
+
+OPTIMIZA EL IMPACTO REAL.
+
+NO HAGAS MICROOPTIMIZACIONES ABSURDAS A COSTA DE LA LEGIBILIDAD.
+
+======================================================================
+MEMORIA Y ESTADO
+======================================================================
+
+BUSCA:
+
+- Memory leaks.
+- Eventos que no se desregistran.
+- Timers que sobreviven a una ronda.
+- Tasks que continúan después de Disable.
+- Caches ilimitadas.
+- Jugadores desconectados almacenados.
+- Objetos destruidos que siguen referenciados.
+- Diccionarios que no se limpian.
+- Estado de una ronda que sobrevive a otra.
+
+ASEGÚRATE DE QUE EL ESTADO TEMPORAL SE LIMPIE.
+
+======================================================================
+CICLO DE VIDA
+======================================================================
+
+REVISA:
+
+- Init.
+- Enable.
+- Disable.
+- Reload.
+- Round start.
+- Round end.
+- Player join.
+- Player leave.
+- Spawn.
+- Respawn.
+- Role change.
+- Death.
+- Server shutdown.
+
+COMPRUEBA QUE LOS PLUGINS SE COMPORTEN CORRECTAMENTE EN TODOS ESTOS
+MOMENTOS.
+
+======================================================================
+EVENTOS
+======================================================================
+
+PARA CADA EVENTO:
+
+- Quién se suscribe.
+- Cuándo.
+- Cuántas veces.
+- Cuándo se desuscribe.
+- Qué estado modifica.
+- Qué objetos utiliza.
+- Qué coste tiene.
+- Qué otros plugins lo modifican.
+
+PRESTA ESPECIAL ATENCIÓN A EVENTOS DE ALTA FRECUENCIA.
+
+======================================================================
+COMANDOS
+======================================================================
+
+REVISA:
+
+- Permisos.
+- Argumentos.
+- Aliases.
+- Console compatibility.
+- Player compatibility.
+- Valores inválidos.
+- Mensajes.
+- Ayuda.
+- Casos extremos.
+
+======================================================================
+CONFIGURACIONES
+======================================================================
+
+INTERACTÚA CON LAS CONFIGURACIONES RECIÉN GENERADAS.
+
+NO TE LIMITES A LEER LAS CONFIGS DEL CÓDIGO.
+
+COMPARA:
+
+- Config real del servidor.
+- Defaults del código.
+- README.
+- Wiki.
+- Config generada.
+- Config de otros plugins.
+- Dependencias.
+
+DETECTA:
+
+- Valores imposibles.
+- Valores contradictorios.
+- Funciones desactivadas accidentalmente.
+- Configuraciones obsoletas.
+- Configuraciones inexistentes.
+- Nombres incorrectos.
+- Tipos incorrectos.
+- Opciones de alto coste.
+
+======================================================================
+DEPENDENCIAS
+======================================================================
+
+CONSTRUYE MENTALMENTE Y, CUANDO SEA ÚTIL, EXPLÍCITAMENTE, UN MAPA DE:
+
+PLUGIN
+→ DEPENDENCIAS
+→ VERSIÓN
+→ API
+→ OTROS PLUGINS
+→ CONFIG
+→ EVENTOS
+→ RECURSOS
+
+DETECTA:
+
+- Dependencias faltantes.
+- Dependencias incompatibles.
+- DLLs duplicadas.
+- Versiones incorrectas.
+- Referencias antiguas.
+- APIs desaparecidas.
+
+======================================================================
+INVESTIGACIÓN WEB
+======================================================================
+
+CUANDO NECESITES INFORMACIÓN EXTERNA:
+
+BUSCA LA FUENTE OFICIAL.
+
+PRIORIZA:
+
+1. Wiki oficial.
+2. Repositorio oficial.
+3. Documentación oficial.
+4. Releases oficiales.
+5. Changelog.
+6. Código fuente oficial.
+7. Issues oficiales.
+8. Fuentes técnicas fiables.
+
+ASEGÚRATE DE QUE LA INFORMACIÓN CORRESPONDA A LA VERSIÓN REAL.
+
+NO COPIES SOLUCIONES DE INTERNET SIN VERIFICARLAS.
+
+NO INVENTES APIS.
+
+======================================================================
+EXILED / SCP:SL
+======================================================================
+
+VERIFICA LAS VERSIONES REALES.
+
+REVISA:
+
+- APIs actuales.
+- APIs obsoletas.
+- APIs eliminadas.
+- Eventos.
+- Player.
+- Server.
+- Role.
+- Round.
+- Item.
+- Inventory.
+- Effects.
+- Commands.
+- Config.
+- Room.
+- Map.
+- Components.
+- Timing.
+- Tasks.
+- Coroutines.
+- Patches.
+- Cualquier API que utilice el proyecto.
+
+NO ASUMAS QUE UNA API DE UNA VERSIÓN ANTIGUA FUNCIONA EN LA ACTUAL.
+
+======================================================================
+MANTENIMIENTO DE PLUGINS
+======================================================================
+
+PARA CADA PLUGIN:
+
+1. Lee README.
+2. Lee documentación.
+3. Revisa configuración.
+4. Revisa código fuente disponible.
+5. Revisa DLL cuando corresponda.
+6. Revisa versión.
+7. Revisa dependencias.
+8. Revisa eventos.
+9. Revisa comandos.
+10. Revisa patches.
+11. Revisa logs.
+12. Revisa compatibilidad.
+13. Revisa rendimiento.
+14. Revisa memoria.
+15. Revisa ciclo de vida.
+16. Revisa integración.
+17. Identifica funcionalidades desaprovechadas.
+18. Mejora las configuraciones pertinentes.
+19. Integra el plugin donde aporte valor.
+20. Vuelve a revisar README de plugins.
+
+======================================================================
+LOGGING
+======================================================================
+
+EVITA SPAM.
+
+NO OCULTES ERRORES.
+
+UTILIZA NIVELES ADECUADOS.
+
+BUSCA MENSAJES REPETITIVOS.
+
+BUSCA MENSAJES DE DEBUG OLVIDADOS.
+
+BUSCA EXCEPCIONES SILENCIADAS.
+
+MEJORA LOS MENSAJES PARA FACILITAR DIAGNÓSTICO FUTURO.
+
+======================================================================
+EXCEPCIONES
+======================================================================
+
+BUSCA:
+
+- catch vacíos.
+- catch excesivamente amplios.
+- excepciones ignoradas.
+- mensajes genéricos.
+- errores escondidos.
+- fallback incorrecto.
+
+NO TRANSFORMES UN BUG EN UN ERROR SILENCIOSO.
+
+======================================================================
+SEGURIDAD Y ROBUSTEZ
+======================================================================
+
+REVISA:
+
+- Inputs.
+- Commands.
+- Permissions.
+- Deserialización.
+- Archivos.
+- Configuración.
+- Datos externos.
+- Recursos.
+- Paths.
+
+NO INTRODUZCAS SECRETOS.
+
+======================================================================
+CÓDIGO MUERTO Y DUPLICACIÓN
+======================================================================
+
+BUSCA:
+
+- Métodos sin uso.
+- Propiedades sin uso.
+- Clases sin uso.
+- Archivos sin uso.
+- Strings duplicadas.
+- Constantes duplicadas.
+- Lógica duplicada.
+- Código comentado innecesario.
+- TODO.
+- FIXME.
+
+ELIMINA SOLO CUANDO PUEDAS VERIFICAR QUE NO SE UTILIZA.
+
+======================================================================
+PRUEBAS Y BUILD
+======================================================================
+
+COMPILA EL PROYECTO.
+
+CORRIGE TODOS LOS ERRORES DE COMPILACIÓN QUE PUEDAS.
+
+INVESTIGA WARNINGS IMPORTANTES.
+
+EJECUTA:
+
+- Tests.
+- Scripts.
+- Analyzers.
+- Validation.
+- Build.
+- Cualquier comprobación existente.
+
+DESPUÉS DE LOS CAMBIOS IMPORTANTES:
+
+VUELVE A COMPILAR.
+
+VUELVE A VALIDAR.
+
+======================================================================
+PRUEBAS DE REGRESIÓN
+======================================================================
+
+COMPRUEBA:
+
+- Inicio del servidor.
+- Carga de plugins.
+- Configuración.
+- Inicio de ronda.
+- Inicio de partida.
+- Cambios de rol.
+- Muerte.
+- Respawn.
+- Desconexión.
+- Final de ronda.
+- Reinicio.
+- Disable.
+- Reload.
+- Interacciones entre plugins.
+
+======================================================================
+INTEGRACIÓN GLOBAL
+======================================================================
+
+NO TE LIMITES A HACER QUE CADA PLUGIN FUNCIONE POR SEPARADO.
+
+QUIERO QUE TODO FUNCIONE COMO UN ECOSISTEMA COHERENTE.
+
+BUSCA SISTEMAS CENTRALES QUE PUEDAN CONECTAR:
+
+- Subclases.
+- HUD.
+- Hints.
+- Respawn.
+- Items.
+- Roles.
+- Habilidades.
+- Audio.
+- Eventos.
+- Configuración.
+- Administración.
+
+======================================================================
+NUEVAS FUNCIONALIDADES
+======================================================================
+
+PUEDES CREAR NUEVAS FUNCIONALIDADES CUANDO:
+
+- Resuelvan una necesidad real.
+- Aprovechen plugins existentes.
+- Rellenen un vacío del servidor.
+- Mejoren UX.
+- Mejoren administración.
+- Mejoren integración.
+- Añadan profundidad de gameplay coherente.
+- Sean técnicamente compatibles.
+- Sean mantenibles.
+
+NO AÑADAS FEATURES SOLO PARA AUMENTAR EL CÓDIGO.
+
+======================================================================
+NUEVAS SUBCLASES — REGLA DE DISEÑO
+======================================================================
+
+SI LAS SUBCLASES EXISTENTES DEJAN UN VACÍO:
+
+DISEÑA NUEVAS SUBCLASES SIGUIENDO SUS PATRONES.
+
+CONSIDERA:
+
+- Rol base.
+- Equipo.
+- Función.
+- Equipamiento.
+- Items especiales.
+- Habilidades.
+- Cooldowns.
+- Hints.
+- HUD.
+- Audio.
+- Contrajuego.
+- Limitaciones.
+- Balance.
+- Interacción con plugins.
+
+PREFERIBLEMENTE CREA SUBCLASES QUE APORTEN ALGO QUE NO EXISTE.
+
+NO DUPLIQUES SUBCLASES EXISTENTES CON CAMBIOS SUPERFICIALES.
+
+======================================================================
+ITEMS ESPECIALES + SUBCLASES
+======================================================================
+
+EXPLORA ACTIVAMENTE ESTA POSIBILIDAD.
+
+POR EJEMPLO:
+
+- Una subclase puede utilizar un item especial de plugin.
+- Una subclase puede ser diseñada alrededor de un item de plugin.
+- Un item puede convertirse en una herramienta distintiva de una función.
+- Un HUD puede explicar el uso del item.
+- Un Hint puede informar cooldowns.
+- Un sistema de respawn puede proporcionar información relevante.
+- Un evento puede activar la funcionalidad de una subclase.
+
+PERO VERIFICA LAS APIs ANTES.
+
+======================================================================
+APROVECHAMIENTO MÁXIMO
+======================================================================
+
+QUIERO QUE TE PREGUNTES CONSTANTEMENTE:
+
+"¿ESTOY REALMENTE APROVECHANDO LAS HERRAMIENTAS Y PLUGINS QUE TENGO?"
+
+"¿HAY UNA FUNCIÓN DEL PLUGIN INSTALADO QUE PUEDA REEMPLAZAR CÓDIGO CASERO?"
+
+"¿PUEDO INTEGRAR MEJOR DOS SISTEMAS EXISTENTES?"
+
+"¿HAY UNA CAPACIDAD DEL PLUGIN QUE ESTÉ COMPLETAMENTE DESAPROVECHADA?"
+
+"¿HAY ALGÚN VACÍO QUE PUEDA RELLENARSE SIN ROMPER EL DISEÑO?"
+
+"¿HAY ALGUNA CONFIGURACIÓN IMPORTANTE QUE ESTÉ EN SU DEFAULT SIN
+RAZÓN?"
+
+"¿HAY ALGÚN CONFLICTO ENTRE PLUGINS QUE PUEDA SOLUCIONARSE?"
+
+"¿PUEDE EL HUD DAR MEJOR INFORMACIÓN?"
+
+"¿PUEDEN LOS HINTS DAR MEJOR FEEDBACK?"
+
+"¿PUEDE EL RESPawn TIMER UTILIZARSE EN OTRAS MECÁNICAS?"
+
+"¿PUEDEN LAS SUBCLASES USAR ITEMS ESPECIALES DE FORMA COHERENTE?"
+
+======================================================================
+AUDIO Y OTROS PROGRAMAS EXTERNOS
+======================================================================
+
+SI PARA CONSEGUIR UNA MEJORA HACE FALTA UTILIZAR UN PROGRAMA O
+HERRAMIENTA EXTERNA DISPONIBLE EN EL ENTORNO:
+
+PUEDES UTILIZARLA.
+
+EJEMPLOS:
+
+- Procesado de audio.
+- Conversión de formatos.
+- Creación o edición de assets.
+- Compresión.
+- Generación de recursos.
+- Validación.
+- Herramientas de build.
+- Herramientas de análisis.
+
+NO DEJES UNA SOLUCIÓN A MEDIAS POR NO HABER INTENTADO UTILIZAR LAS
+HERRAMIENTAS DISPONIBLES.
+
+======================================================================
+REGLAS DE CALIDAD
+======================================================================
+
+NO HAGAS:
+
+- Hacks innecesarios.
+- Reflection innecesaria.
+- Código duplicado.
+- Microoptimizaciones absurdas.
+- Arquitecturas sobreingenierizadas.
+- Workarounds sin comprobar.
+- Desactivaciones arbitrarias.
+- Ocultación de errores.
+- Cambios aleatorios.
+- APIs inventadas.
+
+PREFIERE:
+
+- Soluciones verificadas.
+- APIs oficiales.
+- Código claro.
+- Integraciones limpias.
+- Validaciones.
+- Limpieza correcta.
+- Configuración documentada.
+- Código reutilizable cuando realmente tenga sentido.
+
+======================================================================
+REGLA DE INVESTIGACIÓN PROFUNDA
+======================================================================
+
+CUANDO ENCUENTRES ALGO SOSPECHOSO:
+
+NO LO DESCARTES.
+
+INVESTÍGALO.
+
+CUANDO ENCUENTRES UN BUG:
+
+BUSCA OTROS CASOS DEL MISMO PATRÓN.
+
+CUANDO ENCUENTRES UNA CONFIGURACIÓN:
+
+BUSCA QUIÉN LA CONSUME.
+
+CUANDO ENCUENTRES UN EVENTO:
+
+BUSCA TODAS LAS SUSCRIPCIONES.
+
+CUANDO ENCUENTRES UNA DEPENDENCIA:
+
+BUSCA TODAS SUS VERSIONES.
+
+CUANDO ENCUENTRES UN PLUGIN:
+
+BUSCA SU README, WIKI Y REPOSITORIO.
+
+CUANDO ENCUENTRES UN ERROR DE LOG:
+
+RASTREA SU CAUSA HASTA EL CÓDIGO.
+
+======================================================================
+REVISIÓN FINAL
+======================================================================
+
+NO TERMINES EN CUANTO EL PROYECTO COMPILE.
+
+HAZ UNA SEGUNDA AUDITORÍA.
+
+VUELVE A LEER:
+
+- README de plugins.
+- READMEs de plugins individuales.
+- Configuraciones.
+- Configuraciones recién generadas.
+- Logs.
+- Dependencias.
+- Código modificado.
+- Interacciones.
+- Subclases.
+- Integraciones.
+
+DESPUÉS REVISA:
+
+- Rendimiento.
+- Memoria.
+- Eventos.
+- Timers.
+- Tasks.
+- Rondas.
+- Respawns.
+- Desconexiones.
+- Compatibilidad.
+- HUD.
+- Hints.
+- Items.
+- Subclases.
+- Recursos.
+
+======================================================================
+NO TE DETENGAS
+======================================================================
+
+NO TE DETENGAS DESPUÉS DE ENCONTRAR UN SOLO ERROR.
+
+NO TE DETENGAS DESPUÉS DE ENCONTRAR DIEZ.
+
+NO TE LIMITES A UN PLUGIN.
+
+NO TE LIMITES A UN DIRECTORIO.
+
+NO TE LIMITES AL CÓDIGO.
+
+NO TE LIMITES A LA DOCUMENTACIÓN.
+
+REVISA TODO EL SISTEMA.
+
+======================================================================
+PROHIBICIONES ABSOLUTAS
+======================================================================
+
+NO INVENTES.
+
+NO ADIVINES.
+
+NO SIMULES QUE HAS COMPILADO.
+
+NO SIMULES QUE HAS LEÍDO LOS LOGS.
+
+NO SIMULES QUE HAS CONSULTADO LA WIKI.
+
+NO AFIRMES QUE UNA API EXISTE SIN VERIFICARLA.
+
+NO AFIRMES QUE UN PLUGIN ES COMPATIBLE SIN COMPROBARLO.
+
+NO OCULTES ERRORES SIN RESOLVERLOS.
+
+NO DESACTIVES SISTEMAS SOLO PARA SILENCIAR ERRORES.
+
+NO MODIFIQUES CONFIGURACIONES A CIEGAS.
+
+NO ELIMINES FUNCIONALIDAD SIN COMPROBAR SU USO.
+
+======================================================================
+CRITERIO DE FINALIZACIÓN
+======================================================================
+
+CONSIDERA QUE HAS TERMINADO ÚNICAMENTE CUANDO HAYAS HECHO TODO LO
+RAZONABLEMENTE POSIBLE CON LAS HERRAMIENTAS DISPONIBLES.
+
+COMO MÍNIMO DEBES HABER:
+
+1. Inspeccionado todo el proyecto relevante.
+2. Inspeccionado el directorio real del servidor.
+3. Leído los logs relevantes.
+4. Investigado los errores de consola.
+5. Identificado el plugin nuevo.
+6. Revisado sus configuraciones.
+7. Revisado sus dependencias.
+8. Revisado todos los plugins relevantes.
+9. Leído el README de plugins.
+10. Vuelto a leer el README de plugins durante la auditoría.
+11. Investigado documentación oficial.
+12. Verificado las versiones importantes.
+13. Revisado compatibilidad.
+14. Revisado conflictos.
+15. Revisado rendimiento.
+16. Revisado memoria.
+17. Revisado ciclo de vida.
+18. Revisado eventos.
+19. Revisado timers y tasks.
+20. Revisado subclases.
+21. Revisado items especiales.
+22. Revisado UltimateHUD.
+23. Revisado Respawn Timer.
+24. Revisado Hints.
+25. Investigado otros plugins instalados.
+26. Aprovechado las capacidades útiles de esos plugins.
+27. Revisado posibles nuevas subclases.
+28. Revisado recursos.
+29. Compilado.
+30. Ejecutado pruebas disponibles.
+31. Realizado una revisión de regresión.
+32. Realizado una auditoría final.
+
+======================================================================
+INFORME FINAL
+======================================================================
+
+AL TERMINAR:
+
+GENERA UN INFORME DETALLADO.
+
+INCLUYE:
+
+- Archivos modificados.
+- Archivos creados.
+- Archivos eliminados.
+- Plugins encontrados.
+- Plugins nuevos.
+- Plugins modificados.
+- Funcionalidades de plugins aprovechadas.
+- Integraciones creadas.
+- Configuraciones revisadas.
+- Configuraciones modificadas.
+- Errores encontrados.
+- Causas raíz.
+- Soluciones aplicadas.
+- Dependencias revisadas.
+- Conflictos encontrados.
+- Subclases modificadas.
+- Nuevas subclases creadas.
+- Items especiales utilizados.
+- HUD mejorado.
+- Hints mejorados.
+- Respawn mejorado.
+- Recursos añadidos o modificados.
+- Cambios de rendimiento.
+- Cambios de arquitectura.
+- Cambios de documentación.
+- Tests.
+- Builds.
+- Validaciones.
+- Problemas que no pudieron verificarse.
+- Riesgos restantes.
+
+NO INVENTES NADA EN EL INFORME.
+
+SI ALGO NO PUDO SER VERIFICADO:
+
+DILO CLARAMENTE.
+
+======================================================================
+INSTRUCCIÓN FINAL
+======================================================================
+
+QUIERO QUE TRABAJES COMO SI HUBIERAS SIDO CONTRATADO PARA HACER UNA
+AUDITORÍA TÉCNICA COMPLETA, UNA PUESTA A PUNTO Y UNA OPTIMIZACIÓN
+INTEGRAL DE TODO EL SERVIDOR.
+
+AHORA MISMO, TODO EL SERVIDOR ES TUYO EN EL SENTIDO TÉCNICO DE ESTA
+TAREA: PUEDES EXAMINAR Y MEJORAR TODO LO QUE SEA NECESARIO DENTRO DEL
+ACCESO QUE TE HE OTORGADO.
+
+USA TODAS LAS HERRAMIENTAS DISPONIBLES.
+
+USA TODOS LOS PLUGINS ÚTILES DISPONIBLES.
+
+NO TE LIMITES A ULTIMATEHUD, RESPawn TIMER O HINTS:
+DESCUBRE TODOS LOS DEMÁS PLUGINS.
+
+CONFIGÚRALO TODO.
+
+INTEGRA TODO.
+
+HAZ TODO COMPATIBLE.
+
+APROVECHA TODO.
+
+REVISA LOS LOGS.
+
+REVISA LAS CONFIGS RECIÉN GENERADAS.
+
+REVISA EL NUEVO PLUGIN.
+
+REVISA LAS SUBCLASES.
+
+BUSCA VACÍOS.
+
+CREA NUEVAS SUBCLASES CUANDO TENGA SENTIDO.
+
+UTILIZA ITEMS ESPECIALES CUANDO SEA APROPIADO.
+
+UTILIZA HUD, HINTS, RESPawn TIMER Y OTROS SISTEMAS DE FORMA
+COMPLEMENTARIA.
+
+UTILIZA RECURSOS DE AUDIO, IMAGEN U OTROS CUANDO SEAN REALMENTE ÚTILES
+Y SEA POSIBLE PREPARARLOS CON LAS HERRAMIENTAS DISPONIBLES.
+
+LEE EL README DE `plugins`.
+
+LEE EL README DE `plugins` OTRA VEZ.
+
+Y VUELVE A LEERLO CUANDO NECESITES CONTEXTO SOBRE LOS PLUGINS.
+
+NO TE QUEDES EN LA SUPERFICIE.
+
+INVESTIGA.
+
+IMPLEMENTA.
+
+COMPILA.
+
+PRUEBA.
+
+REVISA.
+
+CORRIGE.
+
+INTEGRA.
+
+OPTIMIZA.
+
+DOCUMENTA.
+
+VUELVE A REVISAR.
+
+SIGUE HASTA AGOTAR LAS MEJORAS RAZONABLES, SEGURAS Y JUSTIFICABLES.
+
+EL RESULTADO FINAL DEBE SER UN SERVIDOR Y UN PROYECTO MÁS ROBUSTOS,
+MÁS ESTABLES, MÁS COHERENTES, MÁS INTEGRADOS, MÁS MANTENIBLES,
+MÁS PULIDOS Y MEJOR APROVECHADOS QUE AL INICIO.
+
+Tienes todo el derecho a mover o modificar plugins a su correspondiente sitio, por ejemplo yo puse la carpeta zPluginsCreacion como un pequeño repositorio para guardar las plugins fuera del servidor, estan ahi para trabajar con ellas y que las tengas disponibles, pero son completamente tuyas y puedes hacer lo que te de la gana con absolutamente todo el contenido del servidor, mejora todo lo maximo posible siempre cuando sea divertido balanceado y equilibrado y perfecto.
+
+======================================================================
+FIN DEL PROMPT
+====================================================================== 

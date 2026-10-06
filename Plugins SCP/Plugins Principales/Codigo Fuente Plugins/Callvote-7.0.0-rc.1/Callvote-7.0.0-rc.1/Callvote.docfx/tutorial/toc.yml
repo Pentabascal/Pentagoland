@@ -1,0 +1,32 @@
+- name: 📖 Get Started
+- name: Installation
+  href: getstarted/installation.md
+- name: Configuration
+  href: getstarted/configuration.md
+- name: Permissions
+  href: getstarted/permissions.md
+- name: Translation
+  href: getstarted/translation.md
+- name: Quick Start
+  href: getstarted/quickstart.md
+- name: ⌨️ Commands
+- name: Custom Votes
+  href: commands/custom.md
+- name: Binary Votes
+  href: commands/binary.md
+- name: Other Votes
+  href: commands/others.md
+- name: ⚙️ Framework
+- name: Basic Concepts
+  href: framework/basic.md
+- name: Creating your own Vote
+  href: framework/create.md
+- name: Pratical Example - Kill Surface Camping Player
+  href: framework/example-camping.md
+- name: Pratical Example - Integration with Auto Events
+  href: framework/example-autoevents.md
+- name: 📜 ScriptedEventsReloaded
+- name: Creating your own Vote on SER
+  href: ser/create.md
+- name: Pratical Example - Kill Surface Camping Player on SER
+  href: ser/example-camping.md

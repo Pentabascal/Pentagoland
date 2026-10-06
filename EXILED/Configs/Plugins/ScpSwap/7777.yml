@@ -1,0 +1,19 @@
+is_enabled: false
+# Indicates whether debug messages should be shown.
+debug: false
+# The duration, in seconds, before a swap request gets automatically deleted.
+request_timeout: 12
+# The duration, in seconds, after the round starts that swap requests can be sent.
+swap_timeout: 40
+# Indicates whether a player can switch to a class if there is nobody playing as it.
+allow_new_scps: true
+# A collection of roles blacklisted from being swapped to.
+blacklisted_scps:
+- Scp0492
+# A collection of the names of custom scps blacklisted from being swapped to. This must match the name the developer integrated the SCP into this plugin's API with.
+blacklisted_names: []
+# A collection of roles blacklisted from swapping off from.
+blacklisted_swap_from_scps:
+- Scp0492
+# Enables/Disables the plugin for users based off of a permission they have, the permission is scpswap.allowed
+allow_user_swap_by_permission: false

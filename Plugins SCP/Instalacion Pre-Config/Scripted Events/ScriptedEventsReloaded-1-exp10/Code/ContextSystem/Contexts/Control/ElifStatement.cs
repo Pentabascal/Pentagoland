@@ -1,0 +1,117 @@
+using SER.Code.ContextSystem.BaseContexts;
+using SER.Code.ContextSystem.Interfaces;
+using SER.Code.ContextSystem.Structures;
+using SER.Code.Exceptions;
+using SER.Code.Extensions;
+using SER.Code.Helpers;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.TokenSystem.Tokens;
+
+namespace SER.Code.ContextSystem.Contexts.Control;
+
+[UsedImplicitly]
+public class ElifStatement : StatementContext, IStatementExtender, IExtendableStatement, IKeywordContext
+{
+    private readonly List<BaseToken> _condition = [];
+
+    private NumericExpressionResolver.CompiledExpression _expression = null!;
+
+    public override string FriendlyName => "'elif' statement";
+
+    public IExtendableStatement.Signal AllowedSignals => IExtendableStatement.Signal.DidntExecute;
+    public Dictionary<IExtendableStatement.Signal, StatementContext> RegisteredSignals { get; } = new();
+    public string KeywordName => "elif";
+    public string Description =>
+        "If the statement above it didn't execute, 'elif' statement will try to execute if the provided condition is met.";
+    public ContextArgument[] Arguments => [ContextArgument.Required(
+        "$condition", "Expression checked when the preceding branch did not execute.",
+        "A boolean expression; values and method calls may be grouped with braces.")];
+    public string Example =>
+        """
+        if {@sender -> role} is "ClassD"
+            Print "You are a Class-D."
+        elif {@sender -> role} is "Scientist"
+            Print "You are a scientist."
+        else
+            Print "You have another role."
+        end
+        """;
+
+    public IExtendableStatement.Signal Extends => IExtendableStatement.Signal.DidntExecute;
+
+    public override TryAddTokenRes TryAddToken(BaseToken token)
+    {
+        if (NumericExpressionResolver.IsValidForExpression(token).HasErrored(out var error))
+        {
+            return TryAddTokenRes.Error(error);
+        }
+
+        _condition.Add(token);
+        return TryAddTokenRes.Continue();
+    }
+
+    public override Result VerifyCurrentState()
+    {
+        if (NumericExpressionResolver.CompileExpression(_condition.ToArray())
+            .HasErrored(out var error, out var cond))
+        {
+            return error;
+        }
+
+        _expression = cond;
+
+        return Result.Assert(
+            _condition.Count > 0,
+            "An elif statement expects to have a condition, but none was provided!"
+        );
+    }
+
+    protected override IEnumerator<float> Execute()
+    {
+        if (_expression.Evaluate().HasErrored(out var error, out var objResult))
+        {
+            throw new ScriptRuntimeError(this, error);
+        }
+
+        if (objResult is not bool result)
+        {
+            throw new ScriptRuntimeError(this, $"An elif statement condition must evaluate to a boolean value, but received {objResult.FriendlyTypeName()}");
+        }
+
+        if (!result)
+        {
+            if (!RegisteredSignals.TryGetValue(IExtendableStatement.Signal.DidntExecute, out var statement))
+            {
+                yield break;
+            }
+
+            using var coro = statement.Run();
+            while (coro.MoveNext())
+            {
+                yield return coro.Current;
+            }
+
+            yield break;
+        }
+
+        foreach (var child in Children)
+        {
+            switch (child)
+            {
+                case StandardContext standardContext:
+                    standardContext.Run();
+                    break;
+
+                case YieldingContext yieldingContext:
+                {
+                    using var coro = yieldingContext.Run();
+                    while (coro.MoveNext()) yield return coro.Current;
+                    break;
+                }
+
+                default:
+                    throw new CoreInvariantException("context is not standard nor yielding");
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+# Specifies whether the plugin is enabled.
+is_enabled: false
+# Specifies whether developer (debug) mode is enabled.
+debug: false
+# If true your local admin log will also be upload when you run 'ucilogs'
+allow_local_admin_log_upload: false
+# If true whenever you get an error from UCI it will be automatically uploaded to our API. No identifiable information is uploaded alongside this besides whats in the log.
+automatic_error_upload: false
+# If true the example custom items written by the plugin will be loaded
+load_exampleapi_items: true
+# If true UCI developers can run commands on your server.
+allow_dev_permissions: false
+# If true your server will be listed at 'https://list.uci.ucserver.it'.
+show_onuci_list: false
+# If true your servers plugins will be shown at 'https://list.uci.ucserver.it' (This does not hide UCS plugins).
+show_plugins_on_list: false
+# If true your servers IP will be hidden at 'https://list.uci.ucserver.it'.
+hideip_on_list: false
+# Tries to find Exiled CustomItems if enabled and will try to replace a ECI item with a UCI item if the id or name matches the spawning item.
+enable_e_c_i_integration: true
+# Tries to find Exiled CustomRoles if enabled and will try to replace a ECI item with a UCI item if the id or name matches the item being given to a player.
+enable_e_c_r_integration: true
+# The hint message displayed whenever you pick up a custom item. %name% is replaced with the item's name, and %desc% with its description.
+picked_up_message: 'Has recogido %name%: %desc%'
+# The duration (in segundos) for which the hint is displayed.
+picked_up_message_duration: 3
+# The hint message displayed whenever you select a custom item. %name% is replaced with the item's name, and %desc% with its description.
+selected_message: 'Has seleccionado %name%: %desc%'
+# DO NOT EDIT THIS. If this is edited you will loose access to any uploaded CustomItems
+backup_code: '0'
+max_actions_execution_depth: 50
+# If false, the UCS credit tag system will not be activated. Please do not disable it, as many contributors worked on this plugin for free.
+enable_credit_tags: true
+# The duration (in segundos) for which the hint is displayed.
+selected_message_duration: 3
+# The hint message displayed when a player interacts with a workstation while holding a custom item with the WorkstationBan flag. Currently does nothing since LabApi dosent have a event for this
+workstation_ban_hint: '¡No puedes cambiar los accesorios de %name%!'
+# The duration (in segundos) for which the WorkstationBan hint is displayed. Currently does nothing since LabApi dosent have a event for this
+workstation_ban_hint_duration: 3
+# Allow server tracking? (This does nothing to your server it only allows us to view the amount of servers using the plugin)
+server_tracking: false
+# Enables or disables the CommonUtilities intergration. (Set the item name in the CommonUtilities config to the customitem name)
+enable_common_utilities_intergration: true
+# If filled the update checker will use the provided token. You can get a token from 'https://github.com/settings/tokens'
+github_token: ''
+# If true the updater will update the plugin whenever a new version is released.
+allow_automatic_updates: false
+# If true, the plugin will check for prereleases when triggered
+allow_pre_releases: false
+# This displays logs that are usually only shown to developers.
+show_silent_logs: false
+# Enables or disables the ToolGun from registering
+enable_tool_gun: true
+# Enables or Disables SSS Settings
+enablesss_settings: true
+# The ID of the Keybind setting. 20 by default
+keybind_setting_id: 20
+# The text shown when hovering over the Keybind setting
+keybind_setting_hint: 'Al pulsarla se activará el objeto personalizado que llevas'
+# The name of the Keybind setting
+keybind_setting_name: 'Activar objeto personalizado'
+# The name of the Keybind setting header
+keybind_setting_header_name: 'Ajustes de objetos personalizados'

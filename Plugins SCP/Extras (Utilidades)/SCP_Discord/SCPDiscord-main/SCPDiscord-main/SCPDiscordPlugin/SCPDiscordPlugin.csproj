@@ -1,0 +1,87 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <AssemblyName>SCPDiscord</AssemblyName>
+        <DebugType>embedded</DebugType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>12</LangVersion>
+        <TargetFramework>net48</TargetFramework>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+        <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+        <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Optimize>true</Optimize>
+        <PlatformTarget>x64</PlatformTarget>
+
+        <Version>3.4.2</Version>
+        <PackageVersion>$(Version)</PackageVersion>
+        <ApplicationIcon>icon.ico</ApplicationIcon>
+        <LangVersion>default</LangVersion>
+        <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+        <Company>https://github.com/KarlOfDuty/SCPDiscord</Company>
+        <Copyright>© 2018-2024 Karl Essinger and contributors - licenced under GPLv3"</Copyright>
+        <PackageProjectUrl>https://github.com/KarlOfDuty/SCPDiscord</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/KarlOfDuty/SCPDiscord</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageIconUrl>./icon.ico</PackageIconUrl>
+        <NeutralLanguage>en</NeutralLanguage>
+        <PublishSingleFile>true</PublishSingleFile>
+        <TrimMode>partial</TrimMode>
+        <Product>SCPDiscord</Product>
+        <AssemblyTitle>SCPDiscordPlugin</AssemblyTitle>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/KarlOfDuty/SCPDiscord/main/LICENSE</PackageLicenseUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+          <HintPath>../.scpsl_libs/Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass.dll">
+            <HintPath>../.scpsl_libs/Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="CommandSystem.Core">
+          <HintPath>../.scpsl_libs/CommandSystem.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="LabApi">
+          <HintPath>../.scpsl_libs/LabApi.dll</HintPath>
+        </Reference>
+        <Reference Include="Mirror">
+          <HintPath>../.scpsl_libs/Mirror.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Net.Http">
+          <HintPath>../.scpsl_libs/System.Net.Http.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+          <HintPath>../.scpsl_libs/UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>../.scpsl_libs/UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="YamlDotNet">
+          <HintPath>../.scpsl_libs/YamlDotNet.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Google.Protobuf" Version="3.33.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="config.yml" />
+        <EmbeddedResource Include="Languages/brazilian-portuguese.yml" />
+        <EmbeddedResource Include="Languages/emote-overrides.yml" />
+        <EmbeddedResource Include="Languages/emotes.yml" />
+        <EmbeddedResource Include="Languages/english.yml" />
+        <EmbeddedResource Include="Languages/german.yml" />
+        <EmbeddedResource Include="Languages/italian.yml" />
+        <EmbeddedResource Include="Languages/korean.yml" />
+        <EmbeddedResource Include="Languages/overrides.yml" />
+        <EmbeddedResource Include="Languages/russian.yml" />
+        <EmbeddedResource Include="Languages/simplified-chinese.yml" />
+        <EmbeddedResource Include="Languages/ukrainian.yml" />
+    </ItemGroup>
+</Project>

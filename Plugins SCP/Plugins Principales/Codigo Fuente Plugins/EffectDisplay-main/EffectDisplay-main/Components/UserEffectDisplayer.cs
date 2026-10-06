@@ -1,0 +1,127 @@
+﻿using EffectDisplay.Features;
+using EffectDisplay.Features.Sereliazer;
+
+using Exiled.API.Extensions;
+using Exiled.API.Features;
+
+using MEC;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+
+namespace EffectDisplay.Components
+{
+    public class UserEffectDisplayer : MonoBehaviour
+    {
+        private Player player;
+        /// <summary>
+        /// Stores the current process for future stopping
+        /// </summary>
+        private CoroutineHandle Current;
+
+        private bool Enabled = true;
+        /// <summary>
+        /// Will the display of effects be enabled?
+        /// </summary>
+        public bool IsEnabled
+        {
+            get
+            {
+                return Enabled;
+            }
+            set
+            {
+                Enabled = value;
+                if (value == false) Timing.KillCoroutines(Current);
+                else Current = Timing.RunCoroutine(PlayerEffectShower());
+            }
+        }
+
+        public Configs cfg
+        {
+            get
+            {
+                return Plugin.Instance.Config ?? new Configs();
+            }
+        }
+
+        private void Awake()
+        {
+            Log.Debug($"[Awake] Initing component.");
+            player = Player.Get(gameObject);
+            Log.Debug($"[Awake] {player.Nickname} Awake and adding component handling.");
+            if (!DataBase.TryGetData(player.UserId, out User user))
+            {
+                Current = Timing.RunCoroutine(PlayerEffectShower());
+            }
+            else
+            {
+                if (user.IsAllow) Current = Timing.RunCoroutine(PlayerEffectShower());
+            }
+        }
+
+        private string GenerateString(CustomPlayerEffects.StatusEffectBase effect)
+        {
+            string processingline = cfg.EffectLine[effect.Classification];
+            if (string.IsNullOrWhiteSpace(processingline)) return string.Empty;
+            processingline = processingline
+                .Replace("%time%", (int)effect.Duration == 0 ? "inf" : $"{effect.TimeLeft:F1}")
+                .Replace("%duration%", effect.Duration <= 0.1f ? "inf" : $"{effect.Duration:F0}")
+                .Replace("%effect%", cfg.GetName(effect.GetEffectType()))
+                .Replace("%intensity%", effect.Intensity.ToString());
+            Log.Debug($"{nameof(PlayerEffectShower)}: Line {processingline} created");
+            return processingline;
+        }
+
+        private IEnumerator<float> PlayerEffectShower()
+        {
+            for (; ; )
+            {
+                if (player == null || IsEnabled == false)
+                {
+                    Log.Debug($"[PlayerEffectShower] Player is null or component is disabled, break yield");
+                    yield break;
+                }
+                if (player.IsDead || Plugin.Instance.Config.IgnoredRoles.Contains(player.Role.Type))
+                {
+                    yield return Timing.WaitForSeconds(2);
+                    continue;
+                }
+
+                if (!player.ActiveEffects.Any(x => !Plugin.Instance.Config.BlackList.Contains(x.GetEffectType())))
+                {
+                    yield return Timing.WaitForSeconds(2f);
+                    continue;
+                }
+
+                StringBuilder InfoLine = new StringBuilder();
+                foreach (CustomPlayerEffects.StatusEffectBase item in player.ActiveEffects)
+                {
+                    if (Plugin.Instance.Config.BlackList.Contains(item.GetEffectType())) continue;
+                    try
+                    {
+                        string line = GenerateString(item);
+                        if (string.IsNullOrEmpty(line)) continue;
+                        InfoLine.AppendLine(line);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Debug($"[PlayerEffectShower] Exception {e}");
+                    }
+                }
+
+                string data = InfoLine.ToString();
+                Log.Debug(data);
+
+                data = $"<size={cfg.NativeHintSettings.FontSize}><align={cfg.NativeHintSettings.Aligment}>" + data + "</align></size>";
+                player?.ShowHint(data, cfg.UpdateTime + 0.2f);
+
+                Log.Debug($"[PlayerEffectShower] Iteration {player.Nickname}: processed.");
+                yield return Timing.WaitForSeconds(cfg.UpdateTime);
+            }
+        }
+    }
+}

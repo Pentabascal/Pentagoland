@@ -1,0 +1,10 @@
+is_enabled: true
+debug: false
+# A simple check to see if the Escape Door Final should be opened on round start
+escape_door_open: true
+# Should the Escape Door Final remained locked on round start
+escape_door_lock: true
+# Allows for decontamination changes to be made
+decontamination_changes: false
+# The time for decontamination to be set to, by default the time is 705 seconds (11 Minutes 45 Seconds, base game), adding 195 will make it 900 seconds (15 Minutes)
+decontamination_time: 195

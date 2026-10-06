@@ -1,0 +1,266 @@
+
+############# SCPDiscord plugin configuration file #############
+
+
+# Connection settings, the port cannot be the same as the SCP:SL server port.
+bot:
+    ip: "127.0.0.1"
+    port: 8888
+
+    # Set which Discord activity should be used.
+    # The options are one of the following:
+    # Playing, Streaming, ListeningTo, Watching, Custom, Competing
+    activity:
+        empty:  "Custom"
+        active: "Custom"
+        full:   "Custom"
+
+    # Set which Discord activity should be used.
+    # The options are one of the following:
+    # Offline, Online, Idle, DoNotDisturb, Invisible
+    status:
+        empty:  "Idle"
+        active: "Online"
+        full:   "Online"
+
+settings:
+    # The language is the same as the name of the language file you want to use.
+
+    # Included languages:
+    # brazilian-portuguese
+    # english (default)
+    # german
+    # italian
+    # korean
+    # russian
+    # simplified-chinese
+    # ukrainian
+
+    # If you want to override specific messages, you can copy them to overrides.yml
+    # and they will automatically replace the corresponding messages from the language file selected below.
+    language: "english"
+
+    # Add an emote as a prefix to messages.
+    emotes: true
+
+    # The message timestamp, see syntax guide here: https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
+    # You can set it to "HH:mm:ss" for a simple timestamp.
+    timestamp: ""
+
+    # Whether the plugin should show debug information in the console.
+    debug: false
+
+    # Log file path, set to empty to disable log file.
+    # The log file always includes debug messages regardless of the debug setting.
+    logfile: ""
+
+    # Turns on the config validation which shows the values after they have been read by the plugin so you can see they are correct.
+    # You can turn this off when you get everything working.
+    configvalidation: true
+
+    # Whether to use the rolesync system.
+    rolesync: true
+
+    # Whether to track players play time on the server, which can then be checked using the /playerinfo command.
+    playtime: true
+
+    # Whether files should be read from the global config directory or the local one (aka the server specific one).
+    useglobaldirectory:
+        language: true
+        rolesync: true
+        mutes: true
+        playtime: true
+
+    # Always replace language and emote files when the plugin starts (does not affect overrides.yml and emote-overrides.yml).
+    # Turn this off if you will be directly editing the language files.
+    # If you are only making small edits to the language files it is highly
+    # recommended to use overrides.yml instead of editing the language file.
+    regeneratelanguagefiles: true
+
+    # Whether SCPDiscord should automatically cause the game to reload certain files when they are changed by other servers.
+    autoreload:
+        reservedslots: false
+        whitelist: false
+
+# Sets commands to run whenever someone with a synced Discord role joins the server.
+#
+# Only the first sub-role that matches a player will be used, although it can have
+# its own sub-roles where the first matching one will also be used and so on.
+#
+# Valid variables:
+# player-userid
+# player-id
+# player-name
+# player-ipaddress
+# discord-displayname
+# discord-username
+# discord-userid
+# There are some more player variables you can use here, but they are mostly irrelevant, check the list in APIExtensions.cs on GitHub for the full list.
+# Turn on debug logs above to see console feedback when the commands are used.
+#
+# More info is available in the RoleSync guide on GitHub here: https://github.com/KarlOfDuty/SCPDiscord/blob/main/docs/RoleSync.md.
+
+rolesync:
+    staff-role:
+        ids: [ 11111111111111111 ]
+        reserved-slot: true
+        remoteadmin-rank: "staff"
+        sub-roles:
+            admin-role:
+                ids: [ 22222222222222222 ]
+                remoteadmin-rank: "admin"
+                commands:
+                    - "/pbc <var:player-id> 3 Admin role synced from Discord."
+            moderator-role:
+                ids: [ 33333333333333333 ]
+                remoteadmin-rank: "moderator"
+                commands:
+                    - "/pbc <var:player-id> 3 Admin role synced from Discord."
+
+# Name your channels here, this name is used in the channels section below.
+# The left value is a name of your choice and the right is a channel id you want it to represent in the lists below.
+channels:
+    - "default": "add-channel-id-here"
+    - "staff": "add-channel-id-here"
+
+channelsettings:
+    # Removes online players' IPs/SteamIDs from discord messages in specific channels, use the channel aliases from above.
+    # Warning: This only works on online players, so may fail on player disconnect related events.
+    filterips: [ "staff" ]
+    filtersteamids: []
+
+    # If true only the messages in the channels above are filtered,
+    # if false all messages except the ones in the above channels are filtered.
+    invertipfilter: true
+    invertsteamidfilter: false
+
+# Using the channel aliases above you can direct events to different channels here.
+# Set to [] to disable an event.
+messages:
+    # Server events.
+    connectedtobot: [ "default", "staff" ]
+    onroundstart: []
+    onconnect: []
+    onroundend: [ "default", "staff" ]
+    onwaitingforplayers: [ "default" ]
+    onroundrestart: [ "default", "staff" ]
+    onsetservername: []
+    onban:
+        player: [ "default" ]
+        server: [ "default" ]
+    onbanissued:
+        ip: [ "staff" ]
+        userid: [ "staff" ]
+    onbanupdated:
+        ip: []
+        userid: []
+    onbanrevoked:
+        ip: [ "staff" ]
+        userid: [ "staff" ]
+    onkick:
+        player: [ "default", "staff" ]
+        server: [ "default", "staff" ]
+    onplayermuted:
+        player:
+            intercom: [ "default", "staff" ]
+            standard: [ "default", "staff" ]
+        server:
+            intercom: [ "default", "staff" ]
+            standard: [ "default", "staff" ]
+    onplayerunmuted:
+        player:
+            intercom: [ "default", "staff" ]
+            standard: [ "default", "staff" ]
+        server:
+            intercom: [ "default", "staff" ]
+            standard: [ "default", "staff" ]
+    onexecutedcommand:
+        remoteadmin:
+            player: [ "staff" ]
+            server: [ "staff" ]
+        client:
+            player: [ "staff" ]
+            server: [ "staff" ]
+        console:
+            player: [ "staff" ]
+            server: [ "staff" ]
+    onplayercheaterreport: [ "staff" ]
+    onplayerreport: [ "staff" ]
+    onplayerreceiveeffect: []
+    onserversentadminchat: []
+
+    # Environment events.
+    onscp914activate: []
+    onstartcountdown:
+        player:
+            initiated: [ "default" ]
+            resumed: [ "default" ]
+        server:
+            initiated: [ "default" ]
+            resumed: [ "default" ]
+    onstopcountdown:
+        default: [ "default" ]
+        noplayer: [ "default" ]
+    ondetonate: [ "default" ]
+    ondecontaminate: [ "default" ]
+    onsummonvehicle:
+        chaos: [ "default" ]
+        mtf: [ "default" ]
+    ongeneratorfinish: [ "default" ]
+    onelevatoruse: []
+
+    ongeneratorunlock: [ "default" ]
+    ongeneratoropen: []
+    ongeneratorclose: []
+    ongeneratoractivated: [ "default" ]
+    ongeneratordeactivated: [ "default" ]
+    onpocketdimensionexit: [ "default" ]
+    onpocketdimensionenter: [ "default" ]
+    onmapgenerated: []
+    onplayerinteractlocker: []
+
+    # SCP Events.
+    on079lockdoor: []
+    on079teslagate: []
+    on079levelup: [ "default" ]
+    on079unlockdoor: []
+    on079lockdown: []
+    on079cancellockdown: []
+    onrecallzombie: []
+    onplayerinfected: [ "default" ]
+    oninteract330: []
+
+    # Player events.
+    onplayerhurt:
+        default: []
+        friendlyfire: []
+        noattacker: []
+    onplayerdie:
+        default: [ "default" ]
+        friendlyfire: [ "default", "staff" ]
+        nokiller: [ "default" ]
+    onplayerpickupitem: []
+    onplayerpickupammo: []
+    onplayerpickuparmor: []
+    onplayerpickupscp330: []
+    onplayerdropitem: []
+    onplayerdropammo: []
+    onplayerjoin: [ "default", "staff" ]
+    onplayerleave: [ "default" ]
+    onnicknameset: []
+    onspawn: []
+    onthrowprojectile: [ "default", "staff" ]
+    onitemuse: [ "default" ]
+    onhandcuff:
+        default: [ "default" ]
+        nootherplayer: [ "default" ]
+    onhandcuffremoved:
+        default: [ "default" ]
+        nootherplayer: [ "default" ]
+    onreload: []
+    ongrenadeexplosion: []
+    ongrenadehitplayer: []
+    onteamrespawn:
+        mtf: [ "default" ]
+        ci: [ "default" ]
+    onplayerescape: [ "default" ]

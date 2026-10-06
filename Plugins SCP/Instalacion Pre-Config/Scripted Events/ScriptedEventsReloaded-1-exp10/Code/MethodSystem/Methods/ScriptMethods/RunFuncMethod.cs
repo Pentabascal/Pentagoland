@@ -1,0 +1,86 @@
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Exceptions;
+using SER.Code.FlagSystem;
+using SER.Code.FlagSystem.Flags;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.MethodSystem.Structures;
+using SER.Code.ScriptSystem;
+using SER.Code.ScriptSystem.Structures;
+using SER.Code.ValueSystem;
+using SER.Code.VariableSystem.Bases;
+
+namespace SER.Code.MethodSystem.Methods.ScriptMethods;
+
+[UsedImplicitly]
+public class RunFuncMethod : SynchronousMethod, ICanError
+{
+    public override string Description => "Runs a function script with arguments.";
+
+    public string[] ErrorReasons =>
+    [
+        "Provided script is not a function",
+        "Provided arguments are incompatible with the function"
+    ];
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new FunctionScriptArgument("script to run"),
+        new AnyValueArgument("values to pass")
+        {
+            ConsumesRemainingValues = true,
+            DefaultValue = new(new List<Value>(), "none"),
+            Description = "The values that will be passed to the function. " +
+                          "These values must be compatible with the variables the function is expecting."
+        }
+    ];
+
+    public override void Execute()
+    {
+        var scriptToRun = Args.GetValue<Script, FunctionScriptArgument>("script to run");
+        var valuesToPass = Args.GetRemainingArguments<Value, AnyValueArgument>("values to pass");
+
+        if (ScriptFlagHandler.GetScriptFlags(scriptToRun.Name).FirstOrDefault(f => f.GetType() == typeof(FunctionFlag))
+            is not FunctionFlag functionFlag)
+        {
+            throw new ScriptRuntimeError(this, $"Script '{scriptToRun.Name}' is not a function.");
+        }
+
+        if (valuesToPass.Length != functionFlag.ExpectedVarTokens.Count)
+        {
+            throw new ScriptRuntimeError(this, 
+                $"Function expects {functionFlag.ExpectedVarTokens.Count} arguments, but {valuesToPass.Length} were provided."
+            );
+        }
+
+        var zippedTuples = valuesToPass
+            .Zip(functionFlag.ExpectedVarTokens, (v, t) => (value: v, varToken: t))
+            .ToArray();
+
+        for (var i = 0; i < zippedTuples.Length; i++)
+        {
+            if (zippedTuples[i] is not { varToken: { } varToken, value: { } value })
+            {
+                throw new CoreInvariantException();
+            }
+            
+            if (!varToken.ValueType.CanHold(value.Type))
+            {
+                throw new ScriptRuntimeError(this, 
+                    $"Function '{scriptToRun.Name}' expects argument {i + 1} to be of type " +
+                    $"{varToken.ValueType}, but {value.Type} was provided."
+                );
+            }
+            
+            var variable = Variable.Create(varToken.Name, value);
+            if (variable.GetType() != varToken.VariableType)
+            {
+                throw new CoreInvariantException();
+            }
+            
+            scriptToRun.AddLocalVariable(variable);
+        }
+        
+        scriptToRun.Run(RunReason.Script, Script);
+    }
+}

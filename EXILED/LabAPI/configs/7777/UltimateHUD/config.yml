@@ -1,0 +1,52 @@
+# Clock Settings:
+enable_clock: true
+clock: <align=left><space=50><color={color}><size=18><b>Hora:</b> {time}</size></color></align>
+# UTC Time Zone | 2 = UTC+2
+time_zone: 2
+# GAMEPLAY = only for players | SPECTATOR = only for spectators | BOTH = spectator & gameplay
+clock_visual: BOTH
+clock_y_cordinate: 980
+# TPS Settings:
+enable_tps: true
+tps: <align=right><color={color}><size=18><b>TPS:</b> {tps}/{maxTps}</size></color></align>
+# GAMEPLAY = only for players | SPECTATOR = only for spectators | BOTH = spectator & gameplay
+tps_visual: BOTH
+tps_y_cordinate: 980
+# ROUND TIME Settings:
+enable_round_time: true
+round_time: <align=left><color={color}><size=18><b>Duración de la ronda:</b> {round_time}</size></color></align>
+# GAMEPLAY = only for players | SPECTATOR = only for spectators | BOTH = spectator & gameplay
+round_time_visual: BOTH
+round_time_y_cordinate: 970
+# Player HUD Settings:
+enable_player_hud: true
+# You can use {displayname} instead of {nickname}
+player_hud: <size=25><color=#D6FFFB><b>Nombre:</b></color> <color=white>{nickname}</color> <b>|</b> <color=#D6FFFB><b>Rol:</b></color> {role} <b>|</b> <color=#D6FFFB><b>Bajas:</b></color> <color=yellow>{kills}</color>
+player_hud_y_cordinate: 20
+# Spectator List:
+enable_spectator_list: true
+spectator_list_header: "<align=right><size=21><color={color}>\U0001F465 Espectadores ({count})</color></size></align>"
+spectator_list_players: <align=right><size=21><color={color}>• {nickname}</color></size></align>
+hidden_for_roles:
+- Overwatch
+spectator_list_y_cordinate: 800
+# Ammo Counter:
+enable_ammo_counter: true
+weapon_name: <size=21><space=-900><color={color}>{weapon}</color> <alpha=#00>tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</size>
+ammo_counter: <size=21><space=-900><b><color={color}>{current} / {max}</color></b> <alpha=#00>tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</size>
+ammo_counter_y_cordinate: 150
+# Spectator HUD Settings:
+enable_spectator_hud: true
+# You can use {displayname} instead of {nickname}
+spectator_hud: <size=25><color=#808080><b>Observando a:</b> <color=white>{nickname}</color></color> <b>|</b> <color=#D6FFFB><b>Rol:</b></color> {role} <b>|</b> <color=#D6FFFB><b>Bajas:</b></color> <color=yellow>{kills}</color>
+spectator_hud_y_cordinate: 15
+# If true, will not show the spectated player's nickname when they are a skeleton (SCP-3114). This mimics the behavior of the base-game spectator UI.
+hide_skeleton_nickname: true
+# Spectator Map Info:
+enable_spectator_map_info: true
+spectator_map_info: <space=650><size=20><b>Generadores:</b> <color=orange>{engaged}/{maxGenerators}</color> <b>| Ojiva:</b> <color={warheadColor}>{warheadStatus}</color></size>
+map_info_y_cordinate: 70
+# Spectator Server Info:
+enable_spectator_server_info: true
+spectator_server_info: <space=-500><size=20><b>Jugadores:</b> <color=orange>{players}/{maxPlayers}</color> <b>| Espectadores:</b> <color=orange>{spectators}</color></size>
+server_info_y_cordinate: 70

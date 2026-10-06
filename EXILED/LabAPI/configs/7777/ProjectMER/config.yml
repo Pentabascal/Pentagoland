@@ -1,0 +1,45 @@
+# Enables FileSystemWatcher in this plugin. What it does is when you manually change values in a currently loaded map file, after saving the file the plugin will automatically reload the map in-game with the new changes so you won't need to do it yourself.
+enable_file_system_watcher: false
+# Whether the object will be auto selected when spawning it.
+auto_select: true
+# 
+# ------------------------------Actions on event------------------------------
+# Below is the list of in-game events that you can use to call certain action.
+# ----------------------------------------------------------------------------
+# 
+# Map loading/unloading
+# You can use it to load or unload a map on demand. It supports basic pattern matching, loading/unloading multiple maps or loading/unloading a random map from a list. Loading the same map again reloads it. Unloading the already unloaded map won't do anything.
+# 
+# - load:CoolMap
+#   Loads a map that is called CoolMap
+# 
+# - unload:CoolMap
+#   Unloads a map that is called CoolMap
+# 
+# - load:LczMap,HczMap,EzMap
+#   Loads ALL of the maps listed. You can also just load them individualy with multiple loads.
+# 
+# - load:VariantA||VariantB||VariantC
+#   Loads ONE of the maps listed, chances are equal, you can increase them by typing same map name multiple times
+# 
+# - load:*
+#   Loads all saved maps
+# 
+# - unload:*
+#   Loads all loaded maps, including the Untitled one
+# 
+# Console command
+# You can use it to run a custom console command. Remote Admin commands must be prefixed with "/"
+# 
+# - console:buildinfo
+#   Prints a buildinfo of the server
+# 
+# - console:/bc 10 MER is cool
+#   Sends a broadcast to all players
+
+on_waiting_for_players: []
+on_round_started: []
+on_lcz_decontamination_started: []
+on_warhead_started: []
+on_warhead_stopped: []
+on_warhead_detonated: []

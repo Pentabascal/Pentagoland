@@ -1,0 +1,127 @@
+{
+  "RootObjectId": 39474,
+  "Blocks": [
+    {
+      "Name": "Sphere",
+      "ObjectId": 39458,
+      "ParentId": 39474,
+      "AnimatorName": "MagicMissileAnimation",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.15,
+        "y": 0.15,
+        "z": 0.35
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF00FFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light",
+      "ObjectId": 39500,
+      "ParentId": 39458,
+      "Position": {
+        "x": -0.65,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "FF00FFFF",
+        "Intensity": 0.2,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (1)",
+      "ObjectId": 39476,
+      "ParentId": 39458,
+      "Position": {
+        "x": 0.65,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "FF00FFFF",
+        "Intensity": 0.2,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 39466,
+      "ParentId": 39458,
+      "AnimatorName": "Trail1",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.62,
+        "y": 0.62,
+        "z": 0.62
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF00FFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    }
+  ]
+}

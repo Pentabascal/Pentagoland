@@ -1,0 +1,84 @@
+id: 19
+name: SCP127
+description: SCP127
+extended_description: ''
+badge_name: Janitor
+badge_color: pumpkin
+weight: 2
+item: GunSCP127
+scale:
+  x: 1
+  y: 1
+  z: 1
+spawn:
+  do_spawn: false
+  count: 1
+  spawn_settings:
+  - chance: 30
+    coords:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    locker_settings:
+      enable: false
+      locker_type: RifleRack
+      room: HczWarhead
+      zone: HeavyContainment
+      chamber: ''
+      offset:
+        x: 0
+        y: 0
+        z: 0
+    dynamic_spawn:
+    - room: Lcz914
+      coords:
+        x: 1
+        y: 1
+        z: 1
+    zones:
+    - HeavyContainment
+    - Entrance
+    replace_existing_pickup: false
+    force_item: false
+    replace_items_in_pedestals: false
+custom_modules: {}
+arguments: {}
+custom_item_type: SCPItem
+custom_data:
+  give_hume_shield: false
+  tier1_bullet_fire_rate: 1
+  tier2_bullet_fire_rate: 1
+  tier3_bullet_fire_rate: 1
+  tier1_bullet_regen_rate: 1
+  tier2_bullet_regen_rate: 1
+  tier3_bullet_regen_rate: 1
+  tier1_bullet_regen_post_fire_delay: 1
+  tier2_bullet_regen_post_fire_delay: 1
+  tier3_bullet_regen_post_fire_delay: 1
+  tier1_hume_shield_amount: 1
+  tier2_hume_shield_amount: 1
+  tier3_hume_shield_amount: 1
+  tier1_shield_regen_rate: 1
+  tier2_shield_regen_rate: 1
+  tier3_shield_regen_rate: 1
+  tier1_shield_decay_rate: 1
+  tier2_shield_decay_rate: 1
+  tier3_shield_decay_rate: 1
+  tier1_shield_on_damage_pause: 1
+  tier2_shield_on_damage_pause: 1
+  tier3_shield_on_damage_pause: 1
+  damage: 2.75
+  max_barrel_ammo: 10
+  max_ammo: 150
+  max_magazine_ammo: 150
+  ammo_drain: 1
+  penetration: 1.24000001
+  inaccuracy: 1.24000001
+  aiming_inaccuracy: 1.24000001
+  damage_falloff_distance: 1
+  mute_voice_lines: false
+  allow_xp_gain: true

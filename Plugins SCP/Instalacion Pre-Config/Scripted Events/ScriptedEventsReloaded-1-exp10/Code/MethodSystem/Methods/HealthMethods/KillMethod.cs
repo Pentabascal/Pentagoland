@@ -1,0 +1,34 @@
+﻿using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.MethodSystem.Structures;
+
+namespace SER.Code.MethodSystem.Methods.HealthMethods;
+
+public class KillMethod : SynchronousMethod, IEssential
+{
+    public override string Description => "Kills players.";
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new PlayersArgument("players"),
+        new TextArgument("reason")
+        {
+            DefaultValue = new(string.Empty, "empty"),
+        }
+    ];
+    
+    public override void Execute()
+    {
+        var players = Args.GetPlayers("players");
+        var reason = Args.GetText("reason");
+        
+        foreach (var player in players)
+        {
+            if (string.IsNullOrEmpty(reason))
+                player.Kill();
+            else
+                player.Kill(reason, string.Empty);
+        }
+    }
+}

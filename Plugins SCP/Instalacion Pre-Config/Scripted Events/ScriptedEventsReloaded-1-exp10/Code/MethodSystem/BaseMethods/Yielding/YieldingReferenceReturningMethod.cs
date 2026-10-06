@@ -1,0 +1,24 @@
+﻿using SER.Code.ValueSystem;
+using SER.Code.ValueSystem.Other;
+
+namespace SER.Code.MethodSystem.BaseMethods.Yielding;
+
+/// <summary>
+/// Represents a method that returns a reference to an object that cannot be represented fully in text form (not counting players.)
+/// </summary>
+public abstract class YieldingReferenceReturningMethod : YieldingReturningMethod<ReferenceValue>
+{
+    public abstract Type ReturnType { get; }
+}
+
+public abstract class YieldingReferenceReturningMethod<T> : YieldingReferenceReturningMethod
+{
+    public override Type ReturnType => typeof(T);
+
+    public override TypeOfValue Returns => new TypeOfValue<ReferenceValue<T>>();
+
+    protected new T ReturnValue
+    {
+        set => base.ReturnValue = new ReferenceValue<T>(value);
+    }
+}

@@ -1,0 +1,1259 @@
+################################################################################################################################
+#                                                                                                                              #
+#                                                     EVENTS                                                                   #
+#                                                                                                                              #
+#   message: Сообщение, которое будет отпрвлено. Переменные используются в данной форме <var:name>, к примеру <var:ipaddress>. #
+#   regex: Регулярное выражение в паре со строкой замены для поиска и замены частей сообщения.                                 #
+#                                                                                                                              #
+################################################################################################################################
+
+# Executed after variables have been inserted but before the message specific regex replacement and before player names have been added on all messages.
+global_regex: [
+
+  # Fix formatting issues
+  "::ffff:":"",
+  " \\(\\)":"",
+  "''":"",
+  "SCP_":"SCP-",
+
+  # Teams
+  #"SCPs":"SCP",
+  "FoundationForces":"МОГ",
+  "ChaosInsurgency":"Повстанцы Хаоса",
+  #"Scientists":"Учёные",
+  "ClassD":"Класс Д",
+  #"Dead":"Мёртвые",
+  "OtherAlive":"Другая команда",
+
+  # Roles
+  #"None":"",
+  "Scp173":"SCP-173",
+  #"ClassD":"Класс Д",
+  #"Spectator":"Наблюдатель",
+  "Scp106":"SCP-106",
+  "NtfSpecialist":"Специались МОГ",
+  "Scp049":"SCP-049",
+  #"Scientist":"Учёный",
+  "Scp079":"SCP-079",
+  "ChaosConscript":"Повстанец Хаоса - Новобранец",
+  "Scp096":"SCP-096",
+  "SCP-0492":"SCP-049-2",
+  "NtfSergeant":"Сержант МОГ",
+  "NtfCaptain":"Капитан МОГ",
+  "NtfPrivate":"Рядовой МОГ",
+  #"Tutorial":"Обучение",
+  "FacilityGuard":"Охранник Комплекса",
+  "Scp939":"SCP-939",
+  #"CustomRole":"Кастомная Роль",
+  "ChaosRifleman":"Повстанец Хаоса - Стрелок",
+  "ChaosRepressor":"Повстанец Хаоса - Репрессор",
+  "ChaosMarauder":"Повстанец Хаоса - Мародёр",
+  #"Overwatch":"Овервотч",
+  #"Filmmaker": фильм мейкер"",
+  "Scp3114":"SCP-3114",
+  #"Flamingo":"",
+  "AlphaFlamingo":"Альфа фламинго",
+  "ZombieFlamingo":"зомби фламинго",
+
+  # Elevators
+  "GateA":"Ворота А",
+  "GateB":"Ворота В",
+  "LczA01":"ЛЗС A1",
+  "LczA02":"ЛЗС A2",
+  "LczB01":"ЛЗС B1",
+  "LczB02":"ЛЗС B2",
+  "Nuke":"Боеголовка Альфа",
+  #"Scp049":"Лифт В КС 049",
+
+  # Room names
+  "Unnamed":"Неизвестная комната",
+  "LczClassDSpawn":"Камеры Класса Д",
+  "LczComputerRoom":"Компьютерная комната в ЛЗС",
+  "LczCheckpointA":"КПП А",
+  "LczCheckpointB":"КПП B",
+  "LczToilets":"Туалеты",
+  "LczArmory":"Оружейная комната ЛЗС",
+  "Lcz173":"КС SCP-173",
+  "LczGlassroom":"КС SCP-372",
+  "Lcz330":"КС SCP-330",
+  "Lcz914":"КС SCP-914",
+  "LczGreenhouse":"Теплица",
+  "LczAirlock":"Шлюз ЛЗС",
+  "HczCheckpointToEntranceZone":"КПП во Входную Зону",
+  "HczCheckpointA":"ТЗС КПП A",
+  "HczCheckpointB":"ТЗС КПП B",
+  "HczWarhead":"Комната Боеголовки в ТЗС",
+  "Hcz049":"КС SCP-049",
+  "Hcz079":"КС SCP-079",
+  "Hcz096":"КС SCP-096",
+  "Hcz106":"КС SCP-106",
+  "Hcz939":"КС SCP-939",
+  "HczMicroHID":"Комната Micro-HID",
+  "HczArmory":"Оружейная Комната ТЗС",
+  "HczServers":"Серверная",
+  "HczTesla":"Коридор с Тесла-воротами",
+  "EzCollapsedTunnel":"Обваленный кориор во Входной зоне",
+  "EzGateA":"Ворота A",
+  "EzGateB":"Ворота B",
+  "EzRedroom":"Красная комната",
+  "EzEvacShelter":"Убежище",
+  "EzIntercom":"Интерком",
+  "EzOfficeStoried":"Офис",
+  "EzOfficeLarge":"Офис",
+  "EzOfficeSmall":"Офис",
+  "Outside":"Улица",
+  "Pocket":"Карманное Измерение",
+  "HczTestroom":"Тестовая комната в ТЗС",
+
+  # Items
+  #"None":"",
+  "KeycardJanitor":"Ключ-карта Уборщика",
+  "KeycardScientist":"Ключ-карта Научного Сотрудника",
+  "KeycardResearchCoordinator":"Ключ-карта Ст. Научного Сотрудника",
+  "KeycardZoneManager":"Ключ-карта Менеджера Зоны Содержания",
+  "KeycardGuard":"Ключ-карта Охранника",
+  "KeycardMTFPrivate":"Ключ-карта Кадета МОГ",
+  "KeycardContainmentEngineer":"Ключ-карта Инженера КС",
+  "KeycardMTFOperative":"Ключ-карта Сержанта МОГ",
+  "KeycardMTFCaptain":"Ключ-карта Капитана МОГ",
+  "KeycardFacilityManager":"Ключ-карта Менеджера Комплекса",
+  "KeycardChaosInsurgency":"Устройство Доступа ПХ",
+  "KeycardO5":"Ключ-карта О5",
+  "Radio":"Радио",
+  "GunCOM15":"COM-15",
+  "Medkit":"Аптечка",
+  "Flashlight":"Фонарик",
+  "MicroHID":"Micro-H.I.D.",
+  "SCP500":"SCP-500",
+  "SCP207":"SCP-207",
+  "Ammo12gauge":"Патроны 12 gauge",
+  "GunE11SR":"Epsilon-11 SR",
+  "GunCrossvec":"Crossvec",
+  "Ammo556x45":"Патроны 5.56mm",
+  "GunFSP9":"FSP-9",
+  "GunLogicer":"Logicer",
+  "GrenadeHE":"Граната",
+  "GrenadeFlash":"Светошумовая",
+  "Ammo44cal":"Патроны 44 cal",
+  "Ammo762x39":"Патроны 7.62mm",
+  "Ammo9x19":"Патроны 9mm",
+  "GunCOM18":"COM-18",
+  "SCP018":"SCP-018",
+  "SCP268":"SCP-268",
+  "Adrenaline":"Адреналин",
+  "Painkillers":"Обезболивающее",
+  "Coin":"Монета",
+  "ArmorLight":"Лёгкая Броня",
+  "ArmorCombat":"Боевая Броня",
+  "ArmorHeavy":"Тяжёлая Броня",
+  "GunRevolver":"Револьвер",
+  "GunAK":"AK",
+  "GunShotgun":"Дробовик",
+  "SCP330":"SCP-330",
+  "SCP2176":"SCP-2176",
+  "SCP244a":"SCP-244-A",
+  "SCP244b":"SCP-244-B",
+  "SCP1853":"SCP-1853",
+  "ParticleDisruptor":"разрушитель частиц",
+  "GunCom45":"COM-45",
+  "SCP1576":"SCP-1576",
+  "Coal":"Уголь",
+  "Scp2536_2":"SCP-2536-2",
+  "Jailbird":"jailbird",
+
+  # 914 settings
+  "Rough":"Очень Грубо",
+  "Coarse":"Грубо",
+  "OneToOne":"1:1",
+  "VeryFine":"Очень Тонко",
+  "Fine":"Тонко",
+
+  # KeycardPermissions
+  #"None":"",
+  #"Checkpoints":"КПП",
+  "ExitGates":"Открытие Ворот",
+  #"Intercom":"Открытие Иниеркома",
+  "AlphaWarhead":"Доступ к Боеголовке",
+  "ContainmentLevelOne":"Доступ к объектам Безопасным",
+  "ContainmentLevelTwo":"Доступ к объектам Евклид",
+  "ContainmentLevelThree":"Доступ к объектам Кетер",
+  "ArmoryLevelOne":"Доступ к Оружейной ЛЗС",
+  "ArmoryLevelTwo":"доступ к Оружейной ТЗС",
+  "ArmoryLevelThree":"Доступ к MICRO-HID",
+  "ScpOverride":"Доступ SCP",
+
+  # Some door things
+  "PortallessBreakableDoor":"дверь",
+  "BreakableDoor":"дверь",
+  "\\(Clone\\)":""
+]
+
+# Executes on usernames
+user_regex: ["<@":"\\<@", "<@!":"\\<@!", "`":"\\`", "\\*":"\\*", "_":"\\_", "~":"\\~", "\\|":"\\|"]
+
+# Executes on the final version of the message, after everything else has completed
+final_regex: ["discord\\.gg":"","discord\\.com":"","http://":"","https://":""]
+
+messages:
+  onroundstart:
+    message: "**Раунд начался.**"
+    regex: []
+
+  onconnect:
+    # ipaddress - string
+    # userid - string
+    # jointype - CentralAuthPreauthFlags
+    # region - string
+    message: "Игрок (<var:userid>) пытается присоединиться..."
+    regex: []
+
+  onplayerleave:
+    # ipaddress - string
+    # playerid - int
+    # steamid - string
+    # name - string
+    message: "**<var:player-name> (<var:player-userid>) покинул сервер.**"
+    regex: []
+
+  onroundend:
+    # duration - int
+    # leadingteam -string
+    # dclassalive - int
+    # dclassdead - int
+    # dclassescaped - int
+    # dclassstart - int
+    # mtfalive - int
+    # mtfdead - int
+    # mtfstart - int
+    # scientistsalive - int
+    # scientistsdead - int
+    # scientistsescaped - int
+    # scientistsstart - int
+    # scpalive - int
+    # scpdead - int
+    # scpkills - int
+    # scpstart - int
+    # warheaddetonated - bool
+    # warheadkills - int
+    # zombiesalive - int
+    # zombieschanged - int
+    message: >+
+      **Раунд закончился спустя <var:duration> минут.**
+      ```
+      Класса Д сбежало:      <var:dclassescaped>/<var:dclassstart>\n
+      Учёных выжило:         <var:scientistsescaped>/<var:scientistsstart>\n
+      Кол-во SCP:            <var:scpdead>/<var:scpstart>\n
+      Убито SCP:             <var:scpkills>\n
+      Боеголовка switchwas<var:warheaddetonated> сдетонирована.
+      ```
+    regex: ["switchwasTrue":"была","switchwasFalse":"не была"]
+
+  onwaitingforplayers:
+    message: "**Сервер готов и ожидает игроков.**"
+    regex: []
+
+  onroundrestart:
+    message: "**Раунд перезапускается...**"
+    regex: []
+
+  onsetservername:
+    # servername - string
+    message: "**Имя сервера: <var:servername>.**"
+    regex: []
+
+  onscp914activate:
+    # knobsetting - KnobSetting
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) активировал SCP-914 в положении <var:knobsetting>."
+    regex: []
+
+  onstartcountdown:
+    player:
+      # isAutomatic - bool
+      # timeleft - float
+      # player - Player
+      initiated:
+        message: "**Процесс детонации боеголовкибыл запущее игроком <var:player-name> (<var:player-userid>), до взрыва осталось <var:timeleft> секунд. Всем немедленно эвакуироваться.**"
+        regex: [ ]
+      resumed:
+        message: "**Процесс детонации боеголовки был возобновлён игроком <var:player-name> (<var:player-userid>), до взрыва осталось <var:timeleft> секунд.**"
+        regex: [ ]
+    server:
+      # isAutomatic - bool
+      # timeleft - float
+      initiated:
+        message: "**Процесс детонации боеголовки был удалённо запущен по приказу Совета О5. Всему персоналу немедленно эвакуироваться.**"
+        regex: []
+      resumed:
+        message: "**Процесс детонации боеголовки был удалённо запущен по приказу Совета О5. До детонации осталось <var:timeleft> секунд.**"
+        regex: []
+
+  onstopcountdown:
+    default:
+      # timeleft
+      # player - Player
+      message: "**Процесс детонации боеголовки был отменён игроком <var:player-name> (<var:player-userid>). До взрыва оставалось <var:timeleft> секунд.**"
+      regex: []
+    noplayer:
+      # timeleft
+      message: "**Процесс детонации ьыл удалённо отменён по приказу Комитета По Этике. До взрыва оставалось <var:timeleft> секунд.**"
+      regex: []
+
+  ondetonate:
+    message: "**Была зафиксирована детонация боеголовки. Оперативники МОГ уже приближаются для зачистки оставшихся целей.**"
+    regex: []
+
+  ondecontaminate:
+    message: "**Обеззаражвание ЛЗС было начато. Все биологические субстанции будут уничтожены.**"
+    regex: []
+
+  onsummonvehicle:
+    chaos:
+      message: "**Внимание: неизвестный автомобиль проник на территорию комплекса.**"
+      regex: []
+    mtf:
+      message: "**Вертолёт МОГа в зоне видимости. Подготовка к высадке.**"
+      regex: []
+
+  ongeneratorfinish:
+    # room
+    # player - Player
+    message: "Генератор в <var:room> был активирован игроком <var:player-name> (<var:player-userid>)."
+    regex: [ ]
+
+  onplayerhurt:
+    # damage - float
+    # damagetype - DamageType
+    # attacker - Player
+    # target - Player
+    default:
+      message: "<var:target-name> (<var:target-userid>) был атакова <var:attacker-name> (<var:attacker-userid>) используя <var:damagetype> (Получил <var:damage> урон(а))."
+      regex: ["using UNKNOWN":"с помощью неизвестных средств", "-1 damage":"огромный"]
+    friendlyfire:
+      message: "**<var:target-team> <var:target-name> (<var:target-userid>) был атакован союзником <var:attacker-team> <var:attacker-name> (<var:attacker-userid>) используя <var:damagetype> (Получил <var:damage> урона(а)).**"
+      regex: ["using UNKNOWN":"с помощью неизвестных средств", "-1 damage":"огромный"]
+    noattacker:
+      message: "<var:target-name> (<var:target-userid>) получил <var:damage> урона из-за <var:damagetype>."
+      regex: ["damage by UNKNOWN":"с помощью неизвестных средств", "-1 damage":"огромный"]
+
+  onplayerdie:
+    # damagetype - DamageType
+    # attacker - Player
+    # target - Player
+    default:
+      message: "<var:target-name> (<var:target-userid>) был убит игроком <var:attacker-name> (<var:attacker-userid>) используя <var:damagetype>."
+      regex: ["using UNKNOWN":"с помощью неизвестных средств"]
+    friendlyfire:
+      message: "**<var:target-team> <var:target-name> (<var:target-userid>) был убит союзником <var:attacker-team> <var:attacker-name> (<var:attacker-userid>) используя <var:damagetype>.**"
+      regex: ["using UNKNOWN":"с помощью неизвестных средств"]
+    nokiller:
+      message: "<var:target-name> (<var:target-userid>) умер из-за <var:damagetype>."
+      regex: ["died by UNKNOWN":"died in an unknown way"]
+
+  onplayerpickupitem:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) поднял <var:item>."
+    regex: []
+
+  onplayerpickupammo:
+    # ammo - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) поднял <var:ammo>."
+    regex: []
+
+  onplayerpickuparmor:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) поднял <var:armor>."
+    regex: []
+
+  onplayerpickupscp330:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) вытащил SCP-330."
+    regex: []
+
+  onplayerdropitem:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) выбросил <var:item>."
+    regex: []
+
+  onplayerdropammo:
+    # ammo - Item
+    # amount - int
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) выбросил <var:amount> <var:ammo>."
+    regex: []
+
+  onplayerjoin:
+    # player - Player
+    message: "**<var:player-name> (<var:player-userid>) присоединился к серверу.**"
+    regex: []
+
+  onnicknameset:
+    # nickname - string
+    # player - Player
+    message: "Игрок '<var:player-name> (<var:player-userid>)' изменил свой никнейм <var:nickname>."
+    regex: []
+
+  onsetrole:
+    # oldrole - Role
+    # player - Player
+    roundstart:
+      message: "<var:player-name> (<var:player-userid>) заспавнился за <var:player-role>."
+      regex: [ ]
+    latejoin:
+      message: "<var:player-name> (<var:player-userid>) заспавнился за <var:player-role> (Latejoin)."
+      regex: [ ]
+    respawn:
+      message: "<var:player-name> (<var:player-userid>) заспавнился за <var:player-role>."
+      regex: [ ]
+    died:
+      message: "<var:player-name> (<var:player-userid>) умер и переспавнился за <var:player-role>."
+      regex: [ ]
+    escaped:
+      message: "<var:player-name> (<var:player-userid>) сбежал из комплекса и стал <var:player-role>."
+      regex: [ ]
+    revived:
+      message: "<var:player-name> (<var:player-userid>) был возрождён за <var:player-role>."
+      regex: [ ]
+    remoteadmin:
+      message: "<var:player-name> (<var:player-userid>) изменил свою роль на <var:player-role> используя RA."
+      regex: [ ]
+    left:
+      message: "<var:player-name> (<var:player-userid>) вышёл с сервера."
+      regex: [ ]
+    other:
+      message: "<var:player-name> (<var:player-userid>) заспавнился за <var:player-role>."
+      regex: []
+
+  onspawn:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) заспавнился за <var:player-role>."
+    regex: []
+
+  ondooraccess:
+    # doorname - string
+    # permission - string
+    # locked - bool
+    # lockcooldown - float
+    # open - bool
+    # player - Player
+    allowed:
+      message: "<var:player-name> (<var:player-userid>) isopen:<var:open> дверь (<var:doorname>) требующую права \"<var:permission>\"."
+      regex: ["isopen:True":"закрыл", "isopen:False":"открыл", " requiring \"\" permission\\.":"."," requiring \"None\" permission\\.":"."]
+    denied:
+      message: "<var:player-name> (<var:player-userid>) попробовал isopen:<var:open> заблокированную дверь (<var:doorname>) требующую права \"<var:permission>\"."
+      regex: ["isopen:True":"закрыть", "isopen:False":"открыть"," requiring \"\" permission \\.":"."," requiring \"None\" permission\\.":"."]
+
+  onpocketdimensionexit:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) сбежал из Карманного Измерения."
+    regex: []
+
+  onpocketdimensionenter:
+    # attacker - Player
+    # target - Player
+    message: "Игрока <var:target-name> (<var:target-userid>) забрал в Карманное Измерение игрок <var:attacker-name> (<var:attacker-userid>)."
+    regex: []
+
+  onthrowprojectile:
+    # type - GrenadeType
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) бросил <var:type>."
+    regex: []
+
+  onspawnragdoll:
+    # damagetype - string
+    # player - Player
+    message: "Труп игрока <var:player-name> (<var:player-userid>) <var:player-role> был заспавнен."
+    regex: []
+
+  onitemuse:
+    # item - string
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) использовал <var:item>."
+    regex: []
+
+  onelevatoruse:
+    # elevatorname - ElevatorType
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) вызвал <var:elevatorname>."
+    regex: []
+
+  onhandcuff:
+    # target - Player
+    # disarmer - Player
+    default:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) был связан игроком <var:player-role> <var:player-name> (<var:player-userid>)."
+      regex: []
+    nootherplayer:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) был связан."
+      regex: []
+
+  onhandcuffremoved:
+    # target - Player
+    # disarmer - Player
+    default:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) был отпущен игроком <var:player-role> <var:player-name> (<var:player-userid>)."
+      regex: []
+    nootherplayer:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) был отпущен."
+      regex: []
+
+  onplayertriggertesla:
+    # player - Player
+    default:
+      message: "<var:player-team> <var:player-name> (<var:player-userid>) активировал Тесла-ворота."
+      regex: []
+    ignored:
+      message: "<var:player-team> <var:player-name> (<var:player-userid>) прошёл через Тесла-ворота не активируя их."
+      regex: []
+
+  onscp914changeknob:
+    # newsetting - KnobSetting
+    # oldsetting - KnobSetting
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) изменил настройку SCP-914 на \"<var:newsetting>\"."
+    regex: []
+
+  onplayerradioswitch:
+    # setting - RadioStatus
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) изменил настройку своего радио на <var:setting>."
+    regex: []
+
+  onrecallzombie:
+    # target - Player
+    # player - Player
+    message: "<var:target-name> (<var:target-userid>) был взорождён как SCP-049-2 игроком <var:player-name> (<var:player-userid>)"
+    regex: []
+
+  onexecutedcommand:
+    remoteadmin:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Сервер использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+    client:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Сервер использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+    console:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Сервер использовал команду '<var:command>'. Результат: '<var:returnmessage>'"
+        regex: [ ]
+
+  onreload:
+    # weapon
+    # maxclipsize
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) перезарядил свой <var:weapon>."
+    regex: []
+
+  ongrenadeexplosion:
+    # player - Player
+    message: "Граната игрока <var:player-name> (<var:player-userid>) взорвалась."
+    regex: []
+
+  ongrenadehitplayer:
+    # player - Player
+    # target - Player
+    message: "Граната игрока <var:player-name> (<var:player-userid>) нанесла урон игроку <var:target-name> (<var:target-userid>)"
+    regex: []
+
+  ongeneratorunlock:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) разблокировал генератор в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  ongeneratorclose:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) закрыл генератор в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  ongeneratoropen:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) открыл генератор в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  ongeneratoractivated:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) активировал генератор в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  ongeneratordeactivated:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) деактивировал генератор в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  on079lockdoor:
+    # open - bool
+    # door - string
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) закрыл генератор будучи SCP-079."
+    regex: []
+
+  on079teslagate:
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) активировал Тесла-ворота."
+    regex: []
+
+  on079addexp:
+    # xptype - ExperienceType
+    # amount - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) получил <var:amount> здоровья."
+    regex: []
+
+  on079levelup:
+    # level - int
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) поднял свой уровеь будучи SCP-079."
+    regex: []
+
+  on079unlockdoor:
+    # doorname - string
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) заблокировал <var:doorname>."
+    regex: []
+
+  on079lockdown:
+    # room - RoomType
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) активирогвал локдаун в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  on079cancellockdown:
+    # room - RoomType
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) отменил локдаун в <var:room>."
+    regex: [
+      "Micro-HID":"комнате Micro-HID",
+      "nuke":"комнате боеголовки в ТЗС" ]
+
+  onban:
+    player:
+      # duration - int
+      # reason - string
+      # player - Player
+      # issuer - Player
+      message: "Игрок <var:player-name> (<var:player-userid>) был забанен администратором <var:issuer-name> (<var:issuer-userid>) на `<var:duration>`. Причина: <var:reason>"
+      regex: [ ]
+    server:
+      # duration - int
+      # reason - string
+      # player - Player
+      message: "Игрок <var:player-name> (<var:player-userid>) был забанен сервером на `<var:duration>`. Причина: <var:reason>"
+      regex: []
+
+  onbanissued:
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-ip
+    # player-name
+    # issuer-name
+    ip:
+      message: >+
+        **Был выдан бан по IP**
+        ```
+        Игрок:           <var:player-name>\n
+        IP-Адрес:        <var:player-ip>\n
+        Выдан:           <var:issuedtime>\n
+        Заканчивается:   <var:expirytime>\n
+        Длительность:    <var:duration>\n
+        Администратор:   <var:issuer-name>\n
+        Причина:         <var:reason>
+        ```
+      regex: []
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-userid
+    # player-name
+    # issuer-name
+    userid:
+      message: >+
+        **Выдан бан по UserID**
+        ```
+        Игрок:           <var:player-name>\n
+        UserID:          <var:player-userid>\n
+        Выдан:           <var:issuedtime>\n
+        Заканчивается:   <var:expirytime>\n
+        Длительность:    <var:duration>\n
+        Администратор:   <var:issuer-name>\n
+        Причина:         <var:reason>
+        ```
+      regex: []
+
+  onbanupdated:
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-ip
+    # player-name
+    # issuer-name
+    ip:
+      message: >+
+        **Бан по IP обновлён**
+        ```
+        Игрок:           <var:player-name>\n
+        IP-Адрес:        <var:player-ip>\n
+        Выдан:           <var:issuedtime>\n
+        Заканчивается:   <var:expirytime>\n
+        Длительность:    <var:duration>\n
+        Администратор:   <var:issuer-name>\n
+        Причина:         <var:reason>
+        ```
+      regex: []
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-userid
+    # player-name
+    # issuer-name
+    userid:
+      message: >+
+        **Бан по UserID обновлён**
+        ```
+        Игрок:           <var:player-name>\n
+        UserID:          <var:player-userid>\n
+        Выдан:           <var:issuedtime>\n
+        Заканчивается:   <var:expirytime>\n
+        Длительность:    <var:duration>\n
+        Администратор:   <var:issuer-name>\n
+        Причина:         <var:reason>
+        ```
+      regex: []
+
+  onkick:
+    player:
+      # reason - string
+      # player - Player
+      # issuer - Player
+      message: "Игрок <var:player-name> (<var:player-userid>) был кикнут администратором <var:issuer-name> (<var:issuer-userid>) на `<var:duration>`. Причина: <var:reason>"
+      regex: [ ]
+    server:
+      # reason - string
+      # player - Player
+      message: "Игрок <var:player-name> (<var:player-userid>) был кикнут сервером на `<var:duration>`. Причина: <var:reason>"
+      regex: []
+
+  onplayermuted:
+    player:
+      intercom:
+        # player - Player
+        # issuer - Player
+        message: "**Администратор <var:issuer-name> (<var:issuer-userid>) запретил игроку <var:player-name> (<var:player-userid>) использовать интерком.**"
+        regex: []
+      standard:
+        # player - Player
+        # issuer - Player
+        message: "**Администратор <var:issuer-name> (<var:issuer-userid>) запретил игроку <var:player-name> (<var:player-userid>) говорить.**"
+        regex: []
+    server:
+      intercom:
+        # player - Player
+        message: "**Сервер запретил игроку <var:player-name> (<var:player-userid>) использовать интерком.**"
+        regex: []
+      standard:
+        # player - Player
+        message: "**Сервер запретил игроку <var:player-name> (<var:player-userid>) говорить.**"
+        regex: []
+
+  onplayerunmuted:
+    player:
+      intercom:
+        # player - Player
+        # issuer - Player
+        message: "**Администратор <var:issuer-name> (<var:issuer-userid>) разрешил игроку <var:player-name> (<var:player-userid>) использовать интерком.**"
+        regex: []
+      standard:
+        # player - Player
+        # issuer - Player
+        message: "**Администратор <var:issuer-name> (<var:issuer-userid>) разрешил говорить игроку <var:player-name> (<var:player-userid>).**"
+        regex: []
+    server:
+      intercom:
+        # player - Player
+        message: "**Сервер разрешил игроку <var:player-name> (<var:player-userid>) использовать интерком.**"
+        regex: []
+      standard:
+        # player - Player
+        message: "**Сервер разрешил говорить игроку <var:player-name> (<var:player-userid>).**"
+        regex: []
+
+  onteamrespawn:
+    # players - List<Player>
+    # spawnchaos - bool
+    mtf:
+      message: "**Мобильная Опергруппа обозначенная как Девятихвостая лиса вошла в комплекс.**"
+      regex: []
+    ci:
+      message: "**Обнаружено вторжение в комплекс, злоумышленники идентифицированы как члены группировки \"Повстанцы Хаоса\".**"
+      regex: []
+
+  onplayerescape:
+    # newrole - Role
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) сбежал и стал <var:newrole>"
+    regex: []
+  onplayercheaterreport:
+    # player - Player
+    # target - Player
+    # reason - string
+    message: "**<var:player-name> (<var:player-userid>) сообщил <var:target-name> (<var:target-userid>) о читере:**\n```<var:reason>```"
+    regex: []
+    cancel_regex: []
+
+  onplayerreport:
+    # player - Player
+    # target - Player
+    # reason - string
+    message: "**<var:player-name> (<var:player-userid>) сообщил <var:target-name> (<var:target-userid>) о нарушении правил:**\n```<var:reason>```"
+    regex: []
+    cancel_regex: []
+
+  ################################################################################################################################
+  #                                                                                                                              #
+  #                                                   DISCORD BOT                                                                #
+  #                                                                                                                              #
+  #   message: Сообщение, которое будет отпрвлено. Переменные используются в данной форме <var:player-name>, к примеру <var:ipaddress>. #
+  #   regex: Регулярное выражение в паре со строкой замены для поиска и замены частей сообщения.                                 #
+  #                                                                                                                              #
+  ################################################################################################################################
+
+  connectedtobot:
+    message: "**SCP:SL сервер подключен.**"
+    regex: []
+    cancel_regex: []
+
+  invalidsteamid:
+    # userid - string
+    message: "неверный SteamID '<var:userid>'."
+    regex: []
+    cancel_regex: []
+
+  invalidsteamidorip:
+    # steamidorip - string
+    message: "неверный steamID или IP'<var:steamidorip>'."
+    regex: []
+    cancel_regex: []
+
+  invalidduration:
+    # duration - string
+    message: "неверная причина'<var:duration>'."
+    regex: []
+    cancel_regex: []
+
+  playernotfound:
+    # userid - string
+    message: "Игрок с SteamID '<var:userid>' небыл найлен."
+    regex: []
+    cancel_regex: []
+
+  playerkicked:
+    # player - Player
+    # reason - string
+    # admintag - string
+    message: "'<var:player-name>' (<var:player-userid>) был кикнут <var:admintag> по причине: '<var:reason>'."
+    regex: []
+    cancel_regex: []
+
+  playerbanned:
+    online:
+      # player - Player
+      # reason - string
+      # duration - string
+      # admintag - string
+      message: "'<var:player-name>' (<var:player-userid>) был забанен '<var:reason>' (<var:duration>) (+IP-ban)."
+      regex: []
+      cancel_regex: []
+    offline:
+      # name - string
+      # userid - string
+      # reason - string
+      # duration - string
+      # admintag - string
+      message: "'<var:name>' (<var:userid>) был забанен по причине: '<var:reason>' (<var:duration>)."
+      regex: []
+      cancel_regex: []
+
+  playerunbanned:
+    # steamidorip - string
+    message: "все внесённые SteamID/IP '<var:steamidorip>' были удалены из бан листа."
+    regex: []
+    cancel_regex: []
+
+  playermuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "<var:name> (<var:userid>) был замучен по причине: '<var:reason>' (Permanently)."
+    regex: []
+    cancel_regex: []
+
+  playertempmuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "<var:name> (<var:userid>) был замучен по причине: '<var:reason>' (<var:duration>)."
+    regex: []
+    cancel_regex: []
+
+  mutefailed:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "При попытке замутить пользователя при помощи steamid произошла ошибка '<var:userid>', проверьте консоль для большей информации."
+    regex: []
+    cancel_regex: []
+
+  playerunmuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "<var:name> (<var:userid>) был размучен."
+    regex: []
+    cancel_regex: []
+
+  unmutefailed:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "Произошла ошибка при попытке размута игрока через steamid '<var:userid>', проверьте консоль для большей информации."
+    regex: []
+    cancel_regex: []
+
+  kickall:
+    # reason - string
+    # admintag - string
+    message: "Все игроки были кикнуты с сервера по причине: '<var:reason>'."
+    regex: []
+    cancel_regex: []
+
+  # The feedback from a console command, except the custom ones above. (Is not affected by global regex other than final_regex)
+  consolecommandfeedback:
+    # feedback - string
+    message: "<var:feedback>"
+    regex: []
+    cancel_regex: []
+
+  list:
+    default:
+      title:
+        # players - int
+        # maxplayers - int
+        # page - int
+        # pages - int
+        message: "<var:players> / <var:maxplayers> игроков"
+        regex: []
+        cancel_regex: []
+      row:
+        default:
+          # player - Player
+          message: "**<var:player-name>** | **<var:player-role>** | `<var:player-userid>` \n"
+          regex: []
+          cancel_regex: []
+        empty:
+          message: "Игроки в онлайне отсутствуют."
+          regex: []
+          cancel_regex: []
+
+    ranked:
+      title:
+        # players - int
+        # rankedplayers - int
+        # maxplayers - int
+        # page - int
+        # pages - int
+        message: "<var:rankedplayers> / <var:players> игроков с ролью"
+        regex: []
+        cancel_regex: []
+      row:
+        default:
+          # player - Player
+          message: "**<var:player-name>** | **<var:player-rank>** | `<var:player-userid>` \n"
+          regex: []
+          cancel_regex: []
+        empty:
+          message: "Игроки с ролью отстутствуют."
+          regex: []
+          cancel_regex: []
+
+    synced:
+      title:
+        online-only:
+          # players - int
+          # maxplayers - int
+          # syncedplayers - int
+          # page - int
+          # pages - int
+          message: "<var:syncedplayers> / <var:maxplayers> игроков со синхронизацией"
+          regex: [ "1 synced players":"1 synced player" ]
+          cancel_regex: []
+        all:
+          # players - int
+          # maxplayers - int
+          # syncedplayers - int
+          # page - int
+          # pages - int
+          message: "<var:syncedplayers> синхронизиронизированых игроков"
+          regex: [ "1 synced players":"1 synced player" ]
+          cancel_regex: []
+      row:
+        online-only:
+          default:
+            # player - Player
+            # discordid - int
+            # discordmention - string
+            message: "**<var:player-name>** | <var:discordmention> | `<var:player-userid>`\n"
+            regex: []
+            cancel_regex: []
+          empty:
+            message: "."
+            regex: []
+            cancel_regex: []
+        all:
+          default:
+            # userid - string
+            # name - string
+            # discordid - int
+            # discordmention - string
+            message: "**<var:name>** | <var:discordmention> | `<var:userid>`\n"
+            regex: []
+            cancel_regex: []
+          empty:
+            message: "отстутсвтвуют игроки с синхронизацией."
+            regex: []
+            cancel_regex: []
+
+  playerinfo:
+    online:
+      # player - Player
+      # discordid - int
+      # discordmention - string
+      # issynced - bool
+      # mutestatus - string
+      # mutereason - string
+      message: >+
+        **Информация от игроков - <var:discordmention>**
+        ```
+        Онлайн:       Yes\n
+        Ник:          <var:player-name>\n
+        SteamID:      <var:player-userid>\n
+        IP:           <var:player-ipaddress>\n
+        Время игрока: <var:player-playtimehours> hours\n
+        \n
+        Роль:         <var:player-role>\n
+        HP:           <var:player-health>\n
+        Overwatch:    replaceOnOff<var:player-overwatchon>\n
+        Noclip:       replaceOnOff<var:player-noclipon>\n
+        Godmode:      replaceOnOff<var:player-godmodeon>\n
+        Bypass:       replaceOnOff<var:player-bypassenabled>\n
+        \n
+        Мут:          <var:mutestatus> (Reason: <var:mutereason>)\n
+        Бан:          No\n
+        Discord синхронизаиця:  replaceYesNo<var:issynced>\n
+        Доступ к RA панели:     replaceYesNo<var:player-hasremoteadminaccess>\n
+        Reserved Slot:          replaceYesNo<var:player-hasreservedslot>\n
+        Do Not Track:           replaceOnOff<var:player-donottrack>\n
+        Northwood персонал:     replaceYesNo<var:player-isnortwoodstaff>
+        ```
+      regex: [ "replaceYesNoTrue":"Yes", "replaceYesNoFalse":"No", "replaceOnOffTrue":"On", "replaceOnOffFalse":"Off", "- <@0>": "", "\\(Reason: \\)":"" ]
+      cancel_regex: []
+    offline:
+      # userid - int
+      # name - string
+      # discordid - int
+      # discordmention - int
+      # issynced - bool
+      # mutestatus - string
+      # mutereason - string
+      # banstatus - string
+      # banreason - string
+      # playtimehours - int
+      # hasreservedslot - bool
+      message: >+
+        **Информация об игроке - <var:discordmention>**
+        ```
+        Онлайн:                No\n
+        Ник:                   <var:name>\n
+        SteamID:               <var:userid>\n
+        Время игрока:          <var:playtimehours> hours\n
+        Мут:                   <var:mutestatus> (Reason: <var:mutereason>)\n
+        Бан:                   <var:banstatus> (Reason: <var:banreason>)\n
+        Резервный слот:        replaceYesNo<var:hasreservedslot>\n
+        Дискорд синхронизация: replaceYesNo<var:issynced>
+        ```
+      regex: [ "replaceYesNoTrue":"Yes", "replaceYesNoFalse":"No", "replaceOnOffTrue":"On", "replaceOnOffFalse":"Off", "- <@0>": "", "\\(Reason: \\)":"" ]
+      cancel_regex: []
+
+  botactivity:
+    empty:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> Онлайн"
+      regex: [ ]
+    active:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> Онлайн"
+      regex: [ ]
+    full:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> Онлайн"
+      regex: []
+      cancel_regex: []
+
+  onbanrevoked:
+    ip:
+      # ip - string
+      # duration - string
+      # name - string
+      # issuer - string
+      # reason - string
+      message: "**IP-бан для <var:name> (<var:ip>) отменён. Изначально был забанен <var:issuer> на <var:duration>.**"
+      regex: []
+      cancel_regex: []
+    userid:
+      # userid - int
+      # duration - string
+      # name - string
+      # issuer - string
+      # reason - string
+      message: "**UserID-бан для <var:name> (<var:userid>) отменён. Изначально был забанен <var:issuer> на <var:duration>.**"
+      regex: []
+      cancel_regex: []
+
+  oninteract330:
+    # player - Player
+    # uses - int
+    message: "<var:player-name> (<var:player-userid>) использовал SCP-330 (<var:uses> использований)."
+    regex: []
+    cancel_regex: []
+
+  onmapgenerated:
+    message: "Участок фонда успешно сгенерирован!"
+    regex: []
+    cancel_regex: []
+
+  onplayerinteractlocker:
+    # chamber - Structure
+    # room - RoomType
+    # canopen - bool
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) провёл взаимодействие с <var:chamber> в <var:room>."
+    regex: []
+    cancel_regex: []
+
+  onplayerreceiveeffect:
+    # player - Player
+    # effect - string
+    # duration - float
+    # intensity - byte
+    message: "<var:player-name> (<var:player-userid>) получил эффект: <var:effect> на <var:duration> секунд с интенсивностью <var:intensity>."
+    regex: []
+    cancel_regex: []

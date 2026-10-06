@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package SCPDiscord.Interface;
+
+message KickallCommand
+{
+	uint64 channelID = 1;
+	string reason = 2;
+	string discordUsername = 3;
+	uint64 interactionID = 4;
+	string discordDisplayName = 5;
+	uint64 discordUserID = 6;
+}

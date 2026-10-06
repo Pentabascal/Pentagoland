@@ -1,0 +1,652 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Callvote-LabAPI</name>
+    </assembly>
+    <members>
+        <member name="T:Callvote.API.VoteHandler">
+            <summary>
+            Represents the static handler that manages <see cref="T:Callvote.Features.Vote"/> lifecycle and the <see cref="T:Callvote.Features.Vote"/> queue.
+            Provides methods to call, finish, enqueue, start <see cref="T:Callvote.Features.Vote"/>, add options, and many more.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.CurrentVote">
+            <summary>
+            Gets the currently active <see cref="T:Callvote.Features.Vote"/> instance. Null when no vote is in progress.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.VoteQueue">
+            <summary>
+            Gets queue of pending <see cref="T:Callvote.Features.Vote"/> instances. When queueing is enabled, new votes are placed here.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.PlayerCallVoteAmount">
+            <summary>
+            Gets tracks how many <see cref="T:Callvote.Features.Vote"/> each player has initiated during the current round.
+            Key: <see cref="T:LabApi.Features.Wrappers.Player"/> who called <see cref="T:Callvote.Features.Vote"/>. Value: number of <see cref="T:Callvote.Features.Vote"/> they've called.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.TemporaryVoteOptions">
+            <summary>
+            Gets temporary mapping for the <see cref="T:Callvote.Features.VoteOption"/>s.
+            This is cleared when <see cref="M:Callvote.API.VoteHandler.CallVote(Callvote.Features.Vote)"/> is invoked.
+            Cleared when the Vote starts.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.IsVoteActive">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Callvote.Features.Vote"/> is currently active.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.IsQueueFull">
+            <summary>
+            Gets a value indicating whether the Queue is full.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.IsQueuePaused">
+            <summary>
+            Gets or sets a value indicating whether the vote queue will or will not start the next vote even if entries exist.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteHandler.ShouldSendWebhookMessage">
+            <summary>
+            Gets or sets a value indicating whether the Discord Webhook will be able to send a webhook message.
+            </summary>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.CallVote(Callvote.Features.Vote)">
+            <summary>
+            Request to start a <see cref="T:Callvote.Features.Vote"/>.
+            If queueing is enabled the <paramref name="vote"/> will be enqueued
+            and <see cref="M:Callvote.API.VoteHandler.DequeueVote"/> will be called. If queueing is disabled and <see cref="P:Callvote.API.VoteHandler.CurrentVote"/> is null,
+            the <see cref="T:Callvote.Features.Vote"/> is started immediately.
+            </summary>
+            <param name="vote">The <see cref="T:Callvote.Features.Vote"/> to start or enqueue.</param>
+            <returns>A <see cref="T:Callvote.Features.Enums.CallVoteStatus"/> representing if the action was sucessfull, or for example, if the queue is full.</returns>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.DequeueVote">
+            <summary>
+            Attempts to start the next <see cref="T:Callvote.Features.Vote"/> in the <see cref="P:Callvote.API.VoteHandler.VoteQueue"/>. If no <see cref="T:Callvote.Features.Vote"/> is in progress and the <see cref="P:Callvote.API.VoteHandler.VoteQueue"/> is not paused and contains items,
+            dequeues the next <see cref="T:Callvote.Features.Vote"/> and starts it.
+            </summary>
+            <returns>A <see cref="T:Callvote.Features.Enums.CallVoteStatus"/> representing if the <see cref="F:Callvote.Features.Enums.CallVoteStatus.VoteStarted"/>, or <see cref="F:Callvote.Features.Enums.CallVoteStatus.VoteEnqueued"/> .</returns>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.FinishVote(System.Boolean)">
+            <summary>
+            Finishes and clears the active <see cref="T:Callvote.Features.Vote"/>.
+            Stops the vote, displays results (or invokes a callback when provided),
+            sends results to configured Discord webhook asynchronously if <see cref="P:Callvote.API.VoteHandler.ShouldSendWebhookMessage"/> is true, clears <see cref="P:Callvote.API.VoteHandler.CurrentVote"/> and, starts the next
+            queued <see cref="T:Callvote.Features.Vote"/> if queueing is enabled.
+            </summary>
+            <param name="isForced">If the voting will display the results message or invoke the Callback.</param>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.CreateVoteOption(System.String,System.String,Callvote.Features.VoteOption@)">
+            <summary>
+            Creates a <see cref="T:Callvote.Features.VoteOption"/> for the <see cref="T:Callvote.Features.Vote"/> creation process in <see cref="P:Callvote.API.VoteHandler.TemporaryVoteOptions"/>.
+            </summary>
+            <param name="option">The <see cref="T:Callvote.Features.VoteOption"/> Option.</param>
+            <param name="detail">The <see cref="T:Callvote.Features.VoteOption"/> Detail.</param>
+            <param name="vote">The <see cref="T:Callvote.Features.VoteOption"/> that was created.</param>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.AddVoteOption(Callvote.Features.VoteOption)">
+            <summary>
+            Adds a <see cref="T:Callvote.Features.VoteOption"/> for the <see cref="T:Callvote.Features.Vote"/> creation process in <see cref="P:Callvote.API.VoteHandler.TemporaryVoteOptions"/>.
+            </summary>
+            <param name="vote">The <see cref="T:Callvote.Features.VoteOption"/> that will be added.</param>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.IsCallVoteAllowed(LabApi.Features.Wrappers.Player)">
+            <summary>
+            Checks if a Player is able to call a <see cref="T:Callvote.Features.Vote"/> based on per-player call limits in the config.
+            </summary>
+            <param name="player">Player to check if he is able to call a <see cref="T:Callvote.Features.Vote"/> .</param>
+            <returns>If player is able to call a <see cref="T:Callvote.Features.Vote"/>.</returns>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.GetMessageFromCallVoteStatus(Callvote.Features.Enums.CallVoteStatus)">
+            <summary>
+            Returns the status message corresponding to the specified <see cref="T:Callvote.Features.Enums.CallVoteStatus"/>.
+            </summary>
+            <param name="status">The <see cref="T:Callvote.Features.Enums.CallVoteStatus"/> for which to retrieve the message.</param>
+            <returns>A string containing the message for the given status; returns an empty string if the status is not
+            recognized.</returns>
+        </member>
+        <member name="M:Callvote.API.VoteHandler.Clear">
+            <summary>
+            Clears handler state: per-player call counters, option mappings, queued votes, stops any running vote, and unpauses the queue.
+            Used during round resets or plugin reloads.
+            </summary>
+        </member>
+        <member name="T:Callvote.API.VoteTemplate.BinaryVote">
+            <summary>
+            Represents the type for the <see cref="T:Callvote.API.VoteTemplate.BinaryVote"/>, which only contains the Yes and No <see cref="T:Callvote.Features.VoteOption"/>s from the Translation File.
+            </summary>
+        </member>
+        <member name="M:Callvote.API.VoteTemplate.BinaryVote.#ctor(LabApi.Features.Wrappers.Player,System.String,System.String,System.Action{Callvote.Features.Vote},System.Collections.Generic.IEnumerable{LabApi.Features.Wrappers.Player})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.API.VoteTemplate.BinaryVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="question"><see cref="P:Callvote.Features.Vote.Question"/>.</param>
+            <param name="voteType"><see cref="P:Callvote.Features.Vote.VoteType"/>.</param>
+            <param name="callback"><see cref="P:Callvote.Features.Vote.Callback"/>.</param>
+            <param name="players"><see cref="P:Callvote.Features.Vote.AllowedPlayers"/>.</param>
+        </member>
+        <member name="P:Callvote.API.VoteTemplate.BinaryVote.YesVoteOption">
+            <summary>
+            Gets the Yes <see cref="T:Callvote.Features.VoteOption"/> option.
+            </summary>
+        </member>
+        <member name="P:Callvote.API.VoteTemplate.BinaryVote.NoVoteOption">
+            <summary>
+            Gets the No <see cref="T:Callvote.Features.VoteOption"/> option.
+            </summary>
+        </member>
+        <member name="T:Callvote.API.VoteTemplate.CustomVote">
+            <summary>
+            Represents the type that creates a <see cref="T:Callvote.API.VoteTemplate.CustomVote"/>.
+            </summary>
+        </member>
+        <member name="M:Callvote.API.VoteTemplate.CustomVote.#ctor(LabApi.Features.Wrappers.Player,System.String,System.String,System.Action{Callvote.Features.Vote},System.Collections.Generic.HashSet{Callvote.Features.VoteOption},System.Collections.Generic.IEnumerable{LabApi.Features.Wrappers.Player})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.API.VoteTemplate.CustomVote"/> class.
+            </summary>
+            <param name="player">The <see cref="T:LabApi.Features.Wrappers.Player"/> that called the vote.</param>
+            <param name="question">A <see cref="T:System.String"/> that represents the vote question.</param>
+            <param name="voteType">A <see cref="T:System.String"/> that represents the vote type.</param>
+            <param name="callback">A <see cref="T:System.Action`1"/> that takes in a <see cref="T:Callvote.Features.Vote"/> that works as a callback.</param>
+            <param name="options">A <see cref="T:System.Collections.Generic.HashSet`1"/> that takes in a <see cref="T:Callvote.Features.VoteOption"/>. If null, uses <see cref="P:Callvote.API.VoteHandler.TemporaryVoteOptions"/> instead.</param>
+            <param name="players">A <see cref="T:System.Collections.Generic.IEnumerable`1"/> that takes <see cref="T:LabApi.Features.Wrappers.Player"/>s that are only allowed to see and vote in a <see cref="T:Callvote.Features.Vote"/>. If null, gets all ready players instead.</param>
+        </member>
+        <member name="M:Callvote.API.VoteTemplate.CustomVote.#ctor(LabApi.Features.Wrappers.Player,System.String,System.String,Callvote.Features.Interfaces.IPredefinedVote)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.API.VoteTemplate.CustomVote"/> class with the <see cref="P:Callvote.Features.Vote.VoteOptions"/> and <see cref="P:Callvote.Features.Vote.Callback"/> from a <see cref="T:Callvote.Features.Interfaces.IPredefinedVote"/>.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="question"><see cref="P:Callvote.Features.Vote.Question"/>.</param>
+            <param name="voteType"><see cref="P:Callvote.Features.Vote.VoteType"/>.</param>
+            <param name="voteTemplate">The <see cref="T:Callvote.Features.Interfaces.IPredefinedVote"/> to be copied from.</param>
+        </member>
+        <member name="T:Callvote.Features.ChangeTranslation">
+            <summary>
+            Represents the type that handles changing Callvote's translations.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.ChangeTranslation.LoadTranslation(System.String)">
+            <summary>
+            Gets and loads a translation from Callvote's Github Repository.
+            </summary>
+            <param name="language">The language that will be loaded.</param>
+            <returns>If downloading and loading the translation file was sucessfull.</returns>
+        </member>
+        <member name="T:Callvote.Features.DisplayMessageHelper">
+            <summary>
+            Represents the type that displays the messages during the vote lifecycle, such as the first message with the question and options, the message that updates while vote is active, and the final results message.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.DisplayMessageHelper.DisplayFirstMessage(System.String,System.String@)">
+            <summary>
+            Displays the initial message to <see cref="P:Callvote.Features.Vote.AllowedPlayers"/> based on the <see cref="T:Callvote.SoftDependencies.Interfaces.IMessageProvider"/>.
+            </summary>
+            <param name="question">The question to be displayed.</param>
+            <param name="firstMessage">The message that was sent.</param>
+            <remarks>
+            This is a behaviour from the legacy Callvote, where it would a wait 5 seconds before actually showing the counter. I kept it to keep the old feeling.
+            </remarks>
+        </member>
+        <member name="M:Callvote.Features.DisplayMessageHelper.DisplayWhileVoteMessage(System.String)">
+            <summary>
+            Displays the message while <see cref="P:Callvote.API.VoteHandler.IsVoteActive"/> to <see cref="P:Callvote.Features.Vote.AllowedPlayers"/> based on the <see cref="T:Callvote.SoftDependencies.Interfaces.IMessageProvider"/>.
+            </summary>
+            <param name="firstMessage">The first message sent when the <see cref="T:Callvote.Features.Vote"/> started.</param>
+            <remarks>
+            This message contains the first message and the options with their respective counters.
+            </remarks>
+        </member>
+        <member name="M:Callvote.Features.DisplayMessageHelper.DisplayResultsMessage">
+            <summary>
+            Displays the results message based on <see cref="P:Callvote.Features.Vote.Counter"/> and <see cref="P:Callvote.Features.Vote.VoteOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.DisplayMessageHelper.CalculateMessageSize(System.String)">
+            <summary>
+            Calculates the size tag for the message based on its length and Callvote's configuration.
+            </summary>
+            <param name="message">The message to have it's size calculated.</param>
+            <remarks>
+            I don't really know how I got to those values but they should make everything still be visible when there's too many characters in the message.
+            </remarks>
+            <returns>An number for the size tag.</returns>
+        </member>
+        <member name="T:Callvote.Features.Enums.CallVoteStatus">
+            <summary>
+            Represents the enumeration for the <see cref="M:Callvote.API.VoteHandler.CallVote(Callvote.Features.Vote)"/> Status.
+            </summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.VoteEnqueued">
+            <summary><see cref="T:Callvote.Features.Vote"/>  was enqueued.</summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.VoteStarted">
+            <summary><see cref="T:Callvote.Features.Vote"/>  has started.</summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.VoteInProgress">
+            <summary>There is a <see cref="T:Callvote.Features.Vote"/> currently in progress.</summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.QueueIsFull">
+            <summary>The <see cref="P:Callvote.API.VoteHandler.VoteQueue"/> is full.</summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.QueueDisabled">
+            <summary>The <see cref="P:Callvote.API.VoteHandler.VoteQueue"/> is disabled.</summary>
+        </member>
+        <member name="F:Callvote.Features.Enums.CallVoteStatus.MaxedCallVotes">
+            <summary>The Player reached the maximum ammount of votes in a round.</summary>
+        </member>
+        <member name="T:Callvote.Features.Enums.VoteType">
+            <summary>
+            Represents the enumeration for <see cref="T:Callvote.Features.Vote"/> types.
+            </summary>
+        </member>
+        <member name="T:Callvote.Features.Interfaces.IPredefinedVote">
+            <summary>
+            Represents the interface for Vote templates.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Interfaces.IPredefinedVote.Callback">
+            <summary>
+            Gets <see cref="P:Callvote.Features.Vote.Callback"/> of the template.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Interfaces.IPredefinedVote.VoteOptions">
+            <summary>
+            Gets <see cref="P:Callvote.Features.Vote.VoteOptions"/> of the template.
+            </summary>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.FFVote">
+            <summary>
+            Represents the type for the Friendly Fire enable/disable Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.FFVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.FFVote.#ctor(LabApi.Features.Wrappers.Player)">
+            <summary>
+            Represents the type for the Friendly Fire enable/disable Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.FFVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.KickVote">
+            <summary>
+            Represents the type for the Kick Player Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.KickVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="ofender">The <see cref="T:LabApi.Features.Wrappers.Player"/> that is going to be kicked.</param>
+            <param name="reason">The reason for the kick.</param>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.KickVote.#ctor(LabApi.Features.Wrappers.Player,LabApi.Features.Wrappers.Player,System.String)">
+            <summary>
+            Represents the type for the Kick Player Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.KickVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="ofender">The <see cref="T:LabApi.Features.Wrappers.Player"/> that is going to be kicked.</param>
+            <param name="reason">The reason for the kick.</param>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.KillVote">
+            <summary>
+            Represents the type for the Kill Player Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.KillVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="ofender">The <see cref="T:LabApi.Features.Wrappers.Player"/> that is going to be killed.</param>
+            <param name="reason">The reason for the kick.</param>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.KillVote.#ctor(LabApi.Features.Wrappers.Player,LabApi.Features.Wrappers.Player,System.String)">
+            <summary>
+            Represents the type for the Kill Player Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.KillVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+            <param name="ofender">The <see cref="T:LabApi.Features.Wrappers.Player"/> that is going to be killed.</param>
+            <param name="reason">The reason for the kick.</param>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.NukeVote">
+            <summary>
+            Represents the type for the Nuke Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.NukeVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.NukeVote.#ctor(LabApi.Features.Wrappers.Player)">
+            <summary>
+            Represents the type for the Nuke Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.NukeVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.RespawnWaveVote">
+            <summary>
+            Represents the type for the Respawn Wave Predefined Vote.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.RespawnWaveVote.#ctor(LabApi.Features.Wrappers.Player)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.RespawnWaveVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="P:Callvote.Features.PredefinedVotes.RespawnWaveVote.NoVoteOption">
+            <summary>
+            Gets the No <see cref="T:Callvote.Features.VoteOption"/> option.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.PredefinedVotes.RespawnWaveVote.MtfVoteOption">
+            <summary>
+            Gets the Mtf <see cref="T:Callvote.Features.VoteOption"/> option.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.PredefinedVotes.RespawnWaveVote.CiVoteOption">
+            <summary>
+            Gets the Ci <see cref="T:Callvote.Features.VoteOption"/> option.
+            </summary>
+        </member>
+        <member name="T:Callvote.Features.PredefinedVotes.RestartRoundVote">
+            <summary>
+            Represents the type for the Restart Round Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.RestartRoundVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="M:Callvote.Features.PredefinedVotes.RestartRoundVote.#ctor(LabApi.Features.Wrappers.Player)">
+            <summary>
+            Represents the type for the Restart Round Predefined Vote.
+            Initializes a new instance of the <see cref="T:Callvote.Features.PredefinedVotes.RestartRoundVote"/> class.
+            </summary>
+            <param name="player"><see cref="P:Callvote.Features.Vote.CallVotePlayer"/>.</param>
+        </member>
+        <member name="T:Callvote.Features.Vote">
+            <summary>
+            Represents the type that manages and creates the <see cref="T:Callvote.Features.Vote"/>.
+            Responsible for the <see cref="T:Callvote.Features.Vote"/> cycle, and managing the <see cref="T:Callvote.Features.VoteOption"/>s.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.Vote.#ctor(LabApi.Features.Wrappers.Player,System.String,System.String,System.Action{Callvote.Features.Vote},System.Collections.Generic.HashSet{Callvote.Features.VoteOption},System.Collections.Generic.IEnumerable{LabApi.Features.Wrappers.Player})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.Features.Vote"/> class.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.CallVotePlayer">
+            <summary>
+            Gets the player who called the <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.CallVotePlayerId">
+            <summary>
+            Gets the id of the player who called the <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.Question">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.Vote"/> question.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.VoteType">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.Vote"/> type.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.Callback">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.Vote"/> callback.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.AllowedPlayers">
+            <summary>
+            Gets the allowed players that can see and vote on the <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.VoteOptions">
+            <summary>
+            Gets the <see cref="T:System.Collections.Generic.HashSet`1"/> with the available <see cref="T:Callvote.Features.VoteOption"/>s in the <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <remarks><see cref="T:Callvote.Features.VoteOption"/>s can have the same <see cref="P:Callvote.Features.VoteOption.Option"/>, but not the <see cref="P:Callvote.Features.VoteOption.Command"/>.</remarks>
+        </member>
+        <member name="P:Callvote.Features.Vote.ShouldOnlyShowQuestionAndCounter">
+            <summary>
+            Gets a value indicating whether it should only show the configured question and the counter.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.CanShowMessages">
+            <summary>
+            Gets a value indicating whether it can show messages.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.VoteId">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.Vote"/> ID.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.PlayerVote">
+            <summary>
+            Gets the Dictionary of Players with their <see cref="T:Callvote.Features.VoteOption"/> in the <see cref="T:Callvote.Features.Vote"/> .
+            Key: Player. Value: <see cref="T:Callvote.Features.VoteOption"/>.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.Vote.Counter">
+            <summary>
+            Gets the ammount of votes of a <see cref="T:Callvote.Features.VoteOption"/> in a <see cref="T:Callvote.Features.Vote"/>.
+            Key: <see cref="T:Callvote.Features.VoteOption"/>. Value: Ammount of votes.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.Vote.SubmitVoteOption(LabApi.Features.Wrappers.Player,Callvote.Features.VoteOption)">
+            <summary>
+            Makes a <see cref="T:LabApi.Features.Wrappers.Player"/> vote on a <see cref="T:Callvote.Features.VoteOption"/> of a <see cref="T:Callvote.Features.Vote"/>.
+            </summary>
+            <param name="player">The <see cref="T:LabApi.Features.Wrappers.Player"/> who is will be submiting the vote option.</param>
+            <param name="vote">The <see cref="T:Callvote.Features.VoteOption"/> that will be selected.</param>
+            <returns>A <see cref="T:System.Boolean"/> representing if the vote process was sucessful or not.</returns>
+            <remarks>
+            The vote will only go through if the <see cref="F:Callvote.Features.Vote.voteCoroutine"/> is active.
+            </remarks>
+        </member>
+        <member name="M:Callvote.Features.Vote.GetVoteOptionFromCommand(System.String)">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> in a <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <param name="command">The command that will be searched for.</param>
+            <returns>A <see cref="T:Callvote.Features.VoteOption"/> if found, otherwise null.</returns>
+        </member>
+        <member name="M:Callvote.Features.Vote.GetVoteOptions(System.String)">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> in a <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <param name="option">The option that will be searched for.</param>
+            <returns>A <see cref="T:System.Collections.Generic.HashSet`1"/> .</returns>
+            <remarks><see cref="T:Callvote.Features.VoteOption"/>s in <see cref="P:Callvote.Features.Vote.VoteOptions"/> can have the same <see cref="P:Callvote.Features.VoteOption.Option"/>, consider using <see cref="M:Callvote.Features.Vote.GetVoteOptionFromCommand(System.String)"/> if you made sure the command is not already registed by another plugin.</remarks>
+        </member>
+        <member name="M:Callvote.Features.Vote.TryGetVoteOptionFromCommand(System.String,Callvote.Features.VoteOption@)">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> in a <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <param name="command">The string option that will be searched for.</param>
+            <param name="vote">Returns a <see cref="T:Callvote.Features.VoteOption"/> if found, otherwise null.</param>
+            <returns>If the specific <see cref="T:Callvote.Features.VoteOption"/> was found.</returns>
+        </member>
+        <member name="M:Callvote.Features.Vote.IsVoteOptionPresent(Callvote.Features.VoteOption)">
+            <summary>
+            Checks if a <see cref="T:Callvote.Features.VoteOption"/> exists in a <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <param name="vote">The <see cref="T:Callvote.Features.VoteOption"/> that will be searched for.</param>
+            <returns>A true if found, otherwise false.</returns>
+        </member>
+        <member name="M:Callvote.Features.Vote.GetVoteOptionPercentage(Callvote.Features.VoteOption)">
+            <summary>
+            Gets a <see cref="T:Callvote.Features.VoteOption"/> percentage based on <see cref="P:Callvote.Features.Vote.AllowedPlayers"/> in a <see cref="T:Callvote.Features.Vote"/> .
+            </summary>
+            <param name="voteOption">The <see cref="T:Callvote.Features.VoteOption"/> that will be searched for.</param>
+            <returns>A int value as a percentage.</returns>
+        </member>
+        <member name="M:Callvote.Features.Vote.GetWinningVoteOption">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> that has the most ammount of votes .
+            </summary>
+            <returns>Ai<see cref="T:Callvote.Features.VoteOption"/> with the most ammount of votes in this <see cref="T:Callvote.Features.Vote"/>.</returns>
+        </member>
+        <member name="M:Callvote.Features.Vote.Rig(System.String,Callvote.Features.VoteOption@,System.Int32)">
+            <summary>
+            Rigs the <see cref="T:Callvote.Features.Vote"/> <see cref="P:Callvote.Features.Vote.Counter"/> .
+            </summary>
+            <param name="option">The option that will be rigged.</param>
+            <param name="vote">The <see cref="T:Callvote.Features.VoteOption"/> from the <see cref="T:Callvote.Features.Vote"/>.</param>
+            <param name="amount">The ammount of votes added to that option.</param>
+            <returns>If the vote rigging was sucessful or not.</returns>
+            <remarks>
+            The vote will only go through if the <see cref="F:Callvote.Features.Vote.voteCoroutine"/> is active.
+            </remarks>
+        </member>
+        <member name="M:Callvote.Features.Vote.Start">
+            <summary>
+            Starts the <see cref="T:Callvote.Features.Vote"/> by registering the commands and starting the coroutine.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.Vote.Stop">
+            <summary>
+            Stops the <see cref="T:Callvote.Features.Vote"/> by unregistering the command and stopping the coroutine.
+            </summary>
+        </member>
+        <member name="T:Callvote.Features.VoteOption">
+            <summary>
+            Represents the type that manages and creates a <see cref="T:Callvote.Features.VoteOption"/> Option.
+            Responsible for the <see cref="T:Callvote.Features.VoteOption"/> Option, Detail and Command Registration.
+            </summary>
+            <remarks>The Command syntax might change if a command is already registered.</remarks>
+        </member>
+        <member name="M:Callvote.Features.VoteOption.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Callvote.Features.VoteOption"/> class with the specified option and detail.
+            </summary>
+            <param name="option">The <see cref="T:Callvote.Features.VoteOption"/> Option.</param>
+            <param name="detail">The <see cref="T:Callvote.Features.VoteOption"/> <see cref="P:Callvote.Features.VoteOption.Detail"/>.</param>
+        </member>
+        <member name="P:Callvote.Features.VoteOption.Option">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> Option.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.VoteOption.Detail">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> Detail, which is the description of the option.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.VoteOption.Command">
+            <summary>
+            Gets the <see cref="T:Callvote.Features.VoteOption"/> Command.
+            </summary>
+        </member>
+        <member name="P:Callvote.Features.VoteOption.IsCommandRegistered">
+            <summary>
+            Gets a value indicating whether the <see cref="P:Callvote.Features.VoteOption.Command"/> was registered.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.VoteOption.RegisterCommand">
+            <summary>
+            Registers the <see cref="P:Callvote.Features.VoteOption.Command"/>.
+            </summary>
+        </member>
+        <member name="M:Callvote.Features.VoteOption.UnregisterCommand">
+            <summary>
+            Unregisters the <see cref="P:Callvote.Features.VoteOption.Command"/>.
+            </summary>
+        </member>
+        <member name="T:Callvote.SoftDependencies.DiscordEmbed">
+            <summary>
+            Represents the type that handles Callvote's Webhook Soft Dependency System.
+            </summary>
+        </member>
+        <member name="P:Callvote.SoftDependencies.DiscordEmbed.Provider">
+            <summary>
+            Gets the <see cref="T:Callvote.SoftDependencies.Interfaces.IWebhookProvider"/> instance based on if DiscordLab is Loaded or not.
+            </summary>
+        </member>
+        <member name="T:Callvote.SoftDependencies.DisplayMessage">
+            <summary>
+            Represents the type that handles Callvote's Message Soft Dependency System.
+            </summary>
+        </member>
+        <member name="P:Callvote.SoftDependencies.DisplayMessage.Provider">
+            <summary>
+            Gets the <see cref="T:Callvote.SoftDependencies.Interfaces.IMessageProvider"/> instance based on the configured message provider.
+            </summary>
+        </member>
+        <member name="T:Callvote.SoftDependencies.Interfaces.IMessageProvider">
+            <summary>
+            Represents the interface for the type that provides message displaying functionality to Callvote.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.Interfaces.IMessageProvider.Show(System.TimeSpan,System.String,System.Collections.Generic.HashSet{LabApi.Features.Wrappers.Player})">
+            <summary>
+            Represents the interface for the type that provides message displaying functionality to Callvote.
+            </summary>
+            <param name="duration">The duration of the message.</param>
+            <param name="content">The message that is going to be displayed.</param>
+            <param name="players">The players to be displayed to.</param>
+        </member>
+        <member name="T:Callvote.SoftDependencies.Interfaces.IWebhookProvider">
+            <summary>
+            Represents the interface for Webhook Providers, which are used to send messages via Webhooks to Discord.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.Interfaces.IWebhookProvider.SendVoteResults(Callvote.Features.Vote)">
+            <summary>
+            Sends a Vote Results message to the Webhook with the specified question, player and votes.
+            </summary>
+            <param name="vote">The <see cref="T:Callvote.Features.Vote"/> that just ended.</param>
+        </member>
+        <member name="T:Callvote.SoftDependencies.MessageProviders.BroadcastProvider">
+            <summary>
+            Represents the type that provides broadcasts messages.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.MessageProviders.BroadcastProvider.Show(System.TimeSpan,System.String,System.Collections.Generic.HashSet{LabApi.Features.Wrappers.Player})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Callvote.SoftDependencies.MessageProviders.HSMHintProvider">
+            <summary>
+            Represents the type that provides HintServiceMeow messages.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.MessageProviders.HSMHintProvider.Show(System.TimeSpan,System.String,System.Collections.Generic.HashSet{LabApi.Features.Wrappers.Player})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Callvote.SoftDependencies.MessageProviders.RueIHintProvider">
+            <summary>
+            Represents the type that provides RueI messages.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.MessageProviders.RueIHintProvider.Show(System.TimeSpan,System.String,System.Collections.Generic.HashSet{LabApi.Features.Wrappers.Player})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Callvote.SoftDependencies.WebhookProviders.DiscordLabMessageProvider">
+            <summary>
+            Represents the type that sends a vote result via DiscordLab Webhook using DiscordLab's Bot.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.WebhookProviders.DiscordLabMessageProvider.SendVoteResults(Callvote.Features.Vote)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Callvote.SoftDependencies.WebhookProviders.ScpDiscordMessageProvider">
+            <summary>
+            Represents the type that sends a vote result via DiscordLab Webhook using DiscordLab's Bot.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.WebhookProviders.ScpDiscordMessageProvider.SendVoteResults(Callvote.Features.Vote)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Callvote.SoftDependencies.WebhookProviders.WebhookProvider">
+            <summary>
+            Represents the type that sends a vote result via Callvote's implementation of a webhook.
+            </summary>
+        </member>
+        <member name="M:Callvote.SoftDependencies.WebhookProviders.WebhookProvider.SendVoteResults(Callvote.Features.Vote)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

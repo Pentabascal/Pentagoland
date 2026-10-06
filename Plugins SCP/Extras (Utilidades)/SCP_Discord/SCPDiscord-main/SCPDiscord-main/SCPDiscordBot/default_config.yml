@@ -1,0 +1,83 @@
+﻿############# SCPDiscord bot configuration file #############
+
+
+bot:
+    # The bot token from https://discord.com/developers/applications.
+    token: "add-your-token-here"
+
+    # Your Discord server's ID.
+    server-id: 000000000000000000
+
+    admin-chat:
+        # The in-game admin chat is mirrored to this Discord channel. Set it to 0 to disable the admin chat integration.
+        channel-id: 000000000000000000
+
+        # Whether to ignore other bots writing in this channel.
+        # You may want to turn this off if you have multiple SCPDiscord bots using the same channel so different servers can see each others messages.
+        ignore-bots: true
+
+        # Whether to show Discord messages at the top of the screen for all players with admin chat permissions.
+        broadcast-messages: true
+
+        # Whether to show Discord nicknames instead of usernames.
+        use-nicknames: false
+
+    # Decides what messages are shown in console.
+    # Possible values are: Critical, Error, Warning, Information, Debug.
+    log-level: "Information"
+
+    # Set which Discord status should be used when the server is offline.
+    # Possible values are: Offline, Online, Idle, DoNotDisturb, Invisible
+    status-type: "DoNotDisturb"
+
+    # Sets the type of activity for the bot to display in its presence status when the server is offline.
+    # Possible values are: Playing, Streaming, ListeningTo, Watching, Custom, Competing.
+    presence-type: "Custom"
+
+    # Sets the activity text shown in the bot's status.
+    presence-text: "Server offline"
+
+    # Disable and delete all existing Discord commands for this bot.
+    disable-commands: false
+
+    # Log all console output to a file, can be overridden using command line arguments. Set to "" to disable.
+    # When running the bot as a service, this will be set to "/var/log/scpdiscord/scpdiscord*.log" by the service.
+    # The log file will still log all log levels regardless of the console log level setting.
+    log-file: ""
+
+# Sets command permissions for roles, affects the /server and /ra commands.
+# The permissions use regex matching, which you can use for more advanced configuration.
+# You can use 0 as the id for the @everyone role.
+permissions:
+    # Everyone.
+    000000000000000000:
+        - "hello"
+        - "uptime"
+        - "pbc KarlOfDuty [2-5]"
+    # Moderator.
+    111111111111111111:
+        - "pbc"
+        - "bc"
+    # Admin.
+    222222222222222222:
+        - "pbc"
+        - "bc"
+        - "softrestart"
+        - "restartnextround"
+
+plugin:
+    # Host to listen on, localhost by default.
+
+    # It is HIGHLY recommended to keep this at "127.0.0.1" if you don't absolutely
+    # have to change it (like for instance when running the bot and server on different devices).
+
+    # WINDOWS: Try changing this to "0.0.0.0" (listen on all addresses) if the plugin isn't able to connect,
+    # some Windows setups don't seem to work with a set address to listen on.
+
+    # WARNING: In case you listen on something other than "127.0.0.1", make sure your firewall rules
+    # are correct so any outside connections (except the plugin's) are blocked on the below port.
+    address: "127.0.0.1"
+
+    # Port to listen on, this must be the same as the "bot port" in the plugin config.
+    # All bots/servers you run must use different ports, or they will clash.
+    port: 8888

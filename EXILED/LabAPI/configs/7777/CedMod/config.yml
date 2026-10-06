@@ -1,0 +1,185 @@
+debug: false
+ced_mod:
+# kick a player if they have a name someone else already has
+  kick_same_name: true
+  # API key for the plugin to use, find yours here https://admin.cedmod.nl/ On the Statistics page of your server (Create one if you didnt already)
+  ced_mod_api_key: ""
+  # If true the CedMod FF Autoban will be used
+  autoban_enabled: false
+  # The amount of people a user has to kill before being autobanned
+  autoban_threshold: 3
+  # The duration of the autoban ban a user will get if the autoban is triggered in MINUTES
+  autoban_duration: 4320
+  # The Hint (message) the teamkilling victim will receive
+  autoban_victim_hint: >-
+    <size=25><b><color=yellow>You have been teamkilled by: </color></b></size><color=red><size=25> {attackerName} ({attackerID} {attackerRole} You were a {playerRole}</size></color>
+
+    <size=25><b><color=yellow> Use this as a screenshot as evidence for a report</color></b>
+
+    {AutobanExtraMessage}
+
+    </size><size=25><i><color=yellow> Note: if they continues to teamkill the server will ban them</color></i></size>
+  # The Hint (message) the teamkilling perpetrator will receive
+  autoban_perpetrator_hint: <color=yellow><b> If you continue teamkilling it will result in a ban</b></color>
+  # The Hint (message) the teamkilling perpetrator will receive (displaying the user)
+  autoban_perpetrator_hint_user: '<b><color=yellow>You teamkilled: </color></b><color=red> {playerName} </color>'
+  # The Hint (message) the teamkilling perpetrator will receive if he has FriendlyFire immunity 
+  autoban_perpetrator_hint_immunity: <color=#49E1E9><b> You have Friendly Fire Ban Immunity.</b></color>
+  # The Broadcast that will be displayed upon the player getting autobanned
+  autoban_broadcast_mesage: '<size=25><b><color=yellow>user: </color></b><color=red> {attackerName} </color><color=yellow><b> has been automatically banned for teamkilling</b></color></size>'
+  # The ban reason of the ban a user gets if the autoban is triggered
+  autoban_reason: You have been automatically banned for teamkilling
+  # If the autoban will count pink candy teamkills
+  autoban_pink_candies: true
+  # If the autoban will count killing disarmed class D as teamkill
+  autoban_disarmed_class_d_tk: true
+  # If the autoban will count killing disarmed scientists as teamkill
+  autoban_disarmed_scientist_d_tk: true
+  # If the autoban will count class D vs class D as teamkill
+  autoban_class_dvs_class_d: true
+  # If set the FF Autoban will add this onto the message sent to the victim.
+  autoban_extra_message: ''
+  # Additional message when a banned member tries to join or gets banned.
+  additional_ban_message: ''
+  # Message sent to the user when they get muted or join while muted
+  mute_message: >-
+    You have been {type} muted on this server by an Admin.
+
+    Duration: {duration}
+
+    Reason: {reason}
+  # Message shown on the players 'CustomInfo' to indicate that they are muted
+  mute_custom_info: '{type} muted by an admin.'
+  # If mutes are required to set and use a Duration and Reason
+  use_mute_duration_and_reason: false
+  # If mutes will only be possible using the panel
+  only_allow_panel_mutes: false
+  # If Enabled mutes that dont have a duration specified will have this duration, Set to a low value if you wish for ingame mutes to only apply for a small amount of time, Mutes with a duration smaller or equal to 3 minutes (value of 3) will not be synced to the panel.
+  default_mute_duration: 143998560
+  # If debug logs are shown
+  show_debug: false
+  # If set to false, the plugin will not automatically check for updates (All updates are tested before pushed live)
+  auto_update: true
+  # If set to true, the plugin will softrestart the server at the end of the round if an update is pending (All updates are tested before pushed live)
+  auto_update_round_end: true
+  # If an update is pending and the server has been empty for the past X time, the plugin will start the autoupdate process (All updates are tested before pushed live)
+  auto_update_wait: 5
+  # If bullet holes should be spawned for a player that is globally muted.
+  prevent_bullet_holes_when_muted: true
+  # If true Ingame reports are enabled, if false the IngameReportDisabledMessage will be shown to the user.
+  enable_ingame_reports: true
+  # If EnableIngameReports is set to false this message will be shown to the user.
+  ingame_report_disabled_message: Ingame reporting is disabled on this server.
+  # Disables the fakesyncing used to confuse cheater's playerlist by showing players that are out of range as Filmmaker aswel as disabling the ESP prevention (esp prevention will use raycasts and other checks to ensure there is a LOS on the player before showing)
+  disable_fake_syncing: false
+  # Toggles transparant primitives to the 'Glass' layer to allow anti ESP to work with primitives that are transparant, note that this will also affect 173 and 096
+  primitive_transparancy_detection: true
+  # Whether or not the jail command should be registered, disable if you'd rather another plugin made the jail system.
+  should_register_jail_command: true
+  # Whether or not RequestData should have fields added by CedMod such as Active Flags and Warn/BanLog count for those who have cedmod.requestdata permission
+  disable_cedmod_adding_fields_in_request_data: false
+  # Whether or not CedMod should add prefixes such as [WL] (Watchlist)/[WG] & [WMG] (Group Watchlist) to players in RA Player List
+  disable_watchlist_prefixes_in_ra_player_list: false
+query_system:
+# Commands in this list will not be allowed to run via the web API (must be uppercase)
+  disallowed_web_commands:
+  - REQUEST_DATA AUTH
+  - GBAN_KICK
+  # If true, the plugin will reject any remote command from the panel WARNING: THIS WILL BREAK FEATURES SUCH AS, Remote Commands, Event Manager, AND POSSIBLY MORE
+  reject_remote_commands: false
+  # If true, the plugin will sync predefined reasons with the panel
+  enable_banreason_sync: true
+  # If true, the plugin will automatically enable and setup the External lookup function in remote admin
+  enable_external_lookup: true
+  # Server full text.
+  server_full_base: Server is full.
+  # If true, the plugin will show a custom message when the server is full, promote your patreon reserved slots here :)
+  custom_server_full_message: ''
+  # Users that are not allowed to create reports.
+  report_blacklist: []
+  # If players are allowed to report staff members
+  staff_report_allowed: false
+  # The message that players recieve if they try to report a staff member
+  staff_report_message: You can not report a staff member
+  # The message that players recieve when their report has been sent
+  report_success_message: Report has been sent, Server staff will assist you as soon as possible
+  # If debug messages are shown
+  debug: false
+  # Experimental RemoteCommands Feature, if the executing player is not present, the server will spawn a dummy player, run the command, and despawn the dummy
+  dummy_experimental: false
+  # The message show to staff when a new report gets made
+  staff_report_notification: <size=30><color=yellow>{reporterName} has reported {reportedName} check {checkType} for more info.</color></size>
+  # The message show to staff in staff chat when a new report gets made
+  staff_report_admin_chat_message: >-
+    <align=center><color=red><u>REPORT RECEIVED</u></color></align>
+
+    <color=yellow>Reporter: </color>{reporterName}
+
+    <color=yellow>Reported: </color>{reportedName}
+
+    <color=yellow>Reason: </color>{reason}
+  # The message show to staff in staff chat when a new report state gets updated
+  staff_report_admin_chat_update_message: >-
+    <align=center><color=red><u>REPORT UPDATED</u></color></align>
+
+    <color=yellow>New State: </color>{state}
+
+    <color=yellow>Handler: </color>{handler}
+
+    <color=yellow>Reporter: </color>{reporterName}
+
+    <color=yellow>Reported: </color>{reportedName}
+
+    <color=yellow>Reason: </color>{reason}
+  # The message show to staff if they do not have the ingame report in RA enabled
+  staff_report_notification_ingame_disabled: >-
+    <size=25>To be able to view ingame reports in RemoteAdmin, open the CedMod website (External Lookup or navigating directly)
+
+    Click on your user icon, and click Instance Preferences.
+
+    enable RemoteAdminReports</size>
+  # The message show to a player when a the state of their report updates
+  player_report_update_notification: <size=30><color=yellow>Your report regarding {reportedName} is now {reportState} by {handlerName}</size>
+  # The message show to staff if they do not have the ingame report in RA enabled
+  staff_report_watchlist_ingame_disabled: >-
+    <size=25>To be able to view Watchlisted players RemoteAdmin, open the CedMod website (External Lookup or navigating directly)
+
+    Click on your user icon, and click Instance Preferences.
+
+    enable ShowWatchListUsersInRemoteAdmin</size>
+  # The message show to staff when a player on the watchlist joins
+  player_watchlist_join: '<size=25><color=yellow>{playerId} - {playerName} ({userId}) is on the watchlist for: {reason}</size></color>'
+  # The message show to staff in staff chat when a player on the watchlist joins
+  player_watchlist_join_staff_chat: >-
+    <align=center><color=red><u>WATCHLIST</u></color></align>
+
+    <color=yellow>Player: </color>
+
+    {playerId} - {playerName} ({userId})
+
+    <color=yellow>Reason: </color>{reason}
+  # The message show to staff when a player on the Group Watchlist joins
+  player_group_watchlist_join: >-
+    <size=25><color=yellow>{playerId} - {playerName} ({userId}) is on the Group watchlist:
+
+    Groups: {groups}
+
+    Reason: {reason}</size></color>
+  # The message show to staff in staff chat when a player on the Group watchlist joins
+  player_watch_grouplist_join_staff_chat: >-
+    <align=center><color=red><u>GROUP WATCHLIST</u></color></align>
+
+    <color=yellow>Player: </color>
+
+    {playerId} - {playerName} ({userId})
+
+    <color=yellow>Groups: </color>{groups}
+
+    <color=yellow>Reason: </color>{reason}
+  # If the StaffInfo system is enabled, this will show the ban, warn and mute info to staff when they are Tutorial, or when they are spectacting the player in overwatch or spectator depending on their UserPreferences.
+  staff_info_system: false
+event_manager:
+# Indicates whether the plugin is enabled or not
+  is_enabled: true
+  # If debug messages are shown
+  debug: false

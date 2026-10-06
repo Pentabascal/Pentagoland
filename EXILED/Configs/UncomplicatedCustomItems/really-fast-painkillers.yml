@@ -1,0 +1,55 @@
+id: 8
+name: Really fast painkillers
+description: This painkillers regenerate lots of health within seconds but you'll have to wait...
+extended_description: ''
+badge_name: Painkillers
+badge_color: pumpkin
+weight: 2
+item: Painkillers
+scale:
+  x: 5
+  y: 5
+  z: 5
+spawn:
+  do_spawn: false
+  count: 1
+  spawn_settings:
+  - chance: 30
+    coords:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    locker_settings:
+      enable: false
+      locker_type: RifleRack
+      room: HczWarhead
+      zone: HeavyContainment
+      chamber: ''
+      offset:
+        x: 0
+        y: 0
+        z: 0
+    dynamic_spawn:
+    - room: Lcz914
+      coords:
+        x: 1
+        y: 1
+        z: 1
+    zones:
+    - HeavyContainment
+    - Entrance
+    replace_existing_pickup: false
+    force_item: false
+    replace_items_in_pedestals: false
+custom_modules: {}
+arguments: {}
+custom_item_type: Painkillers
+custom_data:
+  tick_heal: 1
+  time_before_start_healing: 10
+  tick_time: 0.100000001
+  total_healing: 50

@@ -1,0 +1,1095 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Main room structural floor",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.08,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 0.16,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#3A4142",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room ceiling panel",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.88,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 0.18,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#202A2C",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room rear wall",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 2.0,
+        "z": 3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room left wall",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.9,
+        "y": 2.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 3.8,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance left wall return",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.6,
+        "y": 1.55,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.8,
+        "y": 2.9,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance right wall return",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 2.6,
+        "y": 1.55,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.8,
+        "y": 2.9,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance header",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.42,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.4,
+        "y": 1.0,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance left jamb accent",
+      "ObjectId": 8,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.2,
+        "y": 1.7,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.08,
+        "y": 3.0,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance right jamb accent",
+      "ObjectId": 9,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 1.2,
+        "y": 1.7,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.08,
+        "y": 3.0,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance lintel accent",
+      "ObjectId": 10,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.12,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.48,
+        "y": 0.09,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex partition lower return",
+      "ObjectId": 11,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 1.55,
+        "z": -1.4
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 2.9,
+        "z": 5.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex partition upper return",
+      "ObjectId": 12,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 1.55,
+        "z": 3.4
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 2.9,
+        "z": 1.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex doorway header",
+      "ObjectId": 13,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 3.42,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 1.0,
+        "z": 1.6
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex outer wall",
+      "ObjectId": 14,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 7.9,
+        "y": 2.0,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 3.8,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex rear wall",
+      "ObjectId": 15,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 2.0,
+        "z": 3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex front wall",
+      "ObjectId": 16,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 2.0,
+        "z": 0.1
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#2B3435",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex floor",
+      "ObjectId": 17,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 0.08,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 0.16,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#3A4142",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex ceiling",
+      "ObjectId": 18,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.88,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 0.18,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#202A2C",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room rear safety band",
+      "ObjectId": 19,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.22,
+        "z": 3.78
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 7.7,
+        "y": 0.08,
+        "z": 0.04
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex doorway status strip",
+      "ObjectId": 20,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.76,
+        "y": 3.1,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.05,
+        "y": 0.08,
+        "z": 1.45
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room ceiling service rail",
+      "ObjectId": 21,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.72,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 7.5,
+        "y": 0.06,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex ceiling service rail",
+      "ObjectId": 22,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.72,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 3.7,
+        "y": 0.06,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Decon equipment counter",
+      "ObjectId": 23,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.1,
+        "y": 0.55,
+        "z": 1.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.5,
+        "y": 0.68,
+        "z": 0.74
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#36413F",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Counter stainless top",
+      "ObjectId": 24,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.1,
+        "y": 0.93,
+        "z": 1.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.66,
+        "y": 0.08,
+        "z": 0.82
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#89928C",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Chemical storage locker",
+      "ObjectId": 25,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.25,
+        "y": 1.0,
+        "z": 2.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.82,
+        "y": 1.82,
+        "z": 0.9
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Locker hazard marking",
+      "ObjectId": 26,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.25,
+        "y": 1.6,
+        "z": 2.28
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.66,
+        "y": 0.1,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Wash bay shower tray",
+      "ObjectId": 27,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 0.19,
+        "z": 2.15
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.7,
+        "y": 0.22,
+        "z": 2.9
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Raised shower grate",
+      "ObjectId": 28,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 0.32,
+        "z": 2.15
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.25,
+        "y": 0.045,
+        "z": 2.4
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#89928C",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Shower pipe header",
+      "ObjectId": 29,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.05,
+        "z": 2.3
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.5,
+        "y": 0.12,
+        "z": 0.12
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Shower riser",
+      "ObjectId": 30,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 4.8,
+        "y": 2.48,
+        "z": 2.3
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.1,
+        "y": 1.16,
+        "z": 0.1
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Floor drainage channel",
+      "ObjectId": 31,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.65,
+        "y": 0.18,
+        "z": -0.25
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.22,
+        "y": 0.025,
+        "z": 2.4
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Decon status panel",
+      "ObjectId": 32,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.76,
+        "y": 2.4,
+        "z": 0.6
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.05,
+        "y": 0.66,
+        "z": 0.92
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Status green segment",
+      "ObjectId": 33,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.72,
+        "y": 2.58,
+        "z": 0.6
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.025,
+        "y": 0.1,
+        "z": 0.52
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#7C9892",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Status amber segment",
+      "ObjectId": 34,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.72,
+        "y": 2.38,
+        "z": 0.6
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.025,
+        "y": 0.1,
+        "z": 0.52
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Decontamination room ceiling light",
+      "ObjectId": 35,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.48,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 2,
+      "Properties": {
+        "Color": "#C8D8C5",
+        "Intensity": 0.95,
+        "Range": 5.5,
+        "LightType": 2,
+        "Shadows": false,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Wash bay clean light",
+      "ObjectId": 36,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.48,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 2,
+      "Properties": {
+        "Color": "#B9D6D2",
+        "Intensity": 1.0,
+        "Range": 4.1,
+        "LightType": 2,
+        "Shadows": false,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Random decontamination keycard",
+      "ObjectId": 37,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.6,
+        "y": 1.0,
+        "z": 0.84
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 6,
+        "Chance": 32
+      }
+    },
+    {
+      "Name": "Random first-aid kit",
+      "ObjectId": 38,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.55,
+        "y": 1.0,
+        "z": 0.84
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 14,
+        "Chance": 45
+      }
+    },
+    {
+      "Name": "Random emergency stimulant",
+      "ObjectId": 39,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 0.58,
+        "z": 2.15
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 33,
+        "Chance": 24
+      }
+    }
+  ]
+}

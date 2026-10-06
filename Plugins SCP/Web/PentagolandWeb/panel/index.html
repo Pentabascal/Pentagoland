@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" data-server-status-endpoint="" data-server-status-refresh-seconds="30" data-server-status-max-age-seconds="120">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Panel de jugador de Pentagoland: estadísticas, perfiles y equipo."
+    />
+    <meta name="theme-color" content="#100d14" />
+    <title>Panel de jugador | Pentagoland</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="panel.css" />
+    <script src="../server-status.js" defer></script>
+    <script src="panel.js" defer></script>
+  </head>
+  <body class="panel-body">
+    <a class="skip-link" href="#panel-content">Saltar al contenido</a>
+    <div class="panel-layout">
+      <aside class="panel-sidebar">
+        <a href="../index.html" class="panel-brand" aria-label="Volver a Pentagoland">
+          <img src="../assets/pentagoland-mark.svg" alt="" />
+          <span>Pentagoland<span class="brand-subtitle">PANEL DE JUGADOR</span></span>
+        </a>
+
+        <nav class="panel-nav" aria-label="Navegación del panel">
+          <span class="nav-caption">TU ESPACIO</span>
+          <button type="button" class="panel-nav-link is-active" data-view="overview" aria-current="page">
+            <span aria-hidden="true">⌂</span> Inicio
+          </button>
+          <button type="button" class="panel-nav-link" data-view="stats">
+            <span aria-hidden="true">▤</span> Stat tracker
+          </button>
+          <button type="button" class="panel-nav-link" data-view="profile">
+            <span aria-hidden="true">◉</span> Mi perfil
+          </button>
+          <button type="button" class="panel-nav-link" data-view="account">
+            <span aria-hidden="true">◎</span> Cuenta
+          </button>
+
+          <span class="nav-caption nav-caption-spaced">COMUNIDAD</span>
+          <button type="button" class="panel-nav-link" data-view="server">
+            <span aria-hidden="true">◌</span> Servidor
+          </button>
+          <button type="button" class="panel-nav-link" data-view="team">
+            <span aria-hidden="true">♧</span> Equipo
+          </button>
+          <a class="panel-nav-link panel-nav-anchor" href="../normas.html">
+            <span aria-hidden="true">≡</span> Normas
+          </a>
+          <a class="panel-nav-link panel-nav-anchor" href="../plugins.html">
+            <span aria-hidden="true">⌘</span> Plugins
+          </a>
+          <a class="panel-nav-link panel-nav-anchor" href="../index.html#galeria">
+            <span aria-hidden="true">▧</span> Galería
+          </a>
+          <a class="panel-nav-link panel-nav-anchor" href="../index.html#inicio">
+            <span aria-hidden="true">↗</span> Web principal
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="login-mini">
+            <span class="login-mini-icon" aria-hidden="true">S</span>
+            <div aria-live="polite">
+              <strong id="steamid-sidebar-title">SteamID sin guardar</strong>
+              <span id="steamid-sidebar-status">Se guarda solo aquí</span>
+            </div>
+          </div>
+          <a class="back-home" href="../index.html">← Volver a la web</a>
+        </div>
+      </aside>
+
+      <main class="panel-main" id="panel-content" tabindex="-1">
+        <header class="panel-topbar">
+          <div class="breadcrumb"><span>Pentagoland</span><span aria-hidden="true">/</span><strong id="page-title">Inicio</strong></div>
+          <nav class="panel-topbar-actions" aria-label="Accesos rápidos">
+            <button class="topbar-link" type="button" data-open-view="server">Estado del servidor</button>
+            <button class="topbar-link" type="button" data-open-view="account">Cuenta</button>
+            <button class="steam-button" type="button" data-steamid-focus>
+              <span class="steam-symbol" aria-hidden="true">S</span>
+              <span id="steamid-action-label">Añadir SteamID</span>
+            </button>
+          </nav>
+        </header>
+
+        <div class="panel-content">
+          <section class="panel-view" id="overview" data-panel-section="overview">
+            <div class="welcome-row">
+              <div>
+                <p class="eyebrow">Qué bueno verte</p>
+                <h1>Tu sitio en Pentagoland.</h1>
+                <p class="view-lead">Aquí tendrás tus números, tu perfil y las novedades del servidor, todo en el mismo sitio.</p>
+              </div>
+              <button class="button primary" type="button" data-open-view="server">Ver estado del servidor <span aria-hidden="true">→</span></button>
+            </div>
+
+            <form class="connection-card steamid-card" id="steamid-form" novalidate>
+              <div class="connection-icon" aria-hidden="true">S</div>
+              <div class="connection-copy">
+                <label for="steamid-input">Guarda tu SteamID64</label>
+                <span>Lo recordaremos en este navegador para tus próximas visitas.</span>
+              </div>
+              <div class="steamid-controls">
+                <input
+                  id="steamid-input"
+                  name="steamid"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  maxlength="17"
+                  pattern="7656119[0-9]{10}"
+                  placeholder="7656119XXXXXXXXXX"
+                  aria-describedby="steamid-help steamid-status"
+                  required
+                />
+                <button class="button secondary connect-button" id="save-steamid" type="submit">Guardar ID</button>
+                <button class="text-button" id="clear-steamid" type="button" hidden>Quitar ID</button>
+              </div>
+              <p class="steamid-help" id="steamid-help">Es el número de 17 cifras de tu perfil de Steam. Guardarlo no verifica que seas el titular.</p>
+              <p class="steamid-status" id="steamid-status" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="stats-heading">
+              <div>
+                <p class="eyebrow">Tu resumen</p>
+                <h2>Stat tracker</h2>
+              </div>
+              <span class="data-badge"><span></span><span id="steamid-overview-status">Sin SteamID guardado</span></span>
+            </div>
+
+            <div class="stat-grid stat-grid-overview">
+              <article class="stat-card">
+                <span class="stat-label">Kills</span><strong>—</strong><small>Estadísticas del servidor pendientes</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Muertes</span><strong>—</strong><small>Estadísticas del servidor pendientes</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">KDR total</span><strong>—</strong><small>Kills ÷ muertes</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Tiempo jugado</span><strong>—</strong><small>Horas en el servidor</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">SCPs asesinados</span><strong>—</strong><small>Objetivos SCP derrotados</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Rondas</span><strong>—</strong><small>Partidas completadas</small>
+              </article>
+            </div>
+
+            <div class="overview-bottom">
+              <article class="content-card rank-card">
+                <div class="card-heading">
+                  <div><p class="eyebrow">Progresión</p><h3>Rango</h3></div>
+                  <span class="wip-badge">WIP</span>
+                </div>
+                <div class="rank-placeholder"><span aria-hidden="true">✦</span><strong>En preparación</strong></div>
+                <p>Los rangos llegarán más adelante. No afectan a las mecánicas del juego.</p>
+              </article>
+
+              <article class="content-card server-intro-card">
+                <img
+                  class="server-intro-art"
+                  src="../assets/night-shift.svg"
+                  alt="Instalación iluminada de Pentagoland durante la noche"
+                  width="1200"
+                  height="680"
+                  loading="lazy"
+                />
+                <p class="eyebrow">El servidor</p>
+                <h3>Nos vemos en la instalación.</h3>
+                <p>Partidas en español, una comunidad abierta y ganas de que cada ronda tenga su propia historia.</p>
+                <a href="../index.html#guia">Cómo entrar <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel-view" id="server" data-panel-section="server" hidden>
+            <div class="view-heading">
+              <p class="eyebrow">SCP: Secret Laboratory</p>
+              <h1>Estado del servidor</h1>
+              <p class="view-lead">Estado y número de jugadores conectados; no se publican nombres.</p>
+            </div>
+
+            <article class="live-server-card" aria-labelledby="live-server-title">
+              <div class="live-server-heading">
+                <div>
+                  <p class="eyebrow">Pentagoland</p>
+                  <h2 id="live-server-title">Servidor principal</h2>
+                </div>
+                <span class="live-server-state is-pending" id="panel-server-state" role="status">
+                  <span aria-hidden="true"></span><span id="panel-server-state-label">Estado no disponible</span>
+                </span>
+              </div>
+              <div class="live-server-summary">
+                <div class="live-server-count">
+                  <strong id="panel-server-player-count">—</strong>
+                  <span>/ <span id="panel-server-player-capacity">—</span></span>
+                  <small>jugadores conectados</small>
+                </div>
+                <p id="panel-server-summary">Sin una fuente configurada, no se muestran datos de ejemplo.</p>
+              </div>
+              <div class="live-player-list-heading">
+                <h3>Datos públicos</h3>
+                <span id="panel-server-list-count">Solo contador</span>
+              </div>
+              <ol class="live-player-list" id="panel-server-player-list" aria-live="polite">
+                <li class="live-player-empty">Por privacidad, la web muestra el contador y no los nombres.</li>
+              </ol>
+              <div class="live-server-footer">
+                <span id="panel-server-updated">Última actualización: —</span>
+                <span>Dirección: por anunciar</span>
+              </div>
+            </article>
+            <p class="data-footnote">El navegador nunca recibe nombres, identificadores ni estadísticas privadas de jugadores.</p>
+            <a class="inline-link" href="../index.html#estado-servidores">Ver el estado en la web principal <span aria-hidden="true">↗</span></a>
+          </section>
+
+          <section class="panel-view" id="stats" data-panel-section="stats" hidden>
+            <div class="view-heading">
+              <p class="eyebrow">Tus partidas, a tu ritmo</p>
+              <h1>Stat tracker</h1>
+              <p class="view-lead">Guarda un SteamID para tenerlo a mano. Las estadísticas aparecerán cuando el servidor tenga una fuente de datos conectada.</p>
+            </div>
+
+            <article class="content-card steamid-stats-card">
+              <div>
+                <p class="eyebrow">SteamID guardado en este navegador</p>
+                <strong id="steamid-stats-value">Aún no has guardado uno</strong>
+              </div>
+              <a id="steam-profile-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Ver perfil de Steam <span aria-hidden="true">↗</span></a>
+              <p>El SteamID no verifica la cuenta ni consulta estadísticas de Pentagoland.</p>
+            </article>
+
+            <div class="stats-heading">
+              <h2>Resumen general</h2><span class="data-badge"><span></span> Datos del servidor pendientes</span>
+            </div>
+            <div class="stat-grid stat-grid-detailed">
+              <article class="stat-card"><span class="stat-label">Kills totales</span><strong>—</strong><small>Eliminaciones registradas</small></article>
+              <article class="stat-card"><span class="stat-label">Muertes</span><strong>—</strong><small>Total en el servidor</small></article>
+              <article class="stat-card"><span class="stat-label">KDR total</span><strong>—</strong><small>Kills ÷ muertes</small></article>
+              <article class="stat-card"><span class="stat-label">Horas jugadas</span><strong>—</strong><small>Tiempo acumulado en este servidor</small></article>
+              <article class="stat-card"><span class="stat-label">SCPs asesinados</span><strong>—</strong><small>SCPs derrotados por ti</small></article>
+              <article class="stat-card"><span class="stat-label">Rondas jugadas</span><strong>—</strong><small>Rondas registradas</small></article>
+              <article class="stat-card"><span class="stat-label">Victorias</span><strong>—</strong><small>Rondas ganadas por tu equipo</small></article>
+              <article class="stat-card"><span class="stat-label">Racha personal</span><strong>—</strong><small>Mejor racha de eliminaciones</small></article>
+            </div>
+
+            <section class="role-stats-section" aria-labelledby="role-stats-title">
+              <div class="stats-heading">
+                <div>
+                  <p class="eyebrow">Por equipo o clase</p>
+                  <h2 id="role-stats-title">Kills por rol</h2>
+                </div>
+                <span class="wip-badge">Datos pendientes</span>
+              </div>
+              <div class="role-stats-grid">
+                <article class="role-stat-card role-chaos">
+                  <span class="role-stat-mark" aria-hidden="true">C</span>
+                  <div><h3>Caos</h3><p>Kills realizadas como Insurgencia del Caos</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+                <article class="role-stat-card role-mtf">
+                  <span class="role-stat-mark" aria-hidden="true">M</span>
+                  <div><h3>MTF</h3><p>Kills realizadas como Fuerza de Tarea Móvil</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+                <article class="role-stat-card role-scp">
+                  <span class="role-stat-mark" aria-hidden="true">S</span>
+                  <div><h3>SCP</h3><p>Kills realizadas jugando como SCP</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+                <article class="role-stat-card role-guard">
+                  <span class="role-stat-mark" aria-hidden="true">G</span>
+                  <div><h3>Guardia</h3><p>Kills realizadas como Guardia de Seguridad</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+                <article class="role-stat-card role-classd">
+                  <span class="role-stat-mark" aria-hidden="true">D</span>
+                  <div><h3>Clase D</h3><p>Kills realizadas como Clase D</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+                <article class="role-stat-card role-scientist">
+                  <span class="role-stat-mark" aria-hidden="true">CI</span>
+                  <div><h3>Científico</h3><p>Kills realizadas como Científico</p></div>
+                  <strong aria-label="Kills pendientes">—</strong>
+                </article>
+              </div>
+              <p class="data-footnote">Cada baja se atribuirá al rol que tenía el atacante en ese momento.</p>
+            </section>
+
+            <div class="tracker-grid">
+              <article class="content-card weapon-card">
+                <div class="card-heading"><div><p class="eyebrow">Desglose</p><h2>Kills por arma</h2></div><span class="wip-badge">En preparación</span></div>
+                <div class="empty-data">
+                  <span class="empty-data-icon" aria-hidden="true">⌁</span>
+                  <strong>Aún no hay partidas vinculadas</strong>
+                  <p>Cuando se registren datos, aquí podrás comparar tus armas más usadas y tus eliminaciones.</p>
+                </div>
+              </article>
+              <article class="content-card progression-card">
+                <div class="card-heading"><div><p class="eyebrow">Próximamente</p><h2>Tu progreso</h2></div><span class="wip-badge">WIP</span></div>
+                <ul class="future-list">
+                  <li><span>Rango y experiencia</span><span>WIP</span></li>
+                  <li><span>Estadísticas por ronda</span><span>WIP</span></li>
+                  <li><span>Historial por arma</span><span>WIP</span></li>
+                  <li><span>Mejores marcas personales</span><span>WIP</span></li>
+                </ul>
+              </article>
+            </div>
+            <p class="data-footnote">Las estadísticas dependerán de los datos que el servidor pueda registrar. No se inventarán ni se importarán desde partidas ajenas.</p>
+          </section>
+
+          <section class="panel-view" id="account" data-panel-section="account" hidden>
+            <div class="view-heading">
+              <p class="eyebrow">Tu cuenta Pentagoland</p>
+              <h1>Un espacio para la comunidad</h1>
+              <p class="view-lead">Perfil, estadísticas y foro en un mismo sitio, cuando las cuentas estén listas.</p>
+            </div>
+
+            <article class="content-card account-status-card">
+              <span class="account-status-icon" aria-hidden="true">◎</span>
+              <div>
+                <span class="wip-badge">Acceso aún no disponible</span>
+                <h2>Estamos preparando el sistema de cuentas.</h2>
+                <p>El acceso aún no está activado. No introduzcas contraseñas en esta página.</p>
+              </div>
+            </article>
+
+            <div class="account-options">
+              <article class="content-card account-option">
+                <div class="account-provider-mark steam-mark" aria-hidden="true">S</div>
+                <div>
+                  <h2>Verificar cuenta de Steam</h2>
+                  <p>Steam OpenID en un backend; necesario para asociar estadísticas privadas a su titular.</p>
+                </div>
+                <button class="button secondary" type="button" disabled>No disponible</button>
+              </article>
+              <article class="content-card account-option">
+                <div class="account-provider-mark discord-mark" aria-hidden="true">D</div>
+                <div>
+                  <h2>Vincular Discord (opcional)</h2>
+                  <p>OAuth de Discord con permisos mínimos, después de verificar Steam. No da acceso a estadísticas por sí solo.</p>
+                </div>
+                <button class="button secondary" type="button" disabled>No disponible</button>
+              </article>
+            </div>
+
+            <article class="account-forum-card">
+              <div>
+                <p class="eyebrow">Más adelante</p>
+                <h2>Un foro, cuando haya algo que conversar.</h2>
+                <p>Una cuenta futura podrá enlazar Steam y Discord con consentimiento, desvinculación y sesión segura.</p>
+              </div>
+              <span class="wip-badge">En preparación</span>
+            </article>
+          </section>
+
+          <section class="panel-view" id="team" data-panel-section="team" hidden>
+            <div class="view-heading">
+              <p class="eyebrow">Quienes están detrás</p>
+              <h1>Equipo y disponibilidad</h1>
+              <p class="view-lead">Aquí podrás encontrar a owners, developers y staff, y saber quién está disponible. La lista y la actividad todavía no están conectadas.</p>
+            </div>
+
+            <div class="team-layout">
+              <div class="team-list">
+                <button class="team-role-card" type="button" data-team-role="Owner">
+                  <span class="team-avatar">P</span>                  <span class="team-role-copy"><strong>Owner</strong><small>Responsable del servidor</small></span><span class="team-status">Estado pendiente</span>
+                </button>
+                <button class="team-role-card" type="button" data-team-role="Developer">
+                  <span class="team-avatar avatar-lilac">D</span>                  <span class="team-role-copy"><strong>Developers</strong><small>Desarrollo y herramientas</small></span><span class="team-status">Estado pendiente</span>
+                </button>
+                <button class="team-role-card" type="button" data-team-role="Staff">
+                  <span class="team-avatar avatar-blue">S</span>                  <span class="team-role-copy"><strong>Staff</strong><small>Moderación y ayuda</small></span><span class="team-status">Estado pendiente</span>
+                </button>
+              </div>
+              <aside class="content-card team-detail" id="team-detail" aria-live="polite">
+                <span class="team-detail-icon" aria-hidden="true">◉</span>
+                <p class="eyebrow">Perfiles públicos</p>
+                <h2>Los perfiles aún están por presentar.</h2>
+                <p>Cuando haya miembros publicados, podrás abrir cada perfil para conocer su rol y su bio. La actividad se mostrará solo si el equipo decide compartirla.</p>
+              </aside>
+            </div>
+            <p class="data-footnote">Los estados de actividad en línea solo se mostrarán si existe una conexión fiable y el equipo decide compartirlos.</p>
+          </section>
+
+          <section class="panel-view" id="profile" data-panel-section="profile" hidden>
+            <div class="view-heading">
+              <p class="eyebrow">Tu identidad en la comunidad</p>
+              <h1>Tu perfil</h1>
+              <p class="view-lead">Prepara cómo te gustaría aparecer. Por ahora, el borrador solo se guarda en este navegador; no se publica ni se sincroniza.</p>
+            </div>
+
+            <div class="profile-layout">
+              <form class="content-card profile-editor" id="profile-form">
+                <div class="card-heading"><div><p class="eyebrow">Personalización</p><h2>Editar borrador</h2></div><span class="wip-badge">Solo local</span></div>
+                <label class="avatar-upload" for="profile-avatar">
+                  <span class="avatar-preview" id="avatar-preview">?</span>
+                  <span><strong>Cambiar imagen</strong><small>PNG, JPG o WebP · máximo 300 KB</small></span>
+                  <input id="profile-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp" />
+                </label>
+                <label class="profile-field">Nombre visible<input name="displayName" type="text" maxlength="32" placeholder="Cómo quieres que te llamen" /></label>
+                <label class="profile-field">Descripción corta<input name="description" type="text" maxlength="100" placeholder="Una frase sobre ti" /></label>
+                <label class="profile-field">Bio<textarea name="bio" rows="4" maxlength="500" placeholder="Cuéntale algo a la comunidad..."></textarea><small>Máximo 500 caracteres.</small></label>
+                <div class="profile-field-grid">
+                  <label class="profile-field">Steam<input name="steam" type="url" maxlength="200" placeholder="Se conectará al iniciar sesión" /></label>
+                  <label class="profile-field">Discord<input name="discord" type="text" maxlength="80" placeholder="Opcional, si quieres compartirlo" /></label>
+                </div>
+                <div class="profile-actions">
+                  <button class="button primary" type="submit">Guardar borrador</button>
+                  <button class="text-button" type="button" id="reset-profile">Borrar borrador</button>
+                </div>
+                <p class="profile-save-status" id="profile-save-status" role="status" aria-live="polite"></p>
+              </form>
+
+              <article class="content-card profile-preview">
+                <p class="eyebrow">Vista previa</p>
+                <div class="profile-avatar-large" id="profile-preview-avatar">?</div>
+                <h2 id="profile-preview-name">Tu nombre</h2>
+                <p class="profile-preview-description" id="profile-preview-description">Tu descripción corta aparecerá aquí.</p>
+                <div class="profile-bio"><span>BIO</span><p id="profile-preview-bio">Cuando escribas tu bio, podrás ver aquí cómo quedará.</p></div>
+                <div class="profile-connections"><span>Conexiones</span><p id="profile-preview-connections">Aún no hay conexiones añadidas.</p></div>
+                <p class="preview-local-note">Esta es solo una vista previa privada en tu dispositivo.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+        <footer class="panel-site-links">
+          <span>Ir a</span>
+          <a href="../index.html#inicio">Inicio</a>
+          <a href="../index.html#estado-servidores">Estado servidores</a>
+          <a href="../index.html#guia">Cómo jugar</a>
+          <a href="../index.html#galeria">Galería</a>
+          <a href="../normas.html">Normas</a>
+          <a href="../index.html#contacto">Contacto</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

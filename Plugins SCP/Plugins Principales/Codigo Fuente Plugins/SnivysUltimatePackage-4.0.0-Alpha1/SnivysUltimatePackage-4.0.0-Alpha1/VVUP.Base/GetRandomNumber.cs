@@ -1,0 +1,45 @@
+﻿using UnityEngine;
+
+namespace VVUP.Base
+{
+    public static class GetRandomNumber
+    {
+        public static int GetRandomInt()
+        {
+            return Random.Range(0, int.MaxValue);
+        }
+        public static int GetRandomInt(int max)
+        {
+            return Random.Range(0, max);
+        }
+        public static int GetRandomInt(int min, int max)
+        {
+            return Random.Range(min, max);
+        }
+        public static float GetRandomFloat()
+        {
+            return Random.Range(0, float.MaxValue);
+        }
+        public static float GetRandomFloat(float max)
+        {
+            return Random.Range(0, max);
+        }
+        public static float GetRandomFloat(float min, float max)
+        {
+            return Random.Range(min, max);
+        }
+    }
+}
+
+namespace VVUP.Base.API
+{
+    public static class GetRandomNumber
+    {
+        public static int GetRandomInt() => global::VVUP.Base.GetRandomNumber.GetRandomInt();
+        public static int GetRandomInt(int max) => global::VVUP.Base.GetRandomNumber.GetRandomInt(max);
+        public static int GetRandomInt(int min, int max) => global::VVUP.Base.GetRandomNumber.GetRandomInt(min, max);
+        public static float GetRandomFloat() => global::VVUP.Base.GetRandomNumber.GetRandomFloat();
+        public static float GetRandomFloat(float max) => global::VVUP.Base.GetRandomNumber.GetRandomFloat(max);
+        public static float GetRandomFloat(float min, float max) => global::VVUP.Base.GetRandomNumber.GetRandomFloat(min, max);
+    }
+}

@@ -1,0 +1,9 @@
+is_enabled: true
+debug: false
+position: 820
+spectators: "\U0001F465 Espectadores (%amount%)"
+player_display: '-> %name%'
+full_text: '<align=left><space=50><size=23>%display%</size></align>'
+refresh_rate: 2
+maximum_lines: 6
+overflow_text: '%overflow% más...'

@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <PentagolandProgramFilesX86 Condition="'$(PentagolandProgramFilesX86)' == ''">$([System.Environment]::GetEnvironmentVariable('ProgramFiles(x86)'))</PentagolandProgramFilesX86>
+    <PentagolandServerRoot Condition="'$(PentagolandServerRoot)' == ''">$(PentagolandProgramFilesX86)\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server</PentagolandServerRoot>
+    <SL_REFERENCES Condition="'$(SL_REFERENCES)' == '' and Exists('$(PentagolandServerRoot)\SCPSL_Data\Managed')">$(PentagolandServerRoot)\SCPSL_Data\Managed</SL_REFERENCES>
+    <SL_DEV_REFERENCES Condition="'$(SL_DEV_REFERENCES)' == ''">$(SL_REFERENCES)</SL_DEV_REFERENCES>
+    <EXILED_REFERENCES Condition="'$(EXILED_REFERENCES)' == ''">$(SL_REFERENCES)</EXILED_REFERENCES>
+    <Exiled_References Condition="'$(Exiled_References)' == ''">$(EXILED_REFERENCES)</Exiled_References>
+    <ScpReferenceDirectory Condition="'$(ScpReferenceDirectory)' == ''">$(SL_REFERENCES)</ScpReferenceDirectory>
+    <ExiledPluginDirectory Condition="'$(ExiledPluginDirectory)' == ''">$(APPDATA)\EXILED\Plugins</ExiledPluginDirectory>
+    <LabApiDependencyDirectory Condition="'$(LabApiDependencyDirectory)' == ''">$(APPDATA)\SCP Secret Laboratory\LabAPI\dependencies\global</LabApiDependencyDirectory>
+    <PentagolandReferenceSearchPaths>$(SL_REFERENCES);$(APPDATA)\EXILED\Plugins;$(APPDATA)\EXILED\Plugins\dependencies;$(APPDATA)\SCP Secret Laboratory\LabAPI\dependencies\global;$(APPDATA)\SCP Secret Laboratory\LabAPI\dependencies\7777;$(APPDATA)\SCP Secret Laboratory\LabAPI\plugins\global;$(APPDATA)\SCP Secret Laboratory\LabAPI\plugins\7777</PentagolandReferenceSearchPaths>
+  </PropertyGroup>
+</Project>

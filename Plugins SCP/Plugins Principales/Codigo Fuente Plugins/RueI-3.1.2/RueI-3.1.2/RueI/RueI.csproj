@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<LangVersion>11</LangVersion>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	</PropertyGroup>
+	<!--package information-->
+	<PropertyGroup>
+		<Title>RueI</Title>
+		<Copyright>CC0 1.0</Copyright>
+		<Description>universal hint framework for scp:sl</Description>
+		<RepositoryUrl>https://github.com/Ruemena/RueI</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Ruemena/RueI</PackageProjectUrl>
+		<PackageTags>scpsl;hints;scp;exiled;labapi</PackageTags>
+		<PackageVersion>3.1.1</PackageVersion>
+		<Version>3.1.1</Version>
+		<AssemblyVersion>3.1</AssemblyVersion> <!--only update for breaking changes-->
+		<FileVersion>3.1.1</FileVersion>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageReleaseNotes>fix a bug with DynamicElement</PackageReleaseNotes>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
+		<PackageReference Include="Northwood.LabAPI" Version="1.1.1" />
+		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<Reference Include="Assembly-CSharp"><HintPath>$(SL_REFERENCES)/Assembly-CSharp.dll</HintPath></Reference>
+		<Reference Include="Assembly-CSharp-firstpass"><HintPath>$(SL_REFERENCES)/Assembly-CSharp-firstpass.dll</HintPath></Reference>
+		<Reference Include="Mirror"><HintPath>$(SL_REFERENCES)/Mirror.dll</HintPath></Reference>
+		<Reference Include="NorthwoodLib"><HintPath>$(SL_REFERENCES)/NorthwoodLib.dll</HintPath></Reference>
+		<Reference Include="Pooling"><HintPath>$(SL_REFERENCES)/Pooling.dll</HintPath></Reference>
+		<Reference Include="System.Runtime.CompilerServices.Unsafe"><HintPath>$(SL_REFERENCES)/System.Runtime.CompilerServices.Unsafe.dll</HintPath></Reference>
+		<Reference Include="UnityEngine"><HintPath>$(SL_REFERENCES)/UnityEngine.dll</HintPath></Reference>
+		<Reference Include="UnityEngine.CoreModule"><HintPath>$(SL_REFERENCES)/UnityEngine.CoreModule.dll</HintPath></Reference>
+		<!--alias as mscorlib so we can qualify certain classes like Stack and Queue-->
+		<Reference Include="mscorlib"><HintPath>$(SL_REFERENCES)/mscorlib.dll</HintPath><Aliases>global, mscorlib</Aliases></Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

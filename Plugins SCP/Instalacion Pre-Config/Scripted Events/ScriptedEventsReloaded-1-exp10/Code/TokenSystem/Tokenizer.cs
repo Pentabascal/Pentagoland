@@ -1,0 +1,207 @@
+using SER.Code.Exceptions;
+using SER.Code.Extensions;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.ScriptSystem;
+using SER.Code.TokenSystem.Slices;
+using SER.Code.TokenSystem.Structures;
+using SER.Code.TokenSystem.Tokens;
+using SER.Code.TokenSystem.Tokens.ExpressionTokens;
+using SER.Code.TokenSystem.Tokens.ValueTokens;
+using SER.Code.TokenSystem.Tokens.VariableTokens;
+
+namespace SER.Code.TokenSystem;
+
+public static class Tokenizer
+{
+    public static readonly Type[] OrderedImportanceTokensFromSingleSlices =
+    [
+        typeof(ContextableKeywordToken),
+        typeof(BoolToken),
+        typeof(MethodToken),
+        typeof(FlagToken),
+        typeof(FlagArgumentToken),
+        typeof(NumberToken),
+        typeof(ColorToken),
+        typeof(CommentToken),
+        typeof(SymbolToken),
+        typeof(PlayerVariableToken),
+        typeof(LiteralVariableToken),
+        typeof(CollectionVariableToken),
+        typeof(ReferenceVariableToken),
+        typeof(DurationToken),
+        typeof(RunFunctionToken),
+        typeof(AllToken)
+    ];
+    
+    public static readonly Type[] OrderedImportanceTokensFromCollectionSlices =
+    [
+        typeof(ExpressionToken),
+        typeof(ParenthesesToken),
+        typeof(TextToken)
+    ];
+    
+    public static Line[] GetInfoFromMultipleLines(string content, uint firstLineNumber = 1)
+    {
+        List<Line> outList = [];
+        
+        var lines = content.Split(["\r\n", "\n", "\r"], StringSplitOptions.None);
+        for (uint index = 0; index < lines.Length; index++)
+        {
+            var line = lines[index];
+            var info = new Line
+            {
+                RawRepresentation = line,
+                LineNumber = firstLineNumber + index
+            };
+            
+            outList.Add(info);
+        }
+
+        return outList.ToArray();
+    }
+
+    public static Result SliceLine(Line line)
+    {
+        if (SliceLine(line.RawRepresentation).HasErrored(out var err, out var slices))
+        {
+            return err;
+        }
+        
+        line.Slices = slices.ToArray();
+        return true;
+    }
+    
+    /// <summary>
+    /// Decides the line if it's collection slice or single slice.
+    /// </summary>
+    /// <param name="line">Line to parse</param>
+    /// <returns>The slices for the specified line.</returns>
+    public static TryGet<IEnumerable<Slice>> SliceLine(string line)
+    {
+        List<Slice> outList = [];
+        Slice? currentSlice = null;
+        foreach (char currentChar in line)
+        {
+            if (currentSlice is null)
+            {
+                if (char.IsWhiteSpace(currentChar))
+                {
+                    continue;
+                }
+
+                currentSlice = CollectionSlice.CollectionStarters.Contains(currentChar) 
+                    ? new CollectionSlice(currentChar) 
+                    : new SingleSlice(currentChar);
+                
+                continue;
+            }
+
+            if (currentSlice.CanContinueAfterAdd(currentChar))
+            {
+                continue;
+            }
+
+            if (currentSlice.VerifyState().HasErrored(out var error))
+            {
+                return error;
+            }
+            
+            outList.Add(currentSlice);
+            currentSlice = null;
+        }
+
+        if (currentSlice is not null)
+        {
+            if (currentSlice.VerifyState().HasErrored(out var error))
+            {
+                return error;
+            }
+            
+            outList.Add(currentSlice);
+        }
+
+        return outList;
+    }
+
+    public static Result TokenizeLine(Line line, Script? scr)
+    {
+        if (TokenizeLine(line.Slices, scr, line.LineNumber).HasErrored(out var err, out var tokens))
+        {
+            return err;
+        }
+
+        line.Tokens = tokens;
+        return true;
+    }
+
+    public static TryGet<BaseToken[]> TokenizeLine(string line, Script? scr, uint? lineNum)
+    {
+        if (SliceLine(line).HasErrored(out var sliceError, out var slices))
+        {
+            return sliceError;
+        }
+
+        return TokenizeLine(slices, scr, lineNum);
+    }
+
+    public static TryGet<BaseToken[]> TokenizeLine(IEnumerable<Slice> slices, Script? scr, uint? lineNum)
+    {
+        var sliceArray = slices.ToArray();
+        List<BaseToken> outList = [];
+        foreach (var slice in sliceArray)
+        {
+            if (GetTokenFromSlice(slice, scr, lineNum).HasErrored(out var error, out var token))
+            {
+                return $"Value '{slice.RawRep}' is invalid.".AsError() + error.AsError();
+            }
+            
+            outList.Add(token);
+        }
+        
+        return outList.ToArray();
+    }
+
+    public static TryGet<BaseToken> GetTokenFromSlice(Slice slice, Script? scr, uint? lineNum)
+    {
+        var tokenCollection = slice is CollectionSlice 
+            ? OrderedImportanceTokensFromCollectionSlices 
+            : OrderedImportanceTokensFromSingleSlices;
+        
+        foreach (var tokenType in tokenCollection)
+        {
+            var token = tokenType.CreateInstance<BaseToken>();
+            switch (token.TryInit(slice, scr!, lineNum))
+            {
+                case BaseToken.Success: return token;
+                case BaseToken.Ignore: continue;
+                case BaseToken.Error err: return err.Message;
+                default: throw new CoreInvariantException();
+            }
+        }
+
+        var unspecified = new BaseToken();
+        unspecified.TryInit(slice, scr!, lineNum);
+        return unspecified;
+    }
+
+    public static TryGet<BaseToken> GetTokenFromString(string str, Script? scr, uint? lineNum)
+    {
+        if (SliceLine(str).HasErrored(out var err, out var slices))
+        {
+            return err;
+        }
+
+        var materializedSlices = slices as Slice[] ?? slices.ToArray();
+        if (materializedSlices.Length == 0)
+        {
+            return "A value cannot be empty.";
+        }
+
+        if (materializedSlices.Length > 1)
+        {
+            return $"Value '{str}' contains multiple slices.";
+        }
+        
+        return GetTokenFromSlice(materializedSlices[0], scr, lineNum);
+    }
+}

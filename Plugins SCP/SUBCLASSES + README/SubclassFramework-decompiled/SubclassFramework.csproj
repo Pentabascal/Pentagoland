@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>SubclassFramework</AssemblyName>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <ScpReferenceDirectory Condition="'$(ScpReferenceDirectory)' == ''">$(MSBuildThisFileDirectory)..\..\Referencias</ScpReferenceDirectory>
+    <ExiledPluginDirectory Condition="'$(ExiledPluginDirectory)' == ''">$(APPDATA)\EXILED\Plugins</ExiledPluginDirectory>
+    <LabApiDependencyDirectory Condition="'$(LabApiDependencyDirectory)' == ''">$(APPDATA)\SCP Secret Laboratory\LabAPI\dependencies\global</LabApiDependencyDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Exiled.API">
+      <HintPath>$(LabApiDependencyDirectory)\Exiled.API.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ScpReferenceDirectory)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Exiled.Events">
+      <HintPath>$(ExiledPluginDirectory)\Exiled.Events.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ScpReferenceDirectory)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="CommandSystem.Core">
+      <HintPath>$(ScpReferenceDirectory)\CommandSystem.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ScpReferenceDirectory)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(ScpReferenceDirectory)\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Exiled.Permissions">
+      <HintPath>$(ExiledPluginDirectory)\Exiled.Permissions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="LabApi">
+      <HintPath>$(ScpReferenceDirectory)\LabApi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mirror">
+      <HintPath>$(ScpReferenceDirectory)\Mirror.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mirror.Components">
+      <HintPath>$(ScpReferenceDirectory)\Mirror.Components.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(ScpReferenceDirectory)\netstandard.dll')">
+    <Reference Include="netstandard">
+      <HintPath>$(ScpReferenceDirectory)\netstandard.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

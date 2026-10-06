@@ -1,0 +1,303 @@
+GUIA DE PRUEBAS DEL SERVIDOR 7777
+=================================
+
+Objetivo
+--------
+Esta guÃ­a sirve para validar los plugins en una ronda privada o de pruebas.
+No actives varios sistemas experimentales a la vez. Haz una prueba, revisa el
+log y reinicia el servidor antes de pasar a la siguiente.
+
+Comandos de administraciÃ³n
+--------------------------
+Objetos personalizados:
+  vvupadminitems list
+  vvupadminitems info <id|nombre>
+  vvupadminitems give <jugador> <id|nombre>
+  vvupadminitems spawn <jugador> <id|nombre>
+  vvupadminitems help
+
+Ejemplo:
+  vvupadminitems give Miguel 40
+  vvupadminitems spawn Miguel 56
+
+Comandos de jugador:
+  .vvuphelp       Ayuda de objetos personalizados.
+  .cihints        Activa o desactiva los avisos al seleccionar objetos.
+  .hab            Activa la habilidad de la subclase cuando corresponda.
+  .xp get         Consulta la experiencia.
+  .nivel          Alias de .xp get.
+  .xp leaderboard Consulta la clasificaciÃ³n.
+  .topxp          Alias de la clasificaciÃ³n.
+  .xp prestigio   Consulta las opciones disponibles desde el comando principal.
+  .prestigio      Reinicia al nivel 1 cuando se alcanza el nivel mÃ¡ximo.
+
+Prueba general de VVUP.CustomItems
+-----------------------------------
+Para cada objeto comprueba que:
+1. El nombre y la descripciÃ³n aparecen completamente en castellano.
+2. El aviso permanece visible al menos 3 segundos.
+3. El objeto no aparece duplicado.
+4. El lÃ­mite por ronda se respeta.
+5. Al terminar la ronda desaparecen los efectos, rastros y referencias.
+
+CatÃ¡logo de objetos
+-------------------
+ID 20 - Obscurus Veil-5
+  Granada de humo. Al detonar crea una nube que permanece durante un tiempo.
+  Prueba: vvupadminitems give <jugador> 20; lÃ¡nzala y comprueba humo y duraciÃ³n.
+
+ID 22 - Granada de agente nervioso
+  Libera un agente nervioso, aplica daÃ±o inmediato y veneno en su radio.
+  Prueba: vvupadminitems give <jugador> 22; lÃ¡nzala cerca de un objetivo.
+
+ID 23 - Dispositivo seÃ±uelo fantasma
+  Al usarlo aplica mareo, ceguera, invisibilidad y otros efectos con retraso.
+  Prueba: vvupadminitems give <jugador> 23; Ãºsalo y comprueba ambos momentos.
+
+ID 24 - Linterna fantasma
+  Objeto asociado al limbo y a SCP-106. Comprueba su efecto visual y duraciÃ³n.
+  Prueba: vvupadminitems give <jugador> 24.
+
+ID 25 - Armadura resistente a explosivos
+  Reduce el daÃ±o explosivo, pero aumenta el consumo de resistencia.
+  Prueba: vvupadminitems give <jugador> 25; compara una explosiÃ³n con y sin armadura.
+
+ID 26 - LJ-429
+  Jeringa que aplica corrosiÃ³n y provoca una muerte rÃ¡pida.
+  Prueba: vvupadminitems give <jugador> 26.
+
+ID 27 - Pulso fantasma
+  Arma mÃ©dica que cura aliados y puede convertir zombis en humanos.
+  Prueba: vvupadminitems give <jugador> 27; dispara a un aliado y a un zombi vÃ¡lido.
+
+ID 28 - Serenata silenciosa
+  Dispara dardos tranquilizantes. Repetirlos sobre el mismo objetivo aumenta
+  su resistencia.
+  Prueba: vvupadminitems give <jugador> 28; comprueba duraciÃ³n y resistencia.
+
+ID 29 - SCP-1499
+  MÃ¡scara que teletransporta a otra dimensiÃ³n durante un tiempo limitado.
+  Prueba: vvupadminitems give <jugador> 29; equÃ­pala y comprueba retorno seguro.
+
+ID 30 - PB-42
+  Granada EMP que apaga luces, abre puertas permitidas y desactiva Tesla.
+  Prueba: vvupadminitems give <jugador> 30 en una zona con puertas y Tesla.
+
+ID 31 - Amnesioflux
+  PÃ­ldora que evita que SCP-096 pueda fijarte como objetivo.
+  Prueba: vvupadminitems give <jugador> 31; Ãºsala antes de mirar a SCP-096.
+
+ID 33 - SCP-2818
+  Fusil de un disparo que utiliza la biomasa del tirador como proyectil.
+  Fallar puede matar al usuario.
+  Prueba: vvupadminitems give <jugador> 33; prueba un impacto y un disparo fallido.
+
+ID 34 - PÃ­ldoras infinitas
+  Frasco que parece no agotarse, pero no cura.
+  Prueba: vvupadminitems give <jugador> 34; Ãºsalo varias veces.
+
+ID 36 - Granada de racimo
+  Al detonar genera varios destellos secundarios.
+  Prueba: vvupadminitems give <jugador> 36; lÃ¡nzala en una sala despejada.
+
+ID 37 - SCP-207 de salud adicional
+  AÃ±ade vida adicional con lÃ­mite. No debe mezclarse con ciertos efectos de cola.
+  Prueba: vvupadminitems give <jugador> 37; Ãºsalo con y sin SCP-207 activo.
+
+ID 38 - Coraza Nebulosa
+  Armadura de baja gravedad. Comprueba movilidad, consumo de resistencia y
+  retirada al cambiar de rol.
+  Prueba: vvupadminitems give <jugador> 38.
+
+ID 39 - Viper
+  Subfusil personalizado. Comprueba daÃ±o, cargador, accesorios y municiÃ³n.
+  Prueba: vvupadminitems give <jugador> 39.
+
+ID 40 - Pathfinder
+  Marca a los enemigos alcanzados y aumenta el daÃ±o que reciben.
+  Prueba: vvupadminitems give <jugador> 40; dispara a un enemigo y comprueba la marca.
+
+ID 41 - Rayo Helios X-57
+  Arma lÃ¡ser con colores configurables y efecto de quemadura.
+  Prueba: vvupadminitems give <jugador> 41; dispara con los tres colores.
+
+ID 42 - Destello Eco
+  Granada que genera varios destellos al detonar.
+  Prueba: vvupadminitems give <jugador> 42.
+
+ID 43 - Granada Pathfinder
+  Granada de rastreo o marcaje. Comprueba radio, marca y duraciÃ³n.
+  Prueba: vvupadminitems give <jugador> 43.
+
+ID 46 - Lanzagranadas ADATS
+  Lanzagranadas con modo de potencia y modo de detonaciÃ³n.
+  Prueba: vvupadminitems give <jugador> 46; usa impacto y detonaciÃ³n temporizada.
+
+ID 47 - Intercomunicador portÃ¡til
+  Permite emitir durante un tiempo y muestra una cuenta atrÃ¡s.
+  Prueba: vvupadminitems give <jugador> 47; activa, habla y vuelve a activar.
+
+ID 50 - Televarita
+  BotÃ³n izquierdo guarda posiciÃ³n y botÃ³n derecho teletransporta. Tiene tres
+  usos y restricciones de salas.
+  Prueba: vvupadminitems give <jugador> 50; guarda, teletranspÃ³rtate y agota usos.
+
+ID 51 - Lanzamiento lunar
+  Granada que aplica baja gravedad a los jugadores cercanos.
+  Prueba: vvupadminitems give <jugador> 51.
+
+ID 53 - Botella de ron
+  Objeto consumible con efectos propios. Comprueba uso, duraciÃ³n y limpieza.
+  Prueba: vvupadminitems give <jugador> 53.
+
+ID 55 - Granada GuardiÃ¡n
+  Granada de apoyo. Comprueba protecciÃ³n, radio y duraciÃ³n.
+  Prueba: vvupadminitems give <jugador> 55.
+
+ID 56 - Desfibrilador externo automÃ¡tico (DEA)
+  Reanima dentro de un radio, requiere carga y muestra progreso.
+  Prueba: vvupadminitems give <jugador> 56; prueba reanimaciÃ³n vÃ¡lida e invÃ¡lida.
+
+ID 57 - Cuchillo
+  Arma cuerpo a cuerpo con enfriamiento y daÃ±o distinto segÃºn armadura.
+  Prueba: vvupadminitems give <jugador> 57.
+
+ID 58 - Fusil EL-95 de cerrojo
+  Fusil de un disparo con accesorios modificables y recarga restringida.
+  Prueba: vvupadminitems give <jugador> 58; prueba visor, accesorios y recarga.
+
+ID 59 - SCP-427
+  Regenera vida, concede escudo y puede convertir al usuario en una masa de
+  carne si permanece expuesto demasiado tiempo.
+  Prueba: vvupadminitems give <jugador> 59; comprueba inicio, aviso, parada y muerte.
+
+ID 60 - Estimulante experimental
+  Aplica un efecto aleatorio positivo o negativo.
+  Prueba: vvupadminitems give <jugador> 60; Ãºsalo varias veces y comprueba limpieza.
+
+VVUP.PostNukeEnhancements
+--------------------------
+1. Detona la ojiva en una ronda de pruebas.
+2. Comprueba el apagÃ³n de superficie y la apertura o cierre de la puerta.
+3. Espera el retraso configurado y confirma el aviso de radiaciÃ³n.
+4. Comprueba que los roles inmunes no reciben daÃ±o.
+5. Cancela o reinicia la ojiva desde Remote Admin y confirma que la rutina no
+   continÃºa aplicando radiaciÃ³n cuando la ojiva ya no estÃ¡ detonada.
+
+VVUP.ServerEvents
+-----------------
+Prueba cada evento por separado. Revisa especialmente efectos de conexiÃ³n,
+inventario, teletransporte, Tesla, congelaciÃ³n, Simon Says y anuncios CASSIE.
+Los eventos que introduzcan lag o interfieran con una partida normal deben
+permanecer desactivados en producciÃ³n.
+
+SubclassFramework y compatibilidad
+-----------------------------------
+1. Comprueba .subclase, .subclases y .hab.
+2. Verifica que una subclase no entregue dos veces el mismo objeto al reaparecer.
+3. Comprueba Demoledor con el ADATS, Francotirador MTF con el EL-95,
+   Radiotelegrafista con el intercomunicador, BioquÃ­mico con el DEA y Escudero
+   MTF con la Granada GuardiÃ¡n.
+
+XPSystem
+--------
+1. Consulta .xp get, .nivel y .topxp.
+2. Concede XP de prueba solo desde Remote Admin y confirma que se persiste tras
+   reiniciar.
+3. Comprueba que spawn, puertas, objetos, proyectiles y reanimaciones no puedan
+   generar XP infinito en una sola ronda.
+4. Comprueba los rangos en los niveles 5, 10, 20, 30, 50, 80, 100, 125 y 150.
+5. No cambies la fÃ³rmula de XP sin una copia de la base de datos y un reinicio
+   controlado: el nivel visible se calcula a partir de la XP acumulada.
+6. Para fijar el nivel de una cuenta, edita `player_level_overrides` en
+   `Configs\Plugins\x_p_system\7777.yml` usando la SteamID numÃ©rica:
+   `player_level_overrides: { '76561198000000000': 150 }`.
+7. Para probar prestigios, usa una cuenta de prueba, alcanza el nivel 150 y
+   ejecuta `.prestigio`. Debe volver al nivel 1, conservar el prestigio y
+   necesitar un 10 % mÃ¡s de XP. Las cuentas fijadas por configuraciÃ³n no
+   pueden prestigiar. El mÃ¡ximo es el prestigio 5; a partir de ahÃ­ el comando
+   debe rechazar nuevos reinicios.
+
+Resumen final de ronda
+----------------------
+Con `VVUP.ServerEvents` activo, termina una ronda normal y espera unos segundos.
+Debe aparecer un resumen discreto en los laterales, sin tapar el anuncio de
+victoria: a la izquierda se muestran el jugador con mÃ¡s bajas y el mayor tiempo
+con vida; a la derecha aparecen tus bajas, muertes, KDR y tiempo con vida.
+Comprueba rondas sin muertes, suicidios, espectadores, jugadores que entran
+tarde y nombres largos. No debe aparecer dos veces ni quedarse visible al
+comenzar la siguiente ronda.
+
+MvpSystem
+---------
+Permanece desactivado hasta validarlo con la versiÃ³n exacta del servidor.
+Cuando se pruebe de forma aislada:
+1. Comprueba que solo haya un MVP por ronda.
+2. Verifica que el daÃ±o no gane siempre frente a escapes, bajas y objetivos.
+3. Comprueba empates, rondas cortas, espectadores, DNT y jugadores tardÃ­os.
+4. Confirma que no duplica anuncios ni estadÃ­sticas de StatsSystem.
+5. No concedas XP por MVP hasta disponer de una integraciÃ³n idempotente y
+   comprobada con XPSystem.
+
+Contador de oleadas para espectadores
+-------------------------------------
+Con `VVUP.ServerEvents` activo, entra en espectador durante una ronda con
+oleadas habilitadas. En la zona inferior central debe aparecer, sin tapar el
+centro de la pantalla, la cuenta atrÃ¡s de FundaciÃ³n en azul y Caos en verde.
+1. Comprueba que aparezcan las oleadas normales y las mini-oleadas de cada
+   facciÃ³n cuando tengan un temporizador pendiente.
+2. Comprueba que se muestren ambas facciones a la vez, aunque sus tiempos sean
+   distintos; ninguna debe ocultar a la otra.
+3. Espera a que el contador cambie de minutos a segundos y confirma que el
+   tiempo disminuye de forma continua, sin saltos extraÃ±os.
+4. Al reaparecer, dejar de ser espectador, comenzar otra ronda o volver a la
+   sala de espera, el texto debe desaparecer rÃ¡pidamente.
+5. Prueba nombres largos, varios espectadores y la recarga de configuraciÃ³n.
+   El contador debe mantenerse legible y no duplicarse.
+6. El ajuste `respawn_countdown_vertical_padding` permite subirlo o bajarlo
+   ligeramente si otro HUD instalado ocupa esa zona.
+
+Criterios de aceptaciÃ³n
+-----------------------
+- Cero errores crÃ­ticos de carga en el log.
+- NingÃºn mensaje visible en inglÃ©s.
+- NingÃºn objeto duplicado ni recompensa repetida.
+- Los efectos se limpian al cambiar de rol, abandonar y terminar la ronda.
+- Los avisos de objetos duran entre 3 y 4 segundos como mÃ­nimo.
+- El servidor puede reiniciarse y cargar de nuevo todas las configuraciones.
+
+Preferencias de jugador (Server Specific)
+-----------------------------------------
+Al entrar al servidor, abre Ajustes del servidor y comprueba que aparece el
+apartado «PREFERENCIAS DEL HUD». Los cambios deben aplicarse sin reiniciar:
+1. «HUD de espectador»: oculta o muestra la información adicional del modo
+   espectador.
+2. «Contador de oleadas»: oculta o muestra las cuentas de Fundación y Caos.
+3. «Contador de habilidad»: controla el aviso de enfriamiento de la habilidad.
+Comprueba que cada opción conserva su estado al cambiar de objetivo espectado,
+al reaparecer y al volver a espectador. No deben aparecer ajustes duplicados.
+La tecla SSSS de habilidad de SubclassFramework permanece desactivada en
+producción por compatibilidad; prueba la habilidad con `.hab`. Solo prueba la
+tecla configurable en un entorno aislado después de validar la versión de
+SecretAPI instalada.
+
+Comandos de consola del jugador
+-------------------------------
+En la consola del cliente prueba:
+  .hab              Usa la habilidad de la subclase.
+  .preferencias     Muestra las preferencias disponibles.
+  .subclase         Consulta tu subclase y su enfriamiento.
+  .subclases        Lista las subclases disponibles.
+  .xp get           Consulta nivel, prestigio y experiencia.
+  .nivel            Alias de la consulta de experiencia.
+  .xp leaderboard   Consulta la clasificación.
+  .prestigio        Consulta si puedes realizar un prestigio.
+Los comandos deben responder en castellano, no producir errores y funcionar
+también cuando el jugador todavía no tenga subclase.
+
+Aviso de DNT de XP
+------------------
+Con DNT activado, al entrar debe aparecer abajo y con tamaño moderado:
+«No Podemos Trackear Tus Stats Por Tu Configuracion De DNT».
+Debe durar lo suficiente para leerse, no aparecer en el centro ni bloquear el
+HUD, y no debe mostrarse a jugadores sin DNT.

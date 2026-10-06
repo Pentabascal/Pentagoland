@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Restore Packages
+        run: dotnet restore RemoteKeycard.sln
+
+      - name: Download references
+        run: Invoke-WebRequest -Uri "https://exmod-team.github.io/SL-References/Dev.zip" -OutFile "References.zip"
+
+      - name: Extract Refs
+        run: |
+          mkdir RemoteKeycard\lib
+          tar -xf References.zip -C RemoteKeycard/lib
+          
+      - name: Build EXILED
+        run: dotnet build RemoteKeycard.sln -c EXILED
+
+      - name: Build LabAPI
+        run: dotnet build RemoteKeycard.sln -c LabAPI
+
+      - name: Create Release with Dlls
+        uses: softprops/action-gh-release@v2
+        id: create_release
+        with:
+          generate_release_notes: true
+          files: |
+            RemoteKeycard/bin/EXILED/RemoteKeycard-EXILED.dll
+            RemoteKeycard/bin/LabAPI/RemoteKeycard-LabAPI.dll

@@ -1,0 +1,45 @@
+name: Release Docs
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Callvote.docfx/**'
+
+permissions:
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+  
+jobs:
+  publish-docs:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
+    - name: Download references
+      run: wget https://exmod-team.github.io/SL-References/Dev.zip -O References.zip
+    - name: Extract references
+      run: |
+        mkdir -p Callvote/lib
+        unzip References.zip -d Callvote/lib
+    - run: dotnet tool update -g docfx
+    - run: docfx Callvote.docfx/docfx.json
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: 'Callvote.docfx/_site'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

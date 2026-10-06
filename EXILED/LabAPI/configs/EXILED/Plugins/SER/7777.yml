@@ -1,0 +1,8 @@
+is_enabled: true
+debug: false
+send_init_message: true
+safe_scripts: true
+send_logo: false
+show_contributor_badges: false
+network_request_timeout_seconds: 15
+max_network_response_bytes: 1048576

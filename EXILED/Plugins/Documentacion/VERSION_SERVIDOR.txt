@@ -1,0 +1,36 @@
+VVUP SERVER PACKAGE
+Version: 2.0.0
+Fecha: 2026-09-24
+Juego: SCP: Secret Laboratory 14.2.7
+EXILED: 9.14.2
+Puerto: 7777
+
+OBJETIVO
+Base estable, reproducible y mantenible. Los plugins experimentales no se
+cargan solo por existir: deben compilarse contra las referencias reales y
+validarse individualmente antes de entrar en produccion.
+
+COMPONENTES DE PRODUCCION
+VVUP completo, SubclassFramework, RemoteKeycard, XPSystem 2.1.2,
+CustomItemsAPI y la dependencia Exiled.CustomItems con su registro
+independiente desactivado.
+
+GARANTIAS COMPROBADAS
+- Una sola instancia dedicada durante la verificacion.
+- 16 DLL en Plugins\7777.
+- Sin DLL pendientes en la carpeta activa.
+- 32 Custom Items configurados con IDs y nombres unicos.
+- Sin errores criticos de carga en los logs revisados.
+- Backups disponibles antes de los cambios.
+
+REGLAS DE MANTENIMIENTO
+- No activar UCI junto con VVUP.CustomItems.
+- No activar Exiled.CustomItems como catalogo independiente.
+- No activar UsefulHints junto con los hints propios de VVUP.
+- No forzar unsupported_loading en plugins LabAPI no certificados.
+- No copiar DLL desde staging o backups directamente sin una prueba aislada.
+- Probar cualquier plugin nuevo individualmente y reiniciar una sola vez.
+
+PENDIENTE DE VALIDACION EXTERNA
+La visualizacion de hints, comandos Remote Admin y comportamiento de objetos
+deben comprobarse dentro de una ronda con un jugador conectado.

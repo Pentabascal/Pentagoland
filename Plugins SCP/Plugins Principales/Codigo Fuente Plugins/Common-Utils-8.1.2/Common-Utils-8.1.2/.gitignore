@@ -1,0 +1,9 @@
+/Common Utilities/bin/*
+/Common Utilities/obj/*
+/Common Utilities.sln.DotSettings.user
+/packages
+/packages/*
+/.idea/*
+/.vs/*
+/bin/*
+/obj/*

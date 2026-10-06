@@ -1,0 +1,195 @@
+# Event Pack worker. Start through the `event` command from eventManager.ser.
+
+func PrepareDuelLoadout with @loadoutTargets $loadoutWeapon
+    ClearInventory @loadoutTargets destroy
+    GiveItem @loadoutTargets $loadoutWeapon
+    ForceEquip @loadoutTargets $loadoutWeapon
+end
+
+if {VarExists $serPackActive} is false
+    Print "Event Pack rejected a direct run of eventDuel. Use the 'event' command."
+    stop
+end
+
+if {VarExists $serPackName} is false
+    Print "Event Pack rejected a direct run of eventDuel. Use the 'event' command."
+    stop
+end
+
+if $serPackActive is false or $serPackName isnt "Duel"
+    Print "Event Pack rejected a direct run of eventDuel. Use the 'event' command."
+    stop
+end
+
+if {VarExists @eventParticipants} is false
+    Print "Event Pack rejected a direct run of eventDuel. Use the 'event' command."
+    stop
+end
+
+attempt
+    global $serPackPhase = "Preparing round"
+    SetRoundLock true
+    SetLobbyLock false
+    SetFriendlyFire true
+    Decontamination disable
+    Warhead stop
+    Warhead lock
+    WaveRespawnTokens chaosWave set 0
+    WaveRespawnTokens miniChaosWave set 0
+    WaveRespawnTokens miniMtfWave set 0
+    WaveRespawnTokens mtfWave set 0
+    WaveRespawnTime chaosWave set 1h
+    WaveRespawnTime miniChaosWave set 1h
+    WaveRespawnTime miniMtfWave set 1h
+    WaveRespawnTime mtfWave set 1h
+    CleanupPickups
+    CleanupRagdolls
+    StartRound
+    wait 1s
+
+    @eventParticipants = Intersect @eventParticipants @all
+    if {AmountOf @eventParticipants} < 2
+        global $serPackPhase = "Cancelled — restarting"
+        Broadcast @all 5s "<color=#ff6b6b><b>DUEL CANCELLED</b></color><br>Fewer than two participants remain connected. The round will restart."
+        wait 5s
+        RestartRound
+        stop
+    end
+
+    SetRole @all Spectator None
+    wait 500ms
+    LockDoor Lcz173 AdminCommand
+
+    @queue = @eventParticipants
+    @champion = Take @queue 1
+    @queue = Except @queue @champion
+    $duelNumber = 0
+
+    Broadcast @all 8s "<size=32><color=#ff9f43><b>DUEL</b></color></size><br>Weapon: {$eventWeapon}<br>The winner stays in the arena to face the next challenger."
+
+    while {AmountOf @queue} > 0
+        @connectedChampion = Intersect @champion @all
+        if {AmountOf @connectedChampion} is 0
+            @champion = Take @queue 1
+            @queue = Except @queue @champion
+            continue
+        end
+
+        @challenger = Take @queue 1
+        @queue = Except @queue @challenger
+        @connectedChallenger = Intersect @challenger @all
+        if {AmountOf @connectedChallenger} is 0
+            continue
+        end
+
+        $duelNumber = $duelNumber + 1
+        global $serPackPhase = "Duel {$duelNumber}"
+        @duelists = Join @champion @challenger
+
+        SetRole @duelists ClassD None
+        wait 500ms
+        SetMaxHealth @duelists 100
+        SetHealth @duelists 100
+        SetGodMode @duelists true
+        GiveEffect @duelists Ensnared 7s
+        SetCustomInfo @champion "<color=#feca57>DUEL | DEFENDER</color>"
+        SetCustomInfo @challenger "<color=#54a0ff>DUEL | CHALLENGER</color>"
+        run PrepareDuelLoadout @duelists $eventWeapon
+        TPRoom @champion Lcz173 -3 1 0
+        TPRoom @challenger Lcz173 3 1 0
+
+        Broadcast @all 6s "<color=#ff9f43><b>DUEL {$duelNumber}</b></color><br>{@champion -> name} versus {@challenger -> name}"
+        Countdown @duelists 6s "<color=#ff9f43><b>STARTING IN %seconds%...</b></color>"
+        wait 6s
+        ClearEffect @duelists Ensnared
+        SetGodMode @duelists false
+        ClearCountdown @duelists
+
+        $duelSeconds = 0
+        while $duelSeconds < 90
+            wait 1s
+            $duelSeconds = $duelSeconds + 1
+            @connectedDuelists = Intersect @duelists @all
+            @aliveDuelists = Filter @connectedDuelists isAlive true
+            @intruders = Except @alivePlayers @aliveDuelists
+
+            if {AmountOf @intruders} > 0
+                SetRole @intruders Spectator None
+            end
+
+            if {AmountOf @aliveDuelists} < 2
+                break
+            end
+        end
+
+        @connectedDuelists = Intersect @duelists @all
+        @aliveDuelists = Filter @connectedDuelists isAlive true
+
+        if {AmountOf @aliveDuelists} > 1
+            Broadcast @all 5s "<color=#ff6b6b><b>TIME LIMIT REACHED</b></color><br>The duelist with more HP wins."
+            $championHealth = @champion -> health
+            $challengerHealth = @challenger -> health
+
+            if $championHealth > $challengerHealth
+                @duelWinner = @champion
+            elif $challengerHealth > $championHealth
+                @duelWinner = @challenger
+            else
+                @duelWinner = Take @aliveDuelists 1
+                Broadcast @all 4s "<color=#ffb347>HP is tied — the duel winner was selected at random.</color>"
+            end
+
+            @duelLoser = Except @aliveDuelists @duelWinner
+            Kill @duelLoser "Duel: lost on time"
+            wait 1s
+            @champion = @duelWinner
+        elif {AmountOf @aliveDuelists} is 1
+            @champion = @aliveDuelists
+        elif {AmountOf @connectedDuelists} > 0
+            @champion = Take @connectedDuelists 1
+            SetRole @champion ClassD None
+            wait 500ms
+            Broadcast @all 4s "<color=#ffb347>Both duelists died — the advancing player was selected at random.</color>"
+        else
+            @champion = @empty
+        end
+
+        @connectedChampion = Intersect @champion @all
+        if {AmountOf @connectedChampion} is 1
+            @connectedEliminated = Except @connectedDuelists @champion
+            if {AmountOf @connectedEliminated} > 0
+                SetCustomInfo @connectedEliminated ""
+            end
+
+            SetGodMode @champion true
+            SetMaxHealth @champion 100
+            SetHealth @champion 100
+            SetCustomInfo @champion "<color=#feca57>DUEL | WAITING</color>"
+            Broadcast @all 4s "<color=#2ed573>{@champion -> name} wins duel {$duelNumber}.</color>"
+            wait 3s
+        end
+    end
+
+    global $serPackPhase = "Finishing"
+    @connectedChampion = Intersect @champion @all
+    if {AmountOf @connectedChampion} is 1
+        SetGodMode @champion true
+        SetCustomInfo @champion "<color=#2ed573><b>DUEL WINNER</b></color>"
+        Broadcast @all 9s "<size=34><color=#2ed573><b>DUEL WINNER</b></color></size><br>{@champion -> name}"
+    else
+        Broadcast @all 8s "<color=#ff6b6b><b>DUEL ENDED WITHOUT A WINNER</b></color>"
+    end
+
+    wait 9s
+    SetCustomInfo @all ""
+    RestartRound
+on_error with $eventError $eventErrorType
+    global $serPackPhase = "Failure — restarting"
+    Print "Event Pack Duel error ({$eventErrorType}): {$eventError}" Red
+    Broadcast @all 7s "<color=#ff6b6b><b>DUEL STOPPED</b></color><br>A technical error occurred. The round will restart safely."
+    SetCustomInfo @all ""
+    ClearEffect @all Ensnared
+    SetGodMode @all false
+    wait 7s
+    RestartRound
+end

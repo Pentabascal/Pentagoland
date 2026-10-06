@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Version>3.4.2</Version>
+    <AssemblyName>scpdiscord</AssemblyName>
+    <StartupObject>SCPDiscord.SCPDiscordBot</StartupObject>
+    <TargetFramework>net9.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
+    <DebugType>embedded</DebugType>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <GitVersion>false</GitVersion>
+
+    <Authors>KarlofDuty</Authors>
+    <Description>A very customisable Discord bot + SCP:SL plugin combo.</Description>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/KarlOfDuty/SCPDiscord</RepositoryUrl>
+
+    <PackageIconUrl>./icon.ico</PackageIconUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/KarlOfDuty/SCPDiscord</PackageProjectUrl>
+    <PackageVersion>$(Version)</PackageVersion>
+    <LangVersion>default</LangVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <GitVersion>false</GitVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="DSharpPlus" Version="5.0.0-nightly-02578" />
+    <PackageReference Include="DSharpPlus.Commands" Version="5.0.0-nightly-02578" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="5.0.0-nightly-02578" />
+    <PackageReference Include="EmbeddedBuildTime" Version="1.0.3" />
+    <PackageReference Include="GitInfo" Version="2.3.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.33.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="9.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Tmds.Systemd" Version="0.8.0" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="default_config.yml" />
+  </ItemGroup>
+</Project>

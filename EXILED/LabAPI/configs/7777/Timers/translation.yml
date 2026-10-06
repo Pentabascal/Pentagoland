@@ -1,0 +1,6 @@
+timer: '{minutes}<size=22>min</size> {seconds}<size=22>s</size>'
+server_specific_setting_heading: Ajustes del temporizador de reaparición
+overlay_setting_text: Mostrar temporizadores de reaparición
+enable: Activar
+disable: Desactivar
+overlay_setting_hint: Activa o desactiva los temporizadores debajo de las barras de reaparición. No se puede usar el ajuste del juego debido a cómo está implementado.

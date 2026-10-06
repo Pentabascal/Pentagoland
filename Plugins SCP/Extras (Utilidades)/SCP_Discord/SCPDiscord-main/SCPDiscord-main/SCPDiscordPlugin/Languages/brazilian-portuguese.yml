@@ -1,0 +1,1351 @@
+#####################################################################################################################
+#                                                                                                                   #
+#                                                ANÚNCIO DE TRADUÇÃO                                                #
+#                                                                                                                   #
+#     Traduzido por: Firething  Discord: firething                                                                  #
+#     Caso haja algum problema com a tradução, fale comigo. Todo feedback é bem-vindo!                              #
+#                                                                                                                   #
+#####################################################################################################################
+
+
+#####################################################################################################################
+#
+#                                                     EVENTOS
+#
+#   message: A mensagem que será exibida. Variáveis são inseridas no formato <var:name>, como em <var:ipaddress>.
+#   regex: Uma expressão regular combinada com uma string de substituição para encontrar e substituir partes de uma mensagem.
+#
+#####################################################################################################################
+
+#####################################################################################################################
+#
+#                                            INFORMAÇÕES DO JOGADOR
+#
+#  Você pode perceber que muitos dos eventos abaixo têm variáveis do tipo "Player". Isso significa que eles fornecem uma grande
+#  quantidade de variáveis que contêm diferentes informações sobre o jogador. Você pode ver uma lista atualizada dessas variáveis
+#  no arquivo APIExtensions.cs do repositório do Git.
+#
+#  Exemplo de uso:
+#  Se um evento tem uma variável "attacker" do tipo Player, isso significa que você pode usar <var:attacker-name> para conseguir
+#  seu usuário. Isso funciona da mesma forma para todas subvariáveis de jogador, exceto para a variável de desarmador.
+#  A variável de desarmador também é do tipo Player, então se o jogador 'attacker' de antes for desarmado, você poderia
+#  conseguir o nome do desarmador usando <var:attacker-disarmer-name>.
+#
+#  Lista de subvariáveis de Player:
+#  -ipaddress
+#  -name
+#  -id
+#  -userid
+#  -role
+#  -team
+#  -donottrack
+#  -health
+#  -isdisarmed
+#  -isalive
+#  -ismuted
+#  -hasreservedslot
+#  -isglobalmod
+#  -isintercommuted
+#  -hasfullinventory
+#  -hasnoitems
+#  -isnortwoodstaff
+#  -overwatchon
+#  -noclipon
+#  -godmodeon
+#  -isoutofammo
+#  -hasremoteadminaccess
+#  -bypassenabled
+#  -isscp
+#  -ismtf
+#  -ischaos
+#  -ishuman
+#  -rank
+#  -playtimehours
+#
+######################################################################################################################
+
+# Executed after variables have been inserted but before the message specific regex replacement and before player names have been added on all messages.
+global_regex: [
+
+  # Fix formatting issues
+  "::ffff:":"",
+  " \\(\\)":"",
+  "''":"",
+  "<color=.{1,10}>":"",
+  "</color>":"",
+  "SCP_":"SCP-",
+
+  # Teams
+  #"SCPs":"",
+  "FoundationForces":"FTM",
+  "ChaosInsurgency":"Insurgência do Caos",
+  #"Scientists":"",
+  "ClassD":"Classe-D",
+  #"Dead":"",
+  "OtherAlive":"Outra Equipe",
+
+  # Roles
+  #"None":"",
+  "Scp173":"SCP-173",
+  #"ClassD":"",
+  #"Spectator":"",
+  "Scp106":"SCP-106",
+  "NtfSpecialist":"Especialista da FTM",
+  "Scp049":"SCP-049",
+  #"Scientist":"",
+  "Scp079":"SCP-079",
+  "ChaosConscript":"Recruta do Caos",
+  "Scp096":"SCP-096",
+  "SCP-0492":"SCP-049-2",
+  "NtfSergeant":"Sargento da FTM",
+  "NtfCaptain":"Capitão da FTM",
+  "NtfPrivate":"Cabo da FTM",
+  #"Tutorial":"",
+  "FacilityGuard":"Guarda da Instalação",
+  "Scp939":"SCP-939",
+  #"CustomRole":"",
+  "ChaosRifleman":"Fuzileiro do Caos",
+  "ChaosRepressor":"Repressor do Caos",
+  "ChaosMarauder":"Saqueador do Caos",
+  #"Overwatch":"",
+  #"Filmmaker":"",
+  "Scp3114":"SCP-3114",
+  #"Flamingo":"",
+  "AlphaFlamingo":"Flamingo Alfa",
+  "ZombieFlamingo":"Flamingo Zumbi",
+
+  # Elevators
+  "GateA":"portão A",
+  "GateB":"portão B",
+  "LczA01":"Light A1",
+  "LczA02":"Light A2",
+  "LczB01":"Light B1",
+  "LczB02":"Light B2",
+  "Nuke":"ogiva alfa",
+  #"Scp049":"",
+
+  # Room names
+  "Unnamed":"sala não nomeada",
+  "LczClassDSpawn":"celas de Classe-D",
+  "LczComputerRoom":"sala de computadores da Light",
+  "LczCheckpointA":"posto de controle A",
+  "LczCheckpointB":"posto de controle B",
+  "LczToilets":"banheiro da Light",
+  "LczArmory":"arsenal da Light",
+  "Lcz173":"contenção do SCP-173",
+  "LczGlassroom":"contenção do SCP-372 (GR-18)",
+  "Lcz330":"contenção do SCP-330",
+  "Lcz914":"contenção do SCP-914",
+  "LczGreenhouse":"estufa da Light",
+  "LczAirlock":"câmara de descompressão da Light",
+  "HczCheckpointToEntranceZone":"posto de controle da zona de entrada",
+  "HczCheckpointA":"posto de controle A da Heavy",
+  "HczCheckpointB":"posto de controle B da Heavy",
+  "HczWarhead":"silo da ogiva",
+  "Hcz049":"contenção do SCP-049",
+  "Hcz079":"contenção do SCP-079",
+  "Hcz096":"contenção do SCP-096",
+  "Hcz106":"contenção do SCP-106",
+  "Hcz939":"contenção do SCP-939",
+  "HczMicroHID":"arsenal da Micro-HID",
+  "HczArmory":"arsenal da Heavy",
+  "HczServers":"sala do servidor",
+  "HczTesla":"corredor do portão de tesla",
+  "EzCollapsedTunnel":"túnel desmoronado da zona de entrada",
+  "EzGateA":"portão A",
+  "EzGateB":"portão B",
+  "EzRedroom":"sala vermelha do portão trancado",
+  "EzEvacShelter":"abrigo de evacuação",
+  "EzIntercom":"interfone",
+  "EzOfficeStoried":"escritório",
+  "EzOfficeLarge":"escritório",
+  "EzOfficeSmall":"escritório",
+  "Outside":"área de fora",
+  "Pocket":"dimensão portátil",
+  "HczTestroom":"sala de teste da Heavy",
+
+  # Items
+  #"None":"",
+  "KeycardJanitor":"Cartão de Zelador",
+  "KeycardScientist":"Cartão de Cientista",
+  "KeycardResearchCoordinator":"Cartão de Supervisor de Pesquisa",
+  "KeycardZoneManager":"Cartão de Diretor de Zona",
+  "KeycardGuard":"Cartão de Guarda",
+  "KeycardMTFPrivate":"Cartão de Cabo da FTM",
+  "KeycardContainmentEngineer":"Cartão de Engenheiro de Contenção",
+  "KeycardMTFOperative":"Cartão de Agente da FTM",
+  "KeycardMTFCaptain":"Cartão de Capitão da FTM",
+  "KeycardFacilityManager":"Cartão de Diretor da Instalação",
+  "KeycardChaosInsurgency":"Dispositivo Hijacker da Insurgência",
+  "KeycardO5":"Cartão nível-O5",
+  "Radio":"rádio",
+  "GunCOM15":"COM-15",
+  "Medkit":"kit médico",
+  "Flashlight":"lanterna",
+  "MicroHID":"Micro-H.I.D.",
+  "SCP500":"SCP-500",
+  "SCP207":"SCP-207",
+  "Ammo12gauge":"munição de calibre 12",
+  "GunE11SR":"Epsilon-11 SR",
+  "GunCrossvec":"Crossvec",
+  "Ammo556x45":"munição 5.56mm",
+  "GunFSP9":"FSP-9",
+  "GunLogicer":"Logicer",
+  "GrenadeHE":"granada explosiva",
+  "GrenadeFlash":"granada de luz",
+  "Ammo44cal":"munição de calibre 44",
+  "Ammo762x39":"munição de calibre 7.62",
+  "Ammo9x19":"munição 9mm",
+  "GunCOM18":"COM-18",
+  "SCP018":"SCP-018",
+  "SCP268":"SCP-268",
+  "Adrenaline":"adrenalina",
+  "Painkillers":"analgésicos",
+  "Coin":"moeda",
+  "ArmorLight":"colete leve",
+  "ArmorCombat":"colete de combate",
+  "ArmorHeavy":"colete pesado",
+  "GunRevolver":"revólver",
+  "GunAK":"AK",
+  "GunShotgun":"espingarda",
+  "SCP330":"SCP-330",
+  "SCP2176":"SCP-2176",
+  "SCP244a":"SCP-244-A",
+  "SCP244b":"SCP-244-B",
+  "SCP1853":"SCP-1853",
+  "ParticleDisruptor":"disruptor de partículas",
+  "GunCom45":"COM-45",
+  "SCP1576":"SCP-1576",
+  "Jailbird":"jailbird",
+  "AntiSCP207":"SCP-207?",
+  "GunFRMG0":"FR-MG-0",
+  "GunA7":"A7",
+  "Lantern":"lamparina",
+  "Snowball":"bola de neve",
+  "Coal":"carvão",
+  "SpecialCoal":"carvão?",
+  "Tape":"toca-fitas",
+
+  # 914 settings
+  "Rough":"rough",
+  "Coarse":"coarse",
+  "OneToOne":"1:1",
+  "VeryFine":"very fine",
+  "Fine":"fine",
+
+  # KeycardPermissions
+  #"None":"",
+  #"Checkpoints":"",
+  "ExitGates":"portões de saída",
+  #"Intercom":"",
+  "AlphaWarhead":"Ogiva Alfa",
+  "ContainmentLevelOne":"Contenção nível 1",
+  "ContainmentLevelTwo":"Contenção nível 2",
+  "ContainmentLevelThree":"Contenção nível 3",
+  "ArmoryLevelOne":"Arsenal nível um",
+  "ArmoryLevelTwo":"Arsenal nível dois",
+  "ArmoryLevelThree":"Arsenal nível três",
+  "ScpOverride":"SCP-override",
+
+  # Some door things
+  "PortallessBreakableDoor":"porta",
+  "BreakableDoor":"porta",
+  "\\(Clone\\)":""
+]
+
+# Executes on usernames
+user_regex: ["<@":"\\<@", "<@!":"\\<@!", "`":"\\`", "\\*":"\\*", "_":"\\_", "~":"\\~", "\\|":"\\|"]
+
+# Executes on the final version of the message, after everything else has completed
+final_regex: ["discord\\.gg":"","discord\\.com":"","http://":"","https://":""]
+
+messages:
+  onroundstart:
+    message: "**Partida começou.**"
+    regex: []
+    cancel_regex: []
+
+  onconnect:
+    # ipaddress - string
+    # userid - string
+    # jointype - CentralAuthPreauthFlags
+    # region - string
+    message: "Jogador (<var:userid>) tentando conectar..."
+    regex: []
+    cancel_regex: []
+
+  onplayerleave:
+    # ipaddress - string
+    # playerid - int
+    # steamid - string
+    # name - string
+    message: "**<var:player-name> (<var:player-userid>) saiu do jogo.**"
+    regex: []
+    cancel_regex: []
+
+  onroundend:
+    # duration - int
+    # leadingteam -string
+    # dclassalive - int
+    # dclassdead - int
+    # dclassescaped - int
+    # dclassstart - int
+    # mtfalive - int
+    # mtfdead - int
+    # mtfstart - int
+    # scientistsalive - int
+    # scientistsdead - int
+    # scientistsescaped - int
+    # scientistsstart - int
+    # scpalive - int
+    # scpdead - int
+    # scpkills - int
+    # scpstart - int
+    # warheaddetonated - bool
+    # warheadkills - int
+    # zombiesalive - int
+    # zombieschanged - int
+    message: >+
+      **Partida acabou após <var:duration> minutos. Vencedor: <var:leadingteam>.**
+      ```
+      Classe-Ds que escaparam:            <var:dclassescaped>/<var:dclassstart>\n
+      Cientistas Resgatados:         <var:scientistsescaped>/<var:scientistsstart>\n
+      SCPs Contidos:             <var:scpdead>/<var:scpstart>\n
+      Mortos por SCPs:              <var:scpkills>\n
+      Ogiva switchwas<var:warheaddetonated> detonada.
+      ```
+    regex: ["switchwasTrue":"foi","switchwasFalse":"não foi"]
+
+  onwaitingforplayers:
+    message: "**Servidor está pronto e esperando por jogadores.**"
+    regex: []
+    cancel_regex: []
+
+  onroundrestart:
+    message: "**Partida está reiniciando...**"
+    regex: []
+    cancel_regex: []
+
+  onsetservername:
+    # servername - string
+    message: "**Nome do servidor: <var:servername>.**"
+    regex: []
+    cancel_regex: []
+
+  onscp914activate:
+    # knobsetting - KnobSetting
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) ativou a SCP-914 na configuração <var:knobsetting>."
+    regex: []
+    cancel_regex: []
+
+  onstartcountdown:
+    player:
+      # isAutomatic - bool
+      # timeleft - float
+      # player - Player
+      initiated:
+        message: "**A ogiva alfa foi ativada por <var:player-name> (<var:player-userid>), <var:timeleft> segundos até a detonação. Todos os funcionários devem evacuar imediatamente.**"
+        regex: [ ]
+      resumed:
+        message: "**A contagem regressiva da ogiva alfa foi retomada por <var:player-name> (<var:player-userid>), <var:timeleft> segundos até a detonação.**"
+        regex: [ ]
+    server:
+      # isAutomatic - bool
+      # timeleft - float
+      initiated:
+        message: "**A ogiva alfa foi remotamente ativada por ordem do Conselho O5. Todos os funcionários devem evacuar imediatamente.**"
+        regex: []
+        cancel_regex: []
+      resumed:
+        message: "**A contagem regressiva da ogiva alfa foi retomada por ordem do Conselho O5. <var:timeleft> segundos restantes até a detonação.**"
+        regex: []
+        cancel_regex: []
+
+  onstopcountdown:
+    default:
+      # timeleft
+      # player - Player
+      message: "**A detonação da ogiva alfa foi cancelada por <var:player-name> (<var:player-userid>) com <var:timeleft> segundos restando.**"
+      regex: []
+      cancel_regex: []
+    noplayer:
+      # timeleft
+      message: "**A detonação da ogiva alfa foi cancelada remotamente por ordem do Comitê de Ética com <var:timeleft> segundos restando.**"
+      regex: []
+      cancel_regex: []
+
+  ondetonate:
+    message: "**Detonação da ogiva alfa foi detectada. Agentes da FTM estão chegando para eliminar qualquer ameaça restante.**"
+    regex: []
+    cancel_regex: []
+
+  ondecontaminate:
+    message: "**A descontaminação da Zona de Contenção Leve iniciou, todo material biológico será destruído.**"
+    regex: []
+    cancel_regex: []
+
+  onsummonvehicle:
+    chaos:
+      message: "**Alerta: Veículo não autorizado invadiu o perímetro do sítio.**"
+      regex: []
+      cancel_regex: []
+    mtf:
+      message: "**Helicóptero da FTM está no alcance visual do sítio, preparando para pousar.**"
+      regex: []
+      cancel_regex: []
+
+  ongeneratorfinish:
+    # room - string
+    # player - Player
+    message: "Gerador em <var:room> foi ativado."
+    regex: [ ]
+
+  onplayerhurt:
+    # damage - float
+    # damagetype - DamageType
+    # attacker - Player
+    # target - Player
+    default:
+      message: "<var:target-name> (<var:target-userid>) foi ferido por <var:attacker-name> (<var:attacker-userid>) usando <var:damagetype> (<var:damage> hp)."
+      regex: ["using UNKNOWN":"usando meios desconhecidos", "-1 damage":"dano imenso"]
+    friendlyfire:
+      message: "**<var:target-team> <var:target-name> (<var:target-userid>) foi atacado pelo aliado <var:attacker-team> <var:attacker-name> (<var:attacker-userid>) usando <var:damagetype> (<var:damage> hp).**"
+      regex: ["using UNKNOWN":"usando meios desconhecidos", "-1 damage":"dano imenso"]
+    noattacker:
+      message: "<var:target-name> (<var:target-userid>) levou <var:damage> de dano por <var:damagetype>."
+      regex: ["damage by UNKNOWN":"dano por causa desconhecida", "-1 damage":"dano imenso"]
+
+  onplayerdie:
+    # damagetype - DamageType
+    # attacker - Player
+    # target - Player
+    default:
+      message: "<var:target-name> (<var:target-userid>) foi morto por <var:attacker-name> (<var:attacker-userid>) usando <var:damagetype>."
+      regex: ["using UNKNOWN":"usando meios desconhecidos"]
+    friendlyfire:
+      message: "**<var:target-team> <var:target-name> (<var:target-userid>) foi morto pelo aliado <var:attacker-team> <var:attacker-name> (<var:attacker-userid>) usando <var:damagetype>.**"
+      regex: ["using UNKNOWN":"usando meios desconhecidos"]
+    nokiller:
+      message: "<var:target-name> (<var:target-userid>) morreu por <var:damagetype>."
+      regex: ["died by UNKNOWN":"morreu de forma desconhecida"]
+
+  onplayerpickupitem:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) pegou <var:item>."
+    regex: []
+    cancel_regex: []
+
+  onplayerpickupammo:
+    # ammo - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) pegou <var:ammo>."
+    regex: []
+    cancel_regex: []
+
+  onplayerpickuparmor:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) pegou <var:armor>."
+    regex: []
+    cancel_regex: []
+
+  onplayerpickupscp330:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) pegou SCP-330."
+    regex: []
+    cancel_regex: []
+
+  onplayerdropitem:
+    # item - Item
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) largou <var:item>."
+    regex: []
+    cancel_regex: []
+
+  onplayerdropammo:
+    # ammo - Item
+    # amount - int
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) largou <var:amount> <var:ammo>."
+    regex: []
+    cancel_regex: []
+
+  onplayerjoin:
+    # player - Player
+    message: "**<var:player-name> (<var:player-userid>) entrou no jogo.**"
+    regex: []
+    cancel_regex: []
+
+  onnicknameset:
+    # nickname - string
+    # player - Player
+    message: "Jogador '<var:player-name> (<var:player-userid>)' definiu seu apelido para <var:nickname>."
+    regex: []
+    cancel_regex: []
+
+  onspawn:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) nasceu como <var:player-role>."
+    regex: []
+    cancel_regex: []
+
+  onpocketdimensionexit:
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) escapou da dimensão portátil do SCP-106."
+    regex: []
+    cancel_regex: []
+
+  onpocketdimensionenter:
+    # attacker - Player
+    # target - Player
+    message: "<var:target-name> (<var:target-userid>) foi levado à dimensão portátil do SCP-106 por <var:attacker-name> (<var:attacker-userid>)."
+    regex: []
+    cancel_regex: []
+
+  onthrowprojectile:
+    # type - GrenadeType
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) jogou um <var:type>."
+    regex: []
+    cancel_regex: []
+
+  onitemuse:
+    # item - string
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) usou <var:item>."
+    regex: []
+    cancel_regex: []
+
+  onelevatoruse:
+    # elevatorname - ElevatorType
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) chamou o elevador do(a) <var:elevatorname>."
+    regex: []
+    cancel_regex: []
+
+  onhandcuff:
+    # target - Player
+    # disarmer - Player
+    default:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) foi preso por <var:disarmer-role> <var:disarmer-name> (<var:disarmer-userid>)."
+      regex: []
+      cancel_regex: []
+    nootherplayer:
+      # target - Player
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) foi preso."
+      regex: []
+      cancel_regex: []
+
+  onhandcuffremoved:
+    # target - Player
+    # disarmer - Player
+    default:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) foi solto por <var:disarmer-role> <var:disarmer-name> (<var:disarmer-userid>)."
+      regex: []
+      cancel_regex: []
+    nootherplayer:
+      message: "<var:target-role> <var:target-name> (<var:target-userid>) foi solto."
+      regex: []
+      cancel_regex: []
+
+  onrecallzombie:
+    # target - Player
+    # player - Player
+    message: "<var:target-name> (<var:target-userid>) foi revivido como uma instância de SCP-049-2 por <var:player-name> (<var:player-userid>)"
+    regex: []
+    cancel_regex: []
+
+  onexecutedcommand:
+    remoteadmin:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Servidor usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+    client:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Servidor usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+    console:
+      player:
+        # command
+        # result
+        # returnmessage
+        # player - Player
+        message: "<var:player-name> (<var:player-userid>) usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+      server:
+        # command
+        # result
+        # returnmessage
+        message: "Servidor usou o comando `<var:command>`:\n```<var:returnmessage>```"
+        regex: [ ]
+
+  onreload:
+    # weapon
+    # maxclipsize
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) carregou <var:weapon>."
+    regex: []
+    cancel_regex: []
+
+  ongrenadeexplosion:
+    # player - Player
+    message: "A granada de <var:player-name> (<var:player-userid>) explodiu."
+    regex: []
+    cancel_regex: []
+
+  ongrenadehitplayer:
+    # player - Player
+    # target - Player
+    message: "A granada de <var:player-name> (<var:player-userid>) acertou <var:target-name> (<var:target-userid>)"
+    regex: []
+    cancel_regex: []
+
+  ongeneratorunlock:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) destrancou um gerador em <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  ongeneratorclose:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) fechou um gerador em <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  ongeneratoropen:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) abriu um gerador em <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  ongeneratoractivated:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) ativou um gerador em <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  ongeneratordeactivated:
+    # engaged - bool
+    # activating - bool
+    # locked - bool
+    # open - bool
+    # room - RoomType
+    # starttime - float
+    # timeleft - float
+    # player - Player
+    message: "O gerador em <var:room> foi desativado."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  on079lockdoor:
+    # open - bool
+    # door - string
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) trancou uma porta como SCP-079."
+    regex: []
+    cancel_regex: []
+
+  on079teslagate:
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) ativou um portão de tesla."
+    regex: []
+    cancel_regex: []
+
+  on079levelup:
+    # level - int
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) upou como SCP-079."
+    regex: []
+    cancel_regex: []
+
+  on079unlockdoor:
+    # doorname - string
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) trancou a porta do(a) <var:doorname>."
+    regex: []
+    cancel_regex: []
+
+  on079lockdown:
+    # room - RoomType
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) botou em confinamento o(a) <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  on079cancellockdown:
+    # room - RoomType
+    # apdrain - float
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) cancelou o confinamento em <var:room>."
+    regex: [
+      "Micro-HID":"sala da Micro-HID",
+      "nuke":"silo da nuke" ]
+
+  onban:
+    player:
+      # duration - int
+      # reason - string
+      # player - Player
+      # issuer - Player
+      message: "**Jogador <var:player-name> (<var:player-userid>) foi banido por <var:issuer-name> (<var:issuer-userid>) por `<var:duration>`. Razão: <var:reason>**"
+      regex: [ ]
+    server:
+      # duration - int
+      # reason - string
+      # player - Player
+      message: "**Jogador <var:player-name> (<var:player-userid>) foi banido do servidor por `<var:duration>`. Razão: <var:reason>**"
+      regex: []
+      cancel_regex: []
+
+  onbanissued:
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-ip
+    # player-name
+    # issuer-name
+    ip:
+      message: >+
+        **Banimento por IP emitido**
+        ```
+        Jogador:    <var:player-name>\n
+        IP:        <var:player-ip>\n
+        Emitido:    <var:issuedtime>\n
+        Expira:   <var:expirytime>\n
+        Duração:  <var:duration>\n
+        Emissor:    <var:issuer-name>\n
+        Razão:    <var:reason>
+        ```
+      regex: []
+      cancel_regex: []
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-userid
+    # player-name
+    # issuer-name
+    userid:
+      message: >+
+        **Banimento por UserID emitido**
+        ```
+        Jogador:    <var:player-name>\n
+        UserID:    <var:player-userid>\n
+        Emitido:    <var:issuedtime>\n
+        Expira:   <var:expirytime>\n
+        Duração:  <var:duration>\n
+        Emissor:    <var:issuer-name>\n
+        Razão:    <var:reason>
+        ```
+      regex: []
+      cancel_regex: []
+
+  onbanupdated:
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-ip
+    # player-name
+    # issuer-name
+    ip:
+      message: >+
+        **Banimento por IP atualizado**
+        ```
+        Jogador:    <var:player-name>\n
+        IP:        <var:player-ip>\n
+        Emitido:    <var:issuedtime>\n
+        Expira:   <var:expirytime>\n
+        Duração:  <var:duration>\n
+        Emissor:    <var:issuer-name>\n
+        Razão:    <var:reason>
+        ```
+      regex: []
+      cancel_regex: []
+    # duration
+    # expirytime
+    # issuedtime
+    # reason
+    # player-userid
+    # player-name
+    # issuer-name
+    userid:
+      message: >+
+        **Banimento por UserID atualizado**
+        ```
+        Jogador:    <var:player-name>\n
+        UserID:    <var:player-userid>\n
+        Emitido:    <var:issuedtime>\n
+        Expira:   <var:expirytime>\n
+        Duração:  <var:duration>\n
+        Emissor:    <var:issuer-name>\n
+        Razão:    <var:reason>
+        ```
+      regex: []
+      cancel_regex: []
+
+  onbanrevoked:
+    ip:
+      # ip - string
+      # duration - string
+      # name - string
+      # issuer - string
+      # reason - string
+      message: "**Banimento por IP para <var:name> (<var:ip>) revogado. Originalmente banido pelo(a) <var:issuer> por <var:duration>.**"
+      regex: []
+      cancel_regex: []
+    userid:
+      # userid - int
+      # duration - string
+      # name - string
+      # issuer - string
+      # reason - string
+      message: "**Banimento por UserID para <var:name> (<var:userid>) revogado. Originalmente banido pelo(a) <var:issuer> por <var:duration>.**"
+      regex: []
+      cancel_regex: []
+
+  onkick:
+    player:
+      # reason - string
+      # player - Player
+      # issuer - Player
+      message: "**Jogador <var:player-name> (<var:player-userid>) foi expulso por <var:issuer-name> (<var:issuer-userid>). Razão: <var:reason>**"
+      regex: [ ]
+    server:
+      # reason - string
+      # player - Player
+      message: "**Jogador <var:player-name> (<var:player-userid>) foi expulso pelo servidor. Razão: <var:reason>**"
+      regex: []
+      cancel_regex: []
+
+  onplayermuted:
+    player:
+      intercom:
+        # player - Player
+        # issuer - Player
+        message: "**<var:player-name> (<var:player-userid>) foi silenciado no interfone por <var:issuer-name> (<var:issuer-userid>).**"
+        regex: []
+        cancel_regex: []
+      standard:
+        # player - Player
+        # issuer - Player
+        message: "**<var:player-name> (<var:player-userid>) foi silenciado por <var:issuer-name> (<var:issuer-userid>).**"
+        regex: []
+        cancel_regex: []
+    server:
+      intercom:
+        # player - Player
+        message: "**<var:player-name> (<var:player-userid>) foi silenciado no interfone pelo servidor.**"
+        regex: []
+        cancel_regex: []
+      standard:
+        # player - Player
+        message: "**<var:player-name> (<var:player-userid>) foi silenciado pelo servidor.**"
+        regex: []
+        cancel_regex: []
+
+  onplayerunmuted:
+    player:
+      intercom:
+        # player - Player
+        # issuer - Player
+        message: "**<var:player-name> (<var:player-userid>) foi dessilenciado no interfone por <var:issuer-name> (<var:issuer-userid>).**"
+        regex: []
+        cancel_regex: []
+      standard:
+        # player - Player
+        # issuer - Player
+        message: "**<var:player-name> (<var:player-userid>) foi dessilenciado por <var:issuer-name> (<var:issuer-userid>).**"
+        regex: []
+        cancel_regex: []
+    server:
+      intercom:
+        # player - Player
+        message: "**<var:player-name> (<var:player-userid>) foi dessilenciado no interfone pelo servidor.**"
+        regex: []
+        cancel_regex: []
+      standard:
+        # player - Player
+        message: "**<var:player-name> (<var:player-userid>) foi dessilenciado pelo servidor.**"
+        regex: []
+        cancel_regex: []
+
+  onteamrespawn:
+    # players - List<Player>
+    # spawnchaos - bool
+    mtf:
+      message: "**Força-Tarefa Móvel Epsilon-11, designada Nine-Tailed Fox, adentrou a instalação.**"
+      regex: []
+      cancel_regex: []
+    ci:
+      message: "**Invasão da instalação detectada, intrusos identificados como membros do Grupo de Interesse hostil \"Insurgência do Caos\".**"
+      regex: []
+      cancel_regex: []
+
+  onplayerescape:
+    # newrole - Role
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) fugiu e se tornou <var:newrole>"
+    regex: []
+    cancel_regex: []
+
+  onplayercheaterreport:
+    # player - Player
+    # target - Player
+    # reason - string
+    message: "**<var:player-name> (<var:player-userid>) denunciou <var:target-name> (<var:target-userid>) como cheater:**\n```<var:reason>```"
+    regex: []
+    cancel_regex: []
+
+  onplayerreport:
+    # player - Player
+    # target - Player
+    # reason - string
+    message: "**<var:player-name> (<var:player-userid>) denunciou <var:target-name> (<var:target-userid>) por quebrar as regras do servidor:**\n```<var:reason>```"
+    regex: []
+    cancel_regex: []
+
+  onmapgenerated:
+    message: "O Sítio foi gerado corretamente!"
+    regex: []
+    cancel_regex: []
+
+  onplayerinteractlocker:
+    # chamber - Structure
+    # room - RoomType
+    # canopen - bool
+    # player - Player
+    message: "<var:player-name> (<var:player-userid>) interagiu com <var:chamber> em <var:room>."
+    regex: []
+    cancel_regex: []
+
+  onplayerreceiveeffect:
+    # player - Player
+    # effect - string
+    # duration - float
+    # intensity - byte
+    message: "<var:player-name> (<var:player-userid>) recebeu um efeito: <var:effect>, por <var:duration> segundos na intensidade <var:intensity>."
+    regex: []
+    cancel_regex: []
+
+  oninteract330:
+    # player - Player
+    # uses - int
+    message: "<var:player-name> (<var:player-userid>) utilizou SCP-330 (<var:uses> usos)."
+    regex: []
+    cancel_regex: []
+
+  ###############################################################################################################################
+  #                                                                                                                             #
+  #                                                   BOT DO DISCORD                                                            #
+  #                                                                                                                             #
+  #   message: A mensagem que será exibida. Variáveis são inseridas no formato <var:name>, como em <var:ipaddress>.             #
+  #   regex: Uma expressão regular combinada com uma string de substituição para encontrar e substituir partes de uma mensagem. #
+  #                                                                                                                             #
+  ###############################################################################################################################
+
+  connectedtobot:
+    message: "**Servidor do SCP:SL conectado.**"
+    regex: []
+    cancel_regex: []
+
+  invalidsteamid:
+    # userid - string
+    # discord-displayname - string
+    # discord-username - string
+    message: "SteamID inválido '<var:userid>'."
+    regex: []
+    cancel_regex: []
+
+  invalidsteamidorip:
+    # steamidorip - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "SteamID ou IP inválido '<var:steamidorip>'."
+    regex: []
+    cancel_regex: []
+
+  invalidduration:
+    # duration - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Duração inválida '<var:duration>'."
+    regex: []
+    cancel_regex: []
+
+  playernotfound:
+    # userid - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Jogador com SteamID '<var:userid>' não encontrado."
+    regex: []
+    cancel_regex: []
+
+  playerkicked:
+    # player - Player
+    # reason - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "'<var:player-name>' (<var:player-userid>) foi expulso do servidor por <var:discord-username> pela razão '<var:reason>'."
+    regex: []
+    cancel_regex: []
+
+  playerbanned:
+    online:
+      # player - Player
+      # reason - string
+      # duration - string
+      # discord-displayname - string
+      # discord-username - string
+      # discord-userid - int
+      message: "'<var:player-name>' (<var:player-userid>) foi banido por <var:discord-username> pela razão '<var:reason>' (<var:duration>) (+Banimento por IP)."
+      regex: []
+      cancel_regex: []
+    offline:
+      # name - string
+      # userid - string
+      # reason - string
+      # duration - string
+      # discord-displayname - string
+      # discord-username - string
+      # discord-userid - int
+      message: "'<var:name>' (<var:userid>) foi banido por <var:discord-username> pela razão '<var:reason>' (<var:duration>)."
+      regex: []
+      cancel_regex: []
+
+  playerunbanned:
+    # steamidorip - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Todas entradas com o SteamID/IP '<var:steamidorip>' foram retiradas da lista de banimentos."
+    regex: []
+    cancel_regex: []
+
+  playermuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # admintag - string
+    # adminid - long
+    message: "<var:name> (<var:userid>) foi silenciado por <var:discord-username> pela razão '<var:reason>' (Permanentemente)."
+    regex: []
+    cancel_regex: []
+
+  playertempmuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "<var:name> (<var:userid>) foi silenciado por <var:discord-username> pela razão '<var:reason>' (<var:duration>)."
+    regex: []
+    cancel_regex: []
+
+  mutefailed:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Erro ocorreu ao tentar silenciar o jogador com o steamid '<var:userid>', verifique o console para mais informações."
+    regex: []
+    cancel_regex: []
+
+  playerunmuted:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "<var:name> (<var:userid>) foi dessilenciado por <var:discord-username>."
+    regex: []
+    cancel_regex: []
+
+  unmutefailed:
+    # name - string
+    # userid - string
+    # reason - string
+    # duration - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Erro ocorreu ao tentar dessilenciar o jogador com o steamid '<var:userid>', verifique o console para mais informações."
+    regex: []
+    cancel_regex: []
+
+  kickall:
+    # reason - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "Todos os jogadores foram expulsos do servidor com a razão '<var:reason>'."
+    regex: []
+    cancel_regex: []
+
+  # The feedback from a console command, except the custom ones above. (Is not affected by global regex other than final_regex)
+  consolecommandfeedback:
+    # feedback - string
+    # discord-displayname - string
+    # discord-username - string
+    # discord-userid - int
+    message: "<var:feedback>"
+    regex: []
+    cancel_regex: []
+
+  list:
+    default:
+      title:
+        # players - int
+        # maxplayers - int
+        # page - int
+        # pages - int
+        # discord-displayname - string
+        # discord-username - string
+        # discord-userid - int
+        message: "<var:players> / <var:maxplayers> jogadores"
+        regex: []
+        cancel_regex: []
+      row:
+        default:
+          # player - Player
+          message: "**<var:player-name>** | **<var:player-role>** | `<var:player-userid>`"
+          regex: []
+          cancel_regex: []
+        empty:
+          message: "Nenhum jogador ativo."
+          regex: []
+          cancel_regex: []
+
+    ranked:
+      title:
+        # players - int
+        # rankedplayers - int
+        # maxplayers - int
+        # page - int
+        # pages - int
+        # discord-displayname - string
+        # discord-username - string
+        # discord-userid - int
+        message: "<var:rankedplayers> / <var:players> jogadores ranqueados"
+        regex: []
+        cancel_regex: []
+      row:
+        default:
+          # player - Player
+          message: "**<var:player-name>** | **<var:player-rank>** | `<var:player-userid>`"
+          regex: []
+          cancel_regex: []
+        empty:
+          message: "Sem jogadores ranqueados ativos."
+          regex: []
+          cancel_regex: []
+
+    synced:
+      title:
+        online-only:
+          # players - int
+          # maxplayers - int
+          # syncedplayers - int
+          # page - int
+          # pages - int
+          # discord-displayname - string
+          # discord-username - string
+          # discord-userid - int
+          message: "<var:syncedplayers> / <var:maxplayers> jogadores sincronizados"
+          regex: [ "1 jogador(es) sincronizado(s)":"1 jogador sincronizado" ]
+          cancel_regex: []
+        all:
+          # players - int
+          # maxplayers - int
+          # syncedplayers - int
+          # page - int
+          # pages - int
+          # discord-displayname - string
+          # discord-username - string
+          # discord-userid - int
+          message: "<var:syncedplayers> jogadores sincronizados"
+          regex: [ "1 jogador(es) sincronizado(s)":"1 jogador sincronizado" ]
+          cancel_regex: []
+      row:
+        online-only:
+          default:
+            # player - Player
+            # discordid - int
+            # discordmention - string
+            message: "**<var:player-name>** | <var:discordmention> | `<var:player-userid>`"
+            regex: []
+            cancel_regex: []
+          empty:
+            message: "Sem jogadores sincronizados ativos."
+            regex: []
+            cancel_regex: []
+        all:
+          default:
+            # userid - string
+            # name - string
+            # discordid - int
+            # discordmention - string
+            message: "**<var:name>** | <var:discordmention> | `<var:userid>`"
+            regex: []
+            cancel_regex: []
+          empty:
+            message: "Não há jogadores sincronizados."
+            regex: []
+            cancel_regex: []
+
+  playerinfo:
+    online:
+      # player - Player
+      # discordid - int
+      # discordmention - string
+      # issynced - bool
+      # mutestatus - string
+      # mutereason - string
+      # discord-displayname - string
+      # discord-username - string
+      # discord-userid - int
+      message: >+
+        **Informações do Jogador - <var:discordmention>**
+        ```
+        Ativo:          Sim\n
+        Nome:            <var:player-name>\n
+        SteamID:         <var:player-userid>\n
+        IP:              <var:player-ipaddress>\n
+        Tempo de Jogo:        <var:player-playtimehours> horas\n
+        \n
+        Cargo:            <var:player-role>\n
+        HP:              <var:player-health>\n
+        Supervisor:       replaceOnOff<var:player-overwatchon>\n
+        Noclip:          replaceOnOff<var:player-noclipon>\n
+        Godmode:         replaceOnOff<var:player-godmodeon>\n
+        Bypass:          replaceOnOff<var:player-bypassenabled>\n
+        \n
+        Silenciado:           <var:mutestatus> (Razão: <var:mutereason>)\n
+        Banido:          Não\n
+        Sincronizado no Discord:  replaceYesNo<var:issynced>\n
+        Acesso ao RA:       replaceYesNo<var:player-hasremoteadminaccess>\n
+        Slot Reservado:   replaceYesNo<var:player-hasreservedslot>\n
+        Do Not Track:    replaceOnOff<var:player-donottrack>\n
+        Equipe da Northwood: replaceYesNo<var:player-isnortwoodstaff>
+        ```
+      regex: [ "replaceYesNoTrue":"Sim", "replaceYesNoFalse":"Não", "replaceOnOffTrue":"Ativo", "replaceOnOffFalse":"Inativo", "- <@0>": "", "\\(Razão: \\)":"" ]
+      cancel_regex: []
+    offline:
+      # userid - int
+      # name - string
+      # discordid - int
+      # discordmention - int
+      # issynced - bool
+      # mutestatus - string
+      # mutereason - string
+      # banstatus - string
+      # banreason - string
+      # playtimehours - int
+      # hasreservedslot - bool
+      # discord-displayname - string
+      # discord-username - string
+      # discord-userid - int
+      message: >+
+        **Informações do Jogador - <var:discordmention>**
+        ```
+        Ativo:         Não\n
+        Nome:           <var:name>\n
+        SteamID:        <var:userid>\n
+        Tempo de Jogo:       <var:playtimehours> horas\n
+        Silenciado:          <var:mutestatus> (Razão: <var:mutereason>)\n
+        Banido:         <var:banstatus> (Razão: <var:banreason>)\n
+        Slot Reservado:  replaceYesNo<var:hasreservedslot>\n
+        Sincronizado no Discord: replaceYesNo<var:issynced>
+        ```
+      regex: [ "replaceYesNoTrue":"Sim", "replaceYesNoFalse":"Não", "replaceOnOffTrue":"Ativo", "replaceOnOffFalse":"Inativo", "- <@0>": "", "\\(Razão: \\)":"" ]
+      cancel_regex: []
+
+  botactivity:
+    empty:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> ativos"
+      regex: [ ]
+    active:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> ativos"
+      regex: [ ]
+    full:
+      # players - int
+      # maxplayers - int
+      message: "<var:players> / <var:maxplayers> ativos"
+      regex: []
+      cancel_regex: []

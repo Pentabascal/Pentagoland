@@ -1,0 +1,38 @@
+﻿using System;
+using Exiled.API.Features;
+using Exiled.API.Features.Core.UserSettings;
+
+namespace UltimateHUD
+{
+    public class Plugin : Plugin<Config, Translations>
+    {
+        public override string Name => "UltimateHUD";
+        public override string Author => "Vretu";
+        public override string Prefix => "UltimateHUD";
+        public override Version Version => new Version(7, 1, 3);
+        public override Version RequiredExiledVersion { get; } = new Version(9, 14, 2);
+        public static Plugin Instance { get; private set; }
+        public HeaderSetting SettingsHeader { get; set; } = new HeaderSetting(5553, "Ultimate HUD");
+
+        public override void OnEnabled()
+        {
+            Instance = this;
+            SettingBase.Register(new[] { SettingsHeader });
+            EventHandlers.RegisterEvents();
+            ServerSettings.RegisterSettings();
+            base.OnEnabled();
+        }
+
+        public override void OnDisabled()
+        {
+            foreach (Player player in Player.List)
+                Hints.RemoveAll(player);
+
+            Instance = null;
+            SettingBase.Unregister(settings: new[] { SettingsHeader });
+            EventHandlers.UnregisterEvents();
+            ServerSettings.UnregisterSettings();
+            base.OnDisabled();
+        }
+    }
+}

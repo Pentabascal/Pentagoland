@@ -1,0 +1,48 @@
+# Activa o desactiva el plugin entero.
+is_enabled: true
+# Mensajes extra en consola para depurar la asignacion de subclases.
+debug: false
+# Muestra un aviso superior con el nombre y la descripcion de la subclase al spawnear.
+show_subclass_on_spawn: true
+# Duracion maxima (segundos) del banner de bienvenida. El minimo es 5s y se ajusta segun el numero de palabras.
+spawn_hint_duration: 7
+# Muestra el contador de habilidad en pantalla. Desactivalo si choca con otro plugin de hints.
+show_ability_hud: true
+# Desplazamiento vertical del contador de habilidad. 0 es la posicion normal y 3 lo baja claramente hacia la parte inferior.
+ability_hud_offset: 2
+# Registra una tecla configurable por el jugador para las habilidades.
+use_server_specific_keybind: false
+# Tecla sugerida por defecto para la habilidad (el jugador puede cambiarla). Valores validos: nombres de UnityEngine.KeyCode, por ejemplo X, G, V, Alpha5.
+default_ability_key: 'X'
+# Activa el módulo de SCP-173 (señuelo, avisos de Tantrum y variantes). Es la parte más experimental: si da problemas, ponlo en false.
+enable_scp173_module: true
+# Activa el bot señuelo de SCP-173. Requiere EnableScp173Module.
+enable_scp173_decoy: false
+# Activa las subclases de SCPs (939, 049, 049-2, 106).
+enable_scp_subclasses: true
+# Activa el paquete de subclases extra (Radiotelegrafista, Bioquímico, Soplón, Escudero y variantes de SCP-096).
+enable_extra_subclasses: true
+# Curacion que recibe el SCP-096 por cada kill. 0 para desactivarlo.
+scp096_heal_per_kill: 50
+# Probabilidad base para humanos de recibir una subclase, incluso cuando el pool es pequeno.
+base_subclass_chance: 30
+# Probabilidad para humanos cuando hay exactamente 2 opciones disponibles.
+two_option_subclass_chance: 45
+# Aumento de probabilidad por cada opcion adicional a partir de la segunda.
+subclass_chance_per_option: 3
+# Limite maximo de probabilidad para humanos por pool.
+max_subclass_chance: 80
+# Probabilidad base de los SCP para recibir una subclase. Los SCP tienen mas opciones jugables y usan una probabilidad separada.
+scp_base_subclass_chance: 55
+# Probabilidad de los SCP cuando hay exactamente 2 opciones disponibles.
+scp_two_option_subclass_chance: 70
+# Limite maximo de probabilidad de subclase para los SCP.
+scp_max_subclass_chance: 92
+# Desactivar subclases concretas por su ID. Ej: demoledor: false
+disabled_subclasses: {}
+# Sobrescribe el peso de rareza (0-100) de una subclase por su ID. Un valor mayor la hace más frecuente dentro de su pool. Las subclases SCP mantienen siempre un peso igual.
+chance_overrides: {}
+# Sobrescribe el cooldown en segundos de una habilidad por su ID. Ej: veterano: 90
+cooldown_overrides: {}
+# Sobrescribe la vida maxima de una subclase por su ID. Ej: heavy: 115
+health_overrides: {}

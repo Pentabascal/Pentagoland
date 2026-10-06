@@ -1,0 +1,46 @@
+﻿using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Extensions;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.ValueSystem;
+
+namespace SER.Code.MethodSystem.Methods.TextMethods;
+
+[UsedImplicitly]
+// ReSharper disable once InconsistentNaming
+public class Text_SliceMethod : ReturningMethod<TextValue>
+{
+    public override string Description => 
+        "Slices off characters from beginning and end of a text value.";
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new TextArgument("text"),
+        new IntArgument("beginning amount", 0)
+        {
+            Description = "The amount of characters to remove from the beginning of the text.",
+            DefaultValue = new(0, null)
+        },
+        new IntArgument("end amount", 0)
+        {
+            Description = "The amount of characters to remove from the end of the text.",
+            DefaultValue = new(0, null)
+        }
+    ];
+
+    public override void Execute()
+    {
+        var text = Args.GetText("text");
+        var beginning = Args.GetInt("beginning amount");
+        var end = Args.GetInt("end amount");
+
+        try
+        {
+            ReturnValue = text[beginning..^end].ToDynamicTextValue(Script);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            ReturnValue = new StaticTextValue(string.Empty);
+        }
+    }
+}

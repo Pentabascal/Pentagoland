@@ -1,0 +1,112 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>VVUP.CustomItems</AssemblyName>
+    <RootNamespace>VVUP.CustomItems</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <OutputPath>$(MSBuildThisFileDirectory)..\Build\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <Version>3.6.7</Version>
+    <AssemblyVersion>3.6.7.0</AssemblyVersion>
+    <FileVersion>3.6.7.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(EXILED_REFERENCES)\netstandard.dll')">
+    <Reference Include="netstandard">
+      <HintPath>$(EXILED_REFERENCES)\netstandard.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(EXILED_REFERENCES)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mirror">
+      <HintPath>$(EXILED_REFERENCES)\Mirror.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(EXILED_REFERENCES)\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(EXILED_REFERENCES)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(EXILED_REFERENCES)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(EXILED_REFERENCES)\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="VVUP.Base">
+      <HintPath>$(VVUP_BASE_ASSEMBLY)</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="API\ValidatedCustomWeapon.cs" />
+    <Compile Include="API\StickyGrenadeApi.cs" />
+    <Compile Include="Commands\C4Detonate.cs" />
+    <Compile Include="Commands\GrenadeLauncherCollider.cs" />
+    <Compile Include="Commands\GrenadeLauncherForce.cs" />
+    <Compile Include="Compatibility\ApplyEffects.cs" />
+    <Compile Include="Configs\Config.cs" />
+    <Compile Include="Configs\CustomItemsConfig.cs" />
+    <Compile Include="Configs\SsssConfig.cs" />
+    <Compile Include="Items\Armor\ExplosiveResistantArmor.cs" />
+    <Compile Include="Items\Armor\LowGravityArmor.cs" />
+    <Compile Include="Items\Firearms\ExplosiveRoundRevolver.cs" />
+    <Compile Include="Items\Firearms\GrenadeLauncher.cs" />
+    <Compile Include="Items\Firearms\LaserGun.cs" />
+    <Compile Include="Items\Firearms\MediGun.cs" />
+    <Compile Include="Items\Firearms\Pathfinder.cs" />
+    <Compile Include="Items\Firearms\Scp2818.cs" />
+    <Compile Include="Items\Firearms\Sniper.cs" />
+    <Compile Include="Items\Firearms\Tranquilizer.cs" />
+    <Compile Include="Items\Firearms\ViperPdw.cs" />
+    <Compile Include="Items\Grenades\C4.cs" />
+    <Compile Include="Items\Grenades\ClusterGrenade.cs" />
+    <Compile Include="Items\Grenades\EmpGrenade.cs" />
+    <Compile Include="Items\Grenades\F4.cs" />
+    <Compile Include="Items\Grenades\GuardianGrenade.cs" />
+    <Compile Include="Items\Grenades\LowGravityGrenade.cs" />
+    <Compile Include="Items\Grenades\MultiFlash.cs" />
+    <Compile Include="Items\Grenades\NerveAgent.cs" />
+    <Compile Include="Items\Grenades\ProxyBang.cs" />
+    <Compile Include="Items\Grenades\SmokeGrenade.cs" />
+    <Compile Include="Items\Keycards\ContainmentScientistKeycard.cs" />
+    <Compile Include="Items\MedicalItems\AED.cs" />
+    <Compile Include="Items\MedicalItems\AntiScp096Pills.cs" />
+    <Compile Include="Items\MedicalItems\DeadringerSyringe.cs" />
+    <Compile Include="Items\MedicalItems\ExperimentalStim.cs" />
+    <Compile Include="Items\MedicalItems\InfinitePills.cs" />
+    <Compile Include="Items\MedicalItems\KySyringe.cs" />
+    <Compile Include="Items\Other\AdditionalHealth207.cs" />
+    <Compile Include="Items\Other\BottleOfRum.cs" />
+    <Compile Include="Items\Other\Knife.cs" />
+    <Compile Include="Items\Other\PhantomLantern.cs" />
+    <Compile Include="Items\Other\PortableIntercom.cs" />
+    <Compile Include="Items\Other\Scp1499.cs" />
+    <Compile Include="Items\Other\Scp427.cs" />
+    <Compile Include="Items\Other\Telewand.cs" />
+    <Compile Include="Patches\StickyGrenade.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Ssss.cs" />
+    <Compile Include="SsssEventHandlers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExMod.Exiled" Version="9.14.2" PrivateAssets="all" />
+    <PackageReference Include="Lib.Harmony" Version="2.4.2" PrivateAssets="all" />
+    <PackageReference Include="RueI" Version="3.1.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

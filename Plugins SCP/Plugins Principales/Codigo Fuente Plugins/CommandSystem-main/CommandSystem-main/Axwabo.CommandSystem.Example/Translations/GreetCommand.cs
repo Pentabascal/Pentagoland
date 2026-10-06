@@ -1,0 +1,21 @@
+﻿using System;
+using Axwabo.CommandSystem.Attributes;
+using Axwabo.CommandSystem.Commands;
+
+namespace Axwabo.CommandSystem.Example.Translations;
+
+[CommandProperties(CommandHandlerType.All, "greet", 1, "Responde con un saludo aleatorio.")]
+public sealed class GreetCommand : CommandBase
+{
+
+    private static readonly GreetingType[] AllTypes = (GreetingType[]) Enum.GetValues(typeof(GreetingType));
+
+    protected override CommandResult Execute(ArraySegment<string> arguments, CommandSender sender)
+    {
+        var name = string.Join(" ", arguments);
+        // a tuple is automatically converted to a CommandResult
+        // the name might be used in some translations
+        return (AllTypes.RandomItem(), name);
+    }
+
+}

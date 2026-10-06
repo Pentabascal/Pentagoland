@@ -1,0 +1,6 @@
+b0c39cb536b92d5f3f174339519b9f83bdf40e9dbed6ee8ccf915d8f46efac31  SER-1.0.0-Complete.zip
+8e65f7b0b8bae29776be05830cc4ef1e077397f7a484b6b8c27cfcd2de04a06f  SER-1.0.0-Examples-and-Documentation.zip
+f20b440eeaf36833e3b002aac1a0d8c91caa5ef8ac15fd87efedc01b3b172444  ser-1.6.0.vsix
+e041abbed2a6867033ad5bd192284961b2fe46a12d61a21c313cb47832c0b4ff  SER-Exiled.dll
+9873bc02cb77fdd262fc18ad667a23b2234db4e9925a0bb5024b962c966d87cc  SER-Visual-Editor-1.0.0.zip
+93f27f8fb75e2a4855e6fa89c30bfa92be82491d174f8efb5c1d9064dbf15437  SER.dll

@@ -1,0 +1,93 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Cabinet main shell",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.86, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.82, "y": 1.72, "z": 0.42 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#111923", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet reinforced door",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.88, "z": -0.225 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.70, "y": 1.48, "z": 0.035 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#293744", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet warning crown",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.56, "z": -0.25 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.62, "y": 0.13, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet inspection frame",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.18, "z": -0.254 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.46, "y": 0.34, "z": 0.025 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#687783", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet inspection window",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.18, "z": -0.27 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.38, "y": 0.26, "z": 0.012 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#24394A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet status strip",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.65, "z": -0.248 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.50, "y": 0.028, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet handle",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.24, "y": 0.91, "z": -0.27 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.04, "y": 0.22, "z": 0.05 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Cabinet ventilation grille",
+      "ObjectId": 8,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.02, "y": 0.43, "z": -0.25 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.38, "y": 0.24, "z": 0.018 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#52616C", "PrimitiveFlags": 1 }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Este FrameWork de subclases es un framework utilizado para otra versión del server. Tiene unas 100 subclases, pero estaba ideado para utilizarse con otras plugins que pueden o no ser presentes en este proyecto. Lo importante es que funcione, no logro tener el código fuente, pero necesito que funcione lo mejor posible.

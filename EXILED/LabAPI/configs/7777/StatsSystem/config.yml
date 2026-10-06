@@ -1,0 +1,27 @@
+# Enable verbose debug logging to the server console.
+debug: false
+# Track total playtime per player (stored as 'TotalPlayTime' duration).
+playtime_tracking: true
+# Track total kills per player.
+kills_tracking: true
+# Track total deaths per player.
+deaths_tracking: true
+# Track kills made while the attacker is Class D.
+kills_as_class_d_tracking: true
+# Track kills where the victim is Class D.
+class_d_kills_tracking: true
+# Track kills where the victim is an SCP.
+scp_kills_tracking: true
+# Track kills made with the MicroHID.
+micro_hid_kills_tracking: true
+# Historical time windows (in days) shown in /getstat and /getleaderboard. E.g. [7, 30, 90].
+last_days:
+- 7
+- 30
+- 90
+# Folder (relative to plugin configs path) where stats files are stored.
+stats_data_folder: StatsSystem
+# How often (in seconds) stats are automatically saved to disk. Minimum: 10.
+auto_save_interval_seconds: 60
+# Storage backend: Json (default, human-readable, v1 compatible) or Binary (smaller, faster, not human-readable). Switching formats auto-converts existing files on the next server start.
+storage_provider: Json

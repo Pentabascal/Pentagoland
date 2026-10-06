@@ -1,0 +1,78 @@
+# Publish only the two requested workspaces and their entry-point documentation.
+/*
+!/EXILED/
+!/Plugins SCP/
+!/README.md
+!/.gitignore
+
+# Build, test, editor and operating-system output.
+**/.git/
+**/.vs/
+**/.vscode/
+**/bin/
+**/obj/
+**/Build/
+**/TestResults/
+**/TestResult*/
+**/Library/
+**/Temp/
+**/Logs/
+**/UserSettings/
+**/MemoryCaptures/
+**/Recordings/
+**/node_modules/
+**/__pycache__/
+**/.venv/
+**/venv/
+**/*.pdb
+**/*.cache
+**/*.tmp
+**/*.blend1
+**/*.blend2
+**/*.Up2Date
+**/*.nupkg
+**/*.snupkg
+**/*.csproj.user
+**/*.sln.docstates
+**/*.py[cod]
+**/*.log
+**/*.bak
+**/*.db
+**/*.db-wal
+**/*.db-shm
+
+# Unity project manifests and lockfiles are source, not generated cache.
+!**/PentagolandAssetReview/Packages/
+!**/PentagolandAssetReview/Packages/manifest.json
+!**/PentagolandAssetReview/Packages/packages-lock.json
+!**/UnityMaterialWorkbench/Packages/
+!**/UnityMaterialWorkbench/Packages/manifest.json
+!**/UnityMaterialWorkbench/Packages/packages-lock.json
+
+# Local credentials, player records, deployment backups and personal notes.
+**/.env
+**/.env.*
+!**/.env.example
+**/Carpeta de Respaldo/
+**/backups/
+**/Backups/
+**/Staging/
+**/DisabledPlugins/
+**/LocalAdminLogs/
+**/ServerLogs/
+**/README HECHO ESPECIALMENTE PARA LA IA/
+EXILED/Configs/CreditTags/data.yml
+EXILED/Configs/CreditTags/etag_cache.txt
+**/StatsSystem/player_stats.json
+**/StatsSystem/player_stats.json.bak
+**/ProjectMER.dll
+Plugins SCP/Plugins Principales/ProjectMER/
+EXILED/Configs/CreditTags/data.yml
+EXILED/Configs/CreditTags/etag_cache.txt
+
+# Never include installed game/server trees.
+**/SCP Secret Laboratory/
+**/SCP Secret Laboratory Dedicated Server/
+
+Thumbs.db
+.DS_Store

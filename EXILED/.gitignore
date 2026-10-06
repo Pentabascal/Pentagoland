@@ -1,0 +1,30 @@
+# Editor state and generated build output.
+.vs/
+.vscode/
+**/bin/
+**/obj/
+**/Build/
+**/packages/
+**/TestResults/
+**/*.pdb
+**/*.cache
+**/*.tmp
+**/*.bak
+**/*.Up2Date
+
+# Logs, local databases, and game/server runtime data.
+**/Logs/
+**/logs/
+**/*.log
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/LocalAdminLogs/
+**/ServerLogs/
+**/Dedicated Server/
+**/SCP Secret Laboratory/
+**/SCP Secret Laboratory Dedicated Server/
+
+# Operating-system files.
+Thumbs.db
+.DS_Store

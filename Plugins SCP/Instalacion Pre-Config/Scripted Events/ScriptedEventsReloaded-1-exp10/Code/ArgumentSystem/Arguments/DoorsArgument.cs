@@ -1,0 +1,82 @@
+﻿using LabApi.Features.Enums;
+using LabApi.Features.Wrappers;
+using MapGeneration;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.TokenSystem.Tokens;
+using SER.Code.ValueSystem;
+
+namespace SER.Code.ArgumentSystem.Arguments;
+
+/// <summary>
+/// This truly amazing argument has some major issues.
+/// Pretty much everything that opens is a door, like elevator doors or SCP-914 doors.
+/// This is technically correct but practically no one wants to close 914 doors on `CloseDoor LightContainment`
+///
+/// </summary>
+public class DoorsArgument(string name) : EnumHandlingArgument(name)
+{
+    public override string InputDescription =>
+        $"{nameof(DoorName)} enum, " +
+        $"{nameof(FacilityZone)} enum, " +
+        $"{nameof(RoomName)} enum, " +
+        $"reference to {nameof(Door)}, " +
+        $"reference to {nameof(Room)} " +
+        $"or 'all' for every door";
+
+    [UsedImplicitly]
+    public DynamicTryGet<Door[]> GetConvertSolution(BaseToken token)
+    {
+        var doorPool = new List<Door>(Door.List.Count);
+        foreach (var door in Door.List)
+        {
+            if (door is ElevatorDoor) continue;
+            if (door is NonInteractableDoor) continue; // im not sure if this is the right call
+            doorPool.Add(door);
+        }
+
+        if (token is SymbolToken { IsJoker: true } or AllToken)
+        {
+            return new(doorPool.ToArray);
+        }
+        
+        return ValueOrEnumResolver<Door[]>(token, value =>
+        {
+            if (value is not ReferenceValue reference)
+            {
+                return GenericError(token);
+            }
+
+            if (reference.ValueIs<Door>(out var door))
+            {
+                return new[] { door };
+            }
+
+            if (reference.ValueIs<Room>(out var room))
+            {
+                return room.Doors.ToArray();
+            }
+
+            return GenericError(token);
+        }, [
+            new EnumHandler<DoorName, Door[]>(name => new(() =>
+            {
+                return doorPool
+                    .Where(door => door.DoorName == name)
+                    .ToArray();
+            })),
+            new EnumHandler<FacilityZone, Door[]>(zone => new(() =>
+            {
+                return doorPool
+                    .Where(door => door.Zone == zone)
+                    .ToArray();
+            })),
+            new EnumHandler<RoomName, Door[]>(name => new(() =>
+            {
+                return doorPool
+                    .Where(d => d.Rooms.Any(r => r.Name == name))
+                    .ToArray();
+            }))
+        ]);
+    }
+}

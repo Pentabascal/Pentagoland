@@ -1,0 +1,22 @@
+﻿using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+
+namespace SER.Code.MethodSystem.Methods.OutputMethods;
+
+[UsedImplicitly]
+public class ReplyMethod : SynchronousMethod
+{
+    public override string Description => 
+        "Sends a message to the place where the script was run from.";
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new TextArgument("message")
+    ];
+    
+    public override void Execute()
+    {
+        Script.Executor.Reply(Args.GetText("message"), Script);
+    }
+}

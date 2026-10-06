@@ -1,0 +1,39 @@
+﻿using Exiled.API.Enums;
+using Exiled.API.Features;
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Helpers;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.MethodSystem.Structures;
+
+namespace SER.Code.MethodSystem.Methods.PlayerMethods;
+
+[UsedImplicitly]
+public class SetAmmoLimitMethod : SynchronousMethod, IDependOnFramework
+{
+    public FrameworkBridge.Type DependsOn => FrameworkBridge.Type.Exiled;
+    
+    public override string Description => "Sets the players' limit on a certain ammunition type";
+    
+    public override Argument[] ExpectedArguments =>
+    [
+        new PlayersArgument("players to set the limit to"),
+        new EnumArgument<AmmoType>("ammo type"),
+        new IntArgument("limit", 0, 65535)
+        {
+            Description = "The accepted range matches the unsigned 16-bit limit used by EXILED."
+        }
+    ];
+
+    public override void Execute()
+    {
+        var ammoType = Args.GetEnum<AmmoType>("ammo type");
+        var limit = (ushort) Args.GetInt("limit");
+        var labApiPlayers = Args.GetPlayers("players to set the limit to");
+
+        foreach (var plr in labApiPlayers)
+        {
+            Player.Get(plr).SetAmmoLimit(ammoType, limit);
+        }
+    }
+}

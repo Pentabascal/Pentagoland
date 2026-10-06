@@ -1,0 +1,2 @@
+# Whether to enable debug messages in the console.
+debug: false

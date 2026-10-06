@@ -1,0 +1,114 @@
+{
+  "RootObjectId": -13540,
+  "Blocks": [
+    {
+      "Name": "Cube",
+      "ObjectId": -13588,
+      "ParentId": -13540,
+      "AnimatorName": "Cube 1",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube (1)",
+      "ObjectId": -13620,
+      "ParentId": -13588,
+      "Position": {
+        "x": 0.0,
+        "y": -0.025,
+        "z": -0.111
+      },
+      "Rotation": {
+        "x": 50.2537537,
+        "y": 63.77569,
+        "z": 327.35437
+      },
+      "Scale": {
+        "x": 0.262914568,
+        "y": 0.1411702,
+        "z": 0.144040227
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "292929FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": -13610,
+      "ParentId": -13588,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0409999937
+      },
+      "Rotation": {
+        "x": 27.5000038,
+        "y": 89.9998245,
+        "z": 9.625289E-07
+      },
+      "Scale": {
+        "x": 0.321736872,
+        "y": 0.182549536,
+        "z": 0.176489338
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "161616FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": -13600,
+      "ParentId": -13588,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.197
+      },
+      "Rotation": {
+        "x": 0.000122943413,
+        "y": 89.99987,
+        "z": 44.0575829
+      },
+      "Scale": {
+        "x": 0.24910894,
+        "y": 0.148681358,
+        "z": 0.140176058
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "292929FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    }
+  ]
+}

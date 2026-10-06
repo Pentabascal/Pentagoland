@@ -1,0 +1,350 @@
+# Is the plugin enabled?
+is_enabled: true
+debug: false
+# Mostrar un resumen final limpio en los laterales de la pantalla.
+final_scoreboard_enabled: true
+# Segundos de espera tras finalizar la ronda antes de mostrar el resumen.
+final_scoreboard_delay: 2.5
+# Duración del resumen final en segundos.
+final_scoreboard_duration: 12
+# Mostrar a los espectadores la cuenta atrás de las oleadas normales y mini-oleadas.
+respawn_countdown_enabled: true
+# Intervalo de actualización del contador de oleadas en segundos.
+respawn_countdown_refresh_interval: 1
+# Número de líneas verticales para colocar el contador en la zona inferior central sin tapar el centro de la pantalla.
+respawn_countdown_vertical_padding: 6
+# Can events randomly start?
+randomly_starting_events: false
+# What is the chance of the events running?
+random_event_starting_chance: 0
+# The list of events that can randomly start, Valid options: Blackout, 173Infection, 173Hydra, Chaotic, Short, FreezingTemps, NameRedacted, VariableLights, LowGravity, ItemRandomizer, AfterHours, NoSpectatingPlayers
+random_events_allowed_to_start:
+- 'Blackout'
+- '173Infection'
+- '173Hydra'
+- 'Chaotic'
+- 'Short'
+- 'FreezingTemps'
+- 'NameRedacted'
+- 'VariableLights'
+- 'LowGravity'
+- 'AfterHours'
+- 'ItemRandomizer'
+- 'NoSpectatingPlayers'
+blackout_config:
+  start_event_cassie_message: 'Fallo del sistema eléctrico'
+  start_event_cassie_text: 'Fallo del sistema eléctrico. (evento de apagón iniciado)'
+  end_event_cassie_message: 'Sistema eléctrico restablecido'
+  end_event_cassie_text: 'Sistema eléctrico restablecido. (evento de apagón terminado)'
+  # Should the Blackout Event end when all 3 generators activate?
+  generator_ends_event: true
+  # What item should the player recieve when the blackout event starts?
+  blackout_event_starting_item:
+  - Lantern
+  # Set to true if you want the lights to flicker before going out for good.
+  flicker_lights: false
+  # How long should the lights flicker before going out? (in seconds)
+  flicker_duration: 5
+chaotic_config:
+  start_event_cassie_message: 'La instalación es inestable'
+  start_event_cassie_text: 'La instalación es inestable (evento caótico)'
+  # Determines how long before the next chaos event (in seconds)
+  time_for_chaos_event: 60
+  # Should the Chaotic Event reroll if a specific event is disabled?
+  chaotic_event_reroll_if_a_specific_event_is_disabled: true
+  # The time for Broadcasts to be shown on the screen (this applies to all broadcasts that the Chaotic Event uses)
+  broadcast_display_time: 10
+  # Should the item steal chaos event run?
+  item_steal_event: true
+  # What should the broadcast say when players items has been stolen
+  item_stolen_text: 'Parece que te han robado los objetos'
+  # Should give random items chaos event run?
+  give_random_item_event: true
+  # What should the broadcast say when an item is given
+  give_random_item_text: 'Has obtenido un objeto'
+  # Should random items only be regular items or use custom items as well?
+  give_random_item_customitems: false
+  # Should random teleport chaos event run?
+  random_teleport_event: true
+  # If the Random Teleport Event is active, should players be teleported to Light after decomtamination?
+  teleport_to_light_after_decom: false
+  # If the Random Teleport Event is active, should players be teleported into the facility after the warhead detonated?
+  teleport_to_facility_after_nuke: false
+  # What should the broadcast say when a player gets teleported?
+  random_teleport_text: 'Vaya, ha sido culpa mía'
+  # Should the fake autonuke chaos event run?
+  fake_auto_nuke: true
+  # What should the broadcast say for when the fake auto nuke starts (this should match your real autonuke text to make it more conviencing
+  fake_auto_nuke_start_text: 'Ha comenzado la auto-detonación'
+  # What should the broadcast say for when it is reviealed that the auto nuke was fake
+  fake_auto_nuke_fakeout_text: '¡Era una broma!'
+  # What should be the time before the nuke goes off before its shown to be a fake, note that anything below 10 seconds wont work
+  fake_auto_nuke_time_out: 15
+  # Should the old nuke time be restored after the fake out? Otherwise it will be at 30 seconds
+  fake_auto_nuke_restores_old_time: true
+  # Should the remove weapons chaos event run?
+  remove_weapons_event: true
+  # What should the broadcast text say when a weapon is taken away?
+  remove_weapons_text: 'Espero que no pensaras entrar en combate ahora'
+  # Should the give random weapon event be active?
+  give_random_weapons_event: true
+  # Should the random weapon giving only apply to people who dont have weapons?
+  give_random_weapons_to_unarmed_players: true
+  # What should the broadcast text say when a weapon is given?
+  give_random_weapons_text: 'Toma, un arma'
+  # What should the broadcast say if the player's inventory is full and cannot recieve a weapon
+  give_random_weapons_text_fail: 'No free weaponry for you, bawomp'
+  # Should all weapons be up for grabs?
+  give_all_random_weapons: true
+  # If giving all weapons is false, what weapons can be given?
+  give_random_weapons_defined:
+  - GunCOM15
+  - GunCOM18
+  - GunCrossvec
+  # Should the death match event be active?
+  death_match_event: true
+  # What should the broadcast say when players health is reduced?
+  death_match_text: '*Sneezes* Sorry I hope I didnt mess anything up'
+  # Should SCPs be affected by this as well?
+  death_match_event_affects_s_c_ps: false
+  # What health value should players health be set at?
+  death_match_health: 1
+  # Should the Chaos Event be able to enable other events?
+  chaos_event_enables_other_events: true
+  # Should the other events that get activated end when the next cycle comes along?
+  chaos_event_ends_other_events: false
+  # Should the FBI Open Up Event be active?
+  f_b_i_open_up_event: true
+  # What should the broadcast say to the target that's going to be teleported too
+  f_b_i_open_up_target_text: 'El FBI se acerca rápidamente a tu posición; prepárate'
+  # What should the broadcast say to the MTF & Guards that are going to be teleported to a target
+  f_b_i_open_up_m_t_f_text: 'Fight or Flight.'
+  # How long should it take before the foundation gets teleported to the target?
+  f_b_i_teleport_time: 5
+  # Should the grenade feet event be active?
+  grenade_feet_event: true
+  # Should grenade fuses be random?
+  grenade_feet_random_fuse: true
+  # How long should the fuse on the grenades be if it's not random?
+  grenade_feet_fuse: 5
+  # What should the broadcast be before the grenades drop on people?
+  grenade_feet_text: 'Ten cuidado por dónde pisas.'
+  # Should unsafe medical items event be active?
+  unsafe_medical_items_event: true
+  # What should the broadcast be for unsafe medical items?
+  unsafe_medical_items_text: 'Usa los objetos médicos con cuidado'
+  # Should unsafe medical items use a random time for the event?
+  unsafe_medical_items_use_random_time: true
+  # If random time for the event is off, how long should Unsafe Medical Items run for?
+  unsafe_medical_items_fixed_time: 30
+  # What should the broadcast be to inform players it's safe to use medical items again?
+  unsafe_medical_items_safe_to_use_text: 'Ya puedes volver a usar objetos médicos.'
+  # Should fakeout announcements for respawn waves run?
+  fakeout_respawn_announcements_event: true
+  # Should fakeout announcements for MTF be used?
+  fakeout_respawn_announcements_m_t_f_allow: true
+  # Should fakeout announcements for Chaos Insurgency be used?
+  fakeout_respawn_announcements_chaos_allow: false
+  # Should fakeout announcements for Serpents Hand be used?
+  fakeout_respawn_announcements_serpents_allow: false
+  # Should fakeout announcements for UIU be used?
+  fakeout_respawn_announcements_u_i_u_allow: false
+  # Should the MTF announcement be used as a fall back if other fakeouts are disabled
+  fakeout_respawn_announcements_m_t_f_fallback: false
+  # What should the fakeout cassie announcement say for MTF
+  fakeout_respawn_announcements_m_t_f_alive_s_c_p_s_cassie: 'MTFUnit epsilon 11 designated {designation} hasentered AwaitingRecontainment {scpnum}'
+  fakeout_respawn_announcements_m_t_f_s_c_p_s_dead_cassie: 'MTFUnit epsilon 11 designated {designation} hasentered NoSCPsLeft'
+  # What should the fakeout cassie text say for MTF
+  fakeout_respawn_announcements_m_t_f_alive_s_c_p_s_cassie_text: 'La unidad de la Fuerza de Tareas Móvil Épsilon 11, con designación {designation}, ha entrado en las instalaciones. Todo el personal debe seguir los protocolos de evacuación estándar hasta que una unidad llegue a su ubicación. Se espera la recontención de {scpnum}.'
+  fakeout_respawn_announcements_m_t_f_s_c_p_s_dead_cassie_text: 'La unidad de la Fuerza de Tareas Móvil Épsilon 11, con designación {designation}, ha entrado en las instalaciones. Todo el personal debe seguir los protocolos de evacuación estándar hasta que una unidad llegue a su ubicación. Permanece una amenaza considerable; actúa con precaución.'
+  # What should the fakeout cassie announcement say for Chaos
+  fakeout_respawn_announcements_chaos_cassie: 'Warning . Military Personnel has entered the facility . Designated as, Chaos Insurgency.'
+  # What should the fakeout cassie text say for Chaos
+  fakeout_respawn_announcements_chaos_cassie_text: 'Advertencia. Personal militar ha entrado en las instalaciones. Designado como <color=green>Insurgencia del Caos</color>.'
+  # What should the fakeout cassie announcement say for Serpents
+  fakeout_respawn_announcements_serpents_cassie: 'Serpents Hand hasentered'
+  # What should the fakeout cassie text say for Serpents
+  fakeout_respawn_announcements_serpents_cassie_text: 'La Mano de la Serpiente ha entrado en las instalaciones.'
+  # What should the fakeout cassie announcement say for UIU
+  fakeout_respawn_announcements_u_i_u_alive_s_c_p_s_cassie: 'The U I U Squad designated {designation} HasEntered AllRemaining AwaitingRecontainment {scpnum}'
+  fakeout_respawn_announcements_u_i_u_s_c_p_s_dead_cassie: 'The U I U Squad designated {designation} HasEntered AllRemaining NoSCPsLeft'
+  # What should the fakeout cassie text say for UIU
+  fakeout_respawn_announcements_u_i_u_alive_s_c_p_s_cassie_text: 'La unidad UIU, con designación {designation}, ha entrado en las instalaciones. Se espera la recontención de {scpnum}.'
+  fakeout_respawn_announcements_u_i_u_s_c_p_s_dead_cassie_text: 'La unidad UIU, con designación {designation}, ha entrado en las instalaciones. Permanece una amenaza considerable; actúa con precaución.'
+  # Should the rapid fire tesla gate event work?
+  rapid_fire_telsa_event: true
+  # How long should this event last for in seconds?
+  rapid_fire_tesla_event_timing: 30
+  # What is the Rapid Fire Tesla Activation Time?
+  rapid_fire_tesla_event_activation_time: 0.100000001
+  # What is the Rapid Fire Tesla Idle Range?
+  rapid_fire_tesla_event_idle_range: 1000
+  # What is the Rapid Fire Tesla Trigger Range?
+  rapid_fire_tesla_event_trigger_range: 500
+  # What is the Rapid Fire Tesla Cooldown Time?
+  rapid_fire_tesla_event_cooldown_time: 0.100000001
+  # Should players shitting their pants event be active?
+  player_shitting_pants_event: true
+  # What should the broadcast say to the players when they shit their pants
+  player_shitting_pants_broadcast: 'Damn it I shit my pants'
+  # Should router kicking simulator event be active?
+  router_kicking_simulator_event: true
+  # How many times should the router be kicked?
+  router_kicking_simulator_router_kick_amount: 10
+  # How long should it take in between router kicks?
+  router_kicking_simulator_time_between_router_kicks: 10
+  # How much lag should the players experience from the router kick?
+  router_kicking_simulator_lag_time: 3
+  # What should the broadcast say to the player when their router's start to be kicked?
+  router_kicking_simulator_start_broadcast: 'Tu conexión va a descansar un rato.'
+  # What should the broadcast say to the player after the event ends
+  router_kicking_simulator_end_broadcast: 'Ya he castigado bastante a tu conexión; disculpa las molestias.'
+  # How long should the delay be **BEFORE** the router kicking simulator starts
+  router_kicking_simulator_start_wait_time: 15
+  # Should the router kicking simulator disable elevators (to avoid people getting teleported into the void
+  router_kicking_simulator_disables_elevators: true
+  # Should events like decontaimination and warhead be disabled for this event
+  router_kicking_simulator_disables_decom_and_nuke: true
+  # Should the super speed event be active?
+  super_speed_event: true
+  # How long should the super speed last? (In seconds)
+  super_speed_duration: 15
+  # What should the intensity of the super speed? (Max: 255)
+  super_speed_intensity: 200
+  # What should the broadcast be that shows to players for super speed
+  super_speed_broadcast: 'Gotta go fast'
+  # Should the drop inventory event be active?
+  drop_inventory_event: true
+  # What should the broadcast say when a player drops their inventory?
+  drop_inventory_text: 'Notas un agujero enorme en tus bolsillos.'
+  # Should the teleport to ally event be enabled?
+  teleport_to_allies_event: true
+  # What should the broadcast say when a player is teleported to an ally?
+  teleport_to_ally_player_teleported_text: 'Has sido teletransportado junto a un aliado'
+  # What should the broadcast say when a player gets someone teleported to them?
+  teleport_to_ally_new_ally_text: 'Un aliado se ha teletransportado hasta ti.'
+  # Should the Simon Says event be active?
+  simon_says_event: true
+  # How long should the time be for the player to do the action?
+  simon_says_action_time: 5
+  # Should SCPs be affected bit Simon Says?
+  simon_says_affects_scps: false
+  # What should the Simon Says Jump text be?
+  simon_says_jump_text: 'Simon says jump'
+  # What should the Someone Says Jump text be?
+  someone_says_jump_text: 'Someone says jump'
+  # What is the damage punishment if someone doesnt jump if simon says or does jump when someone says
+  simon_says_damage_punishment: 50
+  # What should the punishment text be if someone fails the Simon Says event
+  simon_says_punishment_text: 'No has saltado cuando Simón lo ha ordenado'
+  # What should the punishment text be if someone fails the Someone Says event
+  someone_says_punishment_text: 'Has saltado aunque Simón no lo había ordenado.'
+freezing_temperatures_config:
+  start_event_cassie_message: 'fallo de temperatura'
+  start_event_cassie_text: 'fallo de temperatura (evento de congelación de zona)'
+  # How long before the Light Containment Zone Time Warning
+  light_time_warning: 300
+  # How long before Light Containment Zone gets completely frozen over in seconds after the Time Warning
+  light_complete_freeze_time: 300
+  # What should the half time remaining warning be for Light Containment Zone?
+  light_half_time_remaining_warning_message: '5 Minutes before Light Containment Zone fallo de temperatura'
+  # What should the half time remaining warning be for CASSIE's text in Heavy Containment Zone?
+  light_half_time_remaining_warning_text: '5 Minutes before Light Containment Zone fallo de temperatura'
+  # What should CASSIE say when Light gets frozen over?
+  light_frozen_over_message: 'la Zona de Contención Ligera ha quedado bloqueada'
+  # What should CASSIE's test say when Light gets frozen over?
+  light_frozen_over_text: 'la Zona de Contención Ligera ha quedado bloqueada'
+  # How long before the Heavy Containment Zone Time Warning
+  heavy_time_warning: 150
+  # How long before Heavy Containment Zone gets completely frozen over in seconds AFTER Light Containment Zone's Freeze Over after the Time Warning
+  heavy_complete_freeze_time: 150
+  # What should the half time remaining warning be for Heavy Containment Zone?
+  heavy_half_time_remaining_warning_message: '2 Minutes 30 Seconds before Heavy Containment Zone fallo de temperatura'
+  # What should the half time remaining warning be for CASSIE's text in Heavy Containment Zone?
+  heavy_half_time_remaining_warning_text: '2 Minutes 30 Seconds before Heavy Containment Zone fallo de temperatura'
+  # What should CASSIE say when Heavy gets frozen over?
+  heavy_frozen_over_message: 'la Zona de Contención Pesada ha quedado bloqueada'
+  # What should CASSIE's test say when Heavy gets frozen over?
+  heavy_frozen_over_text: 'la Zona de Contención Pesada ha quedado bloqueada'
+  # How long before the Entrance Zone Time Warning
+  entrance_time_warning: 150
+  # How long before Entrance Zone gets completely frozen over in seconds AFTER Heavy Containment Zone's Freeze Over after the Time Warning
+  entrance_complete_freeze_time: 150
+  # What should the half time remaining warning be for CASSIE in Entrance Zone?
+  entrance_half_time_remaining_warning_message: '2 Minutes 30 Seconds before Entrance Zone fallo de temperatura'
+  # What should the half time remaining warning be for CASSIE's text in Entrance Zone?
+  entrance_half_time_remaining_warning_text: '2 Minutes 30 Seconds before Entrance Zone fallo de temperatura'
+  # What should CASSIE say when Entrance gets frozen over?
+  entrance_frozen_over_message: 'La Zona de Entrada ha sido bloqueada.'
+  # What should CASSIE's test say when Entrance gets frozen over?
+  entrance_frozen_over_text: 'La Zona de Entrada ha sido bloqueada.'
+  # How long in seconds after the zones lock does it take for the player to die (In the event that they are able to survive for whatever reason in that zone)
+  kill_players_in_zone_after_time: 10
+  # What would the player's death reason be if they get killed by the server?
+  players_death_reason: 'Has muerto congelado'
+name_redacted_config:
+  start_event_cassie_message: 'Name Gone'
+  start_event_cassie_text: 'Name Gone (Redacted Names Event)'
+  # What should the nickname of everyone be?
+  name_redacted_name: '[REDACTED]'
+peanut_infection_config:
+  start_event_cassie_message: 'SCP 1 7 3 plague detected'
+  start_event_cassie_text: 'SCP-173 plague detected. (173 Infection Event Started)'
+  end_event_cassie_message: 'SCP 1 7 3 plague contained'
+  end_event_cassie_text: 'SCP-173 plague contained? (173 Infection Event Ended)'
+peanut_hydra_config:
+  start_event_cassie_message: 'pitch_0.5 .g7 .g7 .g7 Se ha detectado un evento XK de fin del mundo.'
+  start_event_cassie_text: 'Se ha detectado un evento XK de fin del mundo. (Evento de clonación de 173)'
+  # If no spectators can be found, use the player that killed 173 instead
+  use_attackers_if_needed: true
+short_config:
+  start_event_cassie_message: 'activación de la prueba de humanos pequeños'
+  start_event_cassie_text: 'activación de la prueba de humanos pequeños (evento corto iniciado)'
+  end_event_cassie_message: 'desactivación de la prueba de humanos pequeños'
+  end_event_cassie_text: 'desactivación de la prueba de humanos pequeños (evento corto terminado)'
+  # Determines how small each player is
+  player_size: 0.25
+  # What item does the players start with?
+  starting_items:
+  - KeycardJanitor
+variable_lights_config:
+  start_event_cassie_message: 'sobretensión eléctrica detectada en la instalación'
+  start_event_cassie_text: 'sobretensión eléctrica detectada en la instalación (evento de luces variables)'
+  # Determines how long before the lights change
+  time_for_change: 20
+  # Should the lights only brighten and dim or allow for color changing too
+  color_changing: false
+  # Should the lights be the same for each room, or be different for each room?
+  different_lights_per_room: true
+after_hours_config:
+  start_event_cassie_message: 'fuera de horario'
+  start_event_cassie_text: 'fuera de horario. (fuera de horario event started)'
+  tesla_activation_chance: 25
+  # Every so often in seconds, how often should the chance be updated
+  tesla_activation_chance_cycle: 5
+  intercom_time: 5
+  # What item does the players start with?
+  starting_items:
+  - Lantern
+snowballs_vs_scps_config:
+  scp_roles:
+  - Scp173
+  human_roles:
+  - Scientist
+  - FacilityGuard
+  - NtfCaptain
+  - NtfPrivate
+  - NtfSergeant
+  - NtfSpecialist
+  snowball_refill_cycle: 3
+gravity_config:
+  start_event_cassie_message: 'baja gravedad'
+  start_event_cassie_text: 'baja gravedad Event'
+  # What should be the gravity for everyone
+  gravity_changes:
+    x: 0
+    y: -12.6
+    z: 0
+no_spectating_players_config:
+  start_event_cassie_message: 'sin espectadores'
+  start_event_cassie_text: 'sin espectadores (sin espectadores Event)'

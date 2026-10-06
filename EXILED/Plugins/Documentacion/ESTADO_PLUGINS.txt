@@ -1,0 +1,110 @@
+ESTADO DE PLUGINS - SERVIDOR 7777
+Actualizado: 28/09/2026 20:05
+Version del paquete del servidor: v2.0.0
+
+ACTIVADAS Y FUNCIONALES
+- VVUP.Base
+- VVUP.CustomItems
+- VVUP.CustomEscapes
+- VVUP.MicroDamageReduction
+- VVUP.PostNukeEnhancements
+- VVUP.RoundStart
+- VVUP.ScpChanges
+- VVUP.ServerEvents
+- VVUP.SubclassCompatibility
+- VVUP.Votes
+- VVUP.WeaponEvaporate
+- SubclassFramework
+- RemoteKeycard
+- XPSystem 2.1.2
+- StatsSystem 1.0.0 (LabAPI; instalado y pendiente de confirmar tras reinicio)
+- Exiled.CreditTags
+- Exiled.CustomRoles
+- Exiled.Events
+- Exiled.Permissions
+- UltimateHUD (RueI; HUD general)
+- ScpsInfoDisplay (RueI; información complementaria de SCP)
+- SpectatorListRueI (RueI; lista de espectadores)
+- ServerWatermark (RueI; marca inferior)
+
+DEPENDENCIAS / APIs ACTIVAS
+- CustomItemsAPI: API de soporte; sus avisos automaticos estan desactivados.
+- Exiled.CustomItems: dependencia requerida por VVUP.CustomItems; se inicializa
+  sin catalogo propio y con sus hints ocultos para evitar excepciones y duplicados.
+- LabAPI, RueI y ScpProximityChat: activos en la instalación de LabAPI.
+- UsefulHints y UsefulHints.Addons: desactivados en sus configuraciones de
+  servidor porque sus hints nativos reemplazan temporalmente las capas de RueI.
+- La lista integrada de UltimateHUD está desactivada; SpectatorListRueI es su
+  único propietario. ScpsInfoDisplay y ServerWatermark usan elementos RueI y
+  permanecen habilitados como paneles complementarios.
+
+INSTALADAS PERO DESACTIVADAS
+- UncomplicatedCustomItems (UCI): duplicaria el sistema de objetos de VVUP.
+- Exiled.CustomItems como plugin independiente: desactivado para evitar doble registro.
+- SCP-457: configuracion presente, DLL funcional no desplegada.
+- KillMessage: compilado y preparado en staging, no activado.
+
+NO ACTIVAR SIN UNA NUEVA VALIDACION
+- Talky
+- EffectKeeper
+- ScpSwap
+- Sunrise
+- SCPUtils
+- Roles paralelos de VVUP
+
+NOTAS
+- VVUP.CustomItems es el unico propietario del catalogo de objetos personalizados.
+- Los comandos administrativos son vvupadminitems list, info, give, spawn y help.
+- Se usan nombres administrativos propios para evitar colisiones con comandos
+  residuales de instalaciones anteriores.
+- El último arranque de prueba (28/09/2026 19:41) cargó RueI 3.1.2,
+  UltimateHUD, ScpsInfoDisplay, SpectatorListRueI, ServerWatermark y el puente
+  RueI de VVUP. UsefulHints y UsefulHints.Addons están desactivados en sus
+  configuraciones.
+- El log del arranque anterior contenía `ArgumentOutOfRangeException` dentro
+  de `RueI.API.Parsing.ElementCombiner.SplitUntil`. Se retiró el alineado
+  automático basado en resolución de los elementos HUD y se eliminó el espacio
+  negativo extremo del contador de munición.
+- Se recompilaron los cinco proyectos RueI sin errores ni avisos, y los cinco
+  DLL instalados coinciden por SHA-256 con sus builds. El arranque posterior no
+  registró nuevas excepciones del combinador; falta una comprobación visual con
+  un cliente conectado durante una ronda.
+- Los binarios previos quedaron respaldados en
+  `%AppData%\EXILED\Backups\hud-ruei-parser-fix-20260928`.
+- El log más reciente contiene avisos de carga de tipos opcionales de
+  `Exiled.CustomRoles` y avisos de spawn de Custom Items sin configuración
+  individual. No interrumpieron el arranque, pero conviene revisarlos por
+  separado; no se han cambiado como parte de la reparación del HUD.
+- Se corrigio la proteccion de spawn de Custom Items para identificar la
+  instancia concreta de cada sala, no solo su tipo.
+- Se corrigio la cancelacion de votaciones pendientes al deshabilitar
+  VVUP.Votes, evitando callbacks contra una instancia nula.
+- Se mantuvo desactivado el bind SSSS de SubclassFramework por la
+  incompatibilidad documentada con SecretAPI; `.hab` es la ruta estable.
+- La comprobacion visual de hints requiere un jugador conectado dentro de una
+  ronda real.
+- Los plugins pendientes se copiaron sin activar a
+  `Plugins\staging\pending-20260924-231923`.
+- El inventario completo de ese staging esta en `STAGING-MANIFEST.txt`.
+- Se hizo una activacion temporal de los 19 DLL para intentar generar
+  configuraciones. El servidor se mantuvo arrancable, pero no se detectaron
+  configuraciones nuevas; los DLL fueron retirados inmediatamente despues.
+- Resultado detallado: `Plugins\staging\pending-20260924-231923\TEMP-ACTIVATION-RESULT.txt`.
+- Tras revisar las configuraciones generadas, se dejaron desactivados por
+  defecto los sistemas que duplican HUD/hints/SSS, aplican Harmony, gestionan
+  sanciones automÃ¡ticas o introducen bases de datos independientes:
+  AdminTools, EffectKeeper, ScpSwap, Talky, UsefulHints, SCPUtils, MvpSystem y
+  VPNGuard. ScpsInfoDisplay y ServerWatermark se habilitaron después con
+  integración RueI; MvpSystem está cargado en el arranque más reciente.
+- FacilityManagement, UCI, KillMessage y SCP-457 siguen fuera de la carga
+  activa hasta validar sus dependencias y su interacciÃ³n con VVUP.
+- No se forzÃ³ `unsupported_loading` en plugins LabAPI: forzar una versiÃ³n mayor
+  incompatible puede causar errores de API durante el arranque.
+- AuditorÃ­a detallada: `Plugins\AUDITORIA_COMPATIBILIDAD_2026-09-24.txt`.
+- Las configuraciones `*-properties.yml` de algunos plugins LabAPI pueden
+  quedar como restos de una prueba anterior; no implican que la DLL este
+  instalada.
+- Los respaldos de DLL se mantienen fuera de `Plugins\7777`. El cargador de
+  EXILED puede inspeccionar subcarpetas de la ruta del puerto y volver a
+  descubrir comandos; mantener copias dentro de esa ruta provocaba el
+  registro duplicado del antiguo comando `vvupitems`.

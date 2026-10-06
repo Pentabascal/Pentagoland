@@ -1,0 +1,6 @@
+is_enabled: true
+debug: false
+# Watermark text. RueI rich text markup is supported.
+text: '<align=left><space=50><size=12><u><color=#FFB6C1>P</color><color=#FFCCD4>e</color><color=#FFE2E6>n</color><color=#FFF8F9>t</color><color=#EBDEF0>a</color><color=#CDACDB>g</color><color=#AF7AC5>o</color><color=#A562B7>l</color><color=#C37EBA>a</color><color=#E19ABE>n</color><color=#FFB6C1>d</color></u></size></align>'
+# The vertical position of the watermark text (0 = bottom, 1000 = top). Choose a position not used by other HUD elements.
+position: 5

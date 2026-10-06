@@ -1,0 +1,13 @@
+is_enabled: true
+# If true, SER sends a concise status message when the plugin is ready.
+send_init_message: true
+# Slows scripts down slightly to help stop them from freezing the server. Keep this enabled unless you have checked every active script. While it is enabled, IsAllowed cannot cancel the current event because the event continues during the safety pause.
+safe_scripts: true
+# Prints the large SER logo and contributor list when the plugin is enabled.
+send_logo: false
+# Shows a temporary SER contributor badge to recognized contributors without a server rank.
+show_contributor_badges: false
+# Maximum time in seconds that an HTTP, Discord, or IP-information request may run before it is cancelled.
+network_request_timeout_seconds: 15
+# Maximum response body size in bytes accepted by HTTP, Discord, and IP-information requests.
+max_network_response_bytes: 1048576

@@ -1,0 +1,77 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Ceiling fixture body",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": -0.08, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.92, "y": 0.16, "z": 0.34 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Ceiling fixture metal bezel",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": -0.175, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.84, "y": 0.055, "z": 0.29 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#71808A", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Ceiling diffuser",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": -0.22, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.75, "y": 0.035, "z": 0.21 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Left rose end marker",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.29, "y": -0.245, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.032, "y": 0.008, "z": 0.15 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Right rose end marker",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.29, "y": -0.245, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.032, "y": 0.008, "z": 0.15 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 1 }
+    },
+    {
+      "Name": "Ceiling area light",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": -0.28, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.0, "y": 1.0, "z": 1.0 },
+      "BlockType": 2,
+      "Properties": {
+        "Color": "#8EB8BE",
+        "Intensity": 1.2,
+        "Range": 3.0,
+        "LightType": 2,
+        "Shadows": false
+      }
+    }
+  ]
+}

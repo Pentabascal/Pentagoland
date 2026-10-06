@@ -1,0 +1,62 @@
+id: 5
+name: My favourite grenade
+description: Throw it my friend :)
+extended_description: ''
+badge_name: Grenade
+badge_color: pumpkin
+weight: 2
+item: GrenadeHE
+scale:
+  x: 1
+  y: 1
+  z: 1
+spawn:
+  do_spawn: false
+  count: 1
+  spawn_settings:
+  - chance: 30
+    coords:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    locker_settings:
+      enable: false
+      locker_type: RifleRack
+      room: HczWarhead
+      zone: HeavyContainment
+      chamber: ''
+      offset:
+        x: 0
+        y: 0
+        z: 0
+    dynamic_spawn:
+    - room: Lcz914
+      coords:
+        x: 1
+        y: 1
+        z: 1
+    zones:
+    - HeavyContainment
+    - Entrance
+    replace_existing_pickup: false
+    force_item: false
+    replace_items_in_pedestals: false
+custom_modules: {}
+arguments: {}
+custom_item_type: ExplosiveGrenade
+custom_data:
+  max_radius: 250
+  scp_damage_multiplier: 1.5
+  burn_duration: 10
+  deafen_duration: 15
+  concuss_duration: 2.5
+  fuse_time: 3
+  pin_pull_time: 0.5
+  repickable: false
+  player_damage_multiplier: 3.5
+  door_damage_multiplier: 2.5
+  explode_on_impact: false

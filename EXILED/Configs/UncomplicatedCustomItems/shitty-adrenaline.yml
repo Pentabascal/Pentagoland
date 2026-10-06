@@ -1,0 +1,56 @@
+id: 10
+name: Shitty adrenaline
+description: This adrenaline just give you 10AHP
+extended_description: ''
+badge_name: Janitor
+badge_color: pumpkin
+weight: 2
+item: Adrenaline
+scale:
+  x: 1
+  y: 1
+  z: 1
+spawn:
+  do_spawn: false
+  count: 1
+  spawn_settings:
+  - chance: 30
+    coords:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    locker_settings:
+      enable: false
+      locker_type: RifleRack
+      room: HczWarhead
+      zone: HeavyContainment
+      chamber: ''
+      offset:
+        x: 0
+        y: 0
+        z: 0
+    dynamic_spawn:
+    - room: Lcz914
+      coords:
+        x: 1
+        y: 1
+        z: 1
+    zones:
+    - HeavyContainment
+    - Entrance
+    replace_existing_pickup: false
+    force_item: false
+    replace_items_in_pedestals: false
+custom_modules: {}
+arguments: {}
+custom_item_type: Adrenaline
+custom_data:
+  amount: 10
+  decay: 0.00999999978
+  efficacy: 0.699999988
+  sustain: 1000
+  persistant: true

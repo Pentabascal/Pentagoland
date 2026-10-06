@@ -1,0 +1,13 @@
+debug: false
+show_picked_up_hint: false
+# Hint when you picked up the custom item. {0}: DisplayName {1}: Description.
+picked_up_hint: >-
+  Has recogido: {0}
+
+  {1}
+show_selected_hint: false
+# Hint when you selected a the custom item. {0}: DisplayName {1}: Description.
+selected_hint: >-
+  Objeto seleccionado: {0}
+
+  {1}

@@ -1,0 +1,9 @@
+# This is really just to be a thanks for the people who have contributed to the plugin, if thats by testing or contributing code.
+is_enabled: true
+debug: false
+# Overrides badges for the player who has a tag, if they have another one
+badge_override: false
+# Overrides Custom Info for the player who has a tag, if they have another one (best to keep this off, since stuff like Custom Roles uses it
+custom_info_override: false
+# Should this ignore a player's DNT flag? Turing this on will always check a player, even if they have DNT on
+ignore_dnt_flag: false

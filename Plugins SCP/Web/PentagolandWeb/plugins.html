@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Inventario de plugins de Pentagoland, con framework, versión y estado comprobado."
+    />
+    <meta name="theme-color" content="#100d14" />
+    <title>Plugins | Pentagoland</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="plugins.css" />
+    <script src="plugins.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#plugins-content">Saltar al contenido</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a href="index.html" class="brand" aria-label="Volver a Pentagoland">
+            <img class="brand-mark" src="assets/pentagoland-mark.svg" alt="" />
+            <span class="brand-text">Pentagoland</span>
+          </a>
+          <nav class="plugins-nav" aria-label="Navegación">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#estado-servidores">Servidor</a>
+            <a href="plugins.html" aria-current="page">Plugins</a>
+            <a href="normas.html">Normas</a>
+            <a href="panel/index.html#stats">Panel</a>
+            <a href="index.html#comunidad">Comunidad</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="plugins-page" id="plugins-content" tabindex="-1">
+        <div class="container">
+          <a class="back-link" href="index.html">← Volver a Pentagoland</a>
+
+          <header class="plugins-heading">
+            <p class="eyebrow">Transparencia técnica</p>
+            <h1>Plugins del servidor</h1>
+            <p>
+              Inventario del último arranque comprobado. Distingue los plugins cargados de los que están
+              desactivados o aún en evaluación; no es una promesa de compatibilidad futura.
+            </p>
+            <span class="inventory-stamp">Registro consultado: 29/09/2026 · servidor 7777</span>
+          </header>
+
+          <section class="plugin-counts" aria-label="Resumen del inventario">
+            <article><strong id="active-count">—</strong><span>activos en el último arranque</span></article>
+            <article><strong id="disabled-count">—</strong><span>desactivados en la configuración auditada</span></article>
+            <article><strong id="planned-count">—</strong><span>integración pendiente</span></article>
+          </section>
+
+          <section class="plugin-catalog" aria-labelledby="catalog-title">
+            <div class="catalog-heading">
+              <div>
+                <p class="eyebrow">Inventario</p>
+                <h2 id="catalog-title">Busca por nombre, plataforma o categoría.</h2>
+              </div>
+              <span class="catalog-result-count" id="catalog-result-count" role="status" aria-live="polite"></span>
+            </div>
+
+            <div class="catalog-filters">
+              <label class="catalog-search" for="plugin-search">
+                <span>Buscar</span>
+                <input id="plugin-search" type="search" autocomplete="off" placeholder="Ej.: HUD, StatsSystem, LabAPI" />
+              </label>
+              <label for="plugin-platform">
+                <span>Plataforma</span>
+                <select id="plugin-platform">
+                  <option value="">Todas</option>
+                  <option value="EXILED">EXILED</option>
+                  <option value="LabAPI">LabAPI</option>
+                  <option value="Integración">Integración</option>
+                </select>
+              </label>
+              <label for="plugin-category">
+                <span>Categoría</span>
+                <select id="plugin-category">
+                  <option value="">Todas</option>
+                </select>
+              </label>
+              <label for="plugin-status">
+                <span>Estado</span>
+                <select id="plugin-status">
+                  <option value="">Todos</option>
+                  <option value="active">Activo</option>
+                  <option value="disabled">Desactivado</option>
+                  <option value="planned">Pendiente</option>
+                  <option value="dependency">Dependencia</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="plugin-grid" id="plugin-results" aria-live="polite"></div>
+            <p class="catalog-empty" id="catalog-empty" hidden>No hay plugins que coincidan con esos filtros.</p>
+          </section>
+
+          <section class="inventory-notes" aria-label="Notas del inventario">
+            <article>
+              <h2>Cómo leer el estado</h2>
+              <p>
+                “Activo” significa que el log de arranque registró la carga. “Desactivado” refleja una
+                configuración revisada, no una prueba de que la DLL siga instalada. Cambios posteriores pueden
+                hacer que este inventario quede desactualizado.
+              </p>
+            </article>
+            <article>
+              <h2>SCPDiscord</h2>
+              <p>
+                El proyecto está en evaluación, no habilitado en el servidor. Antes de activarlo hay que probar
+                su compilación contra LabAPI 1.1.7 y mantener su puente TCP en loopback/red privada; no debe
+                exponerse a Internet.
+              </p>
+            </article>
+            <article>
+              <h2>Dependencias y compatibilidad</h2>
+              <p>
+                El inventario no equivale a una garantía de compatibilidad entre todos los complementos.
+                Exiled Loader es la capa de integración de EXILED sobre LabAPI, no un plugin de juego adicional.
+              </p>
+            </article>
+          </section>
+        </div>
+      </main>
+
+      <footer class="plugins-footer">
+        <div class="container">
+          <a href="index.html">Pentagoland</a>
+          <span>Inventario basado en registros locales; última comprobación indicada arriba.</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

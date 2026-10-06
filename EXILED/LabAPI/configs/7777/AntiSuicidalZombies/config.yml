@@ -1,0 +1,21 @@
+# Should debug be enabled?
+debug: false
+# Effects applied to zombies after walking into a tesla.
+tesla_effects:
+  Blurred:
+    duration: 10
+    intensity: 1
+  Burned:
+    duration: 30
+    intensity: 1
+# Effects applied to zombies after being crushed by a door or an elevator.
+crushed_effects:
+  Concussed:
+    duration: 10
+    intensity: 5
+  Deafened:
+    duration: 20
+    intensity: 1
+  Slowness:
+    duration: 30
+    intensity: 30

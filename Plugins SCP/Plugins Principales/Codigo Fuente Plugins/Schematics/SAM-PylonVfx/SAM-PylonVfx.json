@@ -1,0 +1,357 @@
+{
+  "RootObjectId": 32008,
+  "Blocks": [
+    {
+      "Name": "Sphere",
+      "ObjectId": 32090,
+      "ParentId": 32008,
+      "AnimatorName": "Effect",
+      "Position": {
+        "x": 0.0,
+        "y": 0.1,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FFFFFFFF",
+        "PrimitiveFlags": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad2",
+      "ObjectId": 31912,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.4225926,
+        "y": 0.0,
+        "z": -0.113233134
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 14.9999733,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad4",
+      "ObjectId": 32110,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.30935967,
+        "y": 0.0,
+        "z": -0.309358746
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 44.9999123,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad6",
+      "ObjectId": 32064,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.113233954,
+        "y": 0.0,
+        "z": -0.4225924
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 74.9999161,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad8",
+      "ObjectId": 32034,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.113232315,
+        "y": 0.0,
+        "z": -0.4225929
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 104.999855,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad10",
+      "ObjectId": 32124,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.309358478,
+        "y": 0.0,
+        "z": -0.3093601
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 134.999847,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad12",
+      "ObjectId": 31880,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.422592163,
+        "y": 0.0,
+        "z": -0.113235272
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 164.999741,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad14",
+      "ObjectId": 31946,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.422593117,
+        "y": 0.0,
+        "z": 0.113231413
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 194.999725,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad16",
+      "ObjectId": 32040,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.309360683,
+        "y": 0.0,
+        "z": 0.309357822
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 224.999741,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad18",
+      "ObjectId": 31998,
+      "ParentId": 32090,
+      "Position": {
+        "x": -0.113235295,
+        "y": 0.0,
+        "z": 0.422592044
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 254.999725,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad20",
+      "ObjectId": 32002,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.113230467,
+        "y": 0.0,
+        "z": 0.422593355
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 284.9996,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad22",
+      "ObjectId": 31974,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.30935657,
+        "y": 0.0,
+        "z": 0.309361935
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 314.9995,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Quad24",
+      "ObjectId": 31874,
+      "ParentId": 32090,
+      "Position": {
+        "x": 0.422591567,
+        "y": 0.0,
+        "z": 0.113236971
+      },
+      "Rotation": {
+        "x": 90.0,
+        "y": 344.9995,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.125,
+        "y": 0.268,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 5,
+        "Color": "00FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    }
+  ]
+}

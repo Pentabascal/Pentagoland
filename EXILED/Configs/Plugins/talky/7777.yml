@@ -1,0 +1,65 @@
+is_enabled: false
+# Low dB threshold for voice activation. If the dB level is below this value, the player will show their mouth closed.
+low_db_threshold: -80
+# High dB threshold for voice activation. If the dB level is above this value, the player will show their mouth fully open.
+high_db_threshold: -30
+# Time in milliseconds for the mouth to reset to default after the player stops talking. Default is 500ms.
+emotion_reset_time: 500
+# How often to update volume. Default is 0.033f (30Hz)
+speech_update_interval: 0.0329999998
+# Allow players to use the Animate - Grab kebind to make their character reach out. Default is true.
+enable_grab_animation: true
+# Should the player react with a specific emotion when hurt? Default is true.
+enable_reaction_on_hurt: true
+# How much damage must be taken in a single hit to trigger a hurt reaction. Default is 5.
+minium_damage_for_reaction: 5
+# Should the player open their mouth when consuming items (Medkits, SCP207, etc.)? Default is true.
+enable_emote_on_consumables: true
+# Enable or disable head bobbing while talking. Default is true.
+enable_head_bobbing: true
+# How much should the player bob their head while talking. Default is 10.
+head_bob_amount: 10
+# Enable or disable glancing towards the direction of the voice source while talking. Adds more immersion at cost of performance on large servers. Default is true.
+enable_glancing: true
+# The maximum range at which glancing will occur. Default is 7 meters.
+glace_range: 7
+# The field of view angle within which glancing will occur. Default is 140 degrees.
+glace_fov: 140
+# The speed at which the player glances towards the voice source. Default is 1.65.
+glace_gain: 1.5
+# The maximum yaw angle for glancing. Default is 40 degrees.
+glance_max_yaw: 40
+# The maximum pitch angle for glancing. Default is 35 degrees.
+glance_max_pitch: 35
+# The maximum duration (in milliseconds) to look at voice source after they stop talking. Default is 1000ms.
+glance_max_duration: 1000
+# Should Spectators see client-side head movements? Default is false.
+enabled_spectator_head_movements: false
+# Talky plugin translations
+translations:
+# Header for Talky settings in the server-specific settings menu.
+  s_s_group_label: 'Talky Settings'
+  # Label for the Animate - Grab keybind setting.
+  s_s_grab_label: 'Animate - Grab'
+  # Hint for the Animate - Grab keybind setting.
+  s_s_grab_hint: 'Extiende la mano y agarra algo.'
+  # Label for the Default Emotion dropdown setting.
+  s_s_default_emotion_label: 'Default Emotion'
+  # Hint for the Default Emotion dropdown setting.
+  s_s_default_emotion_hint: 'Así es como te ves cuando no estás hablando.'
+  # Label for the Enable Talking toggle setting.
+  s_s_enable_talking_label: 'Enable Talking'
+  # Hint for the Enable Talking toggle setting.
+  s_s_enable_talking_hint: 'Indica si se anima tu rostro mientras hablas.'
+  # Emotion preset options. Changing these will change the options in the Default Emotion dropdown setting.
+  neutral: 'Neutral'
+  happy: 'Happy'
+  awkward_smile: 'Awkward Smile'
+  scared: 'Scared'
+  angry: 'Angry'
+  chad: 'Chad'
+  ogre: 'Ogre'
+  s_s_enabled: 'Enabled'
+  s_s_disabled: 'Disabled'
+# Enable or disable debug logs. Default is false.
+debug: false

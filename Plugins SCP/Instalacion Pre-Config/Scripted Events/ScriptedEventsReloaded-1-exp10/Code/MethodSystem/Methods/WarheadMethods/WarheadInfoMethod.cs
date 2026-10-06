@@ -1,0 +1,45 @@
+using LabApi.Features.Wrappers;
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.ArgumentSystem.Structures;
+using SER.Code.Exceptions;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.ValueSystem;
+using SER.Code.ValueSystem.Other;
+
+namespace SER.Code.MethodSystem.Methods.WarheadMethods;
+
+[UsedImplicitly]
+public class WarheadInfoMethod : ReturningMethod
+{
+    public override string Description => "Returns information about Alpha Warhead";
+
+    public override TypeOfValue Returns => new TypesOfValue(typeof(BoolValue), typeof(DurationValue));
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new OptionsArgument("property",
+            "isLocked",
+            "isOpen",
+            "isArmed",
+            "hasStarted",
+            "isDetonated",
+            "timeToDenotation",
+            new Option("duration", "same as timeToDenotation")
+        )
+    ];
+
+    public override void Execute()
+    {
+        ReturnValue = Args.GetOption("property") switch
+        {
+            "islocked" => new BoolValue(Warhead.IsLocked),
+            "isopen" => new BoolValue(Warhead.IsAuthorized),
+            "isarmed" => new BoolValue(Warhead.LeverStatus),
+            "hasstarted" => new BoolValue(Warhead.IsDetonationInProgress),
+            "isdetonated" => new BoolValue(Warhead.IsDetonated),
+            "duration" or "timetodenotation" => new DurationValue(TimeSpan.FromSeconds(AlphaWarheadController.TimeUntilDetonation)),
+            _ => throw new GameStateInvariantException()
+        };
+    }
+}

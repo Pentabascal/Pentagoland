@@ -1,0 +1,6 @@
+is_enabled: true
+debug: false
+map_broadcast_time: 10
+start_vote_map_broadcast: '<size=30>¡Ha comenzado una votación! Usa .vote en la consola del jugador [~].\nPregunta: %prompt%\nVota: %option1% %option2% %option3% %option4% %option5%</size>'
+end_vote_map_broadcast: '<size=30>¡La votación ha terminado!\nEl resultado es: %results%</size>'
+vote_duration: 30

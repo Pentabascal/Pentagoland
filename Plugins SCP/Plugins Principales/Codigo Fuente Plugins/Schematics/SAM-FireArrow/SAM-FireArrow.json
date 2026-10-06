@@ -1,0 +1,153 @@
+{
+  "RootObjectId": 63768,
+  "Blocks": [
+    {
+      "Name": "Sphere",
+      "ObjectId": 63774,
+      "ParentId": 63768,
+      "AnimatorName": "Sphere",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.05,
+        "y": 0.02,
+        "z": 0.4
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF0000FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere (1)",
+      "ObjectId": 63786,
+      "ParentId": 63774,
+      "Position": {
+        "x": 0.399999976,
+        "y": 0.0,
+        "z": -0.6985
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.199999988,
+        "y": 0.5,
+        "z": 1.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF0000FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere (2)",
+      "ObjectId": 63796,
+      "ParentId": 63774,
+      "Position": {
+        "x": -0.399999976,
+        "y": 0.0,
+        "z": -0.6985
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.199999988,
+        "y": 0.5,
+        "z": 1.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF0000FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light",
+      "ObjectId": 63806,
+      "ParentId": 63774,
+      "Position": {
+        "x": 0.0,
+        "y": 0.75,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "FFAF00FF",
+        "Intensity": 3.0,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (1)",
+      "ObjectId": 63814,
+      "ParentId": 63774,
+      "Position": {
+        "x": 0.0,
+        "y": -0.75,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "FFAF00FF",
+        "Intensity": 3.0,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    }
+  ]
+}

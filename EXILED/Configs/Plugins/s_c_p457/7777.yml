@@ -1,0 +1,199 @@
+# Si el plugin está activo o no.
+is_enabled: false
+# Si se deben mostrar mensajes extra de depuración en la consola del servidor.
+debug: false
+# Probabilidad (0-100) de que aparezca UN SCP-457 en una ronda determinada.
+spawn_chance: 12
+# Cantidad máxima de instancias de SCP-457 en la misma ronda. Cada una se sortea de forma independiente, y solo si la anterior se sorteó con éxito.
+max_instances_per_round: 1
+# Rol real/interno que usa SCP-457 por detrás. Se recomienda un rol humano (Scientist o ClassD) porque no tiene una máquina de habilidades propia (como la ira de SCP-096) que pueda interferir con esta lógica personalizada.
+base_role: Scientist
+# Si es true, se sobrescribe SOLO la apariencia visual (el modelo que ven los demás) usando VisualRole. No cambia estadísticas ni habilidades. Si en el juego ves animaciones raras, pon esto en false.
+use_custom_appearance: true
+# Rol cuyo modelo se usa SOLO como apariencia visual de SCP-457. Por defecto SCP-106: la idea de diseño de esta versión es que SCP-457 aparezca camuflado dentro de la propia cámara de contención de SCP-106 y sea, a primera vista, indistinguible de él. También puedes probar Scp096, Scp049 o Scp3114 si alguno anima mejor en tu servidor.
+visual_role: Scp096
+# Vida máxima de SCP-457.
+max_health: 590
+# Sala de Zona Pesada en la que aparece SCP-457 al inicio de la ronda: la cámara de contención de SCP-106 (Hcz106). Encaja con la apariencia visual del personaje (parece que escapó camuflado usando la propia cámara de 106) y es una de las salas más reconocibles y con más tránsito de Zona Pesada, lo cual genera encuentros tempranos interesantes.
+spawn_room_type: Hcz106
+# Si es true, cada SCP-457 generado al INICIO DE RONDA (sorteo automático) se teletransporta a SpawnRoomType. No afecta al comando de admin 'scp457 <jugador>', que convierte al jugador donde esté parado (pensado para pruebas rápidas).
+teleport_to_spawn_room_on_round_spawn: true
+# Radio (metros) de dispersión aleatoria horizontal al aparecer en SpawnRoomType, para que dos instancias (si MaxInstancesPerRound > 1) no aparezcan exactamente encima la una de la otra.
+spawn_room_scatter_radius: 1.29999995
+# Si es true, SCP-457 no puede recoger ítems del suelo (armas, botiquines, llaves, etc.). Sin esto, al ser técnicamente un rol humano, podría coger un rifle y disparar, lo cual rompe por completo el personaje.
+block_item_pickup: true
+# Si es true, SCP-457 no puede escapar por los checkpoints de salida (evita que gane la ronda para Instalación/Caos escapando como si fuera un Científico o Clase-D normal).
+block_escape: true
+# Texto que ve SCP-457 si intenta escapar por un checkpoint (bloqueado por BlockEscape).
+escape_blocked_hint_text: 'Tu cuerpo ya no es humano: no puedes escapar por un checkpoint.'
+# Si es true (recomendado), se desactiva por completo el sistema de estamina/sprint humano de SCP-457 (FpcRole.IsUsingStamina) y su velocidad al 'sprintar' se iguala a su velocidad normal (no hay ráfaga de velocidad). El resultado es un ritmo constante y predecible, propio de una entidad y no de un humano corriendo.
+disable_sprint_and_stamina: true
+# Velocidad de desplazamiento (metros/segundo) mientras SCP-457 está en estado Normal o Fueled. Un humano normal anda a unos 4 m/s: este valor lo deja notablemente más lento.
+normal_walking_speed: 2.79999995
+# Velocidad (m/s) mientras está Starving o Extinguished (bajo o sin combustible). El más lento de todos: si lo dejan sin comer, además de pegar flojo, le cuesta mucho más perseguir o escapar.
+starving_walking_speed: 1.79999995
+# Velocidad (m/s) durante Inferno (ventana tras una muerte). Casi a la velocidad de un humano andando: se mueve con soltura mientras está en su punto fuerte.
+inferno_walking_speed: 3.5999999
+# Velocidad (m/s) durante Combustion (ver habilidad más abajo). Igual a la de un humano andando (no más rápido: sigue sin haber sprint), para que la sobrecarga también se sienta ágil, no solo fuerte.
+combustion_walking_speed: 4
+# Velocidad (m/s) durante el estado Fatigued (la resaca posterior a Combustion). Muy lento: es la ventana de vulnerabilidad de esa habilidad.
+fatigued_walking_speed: 1.39999998
+# Distancia en metros para el daño de contacto directo (cuerpo a cuerpo).
+melee_range: 1.70000005
+# Distancia en metros del aura de calor (daño reducido a quien esté cerca pero no en contacto directo). Tiene que ser mayor que MeleeRange.
+aura_range: 3.20000005
+# Cada cuántos segundos se procesa el daño de SCP-457 (contacto, aura, combustible, quemaduras).
+tick_interval: 0.800000012
+# Daño POR TICK a quien esté dentro del rango de contacto directo (MeleeRange). Con los valores por defecto son ~30 de daño por segundo.
+melee_damage: 18
+# Daño BASE por tick dentro del aura de calor (AuraRange) al primer instante de entrar. Este daño escala con el tiempo que el jugador se queda dentro (ver AuraExposureRampSeconds).
+aura_damage: 5
+# Segundos que un jugador puede estar dentro del aura antes de recibir el daño MÁXIMO de la rampa de calor (AuraDamageRampMultiplier). Le da tiempo al jugador de notar el peligro y alejarse antes de que sea grave.
+aura_exposure_ramp_seconds: 4
+# Multiplicador MÁXIMO de daño del aura al final de la rampa (por ejemplo 2 = el doble de AuraDamage tras quedarse AuraExposureRampSeconds segundos dentro sin moverse).
+aura_damage_ramp_multiplier: 1.5
+# Si es true, los jugadores dentro del aura de calor (AuraRange) sufren una distorsión visual leve (efecto vanilla Concussed) mientras se quedan cerca. Puramente atmosférico/de aviso, se quita solo al alejarse.
+heat_haze_enabled: true
+# Intensidad (1-10) de la distorsión visual de la neblina de calor. Baja a propósito: es un aviso incómodo, no una incapacitación.
+heat_haze_intensity: 2
+# Duración en segundos del efecto de ignición al recibir daño de contacto directo (o Flashover/Combustion).
+ignite_duration_seconds: 5
+# Daño POR TICK mientras alguien está ardiendo (ignición).
+ignite_damage_per_tick: 3
+# Si es true, un jugador que está ardiendo puede contagiar el fuego a otro jugador que se le acerque demasiado (por ejemplo, alguien que intenta ayudarlo).
+ignite_spread_enabled: true
+# Distancia en metros dentro de la cual el fuego se puede contagiar entre jugadores.
+ignite_spread_radius: 2
+# Probabilidad (0-1) POR TICK de que el fuego se contagie, si hay algún jugador válido dentro de IgniteSpreadRadius de alguien que está ardiendo.
+ignite_spread_chance_per_tick: 0.25
+# Combustible (0-100) que SCP-457 recupera cada vez que hace daño de contacto directo a un humano.
+fuel_per_hit: 18
+# Combustible (0-100) que SCP-457 recupera cuando MATA a un humano (en vez de FuelPerHit). Además, matar activa el estado Inferno durante InfernoDurationSeconds.
+fuel_per_kill: 40
+# Combustible que SCP-457 pierde POR TICK si no se alimentó en ese tick. Con los valores por defecto se apaga en poco más de un minuto y medio sin comer: la idea es que sienta la presión de 'necesito encontrar a alguien YA'.
+fuel_drain_per_tick: 0.800000012
+# Umbral de combustible (0-100) por debajo del cual SCP-457 entra en estado 'Starving': pega más flojo, es más lento y su resistencia a las armas se reduce (ventana de vulnerabilidad para los humanos).
+low_fuel_threshold: 25
+# Umbral de combustible (0-100) crítico: por debajo de este valor se muestra un aviso extra (y, si se configura, un anuncio de CASSIE) de que SCP-457 está a punto de apagarse del todo. Pensado para que los humanos sepan que es el momento de rematarlo.
+critical_fuel_threshold: 10
+# Umbral de combustible (0-100) a partir del cual SCP-457 entra en estado 'Fueled': pega más fuerte.
+high_fuel_threshold: 75
+# Multiplicador de daño (contacto + aura + Flashover + Combustion) mientras está en estado Starving (combustible bajo).
+starving_damage_multiplier: 0.699999988
+# Multiplicador de daño mientras está en estado Fueled (combustible alto).
+fueled_damage_multiplier: 1.14999998
+# Multiplicador de daño mientras está en estado Inferno (los segundos posteriores a una muerte provocada).
+inferno_damage_multiplier: 1.35000002
+# Multiplicador de daño mientras está en estado Extinguished (0 de combustible, muriendo de inanición). Deliberadamente muy bajo: en ese estado casi no representa amenaza de daño, solo de resistencia.
+extinguished_damage_multiplier: 0.5
+# Duración en segundos del estado Inferno tras conseguir matar a alguien.
+inferno_duration_seconds: 6
+# Daño POR TICK que sufre SCP-457 a sí mismo cuando se queda sin combustible (inanición / estado Extinguished).
+starvation_self_damage_per_tick: 2.5
+# Si es true, SCP-457 no le puede hacer daño a otros SCP (recomendado). Esto NO impide que otros SCP le hagan daño a SCP-457: siguen siendo una amenaza real para él.
+ignore_other_scps: true
+# Si es true, el combustible que SCP-457 gana estando ya al 100% no se pierde: se convierte en vida extra temporal por encima de su máximo normal (ver OverfeedConversionRatio). Esa vida extra se va consumiendo sola con el tiempo si deja de alimentarse (OverfeedDecayPerTick), como una reserva que hay que mantener activamente.
+overfeed_enabled: true
+# Vida extra MÁXIMA que se puede acumular por sobrealimentación, por encima de MaxHealth.
+overfeed_max_bonus_health: 100
+# Cuánta vida extra se gana por cada punto de combustible desperdiciado al alimentarse ya lleno (0-100). Por ejemplo, con 1.0, matar estando ya al 100% de combustible (que desperdiciaría 40 puntos de FuelPerKill) da 40 de vida extra temporal.
+overfeed_conversion_ratio: 1
+# Cuánta vida extra por sobrealimentación se pierde POR TICK si SCP-457 no sigue alimentándose. Hace que la reserva sea temporal, no un colchón permanente.
+overfeed_decay_per_tick: 3
+# Hint que recibe SCP-457 la primera vez que gana una cantidad apreciable de vida extra por sobrealimentación.
+overfeed_gain_hint_text: 'Te has sobrealimentado: tienes vida extra temporal, pero se irá consumiendo si dejas de comer.'
+# Si es true, SCP-457 regenera algo de vida (hasta su máximo normal, no cuenta como sobrealimentación) mientras está bien alimentado (Fueled, Inferno o Combustion). Representa que las llamas 'cierran' el daño recibido cuando el fuego está fuerte.
+passive_regen_enabled: true
+# Vida regenerada POR TICK mientras PassiveRegenEnabled está activo y SCP-457 está en un estado de combustible alto (Fueled, Inferno o Combustion) y por debajo de su vida máxima normal.
+passive_regen_per_tick: 1.20000005
+# Reducción de daño (0-1) recibido de CUALQUIER arma de fuego (todas las pistolas, rifles y escopetas del juego). Alta a propósito: las balas solas no deberían poder con SCP-457.
+firearm_resistance: 0.550000012
+# Reducción de daño (0-1) recibido de explosivos (granadas de fragmentación y SCP-018). Deliberadamente baja: es el contrajuego principal contra SCP-457.
+explosion_resistance: 0.150000006
+# Reducción de daño (0-1) recibido del Micro H.I.D. Es un arma rara y de alta inversión, así que le damos un punto medio entre las armas de fuego y los explosivos: un contrajuego secundario viable.
+micro_hid_resistance: 0.349999994
+# Reducción de daño (0-1) recibido de cualquier otro tipo de daño no cubierto arriba (por ejemplo, golpes de otros SCP o veneno).
+default_resistance: 0.449999988
+# Mientras SCP-457 está en estado Starving (combustible bajo), TODAS sus resistencias se multiplican por este valor (0-1). Es la ventana de vulnerabilidad principal: si lo dejan sin comer, se vuelve mucho más fácil de rematar.
+starving_resistance_penalty: 0.5
+# Mientras SCP-457 está en estado Fatigued (la resaca tras usar Combustion), TODAS sus resistencias se multiplican por este valor (0-1). Es la ventana de vulnerabilidad de esa habilidad: más dura que Starving a propósito, porque Combustion es la jugada de mayor riesgo/recompensa del kit.
+fatigued_resistance_penalty: 0.300000012
+# Mientras SCP-457 está en estado Combustion, TODAS sus resistencias se multiplican por este valor (>1 = más resistente todavía). Es la recompensa: unos segundos de ser casi inmune a las balas.
+combustion_resistance_bonus: 1.25
+# Si la habilidad Flashover está habilitada.
+flashover_enabled: true
+# Combustible mínimo (0-100) que SCP-457 necesita tener para poder activar Flashover.
+flashover_min_fuel_to_use: 50
+# Combustible que consume activar Flashover.
+flashover_fuel_cost: 45
+# Cooldown en segundos de Flashover.
+flashover_cooldown_seconds: 35
+# Radio en metros del estallido de calor de Flashover (golpea a todos los humanos válidos dentro de este radio).
+flashover_radius: 4.5
+# Daño instantáneo BASE que hace Flashover a cada humano alcanzado (se multiplica igual que el daño de contacto/aura según el estado de combustible). Además los deja ardiendo.
+flashover_damage: 55
+# Anuncio de CASSIE cuando SCP-457 usa Flashover y alcanza al menos a un jugador. Déjalo vacío ("") para desactivarlo.
+flashover_cassie_announcement: ''
+# Si la habilidad Sentido Térmico está habilitada.
+heat_sense_enabled: true
+# Combustible que consume usar Sentido Térmico.
+heat_sense_fuel_cost: 8
+# Cooldown en segundos de Sentido Térmico. Barato y frecuente, a propósito: es una herramienta de utilidad, no un arma.
+heat_sense_cooldown_seconds: 12
+# Radio en metros dentro del cual Sentido Térmico puede detectar humanos (atraviesa paredes: es percepción de calor, no línea de visión).
+heat_sense_radius: 40
+# Hint que recibe SCP-457 cuando Sentido Térmico detecta a alguien. Admite {0} = distancia en metros y {1} = dirección cardinal (norte, noreste, etc.).
+heat_sense_found_text: 'Percibís calor humano a unos {0:0}m, {1}.'
+# Hint que recibe SCP-457 cuando Sentido Térmico no detecta a nadie en el radio.
+heat_sense_no_target_text: 'No percibes calor humano cerca.'
+# Si la habilidad Combustion está habilitada.
+combustion_enabled: true
+# Combustible mínimo (0-100) que SCP-457 necesita tener para poder activar Combustion. Alto a propósito: no se puede usar como muleta cuando ya está débil.
+combustion_min_fuel_to_use: 70
+# Combustible que consume activar Combustion (se descuenta de golpe al activarla).
+combustion_fuel_cost: 70
+# Cooldown en segundos de Combustion. Alto a propósito: es la habilidad definitoria de una pelea, no algo para usar seguido.
+combustion_cooldown_seconds: 60
+# Duración en segundos del estado Combustion (daño y resistencia aumentados, velocidad de andar completa).
+combustion_duration_seconds: 6
+# Multiplicador de daño (contacto + aura + Flashover) mientras está en estado Combustion.
+combustion_damage_multiplier: 1.60000002
+# Duración en segundos del estado Fatigued que sigue automáticamente a Combustion (ventana de vulnerabilidad: poca resistencia, muy lento).
+fatigued_duration_seconds: 6
+# Multiplicador de daño mientras está en estado Fatigued (justo después de Combustion).
+fatigued_damage_multiplier: 0.600000024
+# Hint que recibe SCP-457 al activar Combustion.
+combustion_self_hint_text: '¡COMBUSTION! Tu poder aumentó al máximo, pero vas a quedar muy vulnerable cuando termine.'
+# Hint que recibe SCP-457 al terminar Combustion y entrar en Fatigued.
+fatigued_hint_text: 'La combustión te ha dejado exhausto: eres mucho más lento y vulnerable durante unos segundos.'
+# Anuncio de CASSIE cuando SCP-457 usa Combustion. Déjalo vacío ("") para desactivarlo.
+combustion_cassie_announcement: ''
+# Anuncio de CASSIE, opcional, cuando SCP-457 entra en Fatigued justo después de Combustion. Pensado como aviso a los humanos de que es el momento de rematarlo. Déjalo vacío ("") para desactivarlo (por defecto, desactivado).
+fatigued_cassie_announcement: ''
+# Si es true, se muestran hints (mensajes cortos en pantalla) de feedback: combustible bajo, Inferno, Flashover, Combustion, Sentido Térmico, contagio de fuego, sobrealimentación, etc.
+enable_hints: true
+# Duración en segundos del broadcast de bienvenida que recibe quien se convierte en SCP-457.
+welcome_broadcast_duration: 12
+# Mensaje de bienvenida (broadcast) que recibe el jugador convertido en SCP-457. Admite etiquetas de color tipo <color=orange>...</color>.
+welcome_message: |-
+  <color=orange><b>Sos SCP-457.</b></color>
+  Cada segundo sin alimentarte, tu cuerpo pierde fuerza.
+  Acercate a los humanos para incendiarlos y recuperar combustible.
+# Hint que recibe SCP-457 al entrar en estado Starving (combustible bajo). Es su aviso de 'necesito comer YA'.
+low_fuel_hint_text: 'Tu fuego se está apagando. Necesitás alimentarte YA (haces más flojo y eres más vulnerable).'
+# Hint de aviso CRÍTICO que recibe SCP-457 al cruzar por debajo de CriticalFuelThreshold: está a un paso de apagarse del todo.
+critical_fuel_hint_text: '¡Tu llama está a punto de apagarse! Si no te alimentas ya mismo, vas a morir de inanición.'
+# Anuncio de CASSIE, opcional, cuando SCP-457 cruza por debajo de CriticalFuelThreshold. Pensado para avisar a los humanos de que está en su momento más débil. Déjalo vacío ("") para desactivarlo (por defecto, desactivado).
+critical_fuel_cassie_announcement: ''
+# Hint que recibe SCP-457 al entrar en estado Inferno tras una muerte provocada.
+inferno_hint_text: '¡INFERNO! Tu calor aumentó drásticamente durante unos segundos.'
+# Hint que recibe SCP-457 al activar Flashover con éxito.
+flashover_self_hint_text: 'Liberaste una oleada de calor a tu alrededor.'
+# Hint que recibe un jugador que se ha contagiado con el fuego de otro jugador cercano.
+ignite_spread_hint_text: '¡El fuego se contagió a vos por estar demasiado cerca!'
+# Anuncio de CASSIE al iniciar la ronda si apareció SCP-457. Déjalo vacío ("") para desactivarlo.
+cassie_announcement: 'ATTENTION . ANOMALY DESIGNATION SCP 457 HAS BEEN RELEASED . AVOID ANY CONTACT'
+# Texto que ve un jugador al morir quemándose después de haber sido encendido (ignición, propagación, Flashover o Combustion).
+ignite_death_text: 'Has muerto calcinado por las llamas de SCP-457.'
+# Texto que ve SCP-457 al morir por inanición (falta de combustible).
+starvation_death_text: 'SCP-457 se extinguió por falta de combustible.'

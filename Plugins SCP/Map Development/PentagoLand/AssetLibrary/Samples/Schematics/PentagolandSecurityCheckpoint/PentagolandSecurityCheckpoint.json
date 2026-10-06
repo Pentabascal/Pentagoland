@@ -1,0 +1,1149 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Main room structural floor",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.08,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 0.16,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#363C43",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room ceiling panel",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.88,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 0.18,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#19232B",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room rear wall",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 2.0,
+        "z": 3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 8.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room left wall",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -3.9,
+        "y": 2.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 3.8,
+        "z": 8.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance left wall return",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.6,
+        "y": 1.55,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.8,
+        "y": 2.9,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance right wall return",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 2.6,
+        "y": 1.55,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.8,
+        "y": 2.9,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance header",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.42,
+        "z": -3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.4,
+        "y": 1.0,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance left jamb accent",
+      "ObjectId": 8,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.2,
+        "y": 1.7,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.08,
+        "y": 3.0,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance right jamb accent",
+      "ObjectId": 9,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 1.2,
+        "y": 1.7,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.08,
+        "y": 3.0,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Entrance lintel accent",
+      "ObjectId": 10,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.12,
+        "z": -3.77
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.48,
+        "y": 0.09,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex partition lower return",
+      "ObjectId": 11,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 1.55,
+        "z": -1.4
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 2.9,
+        "z": 5.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex partition upper return",
+      "ObjectId": 12,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 1.55,
+        "z": 3.4
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 2.9,
+        "z": 1.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex doorway header",
+      "ObjectId": 13,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.9,
+        "y": 3.42,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 1.0,
+        "z": 1.6
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex outer wall",
+      "ObjectId": 14,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 7.9,
+        "y": 2.0,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.2,
+        "y": 3.8,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex rear wall",
+      "ObjectId": 15,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 2.0,
+        "z": 3.9
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex front wall",
+      "ObjectId": 16,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 2.0,
+        "z": 0.1
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 3.8,
+        "z": 0.2
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#252E38",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex floor",
+      "ObjectId": 17,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 0.08,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 0.16,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#363C43",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex ceiling",
+      "ObjectId": 18,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.88,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 4.0,
+        "y": 0.18,
+        "z": 4.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#19232B",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room rear safety band",
+      "ObjectId": 19,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 0.22,
+        "z": 3.78
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 7.7,
+        "y": 0.08,
+        "z": 0.04
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex doorway status strip",
+      "ObjectId": 20,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 3.76,
+        "y": 3.1,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.05,
+        "y": 0.08,
+        "z": 1.45
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Main room ceiling service rail",
+      "ObjectId": 21,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.72,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 7.5,
+        "y": 0.06,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Annex ceiling service rail",
+      "ObjectId": 22,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.72,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 3.7,
+        "y": 0.06,
+        "z": 0.08
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Security checkpoint desk",
+      "ObjectId": 23,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.9,
+        "y": 0.52,
+        "z": -0.2
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.75,
+        "y": 0.72,
+        "z": 0.82
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Desk armour top",
+      "ObjectId": 24,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.9,
+        "y": 0.92,
+        "z": -0.2
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 2.9,
+        "y": 0.08,
+        "z": 0.9
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#68747A",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Security terminal",
+      "ObjectId": 25,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.1,
+        "y": 1.35,
+        "z": 0.05
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.92,
+        "y": 0.68,
+        "z": 0.12
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#18212B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Terminal status display",
+      "ObjectId": 26,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.1,
+        "y": 1.38,
+        "z": -0.02
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.7,
+        "y": 0.42,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#8EB8BE",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Checkpoint bollard left",
+      "ObjectId": 27,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.54,
+        "y": 0.58,
+        "z": -2.45
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.24,
+        "y": 1.0,
+        "z": 0.24
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Checkpoint bollard right",
+      "ObjectId": 28,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 1.54,
+        "y": 0.58,
+        "z": -2.45
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.24,
+        "y": 1.0,
+        "z": 0.24
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Bollard left safety band",
+      "ObjectId": 29,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.54,
+        "y": 0.86,
+        "z": -2.45
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.25,
+        "y": 0.12,
+        "z": 0.25
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Bollard right safety band",
+      "ObjectId": 30,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 1.54,
+        "y": 0.86,
+        "z": -2.45
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.25,
+        "y": 0.12,
+        "z": 0.25
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Evidence storage rack",
+      "ObjectId": 31,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.05,
+        "y": 1.2,
+        "z": 3.22
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1.25,
+        "y": 2.15,
+        "z": 0.42
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#293744",
+        "PrimitiveFlags": 3,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Evidence shelf one",
+      "ObjectId": 32,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.05,
+        "y": 0.68,
+        "z": 2.94
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1.3,
+        "y": 0.08,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#68747A",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Evidence shelf two",
+      "ObjectId": 33,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.05,
+        "y": 1.42,
+        "z": 2.94
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1.3,
+        "y": 0.08,
+        "z": 0.5
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#68747A",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Sealed evidence case",
+      "ObjectId": 34,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 6.65,
+        "y": 0.42,
+        "z": 2.95
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.72,
+        "y": 0.68,
+        "z": 0.64
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#526F78",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Evidence case amber label",
+      "ObjectId": 35,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 6.65,
+        "y": 0.65,
+        "z": 2.61
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 0.5,
+        "y": 0.09,
+        "z": 0.025
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "#D18A3B",
+        "PrimitiveFlags": 1,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Checkpoint ceiling light",
+      "ObjectId": 36,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 0.0,
+        "y": 3.48,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 2,
+      "Properties": {
+        "Color": "#C6D3D5",
+        "Intensity": 0.9,
+        "Range": 5.4,
+        "LightType": 2,
+        "Shadows": false,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Evidence annex light",
+      "ObjectId": 37,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.9,
+        "y": 3.48,
+        "z": 2.0
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 2,
+      "Properties": {
+        "Color": "#AFC7C4",
+        "Intensity": 0.8,
+        "Range": 4.0,
+        "LightType": 2,
+        "Shadows": false,
+        "Static": true
+      }
+    },
+    {
+      "Name": "Random guard access card",
+      "ObjectId": 38,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -2.7,
+        "y": 1.0,
+        "z": -0.23
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 4,
+        "Chance": 38
+      }
+    },
+    {
+      "Name": "Random checkpoint radio",
+      "ObjectId": 39,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": -1.55,
+        "y": 1.0,
+        "z": -0.23
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 12,
+        "Chance": 30
+      }
+    },
+    {
+      "Name": "Random evidence medical kit",
+      "ObjectId": 40,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 6.65,
+        "y": 0.84,
+        "z": 2.95
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 14,
+        "Chance": 22
+      }
+    },
+    {
+      "Name": "Rare evidence firearm",
+      "ObjectId": 41,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": {
+        "x": 5.05,
+        "y": 0.88,
+        "z": 3.22
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "BlockType": 3,
+      "Properties": {
+        "ItemType": 13,
+        "Chance": 12
+      }
+    }
+  ]
+}

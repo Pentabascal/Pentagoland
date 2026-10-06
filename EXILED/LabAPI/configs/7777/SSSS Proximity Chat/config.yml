@@ -1,0 +1,16 @@
+show_available_hint: true
+# Use "{0}" where the keybind should be displayed.
+available_hint: >2-
+
+
+
+
+
+
+  SCP Proximity Chat disponible.
+
+  Pulsa <mark=#77777755><size=0>.</size><space=0.2em><b>{0}</b><space=0.2em><size=0>.</size></mark> para activarlo o desactivarlo.
+# Whether the same settings should apply on all servers under the same account ID.
+shared: true
+# Whether players should be able to adjust the volume of others' proximity messages.
+personalization: true

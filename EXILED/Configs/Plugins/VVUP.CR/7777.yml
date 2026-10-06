@@ -1,0 +1,2153 @@
+is_enabled: true
+debug: false
+# Delay in seconds before registering custom roles spawn conditions when the server starts. This can cover pretty much all of the custom roles that uses this modules API for spawning conditions. You can set it to 0 if you want them to register instantly.
+delay_before_registering_custom_roles_spawn_conditions: 2
+custom_roles_config:
+  containment_scientists:
+  - chance: 15
+    start_team: Scientist
+    id: 30
+    role: Scientist
+    max_health: 100
+    name: '<color=#FFFF7C>Containment Engineer Scientist</color>'
+    description: '\n\n\n\nA scientist that starts in Entrance Zone, with a different loadout\nYou cannot escape and become a MTF member.\nYou can be detained and escape to become a CI member.'
+    custom_info: 'Containment Engineer Scientist'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: FacilityGuard
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'Medkit'
+    - 'KeycardContainmentEngineer'
+    - 'Adrenaline'
+    - 'Radio'
+    custom_abilities:
+    - name: 'Restricted Escape [Passive]'
+      description: 'Restricts Escaping as Containment Engineer Scientist'
+      # The text that is shown if the player is uncuffed, and needs to be cuffed to escape
+      escape_text_uncuffed: 'As a Containment Engineer Scientist, you''''re unable to escape, unless you''''re detained.'
+      # The text that is shown if the player is cuffed, and needs to be uncuffed to escape
+      escape_text_cuffed: 'You''re unable to escape unless you''re not detained'
+      # The text that is shown if the player is unable to escape as a whole.
+      escape_text_both: 'You''re unable to escape'
+      escape_text_time: 5
+      use_hints: true
+      allowed_uncuffed_escape: false
+      allowed_cuffed_escape: true
+      # Changing this will likely break your config.
+      ability_type: 'RestrictedEscape'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  light_guards:
+  - chance: 15
+    start_team: Guard
+    id: 31
+    role: FacilityGuard
+    max_health: 100
+    name: '<color=#C0C0C0>Protocol Enforcer</color>'
+    description: 'A guard that is meant to keep D-Class in line. Starts in light containment but with no strong weaponry'
+    custom_info: 'Protocol Enforcer'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: Scientist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - '<color=#0096FF>Silent Serenade</color>'
+    - 'Medkit'
+    - 'KeycardZoneManager'
+    - 'Painkillers'
+    - 'Radio'
+    - 'ArmorLight'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    ammo:
+      Nato9: 10
+    ability_usage: 'You have no special abilities'
+    custom_abilities: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  biochemists:
+  - chance: 15
+    start_team: Scientist
+    id: 32
+    role: Scientist
+    max_health: 100
+    name: '<color=#FFFF7C>Biochemist</color>'
+    description: 'A scientist that specializes in biological altering. You can passively heal other people and explode on death.'
+    custom_info: 'Biochemist'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'Medkit'
+    - 'Adrenaline'
+    - 'Radio'
+    custom_abilities:
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as a Biochemist, you''''re guaranteed a custom role.'
+      escape_to_regular_role: false
+      regular_role: Tutorial
+      uncuffed_escape_custom_role: '<color=#0096FF>MTF Demolitionist</color>'
+      cuffed_escape_custom_role: '<color=#008f1e>Explosive Chaos</color>'
+      allow_uncuffed_custom_role_change: true
+      allow_cuffed_custom_role_change: true
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    - name: 'Explode on Death [Passive]'
+      description: 'You explode on death'
+      # How long should the fuse be?
+      explosive_fuse: 0.100000001
+      # Should the explosive from player death be related to the player or the server
+      should_server_be_killer: false
+      # Changing this will likely break your config.
+      ability_type: 'Martyrdom'
+    - name: 'Healing Mist [Active]'
+      description: 'Activates a short-term spray of chemicals which will heal and protect allies for a short duration.'
+      duration: 15
+      cooldown: 180
+      # The amount healed every second the ability is active.
+      heal_amount: 6
+      # The amount of AHP given when the ability ends.
+      protection_amount: 45
+      # Changing this will likely break your config.
+      ability_type: 'HealingMist'
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  containment_guards:
+  - chance: 15
+    start_team: Guard
+    id: 33
+    role: FacilityGuard
+    max_health: 100
+    name: '<color=#C0C0C0>Containment Guard</color>'
+    description: 'A better equipped guard meant for recontaining SCPs'
+    custom_info: 'Containment Guard'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'Painkillers'
+    - 'ArmorCombat'
+    - 'Radio'
+    - 'GunCrossvec'
+    - 'KeycardResearchCoordinator'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    ammo:
+      Nato9: 80
+    ability_usage: 'You have no special abilities'
+    custom_abilities: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  border_patrols:
+  - chance: 0
+    start_team: Other
+    id: 34
+    role: Tutorial
+    max_health: 100
+    name: 'Border Patrol'
+    description: 'You have been religated to ensuring safe passage from Heavy and Enterance Zone'
+    custom_info: 'Border Patrol'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'GunE11SR'
+    custom_abilities: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+    ability_usage: 'Enter ".special" in the console to use your ability. If you have multiple abilities, you can use this command to cycle through them, or specify the one to use with ".special ROLENAME AbilityNum"'
+  nightfalls:
+  - chance: 5
+    start_team: Chaos
+    id: 35
+    role: ChaosRifleman
+    max_health: 200
+    name: '<color=#008f1e>Nightfall</color>'
+    description: 'A Chaos Insurgent that is special. You figure out the rest.'
+    custom_info: 'Nightfall'
+    inventory:
+    - 'GunRevolver'
+    - 'KeycardO5'
+    - 'SCP500'
+    - 'ArmorCombat'
+    ammo:
+      Ammo44Cal: 20
+    custom_abilities:
+    - name: 'Nightfall Ability [Passive]'
+      description: 'Yeah I am not going to tell you what this is'
+      allowed_custom_items: []
+      restricted_custom_items: []
+      restricted_item_list:
+      - Medkit
+      - Painkillers
+      - SCP500
+      - KeycardO5
+      - GunE11SR
+      - GunCrossvec
+      - GunFSP9
+      - GunLogicer
+      - GunAK
+      - GunShotgun
+      restrict_using_items: false
+      restrict_picking_up_items: true
+      restrict_dropping_items: true
+      # Changing this will likely break your config.
+      ability_type: 'RestrictedItems'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    spawn_properties:
+      limit: 0
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  a7_chaoss:
+  - chance: 25
+    start_team: Chaos
+    id: 36
+    role: ChaosConscript
+    max_health: 100
+    name: '<color=#008f1e>Chaos A7 Enjoyer</color>'
+    description: 'A Chaos Rifleman but instead of an AK you get an A7'
+    custom_info: 'Chaos Short Rifleman'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: ChaosConscript
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'GunA7'
+    - 'KeycardChaosInsurgency'
+    - 'Medkit'
+    - 'ArmorCombat'
+    - 'Painkillers'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    ammo:
+      Nato762: 120
+    ability_usage: 'You have no special abilities'
+    custom_abilities: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  flippeds:
+  - chance: 0
+    start_team: Other
+    id: 37
+    role: ClassD
+    max_health: 100
+    name: 'Flipped'
+    description: 'For the people who complains that being small is boring'
+    custom_info: 'Flipped'
+    keep_inventory_on_spawn: true
+    keep_role_on_death: true
+    removal_kills_player: false
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    custom_abilities:
+    - name: 'Flipped Ability [Passive]'
+      description: 'Handles being upside down'
+      scale_for_players:
+        x: 1
+        y: -1
+        z: 1
+      # Changing this will likely break your config.
+      ability_type: 'ScaleAbility'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+    ability_usage: 'Enter ".special" in the console to use your ability. If you have multiple abilities, you can use this command to cycle through them, or specify the one to use with ".special ROLENAME AbilityNum"'
+  telepathic_chaos:
+  - chance: 10
+    start_team: Chaos
+    id: 38
+    role: ChaosRifleman
+    max_health: 100
+    name: '<color=#008f1e>Telepathic Chaos</color>'
+    description: 'You have the ability to FEEL enemies of the Chaos Insurgency near you'
+    custom_info: 'Telepathic Chaos'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: ChaosConscript
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'GunA7'
+    - 'KeycardChaosInsurgency'
+    - 'Medkit'
+    - 'ArmorCombat'
+    - 'Painkillers'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    ammo:
+      Nato762: 120
+    custom_abilities:
+    - name: 'Detect [Active]'
+      description: 'Detects targets of the Chaos Insurgency.'
+      duration: 0
+      cooldown: 120
+      detect_range: 30
+      found_target_header: 'Hostiles detected near by'
+      missing_role: 'Unknown Role'
+      no_targets: 'There is no detected hostiles near you'
+      show_missing_roles: true
+      use_hints: true
+      message_duration: 10
+      role_names:
+        Scientist: Scientist
+        NtfCaptain: MTF Captain
+        NtfPrivate: MTF Private
+        NtfSergeant: MTF Sergeant
+        NtfSpecialist: MTF Specialist
+        FacilityGuard: Facility Guard
+        Scp049: SCP-049
+        Scp0492: SCP-049-2
+        Scp079: SCP-079
+        Scp096: SCP-096
+        Scp106: SCP-106
+        Scp173: SCP-173
+        Scp939: SCP-939
+        Scp3114: SCP-3114
+      custom_role_names:
+        32: Biochemist
+        46: Lockpicker Class D
+      # Changing this will likely break your config.
+      ability_type: 'Detect'
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  juggernaut_chaos:
+  - chance: 10
+    start_team: Chaos
+    id: 39
+    role: ChaosConscript
+    max_health: 100
+    name: '<color=#008f1e>Explosive Chaos</color>'
+    description: 'A Chaos Insurgent specializing in explosives'
+    custom_info: 'Explosive Chaos'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: ChaosConscript
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'KeycardMTFPrivate'
+    - 'GrenadeHE'
+    - 'GrenadeHE'
+    - 'GrenadeFlash'
+    - 'ArmorHeavy'
+    - '<color=#FF0000>ADATS</color>'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    ammo:
+      Ammo44Cal: 8
+    custom_abilities:
+    - name: 'Giving Candy Ability [Passive]'
+      description: 'Gives you a pink candy when you spawn in.'
+      starting_candy:
+      - Pink
+      - Pink
+      # Changing this will likely break your config.
+      ability_type: 'GivingCandyAbility'
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you get detained as a Chaos, if you get escorted out you''''re guaranteed to be a MTF Demolitionist'
+      escape_to_regular_role: false
+      regular_role: Tutorial
+      uncuffed_escape_custom_role: ''
+      cuffed_escape_custom_role: '<color=#0096FF>MTF Demolitionist</color>'
+      allow_uncuffed_custom_role_change: false
+      allow_cuffed_custom_role_change: true
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  c_i_spies:
+  - chance: 0
+    start_team: Ntf
+    id: 40
+    role: NtfSergeant
+    max_health: 100
+    name: 'Chaos Insurgency Spy'
+    description: 'A Chaos Insurgent that is disguised as an MTF Member'
+    custom_info: 'NTF Sergeant'
+    keep_inventory_on_spawn: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: NtfSpecialist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    custom_abilities:
+    - name: 'Disguised [Passive]'
+      description: 'Handles everything related to being disguised'
+      # The text displayed to any attacker who is trying to hurt someone who is disguised, but is on their team
+      disguised_friendly_fire_text: 'That MTF is actually on the CI side'
+      # The true team of the disguised player. Ntf or Mtf = MTF/Scientists, Ci = Chaos Insurgency/Class-D, Scp = SCPs
+      disguised_true_team: Ci
+      # Should the disguised notifcation be a hint? (True = Hint, False = Broadcast)
+      disguised_hint_display: false
+      # How long should the text displayed to the player should last
+      disguised_text_display_time: 5
+      # Changing this will likely break your config.
+      ability_type: 'Disguised'
+    - name: 'Remove Disguise [Active]'
+      description: 'This removes your disguise, once it''''s off, you cannot put it back on, activate carefully'
+      duration: 0
+      cooldown: 5
+      # Sometimes the players inventory will be dropped, set this to true to automatically give it back
+      restore_previous_inventory: false
+      # This allows a player to undisguise into a custom role if true.
+      use_custom_roles: false
+      # If UseCustomRoles is false, this will determine which normal role the player will undisguise into.
+      undisguise_role: Tutorial
+      # If UseCustomRoles is true, this will determine which custom role the player will undisguise into by Custom Role ID.
+      undisguise_custom_role: 0
+      # If true, the player's position will be saved and restored after the ability is used, useful for Custom Roles since those will always set to the custom role spawn point.
+      save_position: true
+      # Changing this will likely break your config.
+      ability_type: 'RemoveDisguise'
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  mtf_wisps:
+  - chance: 15
+    start_team: Ntf
+    id: 41
+    role: NtfSpecialist
+    max_health: 100
+    name: '<color=#0096FF>MTF Wisp</color>'
+    description: 'A MTF Specialist that has the ability to go through doors but at a cost of reduced stamina.'
+    custom_info: 'MTF Wisp'
+    inventory:
+    - 'GunCrossvec'
+    - 'GunRevolver'
+    - 'Medkit'
+    - 'Radio'
+    - 'ArmorCombat'
+    ammo:
+      Nato9: 80
+      Ammo44Cal: 12
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: NtfSpecialist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    custom_abilities:
+    - name: 'Restricted Items [Passive]'
+      description: 'Handles restricted items'
+      allowed_custom_items: []
+      restricted_custom_items: []
+      restricted_item_list:
+      - Adrenaline
+      - SCP500
+      restrict_using_items: true
+      restrict_picking_up_items: true
+      restrict_dropping_items: false
+      # Changing this will likely break your config.
+      ability_type: 'RestrictedItems'
+    - name: 'Wisp [Passive]'
+      description: 'Enables walking through doors, Fog Control, Reduced Sprint'
+      effects_to_apply:
+      - effect_type: Exhausted
+        intensity: 1
+        duration: 0
+        add_duration_if_active: false
+      - effect_type: Ghostly
+        intensity: 1
+        duration: 0
+        add_duration_if_active: false
+      - effect_type: FogControl
+        intensity: 1
+        duration: 0
+        add_duration_if_active: false
+      delay_before_applying_effects: 5
+      # Changing this will likely break your config.
+      ability_type: 'EffectEnabler'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  dwarf_zombies:
+  - chance: 20
+    id: 43
+    max_health: 200
+    name: '<color=#FF0000>Dwarf SCP-049-2</color>'
+    description: 'A smaller zombie'
+    custom_info: 'Dwarf SCP-049-2'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Dwarf [Passive]'
+      description: 'Makes you small as a dwarf zombie'
+      scale_for_players:
+        x: 0.75
+        y: 0.75
+        z: 0.75
+      # Changing this will likely break your config.
+      ability_type: 'ScaleAbility'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  explosive_zombies:
+  - chance: 25
+    id: 42
+    max_health: 500
+    name: '<color=#FF0000>Ballistic SCP-049-2</color>'
+    description: 'A zombie that explodes on death'
+    custom_info: 'Ballistic SCP-049-2'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Explode on Death [Passive]'
+      description: 'Causes you to explode on death'
+      # How long should the fuse be?
+      explosive_fuse: 0.5
+      # Should the explosive from player death be related to the player or the server
+      should_server_be_killer: false
+      # Changing this will likely break your config.
+      ability_type: 'Martyrdom'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  ci_phantoms:
+  - chance: 15
+    id: 44
+    max_health: 100
+    name: '<color=#008f1e>Chaos Phantom</color>'
+    description: 'A Chaos Insurgent specialized in espionage'
+    custom_info: 'Chaos Phantom'
+    role: ChaosConscript
+    start_team: Guard
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: FacilityGuard
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - '<color=#6600CC>PB-42</color>'
+    - '<color=#6600CC>Obscurus Veil-5</color>'
+    - 'GunCrossvec'
+    - 'Medkit'
+    - 'KeycardChaosInsurgency'
+    - 'Adrenaline'
+    - 'ArmorCombat'
+    ammo:
+      Nato9: 80
+    custom_abilities:
+    - name: 'Restricted Items [Passive]'
+      description: 'You cannot use SCP-268'
+      allowed_custom_items: []
+      restricted_custom_items: []
+      restricted_item_list:
+      - SCP268
+      restrict_using_items: true
+      restrict_picking_up_items: true
+      restrict_dropping_items: true
+      # Changing this will likely break your config.
+      ability_type: 'RestrictedItems'
+    - name: 'Active Camo [Active]'
+      description: 'Activates camo, will reapply when doing most actions'
+      duration: 30
+      cooldown: 120
+      # Changing this will likely break your config.
+      ability_type: 'ActiveCamo'
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  medic_zombies:
+  - chance: 25
+    id: 45
+    max_health: 450
+    name: '<color=#FF0000>Medic SCP-049-2</color>'
+    description: 'A zombie that can heal other SCPs'
+    custom_info: 'Medic SCP-049-2'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Move Speed Reduction [Passive]'
+      description: 'Slows you down'
+      effects_to_apply:
+      - effect_type: Slowness
+        intensity: 30
+        duration: 0
+        add_duration_if_active: false
+      delay_before_applying_effects: 5
+      # Changing this will likely break your config.
+      ability_type: 'EffectEnabler'
+    - name: 'Healing Mist [Active]'
+      description: 'Emits an invisible mist that can heal other SCPs'
+      duration: 15
+      cooldown: 180
+      # The amount healed every second the ability is active.
+      heal_amount: 6
+      # The amount of AHP given when the ability ends.
+      protection_amount: 45
+      # Changing this will likely break your config.
+      ability_type: 'HealingMist'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  lockpicking_class_ds:
+  - chance: 15
+    start_team: ClassD
+    id: 46
+    max_health: 90
+    name: '<color=#FF8E00>Lock-picker Class D</color>'
+    description: 'Has the ability to lock pick doors'
+    custom_info: 'Lock-picker Class D'
+    role: ClassD
+    custom_abilities:
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as a Lockpicker, this will make sure you get your inventory.'
+      escape_to_regular_role: true
+      regular_role: ChaosConscript
+      uncuffed_escape_custom_role: ''
+      cuffed_escape_custom_role: ''
+      allow_uncuffed_custom_role_change: false
+      allow_cuffed_custom_role_change: false
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    - name: 'Lock-picking Ability [Active]'
+      description: 'Allows you to open any door for a short period of time, but limited by some external factors'
+      duration: 15
+      cooldown: 180
+      time_to_door_pick_min: 3
+      time_to_door_pick_max: 6
+      time_for_door_to_be_open: 5
+      before_picking_door_text: 'Interact with a door to start to pick it'
+      picking_door_text: 'Picking door...'
+      # Duration is unused here, it's based on the time it takes to pick the door
+      effects_to_apply:
+      - effect_type: Ensnared
+        intensity: 1
+        duration: 0
+        add_duration_if_active: false
+      - effect_type: Slowness
+        intensity: 255
+        duration: 0
+        add_duration_if_active: false
+      # Changing this will likely break your config.
+      ability_type: 'DoorPicking'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  demolitionists:
+  - chance: 15
+    start_team: Ntf
+    id: 47
+    role: NtfSpecialist
+    max_health: 100
+    name: '<color=#0096FF>MTF Demolitionist</color>'
+    description: 'A MTF Member that is specialized in explosives'
+    custom_info: 'MTF Demolitionist'
+    inventory:
+    - '<color=#FF0000>ADATS</color>'
+    - '<color=#FF0000>Explosive Resistant Armor</color>'
+    - '<color=#FF0000>C4</color>'
+    - '<color=#FF0000>C4</color>'
+    - '<color=#FF0000>C4</color>'
+    - '<color=#FF0000>Cluster Grenade</color>'
+    - 'GrenadeHE'
+    - 'Radio'
+    ammo:
+      Ammo44Cal: 8
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: NtfSpecialist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have no special abilities'
+    custom_abilities: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  vanguards:
+  - chance: 10
+    start_team: Ntf
+    id: 48
+    role: NtfSpecialist
+    max_health: 100
+    name: '<color=#0096FF>MTF Vanguard</color>'
+    description: 'A MTF member with an alternate loadout. Being able to help mark priority targets.'
+    custom_info: 'MTF Vanguard'
+    inventory:
+    - '<color=#0096FF>Pathfinder</color>'
+    - '<color=#FF0000>Viper</color>'
+    - '<color=#6600CC>Pathfinder Grenade</color>'
+    - 'KeycardMTFOperative'
+    - 'ArmorHeavy'
+    - 'Radio'
+    - 'Adrenaline'
+    - 'Painkillers'
+    ammo:
+      Nato9: 120
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: NtfSpecialist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have no special abilities'
+    custom_abilities: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  theoretical_physicist_scientists:
+  - chance: 15
+    id: 49
+    role: Scientist
+    start_team: Scientist
+    max_health: 100
+    name: '<color=#FFFF7C>Theoretical Physicist Scientist</color>'
+    description: 'A Scientist that believes that the pocket dimension has a lot more to offer than what it is otherwise normally thought of.'
+    custom_info: 'Theoretical Physicist Scientist'
+    keep_inventory_on_spawn: false
+    keep_role_on_death: false
+    removal_kills_player: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'KeycardScientist'
+    - 'Painkillers'
+    custom_abilities:
+    - name: 'Pocket Dimension Escape Chance [Passive]'
+      description: 'Makes it so the player can escape the pocket dimension twice, guaranteed.'
+      escape_chance: 100
+      amount_of_allowed_escapes: 2
+      custom_death_reason: 'You have hit your guaranteed escape limit from the pocket dimension.'
+      remove_traumatized_on_escape: true
+      # Changing this will likely break your config.
+      ability_type: 'PocketDimensionEscapeChance'
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as this custom role, this will make sure you get your inventory.'
+      escape_to_regular_role: true
+      regular_role: NtfSpecialist
+      uncuffed_escape_custom_role: ''
+      cuffed_escape_custom_role: ''
+      allow_uncuffed_custom_role_change: false
+      allow_cuffed_custom_role_change: false
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  mtf_paramedics:
+  - chance: 15
+    start_team: Ntf
+    id: 50
+    role: NtfSpecialist
+    max_health: 100
+    name: '<color=#0096FF>MTF Paramedic</color>'
+    description: 'A paramedic that has extra medical equipment'
+    custom_info: 'MTF Paramedic'
+    inventory:
+    - '<color=#0096FF>Phantom Pulse</color>'
+    - 'Medkit'
+    - 'Radio'
+    - 'ArmorCombat'
+    ammo:
+      Nato9: 80
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: NtfSpecialist
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    custom_abilities:
+    - name: 'Healing Mist [Active]'
+      description: 'Activates a short-term spray of chemicals which will heal and protect allies for a short duration.'
+      duration: 15
+      cooldown: 180
+      # The amount healed every second the ability is active.
+      heal_amount: 6
+      # The amount of AHP given when the ability ends.
+      protection_amount: 45
+      # Changing this will likely break your config.
+      ability_type: 'HealingMist'
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  class_d_analysts:
+  - chance: 15
+    start_team: ClassD
+    id: 51
+    max_health: 100
+    name: '<color=#FF8E00>Class-D Analyst</color>'
+    description: 'A Class-D with a knack for analyzing and gathering information.'
+    custom_info: 'Class-D Analyst'
+    role: ClassD
+    custom_abilities:
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as a Class-D Analyst, you''''re guaranteed a custom role.'
+      escape_to_regular_role: false
+      regular_role: Tutorial
+      uncuffed_escape_custom_role: '<color=#008f1e>Telepathic Chaos</color>'
+      cuffed_escape_custom_role: '<color=#0096FF>MTF Wisp</color>'
+      allow_uncuffed_custom_role_change: true
+      allow_cuffed_custom_role_change: true
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    - name: 'Detect [Active]'
+      description: 'Detects targets for you, a Class-D.'
+      duration: 0
+      cooldown: 120
+      detect_range: 30
+      found_target_header: 'Hostiles detected near by'
+      missing_role: 'Unknown Role'
+      no_targets: 'There is no detected hostiles near you'
+      show_missing_roles: true
+      use_hints: true
+      message_duration: 10
+      role_names:
+        Scp049: SCP-049
+        Scp0492: SCP-049-2
+        Scp079: SCP-079
+        Scp096: SCP-096
+        Scp106: SCP-106
+        Scp173: SCP-173
+        Scp939: SCP-939
+      custom_role_names:
+        32: Biochemist
+        46: Lockpicker Class D
+      # Changing this will likely break your config.
+      ability_type: 'Detect'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  class_d_tanks:
+  - chance: 5
+    start_team: ClassD
+    id: 52
+    max_health: 300
+    name: '<color=#FF8E00>Class-D Tank</color>'
+    description: 'You''re a Class-D with enhanced durability, able to withstand more damage than your peers.'
+    custom_info: 'Class-D Tank'
+    role: ClassD
+    custom_abilities:
+    - name: 'Move Speed Reduction [Passive]'
+      description: 'Slows you down'
+      effects_to_apply:
+      - effect_type: Slowness
+        intensity: 30
+        duration: 0
+        add_duration_if_active: false
+      delay_before_applying_effects: 5
+      # Changing this will likely break your config.
+      ability_type: 'EffectEnabler'
+    - name: 'Scale Ability [Passive]'
+      description: 'Increases your size'
+      scale_for_players:
+        x: 1.1
+        y: 1.1
+        z: 1.1
+      # Changing this will likely break your config.
+      ability_type: 'ScaleAbility'
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as a Class-D Tank, this will make sure you get your inventory.'
+      escape_to_regular_role: true
+      regular_role: ChaosConscript
+      uncuffed_escape_custom_role: ''
+      cuffed_escape_custom_role: ''
+      allow_uncuffed_custom_role_change: false
+      allow_cuffed_custom_role_change: false
+      save_inventory: true
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  infected_zombies:
+  - chance: 20
+    id: 53
+    max_health: 350
+    name: '<color=#FF0000>Infected Zombie</color>'
+    description: 'A zombie that when it kills a player, it turns them into a zombie as well.'
+    custom_info: 'Infected Zombie'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Team Convert On Kill [Passive]'
+      description: 'When you kill a player, they will be converted to a Zombie.'
+      # What role should the player be converted to?
+      convert_to_role: Scp0492
+      # Changing this will likely break your config.
+      ability_type: 'TeamConvertOnKill'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  poisonous_zombies:
+  - chance: 20
+    id: 54
+    max_health: 350
+    name: '<color=#FF0000>Poisonous Zombie</color>'
+    description: 'A zombie that when attacking a player, applies the poison effect to them.'
+    custom_info: 'Poisonous Zombie'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Poisonous Touch [Passive]'
+      description: 'When you hit a player, they will be poisoned.'
+      effects_to_apply:
+      - effect_type: Poisoned
+        intensity: 1
+        duration: 10
+        add_duration_if_active: true
+      # Changing this will likely break your config.
+      ability_type: 'ApplyEffectOnHit'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  speedster_zombies:
+  - chance: 20
+    id: 55
+    max_health: 300
+    name: '<color=#FF0000>Speedster Zombie</color>'
+    description: 'A zombie that is fast'
+    custom_info: 'Speedster Zombie'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Speed Boost [Passive]'
+      description: 'Increases your movement speed'
+      effects_to_apply:
+      - effect_type: MovementBoost
+        intensity: 20
+        duration: 0
+        add_duration_if_active: false
+      delay_before_applying_effects: 5
+      # Changing this will likely break your config.
+      ability_type: 'EffectEnabler'
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  teleport_zombies:
+  - chance: 10
+    id: 57
+    max_health: 300
+    name: '<color=#FF0000>Teleport Zombie</color>'
+    description: 'A zombie that can teleport'
+    custom_info: 'Teleport Zombie'
+    role: Scp0492
+    start_team: Scp, Revived
+    custom_abilities:
+    - name: 'Slowness [Passive]'
+      description: 'Reduces your movement speed'
+      effects_to_apply:
+      - effect_type: Slowness
+        intensity: 20
+        duration: 0
+        add_duration_if_active: false
+      delay_before_applying_effects: 5
+      # Changing this will likely break your config.
+      ability_type: 'EffectEnabler'
+    - name: 'Teleport [Active]'
+      description: 'Teleports to a random location within a certain range'
+      duration: 0
+      cooldown_after_deploying_teleport_spot: 15
+      cooldown_after_teleporting: 120
+      teleport_spot_set_message: 'Teleport spot set! Use the ability again to teleport.'
+      teleporting_message: 'Teleporting to your teleport spot!'
+      allow_teleporting_across_zones: false
+      # This will only show if AllowTeleportingAcrossZones is false.
+      teleporting_across_zones_message: 'You cannot teleport across zones!'
+      use_hints: false
+      message_duration: 5
+      # Changing this will likely break your config.
+      ability_type: 'Teleport'
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Use your Noclip Button [Left Alt] to swap abilities and to activate. Tap Twice to Swap. Tap Once to activate.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  sound_breaker173:
+  - chance: 10
+    id: 58
+    max_health: 3800
+    name: '<color=#FF0000>Sound Breaker 173</color>'
+    description: 'Reset blink cooldown, reduce the next Blink interval and range'
+    custom_info: 'Sound Breaker SCP-173'
+    role: Scp173
+    start_team: Scp173
+    custom_abilities:
+    - name: 'Sound Breaker [Active]'
+      description: 'Reset blink cooldown, reduce the next Blink interval and range'
+      duration: 5
+      cooldown: 150
+      blink_cooldown: 0.5
+      max_blink_distance: 4
+      minimum_observed_players: 1
+      # Changing this will likely break your config.
+      ability_type: 'SoundBreaker'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: Scp173
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Use your Sound Breaker ability with your server keybind (set it in ESC > Settings > Server Settings).'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  replicant:
+  - chance: 5
+    id: 59
+    max_health: 100
+    name: '<color=#008f1e>Chaos Replicant</color>'
+    description: 'A Chaos Insurgent that can create decoy and make recon'
+    custom_info: 'Chaos Replicant'
+    role: ChaosRifleman
+    start_team: Chaos
+    inventory:
+    - 'ArmorCombat'
+    - 'Painkillers'
+    - 'Medkit'
+    - 'GunAK'
+    - 'KeycardChaosInsurgency'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points:
+      - role: ChaosRifleman
+        chance: 100
+      room_spawn_points: []
+      locker_spawn_points: []
+    ammo:
+      Nato762: 90
+    custom_abilities:
+    - name: 'Replicator [Active]'
+      description: 'Create decoy and make recon'
+      duration: 15
+      cooldown: 45
+      ended_message: '<color=red>Replicator Expired</color>'
+      killed_decoy: 'Your decoy has been killed!'
+      use_hints: true
+      # Changing this will likely break your config.
+      ability_type: 'Replicator'
+    ability_usage: 'Use your Replicator ability with your server keybind (set it in ESC > Settings > Server Settings).'
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  dwarfs:
+  - chance: 15
+    start_team: ClassD
+    id: 60
+    max_health: 60
+    name: '<color=#FF8E00>Dwarf Class-D</color>'
+    description: 'A smaller Class-D, having less health but being harder to hit, infinite stamina, but reduced item access.'
+    custom_info: 'Dwarf Class-D'
+    role: ClassD
+    custom_abilities:
+    - name: 'Dwarf [Passive]'
+      description: 'Makes you small as a dwarf'
+      scale_for_players:
+        x: 0.75
+        y: 0.75
+        z: 0.75
+      # Changing this will likely break your config.
+      ability_type: 'ScaleAbility'
+    - name: 'Infinite Stamina [Passive]'
+      description: 'Gives you infinite stamina'
+      # Changing this will likely break your config.
+      ability_type: 'InfiniteStamina'
+    - name: 'Restricted Items [Passive]'
+      description: 'Restricts certain items from being used'
+      allowed_custom_items: []
+      restricted_custom_items: []
+      restricted_item_list:
+      - ArmorCombat
+      - ArmorHeavy
+      - GunAK
+      - GunE11SR
+      - GunFRMG0
+      - GunLogicer
+      - GunShotgun
+      - GunSCP127
+      - MicroHID
+      - ParticleDisruptor
+      - SCP1344
+      - SCP268
+      - AntiSCP207
+      restrict_using_items: true
+      restrict_picking_up_items: true
+      restrict_dropping_items: false
+      # Changing this will likely break your config.
+      ability_type: 'RestrictedItems'
+    - name: 'Custom Role Escape [Passive]'
+      description: 'If you escape as a Dwarf Class-D, you will get a custom role.'
+      escape_to_regular_role: false
+      regular_role: Tutorial
+      uncuffed_escape_custom_role: '<color=#008f1e>Telepathic Chaos</color>'
+      cuffed_escape_custom_role: '<color=#0096FF>MTF Wisp</color>'
+      allow_uncuffed_custom_role_change: true
+      allow_cuffed_custom_role_change: true
+      save_inventory: false
+      # Changing this will likely break your config.
+      ability_type: 'CustomRoleEscape'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  paper_men:
+  - chance: 0
+    start_team: Other
+    id: 61
+    max_health: 50
+    name: 'Paper Man'
+    description: 'You''re flat like paper'
+    custom_info: 'Paper Man'
+    role: Tutorial
+    custom_abilities:
+    - name: 'Scale [Passive]'
+      description: 'Makes you flat like paper'
+      scale_for_players:
+        x: 1
+        y: 1
+        z: 0.1
+      # Changing this will likely break your config.
+      ability_type: 'ScaleAbility'
+    inventory: []
+    ammo: {}
+    spawn_properties:
+      limit: 0
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+    ability_usage: 'Enter ".special" in the console to use your ability. If you have multiple abilities, you can use this command to cycle through them, or specify the one to use with ".special ROLENAME AbilityNum"'
+  quantum_gravity_researchers:
+  - chance: 15
+    start_team: Scientist
+    id: 62
+    role: Scientist
+    max_health: 100
+    name: '<color=#FFFF7C>Quantum Gravity Researcher</color>'
+    description: 'A Scientist who researches quantum gravity.'
+    custom_info: 'Quantum Gravity Researcher'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - '<color=#6600CC>Lunar Lob</color>'
+    - '<color=#6600CC>Nebula Carapace</color>'
+    - 'Painkillers'
+    - 'KeycardJanitor'
+    ability_usage: 'You have no custom abilities'
+    custom_abilities: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  class_d_druggies:
+  - chance: 15
+    start_team: ClassD
+    id: 63
+    max_health: 100
+    name: '<color=#FF8E00>Class-D Druggy</color>'
+    description: 'A Class-D who is critically addicted to drugs.'
+    custom_info: 'Class-D Druggy'
+    role: ClassD
+    inventory:
+    - 'Painkillers'
+    - 'Painkillers'
+    custom_abilities:
+    - name: 'Addicted [Passive]'
+      description: 'Makes the player addicted to pills and adrenaline. Adverse effects occur when waiting too long between uses.'
+      # Message shown to the player when they are experiencing withdrawal symptoms.
+      message_on_withdrawal: 'You feel terrible withdrawal symptoms coursing through your body!'
+      # Message shown to the player when they take an addicted item.
+      message_on_use: 'You feel better for now.'
+      message_duration: 5
+      use_hints: true
+      # The time in seconds before withdrawal symptoms start.
+      time_before_withdrawals: 90
+      # The interval in seconds at which withdrawal symptoms will be applied.
+      withdrawal_interval: 15
+      # The amount of damage dealt to the player each withdrawal interval.
+      withdrawal_amount: 5
+      # Should sedating withdrawls for a valid item take place on Using Item (when a player left clicks) or on Using Item Complete (after the animation is played)?
+      sedate_on_using_item_complete: true
+      # Regular items that will tame the effects of the addiction.
+      addicted_items:
+      - Adrenaline
+      - Painkillers
+      # Custom items that will tame the effects of the addiction. Custom Items by ID
+      custom_addicted_items:
+      - 23
+      - 34
+      # Changing this will likely break your config.
+      ability_type: 'Addicted'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+  tesla_technicians:
+  - chance: 15
+    start_team: Scientist
+    id: 64
+    role: Scientist
+    max_health: 100
+    name: '<color=#FFFF7C>Tesla Technician</color>'
+    description: 'A Scientist who routinely works on Tesla Gates.'
+    custom_info: 'Tesla Technician'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    inventory:
+    - 'KeycardScientist'
+    - 'Medkit'
+    custom_abilities:
+    - name: 'Ignore Teslas [Passive]'
+      description: 'Allows the player to ignore tesla gates'
+      # Changing this will likely break your config.
+      ability_type: 'IgnoreTeslas'
+    ability_usage: 'You have passive abilities. This does not require button activation'
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+ssss_config:
+  ssss_enabled: false
+  # If true, players that activate their abilities through SSSS will receive hints, otherwise it will be a broadcast. **NOTE** this is only for SSSS activation, if they use Left Alt (Noclip) they will ALWAYS receive a hint.
+  use_hints: true
+  header: 'Vicious Vikki''s Custom Roles'
+  active_camo_id: 10101
+  charge_id: 10102
+  detect_id: 10103
+  door_picking_id: 10104
+  healing_mist_id: 10105
+  remove_disguise_id: 10106
+  teleport_id: 10108
+  sound_breaker_id: 10109
+  replicator_id: 10110
+  custom_role_text_id: 2
+  active_camo_hint: 'Press the keybind to activate Active Camo, you will become invisible for a short time (Custom Ability).'
+  charge_hint: 'Press the keybind to activate Charge, you will be able to charge at a target (Custom Ability).'
+  detect_hint: 'Press the keybind to activate Detect, you will be able to detect nearby players (Custom Ability).'
+  door_picking_hint: 'Press the keybind to activate Door Picking, you will be able to pick doors (Custom Ability).'
+  healing_mist_hint: 'Press the keybind to activate Healing Mist, you will be able to heal yourself and nearby players (Custom Ability).'
+  remove_disguise_hint: 'Press the keybind to activate Remove Disguise, you will be able to remove your disguise (Custom Ability).'
+  teleport_hint: 'Press the keybind to activate Teleport, you will be able to teleport to a target location (Custom Ability).'
+  sound_breaker_hint: 'Press the keybind to reset Blink cooldown and reduce the next blink interval and distance (Custom Ability).'
+  replicator_hint: 'Press the keybind to create Decoy and make safe Recon (Custom Ability).'
+  active_camo_ssss_text: 'Active Camo'
+  charge_ssss_text: 'Charge'
+  detect_ssss_text: 'Detect'
+  door_picking_ssss_text: 'Door Picking'
+  healing_mist_ssss_text: 'Healing Mist'
+  remove_disguise_ssss_text: 'Remove Disguise'
+  teleport_ssss_text: 'Teleport'
+  sound_breaker_ssss_text: 'Sound Breaker'
+  replicator_ssss_text: 'Replicator'
+  ssss_active_camo_activation_message: 'Activated Active Camo'
+  ssss_charge_activation_message: 'Activated Charge'
+  ssss_door_picking_activation_message: 'Activated Door Picking, Interact with the door you want to pick.'
+  ssss_healing_mist_activation_message: 'Activated Healing Mist'
+  ssss_remove_disguise_activation_message: 'Removing Disguise'
+  ssss_teleport_activation_message: 'Activated Teleport'
+  ssss_sound_breaker_activation_message: 'Activated Sound Breaker'
+  ssss_replicator_activation_message: 'Activated Replicator'
+  round_start_roles_id: 10111
+  respawn_wave_roles_id: 10112
+  scp049_revive_roles_id: 10113
+  round_start_roles_ssss_text: 'Enable getting Custom Roles on Round Start'
+  respawn_wave_roles_ssss_text: 'Enable getting Custom Roles on Respawn Waves'
+  scp049_revive_roles_ssss_text: 'Enable getting Custom Roles on SCP-049-2 Revivals'
+  custom_role_receiving_enabled_text: 'True'
+  custom_role_receiving_disabled_text: 'False'

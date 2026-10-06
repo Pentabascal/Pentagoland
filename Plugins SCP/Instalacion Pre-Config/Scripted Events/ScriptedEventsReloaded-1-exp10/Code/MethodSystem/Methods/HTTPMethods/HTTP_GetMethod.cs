@@ -1,0 +1,54 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Exceptions;
+using SER.Code.MethodSystem.BaseMethods.Yielding;
+using SER.Code.MethodSystem.Structures;
+using UnityEngine.Networking;
+
+namespace SER.Code.MethodSystem.Methods.HTTPMethods;
+
+[UsedImplicitly]
+// ReSharper disable once InconsistentNaming
+public class HTTP_GetMethod : YieldingReferenceReturningMethod<JObject>, ICanError
+{
+    public override string Description =>
+        "Sends a GET request to a provided URL and returns the response as a JSON object.";
+
+    public string[] ErrorReasons => [
+        ..HTTP_PostMethod.HttpErrorReasons, 
+        "Provided response was not a valid JSON object."
+    ];
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new TextArgument("address")
+    ];
+
+    public override IEnumerator<float> Execute()
+    {
+        var address = Args.GetText("address");
+        
+        using UnityWebRequest webRequest = UnityWebRequest.Get(address);
+
+        using var wait = HTTP_PostMethod.SendWithPolicy(this, webRequest);
+        while (wait.MoveNext()) yield return wait.Current;
+        
+        if (webRequest.error is { } error)
+        {
+            throw new ScriptRuntimeError(this, 
+                $"Address {address} has returned an error: {error}"
+            );
+        }
+
+        try
+        {
+            ReturnValue = JObject.Parse(webRequest.downloadHandler.text);
+        }
+        catch (JsonReaderException)
+        {
+            throw new ScriptRuntimeError(this, ErrorReasons[^1]);
+        }
+    }
+}

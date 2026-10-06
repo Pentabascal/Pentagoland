@@ -1,0 +1,58 @@
+is_enabled: true
+debug: false
+# Configuración del reloj:
+enable_clock: true
+clock: '<align=left><space=65><color={color}><size=18><b>Hora:</b> {time}</size></color></align>'
+# Zona horaria UTC | 2 = UTC+2
+time_zone: 2
+# GAMEPLAY = solo jugadores | SPECTATOR = solo espectadores | BOTH = jugadores y espectadores
+clock_visual: 'BOTH'
+clock_y_cordinate: 980
+# Configuración de TPS:
+enable_tps: true
+tps: '<align=right><color={color}><size=18><b>TPS:</b> {tps}/{maxTps}</size></color></align>'
+# GAMEPLAY = solo jugadores | SPECTATOR = solo espectadores | BOTH = jugadores y espectadores
+tps_visual: 'BOTH'
+tps_y_cordinate: 980
+# Configuración de la duración de la ronda:
+enable_round_time: true
+round_time: '<align=left><space=5><color={color}><size=18><b>Duración de la ronda:</b> {round_time}</size></color></align>'
+# GAMEPLAY = solo jugadores | SPECTATOR = solo espectadores | BOTH = jugadores y espectadores
+round_time_visual: 'BOTH'
+round_time_y_cordinate: 930
+# Configuración del HUD de jugador:
+enable_player_hud: true
+# Puedes usar {displayname} en lugar de {nickname}.
+player_hud: '<align=left><space=50><size=20><color=#D6FFFB><b>Nombre:</b></color> <color=#FFFFFF>{nickname}</color> <b>|</b> <color=#D6FFFB><b>Bajas:</b></color> <color=yellow>{kills}</color>{subclass}</size></align>'
+# Posición vertical del HUD de jugador. 25 lo coloca ligeramente por encima del watermark (posición 5).
+player_hud_y_cordinate: 50
+# Lista de espectadores:
+enable_spectator_list: false
+spectator_list_header: "<align=right><size=21><color={color}>\U0001F465 Espectadores ({count})</color></size></align>"
+spectator_list_players: '<align=right><size=21><color={color}>• {nickname}</color></size></align>'
+hidden_for_roles:
+- Overwatch
+spectator_list_y_cordinate: 800
+# Contador de munición:
+enable_ammo_counter: true
+weapon_name: '<align=center><size=21><color={color}>{weapon}</color></size></align>'
+ammo_counter: '<align=center><size=21><b><color={color}>{current} / {max}</color></b></size></align>'
+ammo_counter_y_cordinate: 150
+# Configuración del HUD de espectador:
+enable_spectator_hud: true
+# Puedes usar {displayname} en lugar de {nickname}.
+spectator_hud: '<size=22><color=#7DD3FC><b>OBSERVANDO A:</b></color> <color=#FFFFFF>{nickname}</color> <color=#94A3B8>|</color> <color=#C4B5FD><b>ROL:</b></color> {role} <color=#94A3B8>|</color> <color=#7DD3FC><b>BAJAS:</b></color> <color=#FDE68A>{kills}</color></size>'
+# Posición vertical del texto de espectador, centrado horizontalmente.
+spectator_hud_y_cordinate: 160
+# Si está activado, no se mostrará el nombre del jugador observado cuando sea un esqueleto (SCP-3114), igual que en la interfaz de espectador del juego.
+hide_skeleton_nickname: true
+# Información del mapa para espectadores:
+enable_spectator_map_info: true
+spectator_map_info: '<size=20><b>Generadores:</b> <color=orange>{engaged}/{maxGenerators}</color> <b>| Ojiva:</b> <color={warheadColor}>{warheadStatus}</color></size>'
+# Posición vertical de mapa; la fila combinada usa el mayor de este valor y ServerInfoYCordinate.
+map_info_y_cordinate: 110
+# Información del servidor para espectadores:
+enable_spectator_server_info: true
+spectator_server_info: '<size=20><color=#7DD3FC><b>JUGADORES:</b></color> <color=#FBBF24>{players}/{maxPlayers}</color> <color=#94A3B8>|</color> <color=#7DD3FC><b>ESPECTADORES:</b></color> <color=#FBBF24>{spectators}</color></size>'
+# Posición vertical de servidor; la fila combinada usa el mayor de este valor y MapInfoYCordinate.
+server_info_y_cordinate: 110

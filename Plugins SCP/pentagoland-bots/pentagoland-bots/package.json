@@ -1,0 +1,20 @@
+{
+  "name": "pentagoland-bots",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bots de Pentagoland: Web, Vínculo y Sentinel (SCP y auxiliar)",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "web": "node src/bots/web/index.js",
+    "link": "node src/bots/link/index.js",
+    "scp": "node src/bots/scp/index.js",
+    "invite": "node scripts/invite-url.js",
+    "check": "node scripts/check.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
+}

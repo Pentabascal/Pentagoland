@@ -1,0 +1,98 @@
+﻿using SER.Code.FlagSystem.Structures;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.ScriptSystem;
+using SER.Code.TokenSystem.Tokens;
+using SER.Code.TokenSystem.Tokens.VariableTokens;
+using SER.Code.VariableSystem.Bases;
+
+namespace SER.Code.FlagSystem.Flags;
+
+public class FunctionFlag : Flag, IMajorBehaviorFlag
+{
+    private readonly List<VariableToken> _expectedVarTokens = [];
+    private string? _functionName;
+
+    public IReadOnlyCollection<VariableToken> ExpectedVarTokens => _expectedVarTokens;
+    public string? FunctionName => _functionName;
+    
+    public override string Description =>
+        "Requires this script to be executed only when required arguments are supplied.";
+
+    public override Argument? InlineArgument => new(
+        "name",
+        "The unique name used to call this function with RunFunc.",
+        args =>
+        {
+            if (args.Length != 1 || string.IsNullOrWhiteSpace(args[0]))
+            {
+                return "Function requires exactly one name.";
+            }
+
+            _functionName = args[0];
+            return true;
+        },
+        false,
+        "!-- Function HandleDoor");
+
+    public override Argument[] Arguments =>
+    [
+        new(
+            "argument", 
+            "The variable that has to be present in order for this script to execute.",
+            args =>
+            {
+                switch (args.Length)
+                {
+                    case < 1: return "Argument requires a variable.";
+                    case > 2: return "Argument expects only a single variable.";
+                }
+
+                if (BaseToken.TryParse<VariableToken>(args.First(), null!)
+                    .HasErrored(out var error, out var token))
+                {
+                    return error;
+                }
+                
+                _expectedVarTokens.Add(token);
+                return true;
+            },
+            true,
+            "-- argument $name"
+        )
+    ];
+    
+    public override Result OnScriptRunning(Script scr, out bool mustReport)
+    {
+        mustReport = true;
+        if (base.OnScriptRunning(scr, out _).HasErrored(out var error)) return error;
+        
+        (VariableToken token, Variable var)[] provided = _expectedVarTokens
+            .Select(token => (token, scr.LocalVariables.FirstOrDefault(var => var.Name == token.Name)))
+            .OfType<(VariableToken, Variable)>()
+            .ToArray();
+
+        var missingVariable = _expectedVarTokens
+            .FirstOrDefault(token => !provided.Select(r => r.token).Contains(token));
+        
+        if (missingVariable is not null)
+        {
+            return $"Variable '{missingVariable.Name}' was not provided to the script.";
+        }
+
+        (VariableToken token, Variable var) mismatchedTypeVar = provided
+            .Select(x => (x.token, x.var))
+            .FirstOrDefault(x => !x.token.ValueType.CanHold(x.var.BaseValue.Type));
+
+        if (mismatchedTypeVar is { token: {} t, var: {} v })
+        {
+            return $"Variable '{t.Name}' is not of the correct type. " +
+                   $"Expected '{v.BaseValue.Type}', got '{t.ValueType}'.";
+        }
+        
+        return true;
+    }
+
+    public override void Unbind()
+    {
+    }
+}

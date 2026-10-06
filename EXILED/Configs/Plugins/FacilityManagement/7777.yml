@@ -1,0 +1,47 @@
+is_enabled: false
+debug: false
+# Make infinite ammo for weapon.
+infinite_ammo: []
+# Make infinite ammo for weapon.
+energy_micro_hid: 1
+# Make infinite ammo for weapon.
+energy_radio: 1
+# Sets the config of Generator
+custom_generator:
+  unlock_cooldown: 0.100000001
+  lever_delay: 0.5
+  door_panel_cooldown: 0.899999976
+  interaction_cooldown: 0
+  deactivation_time: 125
+  required_permission: ArmoryLevelOne
+# Sets the time for Lift to teleport
+lift_move_duration: {}
+# Custom intercom content. If there's no specific content, then the default client content is used.
+#         # Check GitHub ReadMe for more info (https://github.com/louis1706/FacilityManagement/blob/main/readme.md)
+custom_text:
+  Ready: Ready
+  Transmitting: '{intercom_speaker_nickname} speaking {intercom_speech_remaining_time}'
+  TrasmittingBypass: '{intercom_speaker_nickname} speaking {intercom_speech_remaining_time}'
+  Restarting: Restarting please wait for {intercom_remaining_cooldown}
+  AdminUsing: the Admin {intercom_speaker_nickname} is actually speaking
+  Muted: Issou you are muted
+  Wait: Wait
+  Unknown: Unknown
+# How mush the CustomText for intercom will be refresh (empty make refresh everytick)
+intercom_refresh: 
+# If all items and ragdolls in the facility should be removed after detonation.
+warhead_cleanup: false
+# Sets the config of Tesla.
+custom_tesla: {}
+# Sets the config of Scp914.
+custom_scp914: {}
+# Sets the health of breakable windows.
+custom_windows: {}
+# Sets the ignored damage of breakable Door (0 will make it Destructible for everything and -1 undestructible).
+custom_doors: {}
+# Give to x RoleType Some AHP (old name for SCP of Humeshield that are now separated so this only give AHP now).
+role_type_hume_shield: {}
+# Ability to modify the default value of the choosen ItemType.
+custom_item: {}
+# Ability to modify the default value of the choosen RoleTypeId.
+custom_role: {}

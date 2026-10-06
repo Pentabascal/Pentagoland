@@ -1,0 +1,33 @@
+{
+  "RootObjectId": 34576,
+  "Blocks": [
+    {
+      "Name": "Sphere",
+      "ObjectId": 34580,
+      "ParentId": 34576,
+      "AnimatorName": "Sphere",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 90.00004,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.1,
+        "y": 0.1,
+        "z": 0.1
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "FF0000FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    }
+  ]
+}

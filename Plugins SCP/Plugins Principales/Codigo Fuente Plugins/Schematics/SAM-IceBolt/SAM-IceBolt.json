@@ -1,0 +1,289 @@
+{
+  "RootObjectId": 49540,
+  "Blocks": [
+    {
+      "Name": "Cube",
+      "ObjectId": 49590,
+      "ParentId": 49540,
+      "AnimatorName": "Cube",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 2.0,
+        "y": 2.0,
+        "z": 2.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube (2)",
+      "ObjectId": 49574,
+      "ParentId": 49590,
+      "Position": {
+        "x": -0.0332,
+        "y": -0.0156,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 54.9999962,
+        "y": 89.9998245,
+        "z": 2.97701649E-06
+      },
+      "Scale": {
+        "x": 0.06859461,
+        "y": 0.00369763654,
+        "z": 0.00382002327
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube (3)",
+      "ObjectId": 49602,
+      "ParentId": 49590,
+      "Position": {
+        "x": 0.0267,
+        "y": 0.0261,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 66.76926,
+        "y": 89.9997559,
+        "z": -7.792374E-05
+      },
+      "Scale": {
+        "x": 0.0260570347,
+        "y": 0.003697637,
+        "z": 0.003820023
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube (4)",
+      "ObjectId": 49606,
+      "ParentId": 49590,
+      "Position": {
+        "x": 0.0187,
+        "y": -0.0222,
+        "z": -0.0904
+      },
+      "Rotation": {
+        "x": 66.76926,
+        "y": 89.9997559,
+        "z": -7.792374E-05
+      },
+      "Scale": {
+        "x": 0.07817632,
+        "y": 0.003697637,
+        "z": 0.003820023
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": 49550,
+      "ParentId": 49540,
+      "AnimatorName": "IceBolt",
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.05019246,
+        "y": 0.0520512648,
+        "z": 0.155284554
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": 49526,
+      "ParentId": 49550,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 89.9998245,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.26785338,
+        "y": 1.36085892,
+        "z": 1.2830112
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": 49568,
+      "ParentId": 49526,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 27.5000038,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.802767,
+        "y": 0.7019998,
+        "z": 0.7019997
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube (1)",
+      "ObjectId": 49548,
+      "ParentId": 49568,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 27.5000038,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.40511847,
+        "y": 0.57574,
+        "z": 0.57574
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "00FFFFFF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light",
+      "ObjectId": 49544,
+      "ParentId": 49526,
+      "Position": {
+        "x": 0.0,
+        "y": 1.1,
+        "z": 1.1
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FFFFFF",
+        "Intensity": 3.0,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (1)",
+      "ObjectId": 49586,
+      "ParentId": 49526,
+      "Position": {
+        "x": 0.0,
+        "y": -1.1,
+        "z": -1.1
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FFFFFF",
+        "Intensity": 3.0,
+        "Range": 10.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    }
+  ]
+}

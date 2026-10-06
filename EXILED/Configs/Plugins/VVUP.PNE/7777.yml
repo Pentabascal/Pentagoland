@@ -1,0 +1,65 @@
+is_enabled: true
+debug: false
+# ¿Se activa la radiación después de detonar la ojiva?
+radiation_enabled: true
+# Finaliza la rutina de radiación si la ojiva deja de figurar como detonada (por ejemplo, si un administrador la reinicia y después la cancela).
+ensure_warhead_detonated_for_effects: true
+# ¿Cuánto tarda en comenzar la radiación, en segundos?
+radiation_delay: 300
+# Daño de radiación por ciclo.
+radiation_damage: 1
+# Multiplicador del daño de radiación para los SCP.
+radiation_damage_scp_multiplier: 3
+# Tiempo entre ciclos de daño de radiación, en segundos.
+radiation_interval_time: 1.5
+# Mensaje que reciben los jugadores cuando la radiación empieza a afectar a la zona.
+radiation_start_message: 'Sientes una oleada repentina de náuseas y mareo mientras la radiación afecta a la zona.'
+# Duración del mensaje de inicio de la radiación, en segundos.
+radiation_message_duration: 5
+# Si es true, se muestran avisos; de lo contrario, se utiliza un anuncio.
+use_hints: true
+# Mensaje que reciben los jugadores cuando mueren por envenenamiento radiactivo.
+radiation_death_message: 'Has sucumbido al envenenamiento por radiación.'
+# Efectos aplicados a los jugadores mientras están irradiados. Se aplican en cada intervalo.
+radiation_effects:
+- effect_type: Burned
+  intensity: 1
+  duration: 0
+  add_duration_if_active: false
+- effect_type: Exhausted
+  intensity: 1
+  duration: 0
+  add_duration_if_active: false
+- effect_type: Concussed
+  intensity: 1
+  duration: 0
+  add_duration_if_active: false
+# ¿Qué roles son inmunes al daño de radiación?
+radiation_immune_roles:
+- Overwatch
+# Activa el apagón de la superficie después de detonar la ojiva.
+surface_blackout: true
+# Duración del apagón de la superficie, en segundos.
+surface_blackout_duration: 10
+# Color inicial de las luces de superficie cuando termina el apagón.
+surface_start_color:
+  r: -1
+  g: -1
+  b: -1
+  a: -1
+# Color final de las luces de superficie cuando termina el apagón. Usa -1 para el color predeterminado.
+surface_end_color:
+  r: -1
+  g: -1
+  b: -1
+  a: -1
+# Indica si el color de las luces cambia de golpe o gradualmente al color final después del apagón.
+surface_color_instant: false
+# Frecuencia de actualización del color de superficie si no es instantáneo, en segundos.
+surface_color_update_interval: 0.100000001
+# Cuánto cambia aproximadamente el color en cada actualización si no es instantáneo, entre 0 y 1.
+surface_color_change_amount: 0.00999999978
+# ¿Debe cerrarse la puerta de superficie después de detonar la ojiva?
+surface_gate_close: true
+# ¿Debe desbloquearse la puerta de superficie después de detonar la ojiva?
+surface_gate_unlock: true

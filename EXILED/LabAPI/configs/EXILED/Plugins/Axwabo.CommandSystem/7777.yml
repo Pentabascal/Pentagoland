@@ -1,0 +1,9 @@
+debug: false
+# Whether playerID copying should be replaced with nickname copying.
+copy_nickname_instead_of_id: false
+# Whether Remote Admin extensions should be enabled.
+enable_remote_admin_extensions: true
+# Whether to strip IL offsets from the exception stack trace.
+strip_intermediate_language_offsets: false
+# Whether to allow selecting the host player as a target using custom selectors.
+allow_selecting_host: false

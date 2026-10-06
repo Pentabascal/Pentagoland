@@ -1,0 +1,39 @@
+<size=50%>Round time: {round_minutes}:{round_seconds} | TPS: {tps}/{tickrate}</size>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<size=75%><color={RANDOM_COLOR}>You will respawn in: </color>
+<color=blue>NTF Spawn time:</color> {nminutes} min. {nseconds} s
+<color=#002DB3>Mini NTF Spawn time:</color> {mnminutes} min. {mnseconds} s {mntoken} Token
+<color=green>CI Spawn time:</color> {cminutes} min. {cseconds} s
+<color=#32CD32>Mini CI Spawn time:</color> {mcminutes} min. {mcseconds} s {mctoken} Token
+<align=left>Warhead Status: {warhead_status}
+Generators: {generator_engaged}/{generator_count}</align>
+<align=right>
+<color=#808080>Spectators:</color> {spectators_num}
+</align>
+{hint}
+
+
+
+
+
+
+
+
+
+

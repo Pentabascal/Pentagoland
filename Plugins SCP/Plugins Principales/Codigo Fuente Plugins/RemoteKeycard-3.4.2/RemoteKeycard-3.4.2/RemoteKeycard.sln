@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteKeycard", "RemoteKeycard\RemoteKeycard.csproj", "{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 CPU = Debug|x64 CPU
+		EXILED|x64 CPU = EXILED|x64 CPU
+		LabAPI|x64 CPU = LabAPI|x64 CPU
+		Release|x64 CPU = Release|x64 CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.Debug|x64 CPU.ActiveCfg = Debug|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.Debug|x64 CPU.Build.0 = Debug|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.EXILED|x64 CPU.ActiveCfg = EXILED|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.EXILED|x64 CPU.Build.0 = EXILED|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.LabAPI|x64 CPU.ActiveCfg = LabAPI|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.LabAPI|x64 CPU.Build.0 = LabAPI|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.Release|x64 CPU.ActiveCfg = Release|Any CPU
+		{D7C1787F-4490-4EAC-967B-AE0DAB13F39F}.Release|x64 CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25B85B18-AFF8-4D35-9304-9C23A3E5B55C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+is_enabled: true
+debug: false
+# Left is the Damage Type, such as damage coming from a Revolver, or a MicroHID. The Right is the HitboxType required to cause evaporation, Types are 'Body', 'Headshot', 'Limb', and 'Any' for HitboxTypes. Any should be used for non-standard damage types like the MicroHID.
+weapon_hit_to_evaporate:
+  MicroHid: Any
+  Revolver: Headshot

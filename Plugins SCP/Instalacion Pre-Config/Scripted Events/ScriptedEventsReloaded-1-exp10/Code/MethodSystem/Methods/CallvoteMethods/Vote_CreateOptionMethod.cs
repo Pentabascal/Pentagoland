@@ -1,0 +1,38 @@
+﻿using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Helpers;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.MethodSystem.Structures;
+
+namespace SER.Code.MethodSystem.Methods.CallvoteMethods;
+
+[UsedImplicitly]
+// ReSharper disable once InconsistentNaming
+public class Vote_CreateOptionMethod : ReferenceReturningMethod<Vote_CreateOptionMethod.VoteOption>, IDependOnFramework
+{
+    public FrameworkBridge.Type DependsOn => FrameworkBridge.Type.Callvote;
+
+    public record VoteOption(string Option, string DisplayText);
+
+    public override string Description => "Creates a vote option, which can be used in a vote.";
+    
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new TextArgument("option", false)
+        {
+            Description = "This will be the command for voting AND the result of the vote, if it wins."
+        },
+        new TextArgument("display text")
+        {
+            Description = "The description of the option."
+        }
+    ];
+
+    public override void Execute()
+    {
+        var key = Args.GetText("option");
+        var displayText = Args.GetText("display text");
+
+        ReturnValue = new(key, displayText);
+    }
+}

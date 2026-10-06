@@ -1,0 +1,110 @@
+﻿using System.Collections.Generic;
+using Exiled.API.Enums;
+using Exiled.API.Features.Attributes;
+using Exiled.API.Features.Spawn;
+using Exiled.CustomRoles.API.Features;
+using PlayerRoles;
+using VVUP.Base;
+using VVUP.CustomRoles.Abilities.Passive;
+using VVUP.CustomRoles.API;
+using YamlDotNet.Serialization;
+
+namespace VVUP.CustomRoles.Roles.Foundation
+{
+    public class MtfWisp : CustomRole, ICustomRole
+    {
+        public int Chance { get; set; } = 15;
+
+        public StartTeam StartTeam { get; set; } = StartTeam.Ntf;
+
+        public override uint Id { get; set; } = 41;
+
+        public override RoleTypeId Role { get; set; } = RoleTypeId.NtfSpecialist;
+
+        public override int MaxHealth { get; set; } = 100;
+
+        public override string Name { get; set; } = "<color=#0096FF>Espectro de los MTF</color>";
+
+        public override string Description { get; set; } =
+            "Especialista de los MTF capaz de atravesar puertas, a costa de tener menos resistencia.";
+
+        public override string CustomInfo { get; set; } = "Espectro de los MTF";
+
+        public override List<string> Inventory { get; set; } = new()
+        {
+            ItemType.GunCrossvec.ToString(),
+            ItemType.GunRevolver.ToString(),
+            ItemType.Medkit.ToString(),
+            ItemType.Radio.ToString(),
+            ItemType.ArmorCombat.ToString()
+        };
+
+        public override Dictionary<AmmoType, ushort> Ammo { get; set; } = new()
+        {
+            {
+                AmmoType.Nato9, 80
+            },
+            {
+                AmmoType.Ammo44Cal, 12
+            }
+        };
+
+        public override SpawnProperties SpawnProperties { get; set; } = new()
+        {
+            Limit = 1,
+            RoleSpawnPoints = new List<RoleSpawnPoint>
+            {
+                new()
+                {
+                    Role = RoleTypeId.NtfSpecialist,
+                    Chance = 100,
+                },
+            },
+        };
+
+        public override List<CustomAbility>? CustomAbilities { get; set; } = new()
+        {
+            new RestrictedItems
+            {
+                Name = "Objetos restringidos [Pasiva]",
+                Description = "Gestiona los objetos restringidos.",
+                RestrictedItemList =
+                {
+                    ItemType.Adrenaline,
+                    ItemType.SCP500
+                },
+                RestrictUsingItems = true,
+                RestrictPickingUpItems = true,
+                RestrictDroppingItems = false
+            },
+            new EffectEnabler
+            {
+                Name = "Espectro [Pasiva]",
+                Description = "Permite atravesar puertas, controlar la niebla y correr menos.",
+                EffectsToApply = new List<ApplyEffects>()
+                {
+                    new ApplyEffects()
+                    {
+                        EffectType = EffectType.Exhausted
+                    },
+                    new ApplyEffects()
+                    {
+                        EffectType = EffectType.Ghostly,
+                        Intensity = 1,
+                    },
+                    new ApplyEffects()
+                    {
+                        EffectType = EffectType.FogControl,
+                        Intensity = 1,
+                    }
+                },
+            },
+        };
+        
+        public override string AbilityUsage { get; set; } = "Tienes habilidades pasivas que no requieren activación mediante botones.";
+        [YamlIgnore] 
+        public override float SpawnChance { get; set; } = 0;
+        [YamlIgnore] 
+        public override bool IgnoreSpawnSystem { get; set; } = true;
+    }
+}

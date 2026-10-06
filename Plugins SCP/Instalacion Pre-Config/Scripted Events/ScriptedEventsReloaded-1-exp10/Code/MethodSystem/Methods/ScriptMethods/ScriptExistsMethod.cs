@@ -1,0 +1,26 @@
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.ValueSystem;
+using SER.Code.ValueSystem.Other;
+
+namespace SER.Code.MethodSystem.Methods.ScriptMethods;
+
+[UsedImplicitly]
+public class ScriptExistsMethod : ReturningMethod
+{
+    public override string Description => "Returns true or false indicating if a script with the provided name exists.";
+
+    public override Argument[] ExpectedArguments =>
+    [
+        new TextArgument("script name")
+    ];
+    
+    public override void Execute()
+    {
+        var scriptName = Args.GetText("script name");
+        ReturnValue = new BoolValue(FileSystem.FileSystem.DoesScriptExistByName(scriptName, out _));
+    }
+
+    public override TypeOfValue Returns => new SingleTypeOfValue(typeof(BoolValue));
+}

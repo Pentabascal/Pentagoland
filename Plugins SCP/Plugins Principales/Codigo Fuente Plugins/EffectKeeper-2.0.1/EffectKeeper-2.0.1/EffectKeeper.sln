@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EffectKeeper", "EffectKeeper\EffectKeeper.csproj", "{7BAA0401-3615-457F-BBE3-5296E72502BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		EXILED|Any CPU = EXILED|Any CPU
+		LabAPI|Any CPU = LabAPI|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BAA0401-3615-457F-BBE3-5296E72502BF}.EXILED|Any CPU.ActiveCfg = EXILED|Any CPU
+		{7BAA0401-3615-457F-BBE3-5296E72502BF}.EXILED|Any CPU.Build.0 = EXILED|Any CPU
+		{7BAA0401-3615-457F-BBE3-5296E72502BF}.LabAPI|Any CPU.ActiveCfg = LabAPI|Any CPU
+		{7BAA0401-3615-457F-BBE3-5296E72502BF}.LabAPI|Any CPU.Build.0 = LabAPI|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E87D9B1A-EC87-45A5-86C7-AA0CA4A68EDE}
+	EndGlobalSection
+EndGlobal

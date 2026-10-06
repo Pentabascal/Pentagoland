@@ -1,0 +1,25 @@
+is_enabled: true
+# There's basically no debug statements for this Module, as its more of the base for everything else.
+debug: false
+# Enable compatibility glow effects for custom items that don't implement ICustomItemGlow
+enable_compatibility_glow: false
+# You can use this to set custom glow colors for custom items by their Custom Item ID if the plugin they are from doesnt provide a native option. Custom items from VVUP.CI will use a native system and will be ignored here.
+custom_item_glow:
+- custom_item_id: 0
+  # RGBA values should be between 0 and 1.
+  r: 1
+  g: 0
+  b: 0
+  a: 0
+  # Glow range can be any value, but I recommend it to be between 0 and 1 in most cases.
+  glow_range: 0.25
+  # Intensity should be between 0 and 1.
+  intensity: 1
+  # The options are None, Soft, and Hard for shadow types.
+  shadow_type: None
+  # Offsets can be used to adjust the position of the glow. Useful for items that have their 'center' not in the center of the item, such as the E-11.
+  offset_x: 0
+  offset_y: 0
+  offset_z: 0
+# Some people may have errors with items getting glows at round start if they start on the ground, this delay should hopefully mitigate that.
+delay_before_colors_applies_to_items_already_on_ground_at_round_start: 1

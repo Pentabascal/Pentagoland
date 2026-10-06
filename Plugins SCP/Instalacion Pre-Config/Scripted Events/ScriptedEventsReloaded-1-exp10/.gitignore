@@ -1,0 +1,47 @@
+# IDE and per-user settings
+.idea/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.rsuser
+
+# .NET, NuGet, and release outputs
+[Bb]in/
+[Oo]bj/
+[Pp]ackages/
+artifacts/
+*.nupkg
+*.snupkg
+
+# Node.js dependencies, logs, and coverage
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.nyc_output/
+
+# Generated SER language/editor artifacts
+/SER Visual Editor.html
+/ser_method_info.js
+/Tooling/visual-editor/dist/
+/VS Code Extension/out/ser_method_info.js
+/website/src/data/constructs.json
+/website/static/assets/
+/website/static/ser-blocks/
+/website/static/img/
+/website/static/llms/
+/website/static/llms.txt
+/website/static/llms-full.txt
+/website/static/data/
+/website/.docusaurus/
+/website/.site-docs/
+/website/build/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

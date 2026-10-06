@@ -1,0 +1,483 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <OutputType>Library</OutputType>
+        <RootNamespace>SER</RootNamespace>
+        <AssemblyName>SER</AssemblyName>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>14.0</LangVersion>
+        <PlatformTarget>x64</PlatformTarget>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+        <Configurations>Release;Full Debug;Partial Debug;EXILED</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <WarningLevel>4</WarningLevel>
+        <DefaultItemExcludes>$(DefaultItemExcludes);Tooling\**;website\**;VS Code Extension\**;tools\**</DefaultItemExcludes>
+        <RunSerPostBuildValidation Condition="'$(RunSerPostBuildValidation)' == ''">true</RunSerPostBuildValidation>
+        <CopySerToReferenceDirectory Condition="'$(CopySerToReferenceDirectory)' == ''">false</CopySerToReferenceDirectory>
+        <InstallSerExtensionAfterBuild Condition="'$(InstallSerExtensionAfterBuild)' == ''">false</InstallSerExtensionAfterBuild>
+    </PropertyGroup>
+
+    <!-- Fail once with an actionable setup message instead of emitting a warning for every missing game assembly. -->
+    <Target Name="ValidateSerReferenceDirectory" BeforeTargets="ResolveAssemblyReferences" Condition="'$(DesignTimeBuild)' != 'true'">
+        <Error
+            Condition="'$(SL_DEV_REFERENCES)' == ''"
+            Text="SER cannot build because SL_DEV_REFERENCES is not set. Point it to the SCP:SL managed-assembly directory described in CONTRIBUTING.md." />
+
+        <ItemGroup Condition="'$(SL_DEV_REFERENCES)' != ''">
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\0Harmony.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\Assembly-CSharp-firstpass.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\CommandSystem.Core.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\Mirror.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\Pooling.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\ProjectMER.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\UnityEngine.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\UnityEngine.AnimationModule.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\UnityEngine.CoreModule.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\UnityEngine.PhysicsModule.dll" />
+            <SerRequiredReference Include="$(SL_DEV_REFERENCES)\UnityEngine.UnityWebRequestModule.dll" />
+            <SerRequiredReference Include="$(UcrReferencePath)" />
+        </ItemGroup>
+
+        <Error
+            Condition="'$(SL_DEV_REFERENCES)' != '' and !Exists('%(SerRequiredReference.Identity)')"
+            Text="SER cannot build because this required reference is missing: %(SerRequiredReference.Identity). Update SL_DEV_REFERENCES or pass -p:UcrReferencePath for UncomplicatedCustomRoles.dll." />
+    </Target>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Full Debug' or '$(Configuration)'=='Debug'">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <Optimize>false</Optimize>
+        <DefineConstants>DEBUG;TRACE;HAVE_NULLABLE_ATTRIBUTES;LABAPI;SIGNAL</DefineConstants>
+        <OutputPath>bin\LABAPI\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Partial Debug'">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <Optimize>false</Optimize>
+        <DefineConstants>TRACE;HAVE_NULLABLE_ATTRIBUTES;LABAPI;SIGNAL</DefineConstants>
+        <OutputPath>bin\LABAPI\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <DebugType>full</DebugType>
+        <Optimize>true</Optimize>
+        <DefineConstants>TRACE;HAVE_NULLABLE_ATTRIBUTES;LABAPI</DefineConstants>
+        <OutputPath>bin\LABAPI\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='EXILED'">
+        <AssemblyName>SER-Exiled</AssemblyName>
+        <DebugType>full</DebugType>
+        <Optimize>true</Optimize>
+        <DefineConstants>TRACE;HAVE_NULLABLE_ATTRIBUTES;EXILED</DefineConstants>
+        <OutputPath>bin\EXILED\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(SL_DEV_REFERENCES)\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>$(SL_DEV_REFERENCES)\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="CommandSystem.Core">
+            <HintPath>$(SL_DEV_REFERENCES)\CommandSystem.Core.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+        <Reference Include="Mirror">
+            <HintPath>$(SL_DEV_REFERENCES)\Mirror.dll</HintPath>
+        </Reference>
+        <Reference Include="Pooling">
+            <HintPath>$(SL_DEV_REFERENCES)\Pooling.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.AnimationModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+            <HintPath>$(SL_DEV_REFERENCES)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UncomplicatedCustomRoles">
+            <HintPath>$(UcrReferencePath)</HintPath>
+        </Reference>
+        <Reference Include="ProjectMER">
+            <HintPath>$(SL_DEV_REFERENCES)\ProjectMER.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    
+    <!-- QoL moving the dll -->
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Copy
+            SourceFiles="$(TargetPath)"
+            DestinationFolder="$(LABAPI_PLUGINS)"
+            Condition="'$(LABAPI_PLUGINS)' != '' and '$(Configuration)' != 'EXILED'"
+        />
+        <Copy
+            SourceFiles="$(TargetPath)"
+            DestinationFolder="$(SL_DEV_REFERENCES)"
+            Condition="'$(SL_DEV_REFERENCES)' != '' and '$(CopySerToReferenceDirectory)' == 'true'"
+        />
+    </Target>
+
+    <PropertyGroup>
+        <LabApiXmlPath>$(UserProfile)\.nuget\packages\northwood.labapi\1.1.7\lib\net48\LabApi.xml</LabApiXmlPath>
+        <ExiledApiXmlPath>$(UserProfile)\.nuget\packages\exmod.exiled\9.14.2\lib\net48\Exiled.API.xml</ExiledApiXmlPath>
+        <ExiledEventsXmlPath>$(UserProfile)\.nuget\packages\exmod.exiled\9.14.2\lib\net48\Exiled.Events.xml</ExiledEventsXmlPath>
+        <UcrReferencePath Condition="'$(UcrReferencePath)' == ''">$(SL_DEV_REFERENCES)\UncomplicatedCustomRoles.dll</UcrReferencePath>
+        <!-- The extension is versioned with SER; installation into VS Code is an explicit local-development opt-in. -->
+        <SerExtensionDirectory Condition="'$(SerExtensionDirectory)' == ''">$(MSBuildProjectDirectory)\VS Code Extension</SerExtensionDirectory>
+        <SerExtensionInstallDirectory Condition="'$(SerExtensionInstallDirectory)' == ''">$(UserProfile)\.vscode\extensions\ser</SerExtensionInstallDirectory>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="$(OutputPath)$(AssemblyName).xml" Condition="Exists('$(OutputPath)$(AssemblyName).xml')">
+            <LogicalName>$(AssemblyName).xml</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="$(LabApiXmlPath)" Condition="Exists('$(LabApiXmlPath)')">
+            <LogicalName>LabApi.xml</LogicalName>
+        </EmbeddedResource>
+        <!-- Keep shared help and editor data the same no matter which plugin build runs last. -->
+        <EmbeddedResource Include="$(ExiledApiXmlPath)" Condition="Exists('$(ExiledApiXmlPath)')">
+            <LogicalName>Exiled.API.xml</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="$(ExiledEventsXmlPath)" Condition="Exists('$(ExiledEventsXmlPath)')">
+            <LogicalName>Exiled.Events.xml</LogicalName>
+        </EmbeddedResource>
+        <None Include="App.config" />
+        <None Include="packages.config" />
+        <Content Include=".gitignore" />
+        <Content Include="README.md" />
+        <None Include="THIRD_PARTY_LICENSES.txt" CopyToOutputDirectory="Always" />
+        <EmbeddedResource Include="Example Scripts\**\*.ser" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Using Include="JetBrains.Annotations" />
+    </ItemGroup>
+
+    <!-- Ignore warnings about mismatched core-library versions and unreachable code. -->
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);MSB3277;CS0162</NoWarn>
+    </PropertyGroup>
+
+    <!-- nuget refs -->
+    <ItemGroup>
+        <PackageReference Include="AudioPlayerApi" Version="1.1.3" />
+        <PackageReference Include="Callvote.LabAPI" Version="6.9.0" />
+        <PackageReference Include="ExMod.Exiled" Version="9.14.2" />
+        <PackageReference Include="NCalc" Version="1.3.8" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+        <PackageReference Include="Northwood.LabAPI" Version="1.1.7" />
+        <PackageReference Include="PolySharp" Version="1.16.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <!--
+      Dependencies loaded by the framework's embedded-resource resolver.
+    -->
+    <Target Name="EmbedSelectedDependencies" AfterTargets="ResolveReferences">
+        <ItemGroup>
+            <EmbeddedResource Include="@(ReferenceCopyLocalPaths)"
+                              Condition="'%(Extension)' == '.dll' and
+                                 (
+                                   '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'NCalc' or
+                                   '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'Newtonsoft.Json' or
+                                   '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'AudioPlayerApi' or
+                                   '%(Filename)' == 'NVorbis' or
+                                   '%(Filename)' == 'SharpCompress'
+                                 )" />
+        </ItemGroup>
+    </Target>
+    
+    <!-- this checkes if the script examples are able to be compiled -->
+    <UsingTask TaskName="RunDllValidation" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <AssemblyPath ParameterType="System.String" Required="true" />
+            <ReferencePath ParameterType="System.String" Required="true" />
+            <ProjectDirectory ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System" />
+            <Using Namespace="System.IO" />
+            <Using Namespace="System.Reflection" />
+            <Using Namespace="System.Collections.Generic" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+#nullable enable annotations
+
+// --- Helpers ---
+// Using a local function for repeated reflection logic
+bool TryInvoke(Assembly asm, string typeName, string methodName, object?[]? args = null, bool mandatory = true)
+{
+    try
+    {
+        Type? type = asm.GetType(typeName);
+        if (type == null)
+        {
+            if (mandatory) Log.LogError($"Validation Error: Type '{typeName}' not found.");
+            return false;
+        }
+
+        MethodInfo? method = type.GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+        if (method == null)
+        {
+            if (mandatory) Log.LogError($"Validation Error: Static method '{methodName}' not found in '{typeName}'.");
+            return false;
+        }
+
+        method.Invoke(null, args);
+        return true;
+    }
+    catch (Exception ex)
+    {
+        string msg = $"Error invoking {typeName}.{methodName}: " + (ex.InnerException?.Message ?? ex.Message);
+        if (mandatory) Log.LogError(msg); else Log.LogWarning(msg);
+        return false;
+    }
+}
+
+string? FindOptionalAssembly(Type type, string[] optionalAssemblies)
+{
+    string? assemblyName = type.Assembly.GetName().Name;
+    if (Array.IndexOf(optionalAssemblies, assemblyName) >= 0)
+        return assemblyName;
+
+    if (type.HasElementType && type.GetElementType() is { } elementType)
+        return FindOptionalAssembly(elementType, optionalAssemblies);
+
+    if (!type.IsGenericType)
+        return null;
+
+    foreach (Type argument in type.GetGenericArguments())
+    {
+        if (FindOptionalAssembly(argument, optionalAssemblies) is { } optionalAssembly)
+            return optionalAssembly;
+    }
+
+    return null;
+}
+
+bool ValidateNoOptionalDependencyFields(Assembly asm)
+{
+    string[] optionalAssemblies = ["Callvote-LabAPI", "ProjectMER", "UncomplicatedCustomRoles"];
+    bool valid = true;
+    foreach (Type type in asm.GetTypes())
+    {
+        foreach (FieldInfo field in type.GetFields(
+                     BindingFlags.Public |
+                     BindingFlags.NonPublic |
+                     BindingFlags.Static |
+                     BindingFlags.Instance |
+                     BindingFlags.DeclaredOnly))
+        {
+            if (FindOptionalAssembly(field.FieldType, optionalAssemblies) is not { } optionalAssembly)
+                continue;
+
+            Log.LogError(
+                $"Optional dependency '{optionalAssembly}' is stored in field " +
+                $"'{type.FullName}.{field.Name}'. Move that value into a synchronous method local.");
+            valid = false;
+        }
+    }
+
+    return valid;
+}
+
+// 1. Setup Assembly Resolver
+ResolveEventHandler resolver = (sender, args) => 
+{
+    try 
+    {
+        string fileName = new AssemblyName(args.Name).Name + ".dll";
+        string referencePath = Path.Combine(ReferencePath, fileName);
+        if (File.Exists(referencePath))
+            return Assembly.LoadFrom(referencePath);
+
+        string outputPath = Path.Combine(Path.GetDirectoryName(AssemblyPath), fileName);
+        return File.Exists(outputPath) ? Assembly.LoadFrom(outputPath) : null;
+    }
+    catch (Exception e) { Log.LogError("Resolver Error: " + e.Message); return null; }
+};
+
+try
+{
+    AppDomain.CurrentDomain.AssemblyResolve += resolver;
+
+    if (!File.Exists(AssemblyPath)) 
+    {
+        Log.LogError("Target DLL not found: " + AssemblyPath);
+        return false;
+    }
+
+    // Loading directly from the output path pins SER.dll for the lifetime of
+    // persistent MSBuild hosts (notably Rider), blocking the next build.
+    // Loading the bytes preserves reflection validation without locking the file.
+    Assembly assembly = Assembly.Load(File.ReadAllBytes(AssemblyPath));
+
+    // 2. Optional integrations must remain loadable when their assemblies are absent.
+    if (!ValidateNoOptionalDependencyFields(assembly))
+        return false;
+
+    // 3. Enable "Shenanigans" (Field Access)
+    Type? mainPlugin = assembly.GetType("SER.Code.Plugin.MainPlugin");
+    mainPlugin?.GetField("AllowDetachedScriptCompilingShenanigans")?.SetValue(null, true);
+
+    // 4. Method Indexing (Mandatory)
+    if (!TryInvoke(assembly, "SER.Code.MethodSystem.MethodIndex", "AddAllDefinedMethodsInAssembly", [assembly], true))
+        return false;
+
+    Log.LogMessage(MessageImportance.High, ">>> Methods loaded.");
+
+    // 5. Script Validation (Special handling for return types)
+    {
+        Type? handlerType = assembly.GetType("SER.Code.Helpers.ExampleHandler");
+        var verifyMethod = handlerType?.GetMethod("Verify", BindingFlags.Public | BindingFlags.Static);
+
+        if (verifyMethod == null)
+        {
+            Log.LogError("Validation Error: ExampleHandler.Verify() not found.");
+            return false;
+        }
+
+        Log.LogMessage(MessageImportance.High, ">>> Validating Scripts...");
+        var (error, scripts) = ((string?, string[]))verifyMethod.Invoke(null, [ProjectDirectory]);
+
+        if (!string.IsNullOrEmpty(error))
+        {
+            Log.LogError("SCRIPT ERROR: " + error);
+            return false;
+        }
+        Log.LogMessage(MessageImportance.High, $">>> Validation Passed for: {string.Join(", ", scripts)}.");
+    }
+
+    // 6. Systems Initialization (Optional/Silent failure)
+    TryInvoke(assembly, "SER.Code.EventSystem.EventHandler", "Initialize");
+    TryInvoke(assembly, "SER.Code.FlagSystem.Flags.Flag", "RegisterFlags", [null]);
+    TryInvoke(assembly, "SER.Code.Builders.Builder", "CreateFiles");
+
+    return true;
+}
+catch (ReflectionTypeLoadException re)
+{
+    foreach (var loaderEx in re.LoaderExceptions) Log.LogError("Loader Error: " + loaderEx?.ToString());
+    return false;
+}
+catch (Exception ex) 
+{
+    Log.LogError("Task Error: " + (ex is TargetInvocationException tie ? tie.InnerException : ex).ToString());
+    return false;
+}
+finally 
+{
+    AppDomain.CurrentDomain.AssemblyResolve -= resolver;
+}
+
+#nullable disable annotations
+        ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+
+    <Target Name="RunValidation" AfterTargets="Build" Condition="'$(RunSerPostBuildValidation)' == 'true'">
+        <RunDllValidation
+            AssemblyPath="$(TargetPath)"
+            ReferencePath="$(SL_DEV_REFERENCES)"
+            ProjectDirectory="$(MSBuildProjectDirectory)"
+        />
+    </Target>
+
+    <!-- Keep the VS Code extension and its generated SER truth table in sync with the plugin build. -->
+    <Target Name="ExportSerExtension" AfterTargets="RunValidation" Condition="Exists('$(SerExtensionDirectory)')">
+        <PropertyGroup>
+            <SerTruthTablePath>$(MSBuildProjectDirectory)\ser_method_info.js</SerTruthTablePath>
+            <SerExtensionTruthTablePath>$(SerExtensionDirectory)\out\ser_method_info.js</SerExtensionTruthTablePath>
+        </PropertyGroup>
+
+        <Copy
+            SourceFiles="$(SerTruthTablePath)"
+            DestinationFiles="$(SerExtensionTruthTablePath)"
+            Condition="Exists('$(SerTruthTablePath)') and Exists('$(SerExtensionDirectory)\out')"
+            SkipUnchangedFiles="true"
+        />
+
+        <ItemGroup>
+            <!-- node_modules is intentionally not part of the install export. -->
+            <SerExtensionFiles
+                Include="$(SerExtensionDirectory)\**\*"
+                Exclude="$(SerExtensionDirectory)\node_modules\**\*"
+            />
+            <SerExtensionDestinationDirectories
+                Include="@(SerExtensionFiles->'$(SerExtensionInstallDirectory)\%(RecursiveDir)')"
+            />
+            <SerExtensionDestinationFiles
+                Include="@(SerExtensionFiles->'$(SerExtensionInstallDirectory)\%(RecursiveDir)%(Filename)%(Extension)')"
+            />
+        </ItemGroup>
+
+        <MakeDir
+            Directories="@(SerExtensionDestinationDirectories)"
+            Condition="'$(InstallSerExtensionAfterBuild)' == 'true'" />
+        <Copy
+            SourceFiles="@(SerExtensionFiles)"
+            DestinationFiles="@(SerExtensionDestinationFiles)"
+            Condition="'$(InstallSerExtensionAfterBuild)' == 'true'"
+            SkipUnchangedFiles="true"
+        />
+
+        <Message
+            Condition="'$(InstallSerExtensionAfterBuild)' == 'true'"
+            Importance="High"
+            Text=">>> VS Code extension exported to $(SerExtensionInstallDirectory)"
+        />
+    </Target>
+
+    <UsingTask TaskName="CountLinesTask" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <SourceFiles ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+            <TotalLines ParameterType="System.Int32" Output="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System" />
+            <Using Namespace="System.IO" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+                int count = 0;
+                foreach (var item in SourceFiles)
+                {
+                    string path = item.GetMetadata("FullPath");
+                    if (File.Exists(path))
+                    {
+                        count += File.ReadAllLines(path).Length;
+                    }
+                }
+                TotalLines = count;
+                ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+
+    <Target Name="CountLines" BeforeTargets="BeforeBuild" Condition="'$(RunSerPostBuildValidation)' == 'true'">
+        <CountLinesTask SourceFiles="@(Compile)">
+            <Output TaskParameter="TotalLines" PropertyName="LOC" />
+        </CountLinesTask>
+        <Message Importance="High" Text=">>> Total lines of code in project: $(LOC)" />
+    </Target>
+</Project>

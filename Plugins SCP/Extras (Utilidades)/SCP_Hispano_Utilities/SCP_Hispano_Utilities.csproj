@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Pentagoland.Utilities</RootNamespace>
+    <AssemblyName>PentagolandCore</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <Version>4.3.0</Version>
+    <Title>Pentagoland Core</Title>
+    <FileAlignment>512</FileAlignment>
+    <NoWarn>$(NoWarn);CS0618;CS0169;CS4014</NoWarn>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <UseExiledStubs Condition="'$(UseExiledStubs)' == ''">false</UseExiledStubs>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(UseExiledStubs)' != 'true'">
+    <Compile Remove="Plugins/**/*.cs" />
+    <Compile Remove="Exiled.Stubs/**/*.cs" />
+    <PackageReference Include="ExMod.Exiled" Version="9.14.2" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

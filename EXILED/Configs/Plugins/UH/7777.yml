@@ -1,0 +1,57 @@
+is_enabled: false
+debug: false
+# Specific Server Settings:
+enable_server_settings: false
+# Hint Settings:
+enable_hints: true
+scp096_look_message: '¡Has mirado a SCP-096!'
+scp268_time_left_message: 'Tiempo restante: {0} s'
+scp2176_time_left_message: 'Tiempo restante: {0} s'
+scp1576_time_left_message: 'Tiempo restante: {0} s'
+grenade_damage_hint: '{0} de daño'
+jailbird_use_message: 'Cargas restantes: {0}'
+scp207_hint_message: 'Tienes {0} dosis de SCP-207'
+anti_scp207_hint_message: 'Tienes {0} dosis de Anti-SCP-207'
+show_hint_on_equip_item: false
+# Item Warnings:
+enable_warnings: true
+scp207_warning: '<color=yellow>⚠</color> Ya estás afectado por <color=#A60C0E>SCP-207</color>'
+anti_scp207_warning: '<color=yellow>⚠</color> Ya estás afectado por <color=#2969AD>Anti-SCP-207</color>'
+scp1853_warning: '<color=yellow>⚠</color> Ya estás afectado por <color=#1CAA21>SCP-1853</color>'
+# Friendly Fire Warning:
+enable_ff_warning: true
+friendly_fire_warning: '<size=27><color=yellow>⚠ No hieras a tus compañeros</color></size>'
+damage_taken_warning: '<size=27><color=red>{0}</color> <color=yellow>(compañero) te ha golpeado</color></size>'
+class_d_are_teammates: true
+enable_cuffed_warning: false
+cuffed_attacker_warning: '<size=27><color=yellow>⚠ El jugador está esposado</color></size>'
+cuffed_player_warning: '<size=27><color=red>{0}</color> <color=yellow>te ha golpeado mientras estabas esposado</color></size>'
+# Kill Counter:
+enable_kill_counter: false
+kill_count_message: '{0} bajas'
+count_pocket_kills: false
+# Round Summary:
+enable_round_summary: false
+round_summary_message_duration: 10
+human_kill_message: '<size=27><color=#70EE9C>{0}</color> logró más bajas como <color=green>humano</color>: <color=yellow>{1}</color></size>'
+scp_kill_message: '<size=27><color=#70EE9C>{0}</color> logró más bajas como <color=red>SCP</color>: <color=yellow>{1}</color></size>'
+top_damage_message: '<size=27><color=#70EE9C>{0}</color> infligió más daño: <color=yellow>{1}</color></size>'
+first_scp_killer_message: '<size=27><color=#70EE9C>{0}</color> fue el primero en matar a un <color=red>SCP</color></size>'
+escaper_message: '<size=27><color=#70EE9C>{0}</color> escapó primero de las instalaciones: <color=yellow>{1}:{2}</color></size>'
+# Teammates:
+enable_teammates: false
+teammate_hint_delay: 4
+teammate_hint_message: |-
+  <align=left><size=28><color=#70EE9C>Tus compañeros</color></size> 
+  <size=25><color=yellow>{0}</color></size></align>
+teammate_message_duration: 8
+alone_hint_message: '<align=left><color=red>Estás jugando en solitario</color></align>'
+alone_message_duration: 4
+# Last Human Broadcast:
+enable_last_human_broadcast: false
+broadcast_for_human: '<color=red>¡Eres el último humano con vida!</color>'
+broadcast_for_scp: '<color=#70EE9C>{0}</color> es el último humano con vida y juega como {1} en <color=yellow>{2}</color>'
+ignore_tutorial_role: true
+# Map Broadcast:
+enable_map_broadcast: false
+broadcast_warning_lcz: '¡La <color=yellow>Zona Ligera</color> será descontaminada en 5 minutos!'

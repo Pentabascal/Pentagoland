@@ -1,0 +1,23 @@
+# Whether the leading zeros should be added in minutes and seconds if number is less than 10.
+leading_zeros: true
+# How often custom hints should be changed (in seconds).
+hint_interval: 10
+# The Nine-Tailed Fox display name.
+ntf: <color=blue>Nine-Tailed Fox</color>
+# The Chaos Insurgency display name.
+ci: <color=green>Chaos Insurgency</color>
+# The Mini Nine-Tailed Fox display name.
+mini_ntf: <color=blue>Mini Nine-Tailed Fox</color>
+# The Mini Chaos Insurgency display name.
+mini_ci: <color=green>Mini Chaos Insurgency</color>
+# The display name used by {next_team} when no wave is able to spawn next.
+no_next_team: <color=red>None</color>
+# CustomRole display name if UCR is available.
+custom_role: 'Custom Role: {custom_role_name}'
+# The display names for warhead statuses:
+warhead_status:
+  NotArmed: <color=green>Unarmed</color>
+  Armed: <color=orange>Armed</color>
+  InProgress: <color=red>In Progress - </color> {detonation_time} s
+  Detonated: <color=#640000>Detonated</color>
+  DeadManInProgress: <color=red>DeadMan In Progress - </color> {detonation_time} s

@@ -1,0 +1,61 @@
+id: 29
+name: SCP1509
+description: SCP1509
+extended_description: ''
+badge_name: Janitor
+badge_color: pumpkin
+weight: 2
+item: SCP1509
+scale:
+  x: 1
+  y: 1
+  z: 1
+spawn:
+  do_spawn: false
+  count: 1
+  spawn_settings:
+  - chance: 30
+    coords:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    locker_settings:
+      enable: false
+      locker_type: RifleRack
+      room: HczWarhead
+      zone: HeavyContainment
+      chamber: ''
+      offset:
+        x: 0
+        y: 0
+        z: 0
+    dynamic_spawn:
+    - room: Lcz914
+      coords:
+        x: 1
+        y: 1
+        z: 1
+    zones:
+    - HeavyContainment
+    - Entrance
+    replace_existing_pickup: false
+    force_item: false
+    replace_items_in_pedestals: false
+custom_modules: {}
+arguments: {}
+custom_item_type: SCPItem
+custom_data:
+  can_resurrect: false
+  revive_cooldown: 0
+  revived_player_maxahp: 0
+  revived_playeraoe_bonusahp: 0
+  humeshield_max: 0
+  humeshield_regeneration: 0
+  humeshield_regen_rate: 0
+  humeshield_decay_rate: 0
+  humeshield_on_damage_pause_time: 0
+  unequip_humeshield_decay_delay: 0

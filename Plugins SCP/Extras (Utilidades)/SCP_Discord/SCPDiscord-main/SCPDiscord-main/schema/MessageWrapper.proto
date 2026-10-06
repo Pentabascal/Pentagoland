@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "BotToPlugin/ConsoleCommand.proto";
+import "BotToPlugin/UserInfo.proto";
+import "BotToPlugin/SyncRoleCommand.proto";
+import "BotToPlugin/UnsyncRoleCommand.proto";
+import "BotToPlugin/BanCommand.proto";
+import "BotToPlugin/UnbanCommand.proto";
+import "BotToPlugin/KickCommand.proto";
+import "BotToPlugin/KickallCommand.proto";
+import "BotToPlugin/ListCommand.proto";
+import "BotToPlugin/MuteCommand.proto";
+import "BotToPlugin/ListRankedCommand.proto";
+import "BotToPlugin/ListSyncedCommand.proto";
+import "BotToPlugin/PlayerInfoCommand.proto";
+import "BotToPlugin/AdminChatDiscordMessage.proto";
+
+import "PluginToBot/BotActivity.proto";
+import "PluginToBot/ChatMessage.proto";
+import "PluginToBot/UserQuery.proto";
+import "PluginToBot/EmbedMessage.proto";
+import "PluginToBot/PaginatedMessage.proto";
+
+package SCPDiscord.Interface;
+
+message MessageWrapper
+{
+	oneof message {
+		BotActivity botActivity = 1;
+		//ChannelTopic channelTopic = 2; // No longer exists
+		ChatMessage chatMessage = 3;
+		UserQuery userQuery = 4;
+		SyncRoleCommand syncRoleCommand = 5;
+		UnsyncRoleCommand unsyncRoleCommand = 6;
+		ConsoleCommand consoleCommand = 7;
+		UserInfo userInfo = 8;
+		BanCommand banCommand = 9;
+		UnbanCommand unbanCommand = 10;
+		KickCommand kickCommand = 11;
+		KickallCommand kickallCommand = 12;
+		ListCommand listCommand = 13;
+		EmbedMessage embedMessage = 14;
+		PaginatedMessage paginatedMessage = 15;
+		MuteCommand muteCommand = 16;
+		ListRankedCommand listRankedCommand = 17;
+		ListSyncedCommand listSyncedCommand = 18;
+		PlayerInfoCommand playerInfoCommand = 19;
+		AdminChatDiscordMessage adminChatDiscordMessage = 20;
+	}
+}

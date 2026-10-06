@@ -1,0 +1,22 @@
+name: validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  dotnet:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Server Doctor isolated tests
+        run: dotnet run --project .\ServerDoctor\tests\PentagolandServerDoctor.Tests.csproj
+      - name: Build MER tools
+        run: dotnet build .\AssetLibrary\PentagolandMERTools.csproj --configuration Release
+      - name: MER tools self-test
+        run: dotnet run --project .\AssetLibrary\PentagolandMERTools.csproj --configuration Release --no-build -- --self-test
+      - name: Validate bundled schematics
+        run: dotnet run --project .\AssetLibrary\PentagolandMERTools.csproj --configuration Release --no-build -- .\AssetLibrary\Samples\Schematics

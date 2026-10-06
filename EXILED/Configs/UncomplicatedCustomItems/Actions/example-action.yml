@@ -1,0 +1,7 @@
+id: 1
+name: Example
+description: An example action to help you get started :)
+actions:
+- if {Player.Health} < 100 then Heal {Player.UserId} 10
+- '{Player.DisplayName} = :3'
+- if Player.Ammo[ItemType.Ammo9x19] < 10 then Player.Ammo[ItemType.Ammo9x19] += 100

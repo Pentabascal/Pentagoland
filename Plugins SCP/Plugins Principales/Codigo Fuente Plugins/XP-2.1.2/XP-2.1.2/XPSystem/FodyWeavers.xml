@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+    <Costura>
+        <IncludeAssemblies>
+            <!-- LiteDB -->
+            LiteDB
+
+            <!-- Flee -->
+            Flee.Net45
+
+            <!-- MySql -->
+            MySqlConnector
+
+            System.Buffers
+            System.Diagnostics.DiagnosticSource
+            System.Memory
+            System.Numerics.Vectors
+            System.Threading.Tasks.Extensions
+
+            Microsoft.Extensions.Logging.Abstractions
+        </IncludeAssemblies>
+    </Costura>
+</Weavers>

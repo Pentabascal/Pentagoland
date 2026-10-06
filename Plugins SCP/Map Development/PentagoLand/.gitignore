@@ -1,0 +1,52 @@
+# .NET outputs
+**/bin/
+**/obj/
+**/TestResults/
+**/.vs/
+*.user
+*.suo
+*.log
+
+# Python and local tooling
+**/__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# Blender backups and temporary files; keep the authored .blend and exports
+*.blend1
+*.blend2
+*.blend@
+*.tmp
+*.temp
+
+# Local SCP:SL/LabAPI reference assemblies (never commit game binaries)
+Assembly-CSharp.dll
+CommandSystem.Core.dll
+LabApi.dll
+NorthwoodLib.dll
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+
+# Unity-generated review-project caches and IDE files
+AssetLibrary/PentagolandAssetReview/Library/
+AssetLibrary/PentagolandAssetReview/Temp/
+AssetLibrary/PentagolandAssetReview/Logs/
+AssetLibrary/PentagolandAssetReview/Assets/Generated/
+AssetLibrary/PentagolandAssetReview/Assets/Reports/
+AssetLibrary/PentagolandAssetReview/ProjectSettings/ProjectAuditorSettings.asset
+AssetLibrary/PentagolandAssetReview/Obj/
+AssetLibrary/PentagolandAssetReview/Build/
+AssetLibrary/PentagolandAssetReview/Builds/
+AssetLibrary/PentagolandAssetReview/UserSettings/
+AssetLibrary/PentagolandAssetReview/MemoryCaptures/
+AssetLibrary/PentagolandAssetReview/*.csproj
+AssetLibrary/PentagolandAssetReview/*.sln
+AssetLibrary/PentagolandAssetReview/*.slnx
+AssetLibrary/PentagolandAssetReview/*.suo

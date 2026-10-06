@@ -1,0 +1,47 @@
+﻿using LabApi.Events.Arguments.Scp049Events;
+using LabApi.Events.Handlers;
+using LabApi.Features.Wrappers;
+using Mirror;
+using PlayerRoles;
+using System.Linq;
+
+namespace SwiftArcadeMode.Features.SCPs.Upgrades.Content.SCP049.ArmyBuilder
+{
+    public class MassOperation(UpgradePathPerkBase parent) : UpgradeBase<ArmyBuilder>(parent)
+    {
+        public override string Name => "Operación masiva";
+
+        public override string Description => $"Al resucitar a un humano, también resucitas a todos los humanos muertos disponibles en un radio de {Range} m.";
+
+        public virtual float Range => 5f;
+
+        bool midMassRevive;
+
+        public override void Init()
+        {
+            base.Init();
+            Scp049Events.ResurrectedBody += OnResurrected;
+        }
+
+        public override void Remove()
+        {
+            base.Remove();
+            Scp049Events.ResurrectedBody -= OnResurrected;
+        }
+
+        private void OnResurrected(Scp049ResurrectedBodyEventArgs ev)
+        {
+            if (midMassRevive || ev.Player != Player)
+                return;
+
+            midMassRevive = true;
+            foreach (Ragdoll rag in Ragdoll.List.Where((r) => r.IsRevivableBy(Player) && (r.Position - ev.Target.Position).sqrMagnitude < Range * Range))
+            {
+                rag.Base.Info.OwnerHub.roleManager.ServerSetRole(RoleTypeId.Scp0492, RoleChangeReason.Revived);
+                NetworkServer.Destroy(rag.Base.gameObject);
+                Scp049Events.OnResurrectedBody(new Scp049ResurrectedBodyEventArgs(rag.Base.Info.OwnerHub, Player.ReferenceHub));
+            }
+            midMassRevive = false;
+        }
+    }
+}

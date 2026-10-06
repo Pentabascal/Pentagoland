@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>DSharp4Webhook</id>
+    <version>2.0.1</version>
+    <authors>iRebbok</authors>
+    <owners>iRebbok</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/iRebbok/DSharp4Webhook</projectUrl>
+    <description>Unofficial C# library for interacting with the Discord Webhook API and Mono (Unity) support</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>discord discordapp</tags>
+    <repository type="Git" url="git://github.com/iRebbok/DSharp4Webhook" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.1">
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.7.1" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

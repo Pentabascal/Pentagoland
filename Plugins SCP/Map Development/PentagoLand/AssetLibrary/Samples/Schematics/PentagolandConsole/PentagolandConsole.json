@@ -1,0 +1,115 @@
+{
+  "RootObjectId": 0,
+  "Blocks": [
+    {
+      "Name": "Console Base",
+      "ObjectId": 1,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.38, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.5, "y": 0.72, "z": 0.86 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#18212B", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Console Deck",
+      "ObjectId": 2,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.78, "z": 0.0 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.62, "y": 0.1, "z": 0.96 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#273644", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Monitor Housing",
+      "ObjectId": 3,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.38, "z": -0.23 },
+      "Rotation": { "x": -8.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.24, "y": 0.84, "z": 0.12 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#111923", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Monitor Glass",
+      "ObjectId": 4,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 1.4, "z": -0.157 },
+      "Rotation": { "x": -8.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 1.08, "y": 0.66, "z": 0.025 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Monitor Status Pink",
+      "ObjectId": 5,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.32, "y": 1.71, "z": -0.137 },
+      "Rotation": { "x": -8.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.34, "y": 0.035, "z": 0.012 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Monitor Status Purple",
+      "ObjectId": 6,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.1, "y": 1.71, "z": -0.137 },
+      "Rotation": { "x": -8.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.28, "y": 0.035, "z": 0.012 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Monitor Status Blue",
+      "ObjectId": 7,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.42, "y": 1.71, "z": -0.137 },
+      "Rotation": { "x": -8.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.18, "y": 0.035, "z": 0.012 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#8EB8BE", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Left Control",
+      "ObjectId": 8,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": -0.48, "y": 0.88, "z": 0.2 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.28, "y": 0.045, "z": 0.2 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#526F78", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Right Control",
+      "ObjectId": 9,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.48, "y": 0.88, "z": 0.2 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.28, "y": 0.045, "z": 0.2 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 3, "Color": "#D18A3B", "PrimitiveFlags": 3 }
+    },
+    {
+      "Name": "Emergency Button",
+      "ObjectId": 10,
+      "ParentId": 0,
+      "AnimatorName": "",
+      "Position": { "x": 0.0, "y": 0.91, "z": 0.22 },
+      "Rotation": { "x": 0.0, "y": 0.0, "z": 0.0 },
+      "Scale": { "x": 0.12, "y": 0.08, "z": 0.12 },
+      "BlockType": 1,
+      "Properties": { "PrimitiveType": 0, "Color": "#D18A3B", "PrimitiveFlags": 3 }
+    }
+  ]
+}

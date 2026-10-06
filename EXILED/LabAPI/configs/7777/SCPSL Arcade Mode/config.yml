@@ -1,0 +1,9 @@
+allow_base_content: true
+allow_perk_spawning: true
+allow_custom_game_modes: true
+allow_scp_leveling: true
+sound_logs: false
+speed_up_schematics: true
+skeleton_balance: true
+replace096: true
+schematic_prefix: SAM-

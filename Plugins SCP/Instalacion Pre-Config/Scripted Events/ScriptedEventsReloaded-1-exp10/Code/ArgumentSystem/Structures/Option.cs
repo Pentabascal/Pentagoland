@@ -1,0 +1,28 @@
+﻿using SER.Code.Extensions;
+using SER.Code.Plugin.Commands.HelpSystem;
+
+namespace SER.Code.ArgumentSystem.Structures;
+
+public record Option(string Value, string Description = "")
+{
+    public static implicit operator Option(string value)
+    {
+        return new Option(value);
+    }
+
+    public static Option Enum<T>(string? name = null) where T : struct, Enum
+    {
+        EnumIndex.AddEnum(typeof(T));
+        return new(name ?? typeof(T).Name.LowerFirst(), $"Returns a {typeof(T).AccurateName} enum value");
+    }
+    
+    public static Option Reference<T>(string value)
+    {
+        return new(value, $"Returns a reference to {typeof(T).AccurateName} object");
+    }
+    
+    public static Option ReferenceCollection<T>(string value)
+    {
+        return new(value, $"Returns a collection of references to {typeof(T).AccurateName} objects");
+    }
+}

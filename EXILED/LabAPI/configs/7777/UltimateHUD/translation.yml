@@ -1,0 +1,85 @@
+warhead_statuses:
+- status: Armed
+  name: Armada
+  color: red
+- status: NotArmed
+  name: No armada
+  color: green
+- status: InProgress
+  name: En curso
+  color: orange
+- status: Detonated
+  name: Detonada
+  color: '#8B0000'
+game_roles:
+- role: Tutorial
+  name: Tutorial
+- role: ClassD
+  name: Clase D
+- role: Scientist
+  name: Científico
+- role: FacilityGuard
+  name: Guardia de seguridad
+- role: Filmmaker
+  name: Cineasta
+- role: Overwatch
+  name: Overwatch
+- role: NtfPrivate
+  name: Soldado MTF
+- role: NtfSergeant
+  name: Sargento MTF
+- role: NtfSpecialist
+  name: Especialista MTF
+- role: NtfCaptain
+  name: Capitán MTF
+- role: ChaosConscript
+  name: Recluta CI
+- role: ChaosRifleman
+  name: Fusilero CI
+- role: ChaosRepressor
+  name: Represor CI
+- role: ChaosMarauder
+  name: Asaltante CI
+- role: Scp049
+  name: SCP-049
+- role: Scp0492
+  name: SCP-049-2
+- role: Scp079
+  name: SCP-079
+- role: Scp096
+  name: SCP-096
+- role: Scp106
+  name: SCP-106
+- role: Scp173
+  name: SCP-173
+- role: Scp939
+  name: SCP-939
+- role: Scp3114
+  name: SCP-3114
+weapon_name:
+- weapon: GunCOM15
+  name: COM-15
+- weapon: GunCOM18
+  name: COM-18
+- weapon: GunE11SR
+  name: Epsilon
+- weapon: GunFSP9
+  name: FSP-9
+- weapon: GunLogicer
+  name: Logicer
+- weapon: GunRevolver
+  name: Revólver
+- weapon: GunAK
+  name: AK
+- weapon: GunShotgun
+  name: Escopeta
+- weapon: GunCom45
+  name: COM-45
+- weapon: ParticleDisruptor
+  name: Particle X3
+- weapon: GunFRMG0
+  name: FR-MG-0
+- weapon: GunA7
+  name: A7
+- weapon: GunSCP127
+  name: SCP-127

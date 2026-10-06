@@ -1,0 +1,140 @@
+﻿using SER.Code.ContextSystem.BaseContexts;
+using SER.Code.ContextSystem.Interfaces;
+using SER.Code.ContextSystem.Structures;
+using SER.Code.Exceptions;
+using SER.Code.Extensions;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.TokenSystem.Tokens;
+using SER.Code.TokenSystem.Tokens.VariableTokens;
+using SER.Code.ValueSystem;
+using SER.Code.VariableSystem.Bases;
+using SER.Code.VariableSystem.Variables;
+
+namespace SER.Code.ContextSystem.Contexts.Control;
+
+[UsedImplicitly]
+public class OnErrorStatement : StatementContext, IStatementExtender, IKeywordContext, IAcceptOptionalVariableDefinitionsContext
+{
+    private VariableToken? _messageVariableToken;
+    private VariableToken? _stackTraceVariableToken;
+    private VariableToken? _typeVariableToken;
+    public override string FriendlyName => "'on_error' statement";
+
+    public Exception? Exception { get; set; }
+
+    public Result SetOptionalVariables(params VariableToken[] variableTokens)
+    {
+        if (variableTokens.Length > 3)
+            return $"Too many arguments provided for {FriendlyName}, only up to 3 are allowed.";
+
+        var errorMsg = "Provided variable '{0}' cannot be used for an " + FriendlyName +
+                       $", as it's not a {typeof(LiteralVariable).FriendlyTypeName()}";
+
+        var messageToken = variableTokens.FirstOrDefault();
+        switch (messageToken)
+        {
+            case null:
+                return true;
+            case LiteralVariableToken:
+                _messageVariableToken = messageToken;
+                break;
+            default:
+                return string.Format(errorMsg, messageToken.RawRepr);
+        }
+
+        var typeToken = variableTokens.Skip(1).FirstOrDefault();
+        switch (typeToken)
+        {
+            case null:
+                return true;
+            case LiteralVariableToken:
+                _typeVariableToken = typeToken;
+                break;
+            default:
+                return string.Format(errorMsg, typeToken.RawRepr);
+        }
+
+        var stackTraceToken = variableTokens.Skip(2).FirstOrDefault();
+        switch (stackTraceToken)
+        {
+            case null:
+                break; // it's gonna return true either way
+            case LiteralVariableToken:
+                _stackTraceVariableToken = stackTraceToken;
+                break;
+            default:
+                return string.Format(errorMsg, stackTraceToken.RawRepr);
+        }
+
+        return true;
+    }
+    public string KeywordName => "on_error";
+    public string Description => "Catches an exception thrown inside of an 'attempt' statement.";
+
+    public ContextArgument[] Arguments => [];
+    public string Example =>
+        """
+        &collection = Coll.Empty
+        attempt
+            Print {Coll.Fetch &collection 2}
+            Print "This line is skipped after the error."
+        on_error with $message $type
+            Print "Message: {$message}"
+            Print "Type: {$type}"
+        end
+        """;
+
+    public IExtendableStatement.Signal Extends => IExtendableStatement.Signal.ThrewException;
+
+    public override TryAddTokenRes TryAddToken(BaseToken token)
+    {
+        return TryAddTokenRes.Error($"A {FriendlyName} does not expect any arguments.");
+    }
+
+    public override Result VerifyCurrentState()
+    {
+        return true;
+    }
+
+    protected override IEnumerator<float> Execute()
+    {
+        var exception = Exception ?? throw new ExecutionInvariantException(
+            "An on_error handler started without a script error.");
+        Variable? messageVariable = null;
+        Variable? typeVariable = null;
+        Variable? stackTraceVariable = null;
+
+        try
+        {
+            if (_messageVariableToken is not null)
+            {
+                messageVariable = Variable.Create(_messageVariableToken.Name, Value.Parse(exception.Message));
+                Script.AddLocalVariable(messageVariable);
+            }
+            if (_typeVariableToken is not null)
+            {
+                typeVariable = Variable.Create(_typeVariableToken.Name, Value.Parse(exception.GetType().AccurateName));
+                Script.AddLocalVariable(typeVariable);
+            }
+            if (_stackTraceVariableToken is not null)
+            {
+                stackTraceVariable = Variable.Create(
+                    _stackTraceVariableToken.Name,
+                    Value.Parse(exception.StackTrace ?? "No stack trace was available."));
+                Script.AddLocalVariable(stackTraceVariable);
+            }
+
+            using var coro = RunChildren();
+            while (coro.MoveNext())
+                yield return coro.Current;
+        }
+        finally
+        {
+            if (messageVariable is not null) Script.RemoveLocalVariable(messageVariable);
+            if (typeVariable is not null) Script.RemoveLocalVariable(typeVariable);
+            if (stackTraceVariable is not null) Script.RemoveLocalVariable(stackTraceVariable);
+
+            Exception = null;
+        }
+    }
+}

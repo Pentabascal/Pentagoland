@@ -1,0 +1,43 @@
+is_enabled: true
+debug: false
+scp1576_text: '<size=24><align=left>Espectadores: %spectators%. Tiempo hasta la siguiente oleada: %timebeforespawnwave% segundos</align></size>'
+scp1576_text_duration: 15
+# Add %customroles% to the Scp1576Text to show custom roles when used.
+scp1576_custom_roles_alive:
+  25: <color=#ff00ff><size=30>Serpents Hand Guardian</color></size>
+  26: <color=#ff00ff><size=30>Serpents Hand Enchanter</color></size>
+  27: <color=#ff00ff><size=30>Serpents Hand Agent</color></size>
+# Add %roles% to the Scp1576Text to show alive roles when used.
+alive_roles:
+  Scp049: <color=#ff0000><size=30>SCP-049</color></size>
+  Scp0492: <color=#ff0000><size=30>SCP-049-2</color></size>
+  Scp096: <color=#ff0000><size=30>SCP-096</color></size>
+  Scp173: <color=#ff0000><size=30>SCP-173</color></size>
+  Scp106: <color=#ff0000><size=30>SCP-106</color></size>
+  Scp939: <color=#ff0000><size=30>SCP-939</size></color>
+# Add %teams% to the Scp1576Text to show alive teams when used.
+alive_teams:
+  FoundationForces: <size=30>MTF</size>
+  ChaosInsurgency: <size=30>Chaos Insurgency</size>
+  Scientists: <size=30>Scientists</size>
+  ClassD: <size=30>D-Class</size>
+  SCPs: <size=30>SCPs</size>
+# Old SCP 106 Behavior means that SCP 106 will only have lower health, but a damage resistance to bullets.
+old_scp106_behavior: true
+scp106_health: 600
+# 0.1 = 90% resistance, 0.2 = 80% resistance, etc.
+scp106_damage_resistance: 0.25
+# If SCP-106 has a damage resistance, should its Hume Shield be affected by the resistance as well
+resistance_with_hume: false
+# Can SCP-106 one shot people to the pocket dimension? This is separate from the old behavior setting.
+scp106_one_shot: false
+# Can SCP-049 one shot people?
+scp049_one_shot: false
+# Does SCP-096 get unlimited rage when the Nuke is detonating?
+scp096_unlimited_rage_during_nuke: false
+# Does Flamingos have their adjustments
+flamingo_adjustments: true
+# How much base damage does Flamingo do?
+flamingo_base_damage: 12
+# What is the damage multiplier for Flamingos against SCPs?
+flamingo_scp_damage_multiplier: 1.5

@@ -1,0 +1,22 @@
+﻿using LabApi.Features.Wrappers;
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+
+namespace SER.Code.MethodSystem.Methods.RoundMethods;
+
+[UsedImplicitly]
+public class SetLobbyLockMethod : SynchronousMethod
+{
+    public override string Description => "Changes the lobby lock state.";
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new BoolArgument("new state")
+    ];
+    
+    public override void Execute()
+    {
+        Round.IsLobbyLocked = Args.GetBool("new state");
+    }
+}

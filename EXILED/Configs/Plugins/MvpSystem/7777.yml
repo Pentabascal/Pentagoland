@@ -1,0 +1,147 @@
+# Activar registros de depuración
+debug: false
+# Música del MVP: usa la SteamID como clave y el nombre del archivo como valor. Los archivos deben estar en Mvp/Music.
+mvp_music:
+  steamid: name.ogg
+  steamid2: name.ogg
+# Volumen de la música del MVP. 100 = normal; menos = más bajo; más = amplificado (puede distorsionar por encima de 100).
+music_volume: 100
+# Pesos usados para decidir quién merece ser el MVP. El jugador con mayor puntuación total obtiene el título.
+scoring:
+# Puntuación mínima para optar al título de MVP. Si nadie la alcanza, no se anuncia ningún MVP.
+  minimum_score: 5
+  # Puntos otorgados por cada baja como humano.
+  per_human_kill: 2
+  # Puntos otorgados por cada baja como SCP.
+  per_scp_kill: 2
+  # Puntos otorgados por cada SCP eliminado (eliminar un SCP tiene gran impacto).
+  per_scp_killed: 8
+  # Puntos otorgados por cada punto de daño infligido.
+  per_damage: 0.0199999996
+  # Puntos otorgados por escapar de las instalaciones.
+  escape: 4
+  # Puntos extra para quien escape primero.
+  first_escape_bonus: 4
+  # Puntos extra para quien elimine primero a un SCP.
+  first_scp_kill_bonus: 4
+  # Puntos base por conseguir cualquier logro seguido.
+  achievement_base: 3
+  # Puntos adicionales según la prioridad del logro (los de mayor prioridad valen más).
+  achievement_priority_bonus: 0.300000012
+# Si StatsSystem está instalado, sus estadísticas se tendrán en cuenta cuando sea true.
+stats_system_integration: true
+# Duración del anuncio; puede ser necesario aumentarla si el tiempo de final de ronda es mayor.
+duration: 30
+# Formato compartido por las estadísticas con etiquetas y el texto que aparece arriba.
+start: <size=31><line-height=0.9em>
+# Formato del título de MVP
+mvp_title: <color=#78e2ff><b>{name}</b></color> es el MVP
+# Formato de cada estadística; si se deja vacío, no se mostrará.
+most_kills_as_scp: <color=#78e2ff><b>{name}</b></color> logró más bajas como <color=#ff0000><b>{role}</b></color>: <color=#45ff7a><b>{kills}</b></color>
+first_to_kill_scp: <color=#78e2ff><b>{name}</b></color> fue el primero en matar a un <color=#ff0000><b>SCP</b></color>
+# Sustituye a first_to_kill_scp si el jugador ha eliminado a más de un SCP.
+most_scps_killed: <color=#78e2ff><b>{name}</b></color> eliminó a {scps}
+most_scps_killed_list_item: <color=#ff0000><b>{scp}</b></color>
+most_kills_as_human: <color=#78e2ff><b>{name}</b></color> logró más bajas como humano: <color=#45ff7a><b>{kills}</b></color>
+first_to_escape: <color=#78e2ff><b>{name}</b></color> fue el primero en escapar en <color=#45ff7a><b>{time}</b></color> como <b>{role}</b>
+best_achievement: <color=#78e2ff><b>{name}</b></color> consiguió <color=#45ff7a><b>{achievement}</b></color>: {description}
+most_damage_dealt: <color=#78e2ff><b>{name}</b></color> infligió más daño: <color=#45ff7a><b>{damage}</b></color>
+# Cierra las etiquetas de Start y del texto que aparece abajo.
+end: </line-height></size>
+# Logros que se seguirán durante la ronda. El orden determina la prioridad: los de arriba sustituyen a los de abajo. Incluye todos los logros válidos por defecto; algunos eventos temáticos no están disponibles por limitaciones técnicas.
+achievements:
+- BePoliteBeEfficient
+- ChangeInCommand
+- Overcurrent
+- Escape207
+- TurnThemAll
+- AccessGranted
+- CrisisAverted
+- DidntEvenFeelThat
+- MicrowaveMeal
+- EscapeArtist
+- Pacified
+- IllPassThanks
+- ForScience
+- FireInTheHole
+- ItsAlwaysLeft
+- SecureContainProtect
+- IsThisThingOn
+- WalkItOff
+- Friendship
+- HeWillBeBack
+- ExecutiveAccess
+- AnomalouslyEfficient
+- MelancholyOfDecay
+- ThatCanBeUseful
+- TMinus
+- ProceedWithCaution
+- DontBlink
+- DeltaCommand
+- LightsOut
+achievement_descriptions:
+  LightsOut: Reaparecer como Zorro de Nueve Colas
+  DeltaCommand: Reaparecer como Insurgencia del Caos
+  DontBlink: Evitar con éxito a <color=#ff0000>SCP-173</color>
+  ProceedWithCaution: Atravesar con éxito una Tesla vigilada por <color=#ff0000>SCP-079</color>
+  TMinus: Sobrevivir a la detonación de la ojiva Alfa
+  ThatCanBeUseful: Encontrar un arma como <color=#FF8000>Clase-D</color>
+  MelancholyOfDecay: Capturar a un jugador durante los cinco segundos posteriores a emerger del suelo como <color=#ff0000>SCP-106</color>
+  AnomalouslyEfficient: Matar a un jugador durante el primer minuto como <color=#ff0000>SCP</color>
+  ExecutiveAccess: Obtener una tarjeta del nivel máximo
+  HeWillBeBack: Escapar de la dimensión de bolsillo
+  Friendship: Mejorar como <color=#FFFF7C>científico</color> una tarjeta junto a una <color=#FF8000>Clase-D</color>
+  WalkItOff: Sobrevivir a una caída con menos de la mitad de la vida
+  IsThisThingOn: Emitir un mensaje útil por el intercomunicador
+  SecureContainProtect: Eliminar al último <color=#ff0000>SCP</color> de la ronda como miembro de la MTF
+  ItsAlwaysLeft: Escapar como <color=#FF8000>Clase-D</color>
+  FireInTheHole: Matar a un enemigo con una granada
+  ForScience: Escapar como <color=#FFFF7C>científico</color>
+  IllPassThanks: Matar como <color=#ff0000>SCP</color> a alguien que utilizaba la Micro H.I.D
+  Pacified: Matar a <color=#ff0000>SCP-096</color> mientras entraba en cólera
+  EscapeArtist: Ser el primero en escapar de las instalaciones
+  MicrowaveMeal: Matar a un <color=#ff0000>SCP</color> con la Micro H.I.D
+  DidntEvenFeelThat: Usar adrenalina para sobrevivir a un golpe mortal
+  CrisisAverted: Usar SCP-500 al borde de la muerte
+  AccessGranted: Matar como <color=#FF8000>Clase-D</color> a un <color=#FFFF7C>científico</color> con una tarjeta
+  TurnThemAll: Curar a diez personas como <color=#ff0000>SCP-049</color>
+  Escape207: Escapar bajo los efectos de SCP-207
+  SomethingDoneRight: Matar a un SCP como <color=#FFFF7C>científico</color>
+  PropertyOfChaos: Escapar con más de dos objetos SCP como <color=#FF8000>Clase-D</color>
+  ThatWasClose: Cancelar la detonación de la ojiva Alfa durante los últimos 15 segundos
+  Overcurrent: Intentar recargar la Micro H.I.D
+  ChangeInCommand: Desarmar a un operativo de la MTF
+  BePoliteBeEfficient: Matar a cinco enemigos en menos de 30 segundos
+achievement_names:
+  LightsOut: Apagón
+  DeltaCommand: Nosotros, el Mando Delta...
+  DontBlink: No parpadees
+  ProceedWithCaution: Procede con precaución
+  TMinus: Cuenta atrás: 90 segundos...
+  ThatCanBeUseful: "... ¿Estás pensando lo mismo que yo?"
+  MelancholyOfDecay: Melancolía de la decadencia
+  AnomalouslyEfficient: Eficiencia anómala
+  ExecutiveAccess: Acceso ejecutivo
+  HeWillBeBack: Volverá...
+  Friendship: Amistad
+  WalkItOff: Sigue caminando
+  IsThisThingOn: ¿Esto funciona?
+  SecureContainProtect: Asegurar. Contener. Proteger.
+  ItsAlwaysLeft: ¡Siempre a la izquierda, hermanos!
+  FireInTheHole: ¡Fuego en el agujero!
+  ForScience: ¡Por la ciencia!
+  IllPassThanks: Paso, gracias
+  Pacified: Pacificado
+  EscapeArtist: Artista de la fuga
+  MicrowaveMeal: Comida de microondas
+  DidntEvenFeelThat: ¡Ja! Ni siquiera lo he notado
+  CrisisAverted: Crisis evitada
+  AccessGranted: Acceso concedido
+  TurnThemAll: Mi cura es la más eficaz...
+  Escape207: A lomos de la cafeína
+  SomethingDoneRight: Si quieres que algo salga bien...
+  PropertyOfChaos: Propiedad de la Insurgencia del Caos
+  ThatWasClose: Eso ha estado cerca...
+  Overcurrent: Sobrecarga
+  ChangeInCommand: Cambio de mando
+  BePoliteBeEfficient: Sé educado. Sé eficiente.

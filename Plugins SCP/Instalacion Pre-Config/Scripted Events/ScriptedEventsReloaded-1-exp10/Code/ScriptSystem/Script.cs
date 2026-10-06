@@ -1,0 +1,612 @@
+﻿using System.Collections.ObjectModel;
+using LabApi.Features.Wrappers;
+using SER.Code.ContextSystem;
+using SER.Code.ContextSystem.BaseContexts;
+using SER.Code.ContextSystem.Contexts;
+using SER.Code.Exceptions;
+using SER.Code.Extensions;
+using SER.Code.FlagSystem;
+using SER.Code.FlagSystem.Flags;
+using SER.Code.Helpers;
+using SER.Code.Helpers.ResultSystem;
+using SER.Code.MethodSystem;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.ScriptSystem.Structures;
+using SER.Code.TokenSystem;
+using SER.Code.TokenSystem.Structures;
+using SER.Code.TokenSystem.Tokens;
+using SER.Code.TokenSystem.Tokens.VariableTokens;
+using SER.Code.VariableSystem;
+using SER.Code.VariableSystem.Bases;
+using SER.Code.VariableSystem.Structures;
+using SER.Code.VariableSystem.Variables;
+using SER.Code.ValueSystem;
+
+namespace SER.Code.ScriptSystem;
+
+public class Script
+{
+    private Line[] _lines = [];
+    private RunnableContext[] _contexts = [];
+    public bool? IsEventAllowed { get; private set; }
+    private Action<bool>? _eventAllowedChanged;
+    
+    public required ScriptName Name { get; init; }
+
+    public ScriptName FileName { get; init; }
+
+    private uint _sourceLineOffset;
+    public uint SourceLineOffset
+    {
+        get => _sourceLineOffset;
+        init => _sourceLineOffset = value;
+    }
+
+    private bool RefreshFromCatalogBeforeExecution { get; init; }
+    
+    private string _content = null!;
+    public required string Content
+    {
+        get => _content;
+        init => _content = value;
+    }
+    
+    public required ScriptExecutor Executor
+    {
+        get;
+        init
+        {
+            switch (value)
+            {
+                case RemoteAdminExecutor { Sender: { } sender } when Player.Get(sender) is { } player:
+                {
+                    AddLocalVariable(new PlayerVariable("sender", new(player)));
+                    break;
+                }
+                case PlayerConsoleExecutor { Sender: { } hub } when Player.Get(hub) is { } player:
+                {
+                    AddLocalVariable(new PlayerVariable("sender", new(player)));
+                    break;
+                }
+            }
+
+            field = value;
+        }
+    }
+    
+    public bool Killed { get; private set; }
+    
+    public Script? Caller { get; private set; }
+
+    // ReSharper disable once UnusedAutoPropertyAccessor.Local
+    public Profile? Profile { get; private set; }
+    
+    public RunReason RunReason { get; private set; }
+    
+    public uint CurrentLine { get; set; }
+    
+    public DateTime StartTime { get; private set; }
+
+    public TimeSpan TimeRunning => StartTime == default ? TimeSpan.Zero : DateTime.Now - StartTime;
+
+    private static readonly HashSet<Script> RunningScriptsList = [];
+    public static Script[] RunningScripts => RunningScriptsList.ToArray();
+    
+    private readonly Dictionary<(char, string), Variable> _localVariables = [];
+    public Variable[] LocalVariables => _localVariables.Values.ToArray();
+
+    private readonly Dictionary<string, FuncStatement> _definedFunctions = [];
+    public ReadOnlyDictionary<string, FuncStatement> DefinedFunctions => new(_definedFunctions);
+
+    private Action<Script>? _beforeExecutionAction;
+    
+    public void Reply(string message)
+    {
+        Executor.Reply(message, this);
+    }
+    
+    public void Warn(string message)
+    {
+        Executor.Warn(message, this);
+    }
+    
+    public void Error(string message)
+    {
+        Executor.Error(message, this);
+    }
+
+    public static TryGet<Script> CreateByScriptName(ScriptName name, ScriptExecutor? executor)
+    {
+        FileSystem.FileSystem.RefreshRequested(name);
+
+        if (FileSystem.FileSystem.GetScriptSection(name).HasErrored(out var error, out var section))
+        {
+            return error;
+        }
+
+        return CreateByVerifiedSection(section, executor, true);
+    }
+    
+    public static TryGet<Script> CreateByScriptName(string dirtyName, ScriptExecutor? executor)
+    {
+        if (string.IsNullOrWhiteSpace(dirtyName))
+        {
+            return "A script name cannot be empty.";
+        }
+
+        return CreateByScriptName(ScriptName.CreateUnsafe(dirtyName), executor);
+    }
+
+    public static TryGet<Script> CreateFunctionByScriptName(string dirtyName, ScriptExecutor? executor)
+    {
+        if (string.IsNullOrWhiteSpace(dirtyName))
+        {
+            return "A script name cannot be empty.";
+        }
+
+        var requestedName = ScriptName.CreateUnsafe(dirtyName);
+        FileSystem.FileSystem.RefreshRequested(requestedName);
+
+        if (FileSystem.ScriptCatalog.GetFunctionSection(requestedName)
+            .HasErrored(out var error, out var section))
+        {
+            return error;
+        }
+
+        return CreateByVerifiedSection(section, executor, true);
+    }
+
+    public static Script CreateByVerifiedSection(ScriptSection section, ScriptExecutor? executor) =>
+        CreateByVerifiedSection(section, executor, false);
+
+    private static Script CreateByVerifiedSection(
+        ScriptSection section,
+        ScriptExecutor? executor,
+        bool refreshFromCatalogBeforeExecution) => new()
+    {
+        Name = section.Name,
+        FileName = section.FileName,
+        Content = section.Content,
+        SourceLineOffset = section.StartLine - 1,
+        RefreshFromCatalogBeforeExecution = refreshFromCatalogBeforeExecution,
+        Executor = executor ?? ScriptExecutor.Get()
+    };
+
+    public static Script CreateByVerifiedPath(string path, ScriptExecutor? executor)
+    {
+        if (FileSystem.FileSystem.GetScriptSections(path).HasErrored(out var error, out var sections))
+        {
+            throw new IOException(error);
+        }
+
+        if (sections.Length != 1)
+        {
+            throw new InvalidOperationException(
+                $"Script file '{path}' contains {sections.Length} sections; create a specific section instead.");
+        }
+
+        return CreateByVerifiedSection(sections[0], executor);
+    }
+
+    public static Script CreateAnonymous(string name, string content) => new()
+    {
+        Name = ScriptName.CreateUnsafe(name),
+        FileName = ScriptName.CreateUnsafe(name),
+        Content = content,
+        Executor = ScriptExecutor.Get()
+    };
+    
+    public static Script CreateForCallback(
+        string name, 
+        string content, 
+        ScriptExecutor executor, 
+        Action<Script>? beforeExecutionAction = null)
+    {
+        return new Script
+        {
+            Name = ScriptName.CreateUnsafe(name),
+            FileName = ScriptName.CreateUnsafe(name),
+            Executor = executor,
+            Content = content,
+            _beforeExecutionAction = beforeExecutionAction
+        };
+    }
+
+    public static int StopAll()
+    {
+        var count = RunningScripts.Length;
+        foreach (var script in new List<Script>(RunningScripts))
+        {
+            script.MarkAsStopped();
+        }
+
+        return count;
+    }
+
+    public void MarkAsStopped()
+    {
+        Killed = true;
+        RunningScriptsList.Remove(this);
+    }
+    
+    public static int StopByName(string name)
+    {
+        var matches = new List<Script>(RunningScripts)
+            .Where(scr => FileSystem.FileSystem.IsScriptOrFileName(scr, name))
+            .ToArray();
+        
+        matches.ForEachItem(scr => scr.MarkAsStopped());
+        return matches.Length;
+    }
+
+    public bool HasFlag<T>() where T : Flag
+    {
+        return ScriptFlagHandler.ScriptsFlags[Name].Any(f => f is T);
+    }
+
+    public TryGet<List<Line>> GetFlagLines()
+    {
+        DefineLines();
+        if (SliceLines().HasErrored(out var err) || TokenizeLines().HasErrored(out err))
+        {
+            return err;
+        }
+
+        return _lines.Where(l => l.Tokens.FirstOrDefault() is FlagToken or FlagArgumentToken).ToList();
+    }
+
+    /// <summary>
+    /// Used for external tools to verify the script content.
+    /// This is NOT to be used in an actual server.
+    /// </summary>
+    [UsedImplicitly]
+    public static string? VerifyForExternalTool(string content, string? name = null)
+    {
+        if (MethodIndex.NameToMethodIndex.Count is 0)
+        {
+            MethodIndex.Initialize();
+        }
+
+        var scriptName = name ?? "test";
+        if (ScriptSection.Split(scriptName, content).HasErrored(out var splitError, out var sections))
+        {
+            return splitError;
+        }
+
+        foreach (var section in sections)
+        {
+            var script = CreateByVerifiedSection(section, ScriptExecutor.Get());
+            if (script.Compile().HasErrored(out var error))
+            {
+                return $"In section '{section.Name}': {error}";
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Executes the script.
+    /// </summary>
+    public void Run(RunReason reason = RunReason.Unknown, Script? caller = null)
+    {
+        RunForEvent(reason, caller);
+    }
+
+    /// <summary>
+    /// Executes the script.
+    /// </summary>
+    /// <returns>The last explicit event decision, or null when IsAllowed was not called.</returns>
+    public bool? RunForEvent(
+        RunReason reason,
+        Script? caller = null,
+        Action<bool>? eventAllowedChanged = null)
+    {
+        IsEventAllowed = null;
+        _eventAllowedChanged = eventAllowedChanged;
+
+        if (RefreshSourceBeforeExecution().HasErrored(out var refreshError))
+        {
+            Executor.Error(refreshError, this);
+            return null;
+        }
+
+        StartTime = DateTime.Now;
+        RunReason = reason;
+        Caller = caller;
+        
+        if (ScriptFlagHandler.DoFlagsApproveExecution(this, out var mustReport).HasErrored(out var error))
+        {
+            if (mustReport) Executor.Error(error, this);
+            return null;
+        }
+        
+        _beforeExecutionAction?.Invoke(this);
+        
+        RunningScriptsList.Add(this);
+        //Profile = new Profile(this);
+        InternalExecute().Run(
+            this,
+            null,
+            MarkAsStopped
+        );
+        
+        return IsEventAllowed;
+    }
+
+    internal void SetEventAllowed(bool isAllowed)
+    {
+        IsEventAllowed = isAllowed;
+        Log.Debug($"Script '{Name}' set the current event decision to {isAllowed}.");
+        _eventAllowedChanged?.Invoke(isAllowed);
+    }
+
+    public void DefineLines()
+    {
+        var prof = Profile is not null 
+            ? new Profile(Profile, nameof(DefineLines))
+            : null;
+        
+        _lines = Tokenizer.GetInfoFromMultipleLines(Content, SourceLineOffset + 1);
+        
+        Log.Debug($"Script {Name} defines {_lines.Length} lines");
+        prof?.Stop();
+    }
+    
+    public Result SliceLines()
+    {
+        var prof = Profile is not null 
+            ? new Profile(Profile, nameof(SliceLines))
+            : null;
+        
+        List<Result> errors = [];
+        foreach (var line in _lines)
+        {
+            if (Tokenizer.SliceLine(line).HasErrored(out var error))
+            {
+                errors.Add($"Line {line.LineNumber} could not be read: {error}");
+            }
+        }
+
+        if (errors.Any())
+        {
+            return Result.Merge(errors);
+        }
+        
+        prof?.Stop();
+        
+        Log.Debug($"Script {Name} sliced {_lines.Length} lines into {_lines.Sum(l => l.Slices.Length)} slices");
+        
+        return true;
+    }
+
+    public Result TokenizeLines()
+    {
+        var prof = Profile is not null 
+            ? new Profile(Profile, nameof(TokenizeLines))
+            : null;
+        
+        List<Result> errors = [];
+        foreach (var line in _lines)
+        {
+            if (Tokenizer.TokenizeLine(line, this).HasErrored(out var error))
+            {
+                errors.Add($"Line {line.LineNumber} contains an invalid value: {error}");
+            }
+        }
+        
+        prof?.Stop();
+        if (errors.Any()) return Result.Merge(errors);
+
+        Log.Debug($"Script {Name} tokenized {_lines.Length} lines into {_lines.Sum(l => l.Tokens.Length)} tokens");
+        return true;
+    }
+    
+    public void DefineFunction(string name, FuncStatement context) 
+        => _definedFunctions.Add(name, context);
+    
+    private Result ContextLines()
+    {
+        var prof = Profile is not null 
+            ? new Profile(Profile, nameof(ContextLines))
+            : null;
+        
+        if (Contexter.ContextLines(_lines, this).HasErrored(out var err, out var contexts))
+        {
+            return err;
+        }
+        
+        prof?.Stop();
+        
+        _contexts = contexts;
+        return true;
+    }
+    
+    public Result Compile()
+    {
+        DefineLines();
+        if (SliceLines().HasErrored(out var err) ||
+            TokenizeLines().HasErrored(out err) ||
+            ContextLines().HasErrored(out err))
+        {
+            return err;
+        }
+
+        return true;
+    }
+
+    internal bool IsSingleSynchronousReturningMethod =>
+        _contexts is [MethodContext { Method: ReturningMethod }];
+
+    internal TryGet<Value> RunSingleSynchronousReturningMethod(RunReason reason)
+    {
+        if (RefreshSourceBeforeExecution().HasErrored(out var refreshError))
+        {
+            return refreshError;
+        }
+
+        if (_contexts.Length == 0 && Compile().HasErrored(out var compileError))
+        {
+            return compileError;
+        }
+
+        if (_contexts is not [MethodContext { Method: ReturningMethod } methodContext])
+        {
+            return "The command is not a single synchronous returning method.";
+        }
+
+        StartTime = DateTime.Now;
+        RunReason = reason;
+        RunningScriptsList.Add(this);
+
+        try
+        {
+            using var execution = methodContext.Run();
+            while (execution.MoveNext())
+            {
+                // A synchronous method can only yield the optional SafeScripts frame.
+                // Command responses must be produced before ICommand.Execute returns.
+            }
+
+            if (methodContext.ReturnedValue is not { } returnedValue)
+            {
+                return methodContext.MissingValueHint;
+            }
+
+            return returnedValue;
+        }
+        catch (ScriptRuntimeError error)
+        {
+            return error.Message;
+        }
+        catch (Exception error)
+        {
+            return $"Method failed with {error.GetType().AccurateName}: {error.Message}";
+        }
+        finally
+        {
+            RunningScriptsList.Remove(this);
+        }
+    }
+    
+    public void CompileWithAutomaticThrow()
+    {
+        if (Compile().HasErrored(out var err))
+        {
+            throw new ScriptCompileError(err);
+        }
+    }
+
+    private Result RefreshSourceBeforeExecution()
+    {
+        if (!RefreshFromCatalogBeforeExecution)
+        {
+            return true;
+        }
+
+        FileSystem.FileSystem.RefreshRequested(Name);
+        if (FileSystem.FileSystem.GetScriptSection(Name).HasErrored(out var error, out var section))
+        {
+            return $"Failed to reload script '{Name}' before execution: {error}";
+        }
+
+        var sourceLineOffset = section.StartLine - 1;
+        if (_content == section.Content && _sourceLineOffset == sourceLineOffset)
+        {
+            return true;
+        }
+
+        _content = section.Content;
+        _sourceLineOffset = sourceLineOffset;
+        _lines = [];
+        _contexts = [];
+        _definedFunctions.Clear();
+        return true;
+    }
+
+    private IEnumerator<float> InternalExecute()
+    {
+        if (_contexts.Length is 0)
+        {
+            if (Compile().HasErrored(out var err))
+            {
+                throw new ScriptCompileError(err);
+            }
+        }
+        
+        foreach (var context in _contexts)
+        {
+            switch (context)
+            {
+                case StandardContext sc:
+                    sc.Run();
+                    continue;
+                case YieldingContext yc:
+                {
+                    using var handle = yc.Run();
+                    while (handle.MoveNext())
+                    {
+                        yield return handle.Current;
+                    }
+                    break;
+                }
+            }
+        }
+
+        RunningScriptsList.Remove(this);
+    }
+
+    public TryGet<T> TryGetVariable<T>(VariableToken varToken) where T : Variable
+    {
+        if (_localVariables.TryGetValue((varToken.Prefix, varToken.Name), out var variable))
+        {
+            if (varToken.ValueType.CanHold(variable.BaseValue.Type))
+            {
+                if (variable is not T casted)
+                {
+                    return $"Variable '{varToken.RawRepr}' is not a {Variable.GetFriendlyName(typeof(T))}, but a {variable.FriendlyName} instead.";
+                }
+
+                return casted;
+            }
+        }
+        
+        if (VariableIndex.TryGetGlobalVariable(varToken.Prefix, varToken.Name, out var global))
+        {
+            if (varToken.ValueType.CanHold(global.BaseValue.Type))
+            {
+                if (global is T globalT)
+                {
+                    return globalT;
+                }
+            }
+        }
+
+        return $"Variable {varToken.RawRepr} doesn't exist or is inaccessible.";
+    }
+
+    public void AddLocalVariable(Variable variable)
+    {
+        if (!_localVariables.ContainsKey((variable.Prefix, variable.Name)) && VariableIndex.TryGetGlobalVariable(variable.Prefix, variable.Name, out _))
+        {
+            throw new CustomScriptRuntimeError(
+                $"Tried to create a local variable '{variable}', but there already exists a global variable with the same name.");
+        }
+
+        Log.Debug($"Added variable {variable.Name} to script {Name}");
+        _localVariables[(variable.Prefix, variable.Name)] = variable;
+    }
+
+    public void AddLocalVariables(params Variable[] variables)
+    {
+        foreach (var variable in variables)
+        {
+            AddLocalVariable(variable);
+        }
+    }
+
+    public void RemoveLocalVariable(IVariableRepr variable)
+    {
+        _localVariables.Remove((variable.Prefix, variable.Name));
+    }
+}

@@ -1,0 +1,2170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DSharp4Webhook</name>
+    </assembly>
+    <members>
+        <member name="P:DSharp4Webhook.Action.ActionContext.Action">
+            <summary>
+                Executed action.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.ActionContext.IsSuccessfully">
+            <summary>
+                Success of the action.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IAction.Webhook">
+            <summary>
+                Source webhook where the action came from.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IAction.IsExecuted">
+            <summary>
+                Has the action already been called.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Queue">
+            <summary>
+                Inserts an action in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                The webhook is no longer able to process anything.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Queue(System.Action{System.Boolean})">
+            <summary>
+                Inserts an action in the queue that calls a callback.
+            </summary>
+            <param name="callback">
+                Callback what is called after performing the action.
+            </param>
+            <remarks>
+                Closely related to <see cref="M:DSharp4Webhook.Action.IAction.ExecuteAsync(System.Action{System.Boolean})"/>,
+                it passes control to <see cref="T:DSharp4Webhook.Internal.ActionManager"/>.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Queue(System.Action{DSharp4Webhook.Action.IResult,System.Boolean})">
+            <summary>
+                Everything is the same, just with result.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Queue(System.Action{DSharp4Webhook.Action.IResult})">
+            <summary>
+                Everything is the same, just without bool.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Queue(System.Action)">
+            <summary>
+                All the same, but without everything.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.Execute">
+            <summary>
+                Executes synchronously, blocking the current thread.
+            </summary>
+            <returns>
+                Result of the success of the action.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+                The webhook is no longer able to process anything.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.ExecuteAsync">
+            <summary>
+                Asynchronous execution of an action.
+            </summary>
+            <returns>
+                Result of the success of the action.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+                The webhook is no longer able to process anything.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.ExecuteAsync(System.Action{System.Boolean})">
+            <summary>
+                Asynchronous execution of an action that calls a callback.
+            </summary>
+            <param name="callback">
+                Callback what is called after performing the action.
+            </param>
+            <exception cref="T:System.InvalidOperationException">
+                The webhook is no longer able to process anything.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.ExecuteAsync(System.Action{DSharp4Webhook.Action.IResult,System.Boolean})">
+            <summary>
+                Everything is the same, only the result is added.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.ExecuteAsync(System.Action{DSharp4Webhook.Action.IResult})">
+            <summary>
+                Everything is the same, just without bool.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.ExecuteAsync(System.Action)">
+            <summary>
+                All the same, but without everything.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IAction.GetResult">
+            <summary>
+                Gets the result of the task or null.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.IAction`1">
+            <summary>
+                Action that returns the result.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IAction`1.Result">
+            <summary>
+                Result of the action.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.Rest.IAvatarAction">
+            <summary>
+                Action of getting an webhook image.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.Rest.IDeleteAction">
+            <summary>
+                Webhook deletion action.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.Rest.IInfoAction">
+            <summary>
+                Action for getting information about webhook.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.Rest.IMessageAction">
+            <summary>
+                Sending a message action.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.Rest.IModifyAction">
+            <summary>
+                Webhook update action, name change, avatar change.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.Rest.IModifyAction.Context">
+            <summary>
+                The serialized data contains name and avatar_url.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.Rest.IAvatarResult.Image">
+            <summary>
+                Webhook image.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.Rest.IInfoResult.WebhookInfo">
+            <summary>
+                Returns information about webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.Rest.IModifyResult.WebhookInfo">
+            <summary>
+                Returned updated information about webhook.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.IRestAction">
+            <remarks>
+                Wrapper for actions that return nothing, like the status code 200.
+            </remarks>
+        </member>
+        <member name="T:DSharp4Webhook.Action.IRestAction`1">
+            <summary>
+                Action related to rest.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IRestAction`1.RestSettings">
+            <summary>
+                Rest settings that the current action will be performed with.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.IRestResult">
+            <summary>
+                Result of the rest action.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IRestResult.LastResponse">
+            <summary>
+                Returns the last rest response.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IRestResult.Responses">
+            <summary>
+                All responses to rest queries.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Action.IActionManager">
+            <summary>
+                Action manager for webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IActionManager.Webhook">
+            <summary>
+                Source webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IActionManager.LatestLimitInfo">
+            <summary>
+                The latest <see cref="T:DSharp4Webhook.Rest.RateLimitInfo"/> from rest action.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Action.IActionManager.Worker">
+            <summary>
+                Worker's task.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Start">
+            <summary>
+                Starts worker.
+            </summary>
+            <returns>
+                The success of the startup,
+                true if worker was started,
+                otherwise false.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Queue(DSharp4Webhook.Action.IAction)">
+            <summary>
+                Puts an action in the queue for execution.
+            </summary>
+            <param name="action">
+                Action.
+            </param>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Queue(DSharp4Webhook.Action.IAction,System.Action{System.Boolean})">
+            <summary>
+                Puts the action in the queue for execution
+                and calls the callback for the function execution.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Queue(DSharp4Webhook.Action.IAction,System.Action{DSharp4Webhook.Action.IResult,System.Boolean})">
+            <summary>
+                Puts the action in the queue for execution
+                and calls the callback for the function execution.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Queue(DSharp4Webhook.Action.IAction,System.Action{DSharp4Webhook.Action.IResult})">
+            <summary>
+                Puts the action in the queue for execution
+                and calls the callback for the function execution.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.Queue(DSharp4Webhook.Action.IAction,System.Action)">
+            <summary>
+                Puts the action in the queue for execution
+                and calls the callback for the function execution.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.SetRateLimit(DSharp4Webhook.Rest.RateLimitInfo)">
+            <summary>
+                Sets <see cref="T:DSharp4Webhook.Rest.RateLimitInfo"/> as the latest.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Action.IActionManager.FollowRateLimit(System.Nullable{DSharp4Webhook.Rest.RateLimitInfo})">
+            <summary>
+                Follows ratelimit if necessary.
+            </summary>
+        </member>
+        <member name="E:DSharp4Webhook.Action.IActionManager.OnActionExecuted">
+            <summary>
+                Event when the action is performed by IActionManager.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.ConstructorProvider">
+            <summary>
+                Provides various constructors
+                for interacting with a webhook.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetDefaultMessageMention">
+            <summary>
+                Gets default mentions in the message.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMessageMention(DSharp4Webhook.Core.AllowedMention)">
+            <summary>
+                Gets the specified message metinon.
+            </summary>
+            <param name="mention">
+                Mentions that will be allowed.
+            </param>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMentionBuilder">
+            <summary>
+                Gets a new mention constructor.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMentionBuilder(DSharp4Webhook.Core.AllowedMention)">
+            <summary>
+                Gets a new mention constructor with a predefined allowed mention.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMentionBuilder(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Gets a new mention constructor with a preset of allowed mentions from the webhook.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="webhook"/> is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMessageBuilder">
+            <summary>
+                Gets a new message constructor.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMessageBuilder(DSharp4Webhook.Core.Constructor.MessageBuilder)">
+            <summary>
+                Gets a new message constructor with source presets.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="source"/> is null
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetMessageBuilder(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Gets a new message constructor with a preset of allowed mentions from the webhook.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="webhook"/> is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetEmbedBuilder">
+            <summary>
+                Gets a new Builder for a embed.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.ConstructorProvider.GetModifyContentBuilder">
+            <summary>
+                Gets a new modifier content constructor.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedAuthorBuilder.Name">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed length.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Constructor.EmbedBuilder">
+            <remarks>
+                Don't forget about <see cref="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_DATA_LENGTH"/>.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.New">
+            <summary>
+                Gets a new builder.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedBuilder.Title">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed length.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedBuilder.Color">
+            <remarks>
+                Use in conjunction with <see cref="M:DSharp4Webhook.Util.ColorUtil.FromHex(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.GetStringBuilder">
+            <summary>
+                Return the description string builder.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.GetFields">
+            <summary>
+                Gets a list of fields.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.Append(System.String)">
+            <summary>
+                Adds text to the current description.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.TryAppend(System.String)">
+            <summary>
+                Tries to add text, 
+                without causing an exception when the bounds are exceeded.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.AppendLine">
+            <summary>
+                Adds a new line to the current description.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.TryAppendLine">
+            <summary>
+                Tries to add a new line to the current description,
+                without causing an exception when the bounds are exceeded.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.AppendLine(System.String)">
+            <summary>
+                Adds text to the current description in a new line.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.TryAppendLine(System.String)">
+            <summary>
+                Tries to add text to the current description in a new line,
+                without causing an exception when the bounds are exceeded.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.AddField(DSharp4Webhook.Core.Embed.IEmbedField)">
+            <summary>
+                Adds a field.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                Field is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Field exceeds the allowed limit.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.TryAddField(DSharp4Webhook.Core.Embed.IEmbedField)">
+            <summary>
+                Same, but does not cause an exception.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedBuilder.Build">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Embed exceeds its limit.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedFieldBuilder.Name">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed length.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedFieldBuilder.Value">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed length.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedFieldBuilder.Build">
+            <exception cref="T:System.InvalidOperationException">
+                Attempt to build without set variables.
+            </exception>
+            <remarks>
+                Discord doesn't allow using 'name' or 'value' as null.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.EmbedFooterBuilder.Text">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed length.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.EmbedFooterBuilder.Build">
+            <exception cref="T:System.InvalidOperationException">
+                Attempt to build without set text.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Constructor.MessageBuilder">
+            <summary>
+                Message builder that allows you to create messages for webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.Builder">
+            <summary>
+                Gets the message builder for this builder.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.Embeds">
+            <summary>
+                Gets a list of embeds.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.IsTTS">
+            <summary>
+                Whether the TTS determines this message or not.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.Username">
+            <summary>
+                Username of the webhook that will be used for this message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.AvatarUrl">
+            <summary>
+                An image that will use webhook on this message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.MessageMention">
+            <summary>
+                Allowed mentions in the message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageBuilder.Files">
+            <summary>
+                Message attachments.
+                <para>
+                    The key is the file name, and the value is content.
+                </para>
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.New">
+            <summary>
+                Gets a new message constructor.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.New(DSharp4Webhook.Core.Constructor.MessageBuilder)">
+            <summary>
+                Gets a new message constructor with source presets.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="source"/> is null
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.New(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Gets a new message constructor with a preset of allowed mentions from the webhook.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="webhook"/> is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.Append(System.String)">
+            <summary>
+                Adds text to the current text.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.TryAppend(System.String)">
+            <summary>
+                Tries to add text, 
+                without causing an exception when the bounds are exceeded.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.AppendLine">
+            <summary>
+                Adds a new line to the current text.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.TryAppendLine">
+            <summary>
+                Tries to add a new line to the current text,
+                without causing an exception when the bounds are exceeded.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.AppendLine(System.String)">
+            <summary>
+                Adds text to the current text in a new line.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.TryAppendLine(System.String)">
+            <summary>
+                Tries to add text to the current text in a new line,
+                without causing an exception when the bounds are exceeded.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.SetMessageMention(DSharp4Webhook.Core.IMessageMention)">
+            <summary>
+                Sets the handler for mentions in the message.
+            </summary>
+            <returns>
+                The current MessageBuilder.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="messageMention"/> is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.AddEmbed(DSharp4Webhook.Core.Embed.IEmbed)">
+            <summary>
+                Adds an embed to the message.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                Embed is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Exceeds the allowed limit of embeds.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.TryAddEmbed(DSharp4Webhook.Core.Embed.IEmbed)">
+            <summary>
+                Same thing, but doesn't throw exceptions.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageBuilder.Build">
+            <summary>
+                Builds messages.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Message exceeds its limit.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.AllowedMention">
+            <summary>
+                Allowed types of mentions.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.Users">
+            <summary>
+                Users allowed to be mentioned.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.Roles">
+            <summary>
+                Roles allowed to be mentioned.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.New">
+            <summary>
+                Gets a new mention constructor.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.New(DSharp4Webhook.Core.AllowedMention)">
+            <summary>
+                Gets a new mention constructor with a predefined allowed mention.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.New(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Gets a new mention constructor with a preset of allowed mentions from the webhook.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="webhook"/> is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.MessageMentionBuilder.Build">
+            <summary>
+                Builds mentions.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Constructor.IBuilder">
+            <summary>
+                Abstraction for constructors.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.IBuilder.Reset">
+            <summary>
+                Resets the constructor to the default preset.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.ModifyContentBuilder.Name">
+            <summary>
+                Webhook name.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Constructor.ModifyContentBuilder.Image">
+            <summary>
+                Webhook image.
+            </summary>
+            <remarks>
+                Setting the value to null will break the image,
+                and it will return to the default value.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.ModifyContentBuilder.New">
+            <summary>
+                Gets a new constructor.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.Constructor.ModifyContentBuilder.Build">
+            <summary>
+                Building a modification content.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbed">
+            <summary>
+                Embed object.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Title">
+            <summary>
+                Title of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Type">
+            <summary>
+                Type of embed.
+            </summary>
+            <remarks>
+                Discord allows to use null.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Description">
+            <summary>
+                Description of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Url">
+            <summary>
+                Url of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Timestamp">
+            <summary>
+                Timestamp of embed content.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Color">
+            <summary>
+                Color code of the embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Footer">
+            <summary>
+                Footer information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Image">
+            <summary>
+                Image information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Thumbnail">
+            <summary>
+                Thumbnail information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Video">
+            <summary>
+                Video information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Provider">
+            <summary>
+                Provider information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Author">
+            <summary>
+                Author information.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbed.Fileds">
+            <summary>
+                Fields information.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedAuthor">
+            <summary>
+                Author of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedAuthor.Name">
+            <summary>
+                Name of author.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedField">
+            <summary>
+                Field of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedField.Name">
+            <summary>
+                Name of the field.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedField.Value">
+            <summary>
+                Value of the field.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedField.Inline">
+            <summary>
+                Whether or not this field should display inline.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedFooter">
+            <summary>
+                Footer of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedFooter.Text">
+            <summary>
+                Footer text.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedImage">
+            <summary>
+                Image of embed.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedProvider">
+            <summary>
+                Provider of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.IEmbedProvider.Name">
+            <summary>
+                Name of provider.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedThumbnail">
+            <summary>
+                Thumbnail of embed.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.IEmbedVideo">
+            <summary>
+                Video of embed.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.Subtypes.IIconable.IconUrl">
+            <summary>
+                Url of icon.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.Subtypes.IIconable.ProxyIconUrl">
+            <summary>
+                A proxied url of icon.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.Subtypes.IProxyable.ProxyUrl">
+            <summary>
+                A proxied url.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.Embed.Subtypes.IResizable">
+            <remarks>
+                Most embed objects include the ability to change the size of data,
+                this is a simple abstraction for them.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Core.Embed.Subtypes.IUrlable.Url">
+            <summary>
+                Source url.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.IMessage">
+            <summary>
+                The webhook message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.Username">
+            <summary>
+                Nickname of the webhook that will be displayed.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                When you try to set <see cref="F:System.String.Empty"/> or a value greater than 80 characters.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.AvatarUrl">
+            <summary>
+                Avatar that will be displayed in webhook with the message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.Content">
+            <summary>
+                The content of the message.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                When you try to set a value greater than 2000 characters.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.IsTTS">
+            <summary>
+                Whether the TTS determines this message or not.
+            </summary>        
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.Embeds">
+            <summary>
+                Message embeds.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.Mention">
+            <summary>
+                Allowed mentions for a message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessage.Files">
+            <summary>
+                Attachments to the message.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.IMessageMention">
+            <remarks>
+                Provided as 'allowed_mentions' in the message object.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessageMention.AllowedMention">
+            <summary>
+                Allowed types of mentions.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessageMention.Users">
+            <summary>
+                Users allowed to be mentioned.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IMessageMention.Roles">
+            <summary>
+                Roles allowed to be mentioned.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.IModifyContent">
+            <summary>
+                Data that modifies the webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IModifyContent.Name">
+            <summary>
+                Webhook name.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IModifyContent.Image">
+            <summary>
+                Webhook image.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.IWebhook">
+            <summary>
+                Basic webhook.
+            </summary>
+            <remarks>
+                The implementation is located in <see cref="T:DSharp4Webhook.Internal.Webhook"/>.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.Provider">
+            <summary>
+                Webhook provider.
+                Is null for webhooks created without a provider.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.RestProvider">
+            <summary>
+                Provider for REST requests.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.ActionManager">
+            <summary>
+                Action manager.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.Status">
+            <summary>
+                Webhook statuses.
+                Used for internal processing of rest requests.
+                Do not set the values without the need.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to assign a value to a nonexistent webhook
+                or downgrade the status to an existing webhook.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.RestSettings">
+            <summary>
+                Rest settings that will be used when creating rest queries.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                Attempt to set a null value.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.AllowedMention">
+            <summary>
+                Allowed mentions for webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.Id">
+            <summary>
+                Webhook id.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhook.Token">
+            <summary>
+                Webhook token.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.GetWebhookUrl">
+            <summary>
+                Gets the url of the webhack to interact with the API,
+                and your subdomain Url can be used if it is valid.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.SendMessage(System.String,System.Boolean,DSharp4Webhook.Core.IMessageMention,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Send messages.
+            </summary>
+            <param name="message">
+                Message content.
+            </param>
+            <param name="isTTS">
+                Manages the voice over of the message to all clients
+                who are in the corresponding channel.
+            </param>
+            <param name="messageMention">
+                Settings for allowed mentions.
+                By default, the current value for the webhook is used.
+            </param>
+            <param name="restSettings">
+                Settings for rest request.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                The message is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                The message exceeds the allowed length on <see cref="F:DSharp4Webhook.Core.WebhookProvider.MAX_CONTENT_LENGTH"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.SendMessage(DSharp4Webhook.Core.IMessage,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Send messages.
+            </summary>
+            <param name="message">
+                A message that can be build via MessageBuilder.
+            </param>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.SendMessage(System.Collections.Generic.IEnumerable{DSharp4Webhook.Core.Embed.IEmbed},DSharp4Webhook.Core.IMessageMention,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Send messages.
+            </summary>
+            <param name="embeds">
+                List with embeds.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                List is empty.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+                List with embeds is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                List contains more than is allowed on <see cref="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_COUNT"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.SendMessage(DSharp4Webhook.Core.Embed.IEmbed,DSharp4Webhook.Core.IMessageMention,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Send messages.
+            </summary>
+            <param name="embed">
+                One embed.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Embed is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.GetInfo(DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Retrieves information about webhook.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.Delete(DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Deletes the webhook.
+                Destroys webhook at the level of the discord.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.Modify(System.String,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Modifies the webhook.
+                <para>
+                    The only difference from a similar method is that it does not modify the image.
+                </para>
+            </summary>
+            <param name="name">
+                Webhook name.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                One of the arguments does not meet the requirements.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.Modify(System.String,DSharp4Webhook.Core.IWebhookImage,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Modifies the webhook.
+            </summary>
+            <param name="name">
+                Webhook name.
+            </param>
+            <param name="image">
+                Avatar that will use webhook.
+                A null value will mean resetting the image for the webhook.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                One of the arguments does not meet the requirements.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhook.Modify(DSharp4Webhook.Core.IModifyContent,DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Modifies the webhook using pre-prepared data.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="content"/> is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                When trying to interact with a nonexistent webhook.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookImage.Data">
+            <summary>
+                Image data.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhookImage.ToUriScheme">
+            <summary>
+                Converts data to the uri format for transmitting images.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhookImage.Save(System.String)">
+            <summary>
+                Saves an image.
+            </summary>
+            <param name="path">
+                The path to save the image to.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                Path is null or empty.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Core.IWebhookInfo">
+            <summary>
+                Received information about webhook in a direct GET request.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.Type">
+            <summary>
+                The type of webhook we are dealing with.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.Id">
+            <summary>
+                Snowflake webhook id.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.IdULong">
+            <summary>
+                Snowflake converted to <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.Name">
+            <summary>
+                Webhook name.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.AvatarId">
+            <summary>
+                Avatar id for webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.AvatarUrl">
+            <summary>
+                Gets the avatar url for webhook.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.ChannelId">
+            <summary>
+                Snowflake webhook id of the channel it interacts with.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.ChannelIdUlong">
+            <summary>
+                Snowflake converted to <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.GuildId">
+            <summary>
+                Snowflake webhook guild id where it is hosted.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.GuildIdULong">
+            <summary>
+                Snowflake converted to <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.IWebhookInfo.Token">
+            <summary>
+                Webhook token.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.IWebhookInfo.GetAvatar">
+            <summary>
+                Gets a webhook avatar.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.AllowedMention">
+            <summary>
+                Permissions for mentions to be used.
+                <para>
+                    See for more information:
+                    <c>https://discord.com/developers/docs/resources/channel#allowed-mentions-object-allowed-mention-types</c>
+                </para>
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.AllowedMention.NONE">
+            <summary>
+                Prohibits any mentions.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.AllowedMention.ROLES">
+            <summary>
+                Allows roles to be mentioned.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.AllowedMention.USERS">
+            <summary>
+                Allows users to be mentioned.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.AllowedMention.EVERYONE">
+            <summary>
+                Allows @everyone and @here to be mentioned.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Core.EmbedType">
+            <summary>
+                Type of embed.
+            </summary>
+            <remarks>
+                Webhook embed always has the <see cref="F:DSharp4Webhook.Core.EmbedType.Rich"/> type,
+                regardless of installations.
+            </remarks>
+        </member>
+        <member name="T:DSharp4Webhook.Core.WebhookStatus">
+            <summary>
+                Webhook statuses.
+                Used for internal processing of rest requests.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookStatus.NOT_CHECKED">
+            <summary>
+                Was not properly checked.
+                Has the potential to cause an error.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookStatus.EXISTING">
+            <summary>
+                Has been verified to send requests safely.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookStatus.NOT_EXISTING">
+            <summary>
+                Nonexistent, it is not safe to send requests.
+                These webhooks are immediately disposed of.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookType.NONE">
+            <summary>
+                Unidentified type of webhook.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookType.INCOMING">
+            <summary>
+                Incoming Webhooks can post messages to channels with a generated token.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookType.CHANNEL_FOLLOWER">
+            <summary>
+                Channel Follower Webhooks are internal webhooks used with Channel Following to post new messages into channels.
+            </summary>
+            <remarks>
+                It cannot be used as a normal webhook.
+            </remarks>
+        </member>
+        <member name="T:DSharp4Webhook.Core.WebhookProvider">
+            <summary>
+                Manager of all created Webhooks.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.LibraryUrl">
+            <summary>
+                Library github url.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.LibraryVersion">
+            <summary>
+                Library version.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.WebhookUrlRegex">
+            <summary>
+                Regular expression for parsing the webhook Url.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.WebhookBaseUrl">
+            <summary>
+                Base url for generating a webhook url if it was created using a token and id.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.WebhookBaseAvatarUrl">
+            <summary>
+                Base url for generating avatar urls.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_CONTENT_LENGTH">
+            <summary>
+                The maximum number of characters that can be sent as a message.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MIN_NICKNAME_LENGTH">
+            <summary>
+                Minimum limit on the number of characters in a nickname.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_NICKNAME_LENGTH">
+            <summary>
+                Maximum limit on the number of characters in a nickname.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_ATTACHMENTS">
+            <summary>
+                Maximum limit on attachments in a message.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_ATTACHMENTS_SIZE">
+            <summary>
+                Limit on the size of all attachments.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_TITLE_LENGTH">
+            <summary>
+                Maximum character limit in embed title.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_DESCRIPTION_LENGTH">
+            <summary>
+                Maximum character limit in embed description.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_FIELDS_COUNT">
+            <summary>
+                Maximum limit on the number of footers in embed.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_FIELD_NAME_LENGTH">
+            <summary>
+                Maximum character limit of name in embed field.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_FIELD_VALUE_LENGTH">
+            <summary>
+                Maximum character limit of value in embed field.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_FOOTER_TEXT_LENGTH">
+            <summary>
+                Maximum character limit of text in embed footer.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_AUTHOR_NAME_LENGTH">
+            <summary>
+                Maximum character limit of name in embed author.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_DATA_LENGTH">
+            <summary>
+                The maximum number of characters in all such as
+                title, description, field.name, field.value,
+                footer.text and author.name.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider.MAX_EMBED_COUNT">
+            <summary>
+                Maximum limit on embeds that can be attached to a message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.WebhookProvider.Id">
+            <summary>
+                Unique identifier.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.WebhookProvider.RestSettings">
+            <summary>
+                Rest settings which will use the following webhook when creating it.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Core.WebhookProvider.AllowedMention">
+            <summary>
+                Allowed mentions to use when creating webhooks.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Core.WebhookProvider._webhooks">
+            <summary>
+                Stores all registered webhooks as Id-Webhook.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.#ctor(System.String)">
+            <summary>
+                Creates an instance of the provider.
+            </summary>
+            <param name="id">
+                Unique identifier.
+            </param>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.SetRestProvider(System.Type)">
+            <summary>
+                Sets the rest of the provider to be used in the application.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                Type is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Provider not suitable.
+            </exception>
+            <remarks>
+                Since dotnet just doesn't load all the assemblies
+                that are inserted in the project if they are not used,
+                I have to use this...
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateStaticWebhook(System.String)">
+            <summary>
+                Creates a webhack with url without binding to the provider,
+                these webhooks do not have logging.
+            </summary>
+            <param name="url">
+                Webhook url.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                If the url is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the url has an invalid format.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateStaticWebhook(System.UInt64,System.String)">
+            <summary>
+                Creates a webhook instane without binding to the provider,
+                these webhooks do not have logging.
+            </summary>
+            <param name="id">
+                Webhook id.
+            </param>
+            <param name="token">
+                Token webjuice for authorization.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                If the token is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the webhook already exists.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateWebhook(System.String,DSharp4Webhook.Core.WebhookProvider)">
+            <remarks>
+                Wrapper for creating webhooks.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+                If the url is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the url has an invalid format.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateWebhook(System.UInt64,System.String,DSharp4Webhook.Core.WebhookProvider)">
+            <remarks>
+                Wrapper for creating webhooks.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+                If the url is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the url has an invalid format or the webhook already exists.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateWebhook(System.String)">
+            <summary>
+                Creates a new Webhook from a url and uses its url.
+            </summary>
+            <param name="url">
+                Webhook url.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                If the url is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the url has an invalid format or the webhook already exists.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.CreateWebhook(System.UInt64,System.String)">
+            <summary>
+                Creates a webhook instane.
+            </summary>
+            <param name="id">
+                Webhook id.
+            </param>
+            <param name="token">
+                Token webjuice for authorization.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                If the token is empty or null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the webhook already exists.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.GetWebhookById(System.UInt64)">
+            <summary>
+                Gets the webhook by id.
+            </summary>
+            <param name="id">
+                Webhook id.
+            </param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">
+                If the webhook doesn't exist.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.TryGetWebhookById(System.UInt64,DSharp4Webhook.Core.IWebhook@)">
+            <summary>
+                Tries to get the webhook by id.
+            </summary>
+            <param name="id">
+                Webhook id.
+            </param>
+            <param name="webhook">
+                Webhook instance.
+                null if the result is false.
+            </param>
+            <returns>
+                true if the collection contains an element with
+                the specified key; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.AddWebhook(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Adds the specified webhook to the collection,
+                useful when implementing a custom webhook.
+            </summary>
+            <param name="webhook">
+                Webhook instance.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                If the webhook is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the webhook is already in the collection.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.TryAddWebhook(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Tries to add a webhook to the collection.
+            </summary>
+            <param name="webhook">
+                Webhook instance.
+            </param>
+            <returns>
+                true if the webhook was added to the collection; otherwise, false
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.RemoveWebhookById(System.UInt64)">
+            <summary>
+                Removes the webhook from the collection.
+            </summary>
+            <param name="id">
+                Webhook id.
+            </param>
+            <returns>
+                true if the webhook was found in the collection and deleted,
+                otherwise false.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.RemoveWebhook(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Removes the webhook from the collection.
+            </summary>
+            <param name="webhook">
+                Webhook instance.
+            </param>
+            <returns>
+                true if the webhook was found in the collection and deleted,
+                otherwise false.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                If webhook instance is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.TryRemoveWebhook(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Tries to remove a webhook from the collection.
+            </summary>
+            <param name="webhook">
+                Webhook instance.
+            </param>
+                true if the webhook was found in the collection and deleted,
+                otherwise false.
+        </member>
+        <member name="M:DSharp4Webhook.Core.WebhookProvider.GetWebhooks">
+            <summary>
+                Returns all webhooks that are contained in the collection.
+            </summary>
+            <returns>
+                Webhooks instances.
+            </returns>
+        </member>
+        <member name="T:DSharp4Webhook.Exception.SizeOutOfRangeException">
+            <summary>
+                Exceptions that occur when the allowed limit for attachments is exceeded.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Internal.QueueActionContext">
+            <remarks>
+                Used for passing the callback to the action manager.
+            </remarks>
+        </member>
+        <member name="T:DSharp4Webhook.Internal.ModifyContent">
+            <remarks>
+                To serialize data for webhook modification.
+            </remarks>
+        </member>
+        <member name="F:DSharp4Webhook.Internal.ModifyContent.image">
+            <summary>
+                Image that is used for serialization.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Internal.Webhook.#ctor(DSharp4Webhook.Core.WebhookProvider,System.UInt64,System.String,System.String)">
+            <exception cref="T:System.ArgumentException">
+                If the url or token is null or empty.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Internal.WebhookImage.Empty">
+            <summary>
+                An empty image that will not modify the webhook.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Internal.Embed.Embed">
+            <remarks>
+                Note that discord allows to use optional and nullable variables,
+                we use nullable and provide it as optional because
+                if we send it as null, it will return bad request (400).
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Internal.Embed.Embed.#ctor(DSharp4Webhook.Core.Constructor.EmbedBuilder)">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Embed exceeds its limit.
+            </exception>
+        </member>
+        <member name="P:DSharp4Webhook.Internal.Embed.Embed._Type">
+            <remarks>
+                I don't think it will be perceived as usual
+                because the type name starts with a capital letter.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Internal.Embed.Embed.Timestamp">
+            <remarks>
+                Default serialization is ISO8601.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Internal.Message.#ctor(DSharp4Webhook.Core.Constructor.MessageBuilder)">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Message exceeds its limit.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Logging.LogContext">
+            <remarks>
+                It is the main object for delivering logs to the client.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Logging.LogContext.Sensitivity">
+            <summary>
+                The sensitivity of the log.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Logging.LogContext.Message">
+            <summary>
+                Log message.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Logging.LogContext.WebhookId">
+            <summary>
+                Id of the webhack that triggered this logging.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Logging.LogContext.Exception">
+            <summary>
+                Exception that triggered this log.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Logging.LogSensitivity">
+            <summary>
+                The sensitivity of the log.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Logging.LogSensitivity.ERROR">
+            <summary>
+                An error that stops sending a message or webhook itself from working.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Logging.LogSensitivity.WARN">
+            <summary>
+                A warning that may occur on one side of the interaction is essentially a processed error.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Logging.LogSensitivity.INFO">
+            <summary>
+                Information that is used to track general flow.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Logging.LogSensitivity.DEBUG">
+            <summary>
+                Very detailed logging information.
+            </summary>
+        </member>
+        <member name="F:DSharp4Webhook.Logging.LogSensitivity.VERBOSE">
+            <summary>
+                Information about the library is most often needed for developers.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.DefaultProvider.SetupAsDefault">
+            <summary>
+                Sets the given provider is the default.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Rest.RateLimitInfo">
+            <remarks>
+                Taken from
+                https://github.com/discord-net/Discord.Net/blob/ed869bd78b8ae152805b449b759714839b429ce5/src/Discord.Net.Rest/Net/RateLimitInfo.cs
+                with some modifications.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.IsGlobal">
+            <summary>
+                RateLimit is global.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.Limit">
+            <summary>
+               Total number of requests that can be made before entering the RateLimit.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.Remaining">
+            <summary>
+                How many requests can be made before entering the RateLimit.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.RetryAfter">
+            <summary>
+                How long to wait before the Rate Limit expires.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.Reset">
+            <summary>
+                Date when the Rate Limit is reset.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.ResetAfter">
+            <summary>
+                How long wait before can repeat the request.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.Date">
+            <summary>
+                Date sent by Discord servers.
+                This helps find time lags.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.MustWait">
+            <summary>
+                How long wait before sending a request.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.IsRatelimited">
+            <summary>
+                Are we in the RateLimit.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RateLimitInfo.Lag">
+            <summary>
+                Lag between the request Date and the current time.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Rest.RestResponse">
+            <summary>
+                Structure of the server response containing the required data.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Rest.RestSettings">
+            <summary>
+                Settings for rest request.
+            </summary>
+            <remarks>
+                This class shouldn't be sealed.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Rest.RestSettings.MaxAttempts">
+            <summary>
+                The maximum number of attempts that can be used.
+                A zero value will be considered infinite.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.RestSettings.#ctor">
+            <summary>
+                Creates settings with the default value.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.RestSettings.#ctor(DSharp4Webhook.Rest.RestSettings)">
+            <summary>
+                Creates settings and takes him as a parent.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.Manipulation.BaseRestProvider.ProcessStatusCode(System.Net.HttpStatusCode,System.Boolean@,System.Net.HttpStatusCode[])">
+            <remarks>
+                Wrapper for processing returned status codes.
+            </remarks>
+            <param name="allowedStatuses">
+                Allowed statuses that are considered successful requests.
+            </param>
+        </member>
+        <member name="T:DSharp4Webhook.Rest.RestProviderLoader">
+            <remarks>
+                We dynamically load the provider to ensure that dependencies are separated
+                and that you can create your own provider.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.RestProviderLoader.GetProviderType">
+            <summary>
+                Gets the type of provider it that intends to use.
+            </summary>
+            <exception cref="T:System.IO.FileNotFoundException">
+                Can't find the <c>System.Net.Http</c> assembly,
+                configure the provider for Mono.
+            </exception>
+            <remarks>
+                Don't intentionally configure the provider for use!!!
+                If the provider is null, it selects the default provider,
+                because so that the user can configure the provider before it is used.
+                If you access code that does not have the necessary dependencies with it,
+                an exception is thrown, so on unity projects that were compiled using the .NET Framework profile.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.RestProviderLoader.SetProviderType(System.Type)">
+            <summary>
+                Sets the provider.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                Type is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If the provider doesn't fit the rules.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Rest.RestProviderLoader.CreateProvider(DSharp4Webhook.Core.IWebhook)">
+            <summary>
+                Creates a provider.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                If at least one of the parameters is null.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                If no suitable implementation is found.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Serialization.IWSerializable">
+            <summary>
+                Indicates whether webhook data can be serialized.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.IWSerializable.Serialize">
+            <summary>
+                Serializes data to a type format.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Serialization.SerializeContext">
+            <summary>
+                Data serialization context that is used for the web.
+            </summary>
+            <remarks>
+                We support two types of content to send:
+                    'application\json' - when we don't send files, just <see cref="P:DSharp4Webhook.Serialization.SerializeContext.Content"/> as json, then we can't send <see cref="P:DSharp4Webhook.Serialization.SerializeContext.Files"/>.
+                    'multipart/form-data' - when we send files, then <see cref="P:DSharp4Webhook.Serialization.SerializeContext.Content"/> in 'payload_json', and it can be null,
+                        <see cref="P:DSharp4Webhook.Serialization.SerializeContext.Content"/> it can be null if we only send the file.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Serialization.SerializeContext.Type">
+            <summary>
+                Type of serializing context.
+            </summary>
+        </member>
+        <member name="P:DSharp4Webhook.Serialization.SerializeContext.Content">
+            <summary>
+                Source data.
+            </summary>
+            <remarks>
+                Data to send, is the main one if used 'application/json'.
+            </remarks>
+        </member>
+        <member name="P:DSharp4Webhook.Serialization.SerializeContext.Files">
+            <summary>
+                Files: name-content
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.#ctor(System.Byte[],System.Byte[],System.String)">
+            <summary>
+                Automatic format that is selected based on arguments.
+            </summary>
+            <param name="content">
+                Message content.
+            </param>
+            <param name="data">
+                File contents.
+            </param>
+            <param name="fileName">
+                Name of the file to send, if null then new guid.
+            </param>
+            <exception cref="T:System.InvalidOperationException">
+                If the serialization type could not be determined/the data defining it is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.#ctor(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Byte[]})">
+            <summary>
+                Creates an object with already serialized data.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.#ctor(System.Byte[])">
+            <summary>
+                Creates a type based on 'application/json'.
+            </summary>
+            <param name="content">
+                Content to send.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                The content is null.
+            </exception>
+            <remarks>
+                Content can't be null.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.#ctor(System.Byte[],System.String)">
+            <summary>
+                Creates a type based on 'multipart/form-data'.
+            </summary>
+            <param name="data">
+                File data to send.
+            </param>
+            <param name="fileName">
+                Name of the file to send, if null then new guid.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                The file content is null.
+            </exception>
+            <remarks>
+                The file content cannot be null.
+            </remarks>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.AddFile(System.Byte[],System.String)">
+            <summary>
+                Adds a file to the serialized query.
+            </summary>
+            <param name="data">
+                File content.
+            </param>
+            <param name="fileName">
+                File name.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                File content is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeContext.RemoveFile(System.String)">
+            <summary>
+                Deletes a file from the list.
+            </summary>
+            <param name="fileName">
+                File name.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                File name is null.
+            </exception>
+            <returns>
+                true if the file was deleted from the collection;
+                otherwise false.
+            </returns>
+        </member>
+        <member name="T:DSharp4Webhook.Serialization.SerializeType">
+            <summary>
+                Data serialization types for discord.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Serialization.SerializeTypeConverter.Convert(DSharp4Webhook.Serialization.SerializeType)">
+            <exception cref="T:System.InvalidOperationException">
+                This type was not defined.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Util.Checks">
+            <summary>
+                Includes various checks to protect against duplication.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckBounds(System.String,System.String,System.Int32,System.Int32,System.Int32[])">
+            <summary>
+                Checks the bounds and if they are exceeded or meet it causes an exception.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                If the length exceed or meet their bounds.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckBoundsUnderside(System.String,System.String,System.Int32,System.Int32,System.Int32[])">
+            <summary>
+                Checks the bounds, and if they are belittled or meet, it causes an exception.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                If the length exceed or meet their bounds.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckBoundsSafe(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+                Checks the bounds safe.
+            </summary>
+            <returns>
+                true if the length is equal to or exceeds the bounds,
+                otherwise false.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckWebhookStatus(DSharp4Webhook.Core.WebhookStatus)">
+            <summary>
+                Checks the status of the webhook.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                If the state is not suitable for interaction.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckForNull``1(``0,System.String,System.String)">
+            <summary>
+                Checks the object for null.
+            </summary>
+            <param name="message">
+                Customized message.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                If the specified object is null.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckForArgument(System.Boolean,System.String,System.String)">
+            <summary>
+                Checks for an argument.
+            </summary>
+            <param name="boolean">
+                Specifies whether to throw an exception or not.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                If boolean is true.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckForSerializeType(DSharp4Webhook.Serialization.SerializeContext,DSharp4Webhook.Serialization.SerializeType)">
+            <summary>
+                Checks for compliance with the serialization type.
+            </summary>
+            <param name="context">
+                The context of serialization.
+            </param>
+            <param name="requireType">
+                Required type for serialization.
+            </param>
+            <exception cref="T:System.InvalidOperationException">
+                The serialization type is not suitable.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Checks.CheckForAttachments(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Byte[]}})">
+            <summary>
+                Checking for attachments.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                The number of attachments exceeds the limit.
+            </exception>
+            <exception cref="T:DSharp4Webhook.Exception.SizeOutOfRangeException">
+                The size of attachments exceeds the limit.
+            </exception>
+        </member>
+        <member name="T:DSharp4Webhook.Util.ColorUtil">
+            <summary>
+                Utilities for working with color (relevant for embed).
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Util.ColorUtil.FromHex(System.String)">
+            <summary>
+                Converts HEX to Decimal, for use in embed.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="hex"/> is empty or null,
+                or isn't hex.
+            </exception>
+            <exception cref="T:System.FormatException">
+                Invalid hex format.
+            </exception>
+        </member>
+        <member name="M:DSharp4Webhook.Util.DictionaryUtil.SizeOf``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,System.Byte[]}})">
+            <summary>
+                Returns the size of these values.
+            </summary>
+        </member>
+        <member name="T:DSharp4Webhook.Util.Extensions.EventUtil">
+            <summary>
+                Auxiliary tools for events.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Extensions.EventUtil.InvokeSafely(System.MulticastDelegate,System.Boolean,System.Object[])">
+            <summary>
+                Executes all delegate listeners safely.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Util.Extensions.EventUtil.HandleSafely(System.Boolean,System.Reflection.MethodInfo,System.Object,System.Object[])">
+            <summary>
+                Executes <see cref="T:System.Reflection.MethodInfo"/> safely.
+            </summary>
+            <param name="instance">
+                Instance of the delegate method object,
+                null is used in the case of a static method.
+            </param>
+        </member>
+        <member name="T:DSharp4Webhook.Util.ImageUtil">
+            <summary>
+                Auxiliary tool for working with images.
+            </summary>
+        </member>
+        <member name="M:DSharp4Webhook.Util.ImageUtil.GetImageByUrl(DSharp4Webhook.Core.IWebhook,System.String)">
+            <summary>
+                Retrieves the image from the url.
+            </summary>
+            <param name="webhook">
+                Webhook that provides BaseRestProvider.
+            </param>
+            <param name="url">
+                Endpoint to the image.
+            </param>
+            <returns>
+                Image data.
+            </returns>
+        </member>
+        <member name="M:DSharp4Webhook.Util.ImageUtil.GetImage(System.IO.FileInfo)">
+            <summary>
+                Retrieves an image from the file system.
+            </summary>
+            <param name="fileInfo">
+                File.
+            </param>
+        </member>
+    </members>
+</doc>

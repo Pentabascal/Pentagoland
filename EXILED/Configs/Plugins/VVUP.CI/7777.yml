@@ -1,0 +1,1850 @@
+# Enables Custom Items
+is_enabled: true
+debug: false
+show_picked_up_hint: true
+show_selected_hint: true
+picked_up_hint: |-
+  Has recogido: {0}
+
+  {1}
+selected_hint: |-
+  Objeto seleccionado: {0}
+
+  {1}
+hint_duration: 4
+# Aplica perfiles de aparición equilibrados por rareza a todos los objetos registrados.
+balanced_spawn_profiles_enabled: true
+# Impide que el spawn inicial genere más de un objeto personalizado en la misma habitación.
+one_custom_item_per_room: true
+# Segundos durante los que se protege el spawn inicial contra objetos duplicados en una habitación.
+spawn_protection_duration: 20
+custom_items_config:
+  smoke_grenades:
+  - id: 20
+    name: '<color=#6600CC>Obscurus Veil-5</color>'
+    description: 'Esta granada cegadora es una granada de humo; al detonar despliega una nube de humo'
+    weight: 1.14999998
+    explode_on_collision: false
+    fuse_time: 3
+    remove_smoke: true
+    # Si RemoveSmoke está activo, indica cuánto tarda en desaparecer la nube de humo.
+    fog_time: 10
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 25
+      - location: InsideGr18
+        chance: 25
+      - location: InsideSurfaceNuke
+        chance: 25
+      - location: InsideLczArmory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  nerve_agent_grenades:
+  - id: 22
+    name: '<color=#FF0000>Granada de agente nervioso</color>'
+    description: 'Libera un agente nervioso'
+    weight: 1
+    explode_on_collision: false
+    fuse_time: 3
+    nerve_agent_duration: 20
+    nerve_agent_radius: 5
+    nerve_agent_poison_duration: 25
+    nerve_agent_immediate_damage: 1
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points:
+      - location: InsideLczArmory
+        chance: 25
+      - location: InsideHczArmory
+        chance: 25
+      - location: Inside049Armory
+        chance: 25
+      - location: InsideSurfaceNuke
+        chance: 25
+      - location: Inside079Armory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  deadringer_syringes:
+  - id: 23
+    name: 'Dispositivo seÃ±uelo fantasma'
+    description: 'Al inyectarte te mareas, lo que acaba provocando otros efectos'
+    weight: 1.14999998
+    on_use_message: 'Te mareas muchÃ­simo'
+    on_use_message_time_duration: 5
+    ragdoll_death_reason: 'InyecciÃ³n mortal completamente intencionada'
+    usable_after_nuke: false
+    teleport_to_light_after_decom: false
+    use_hints: true
+    # The delay in seconds before the main effects are applied
+    delay: 3
+    # The effects that are applied as soon at the item is used
+    side_effects_first:
+    - effect_type: Blinded
+      intensity: 1
+      duration: 15
+      add_duration_if_active: true
+    # The effects that are applied after the delay
+    side_effects_second:
+    - effect_type: Flashed
+      intensity: 1
+      duration: 5
+      add_duration_if_active: true
+    - effect_type: Invisible
+      intensity: 1
+      duration: 5
+      add_duration_if_active: true
+    - effect_type: Ensnared
+      intensity: 1
+      duration: 5
+      add_duration_if_active: true
+    - effect_type: Disabled
+      intensity: 1
+      duration: 60
+      add_duration_if_active: true
+    - effect_type: Exhausted
+      intensity: 1
+      duration: 15
+      add_duration_if_active: true
+    - effect_type: AmnesiaItems
+      intensity: 1
+      duration: 30
+      add_duration_if_active: true
+    - effect_type: AmnesiaVision
+      intensity: 1
+      duration: 30
+      add_duration_if_active: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: Inside939Cryo
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: HczTestRoom
+        offset:
+          x: 0.885
+          y: 0.749
+          z: -4.874
+        chance: 25
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 25
+    excluded_rooms:
+    - EzShelter
+    - Lcz173
+    - Hcz049
+    - HczNuke
+    - EzCollapsedTunnel
+    - EzGateA
+    - EzGateB
+    has_custom_item_glow: false
+    custom_item_glow_color:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  phantom_lanterns:
+  - id: 24
+    name: '<color=#0096FF>Linterna fantasma</color>'
+    description: 'El limbo no es lugar para un alma como la tuya'
+    weight: 0.5
+    effect_duration: 150
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 10
+      - location: InsideGr18
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points:
+      - role: Scp106
+        chance: 10
+      room_spawn_points:
+      - room: HczTestRoom
+        offset:
+          x: 0.885
+          y: 0.749
+          z: -4.874
+        chance: 10
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 10
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 1
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  explosive_resistant_armor:
+  - id: 25
+    name: '<color=#FF0000>Armadura resistente a explosivos</color>'
+    description: 'Al llevar esta armadura obtienes resistencia a los explosivos.'
+    weight: 2
+    # This is a multiplicative, so 0.5 = half damage
+    explosive_damage_reduction: 0.550000012
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 25
+      - location: InsideHczArmory
+        chance: 25
+      - location: Inside049Armory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    # Must be between 1 and 2
+    stamina_use_multiplier: 1.75
+    # Must be between 0 and 100
+    helmet_efficacy: 85
+    # Must be between 0 and 100
+    vest_efficacy: 85
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    ammo_limits: []
+    category_limits: []
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  ky_syringes:
+  - id: 26
+    name: '<color=#0000CC>LJ-429</color>'
+    description: 'Al inyectarlo, el usuario muere rÃ¡pidamente.'
+    weight: 1.14999998
+    # Removes the Syringe on use, otherwise it just drops on the floor after the player dies (it's really funny ngl)
+    remove_syringe_on_use: true
+    effects:
+    - effect_type: Corroding
+      intensity: 1
+      duration: 300
+      add_duration_if_active: false
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: Inside939Cryo
+        chance: 100
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 50
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  medi_guns:
+  - type: GunFSP9
+    id: 27
+    name: '<color=#0096FF>Pulso fantasma</color>'
+    description: 'Arma especializada que cura a los aliados y convierte zombis en humanos'
+    weight: 1.5
+    damage: 0
+    clip_size: 10
+    # Does the medigun friendly fire? (Only an option for FF on servers)
+    friendly_fire: false
+    heal_zombies: true
+    ahp_required_for_zombie_heal: 200
+    # Determines if Serpents Hand can revive zombies to their side
+    zombie_healing_by_serpents: false
+    # What is the CustomRole ID for Serpents Hand to set the revive zombie to
+    serpents_hand_custom_role_id: 27
+    # What is the healing modifier? (Example: 1 = Damage * 1, so a bullet that does 5 damage will heal 5 health instead.
+    healing_modifer: 1
+    # Determines how much AHP human players can get
+    max_ahp_amount: 30
+    # Deterimines if AHP drains
+    ahp_decay: false
+    # Should revived players be given a loadout?
+    grant_loadout_on_revive: false
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideGr18
+        chance: 25
+      - location: InsideGateA
+        chance: 25
+      - location: InsideGateB
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 1
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  tranquilizers:
+  - id: 28
+    name: '<color=#0096FF>Serenata silenciosa</color>'
+    description: 'COM-18 modificada que dispara dardos tranquilizantes. Repetir los disparos sobre el mismo objetivo crea resistencia'
+    weight: 1.54999995
+    damage: 0
+    clip_size: 2
+    # Determines the likelyhood that SCPs will resist the tranquilizer
+    scp_resist_chance: 75
+    # After a player gets tranquilized, how much resistance should the player get from future transquilizations
+    resistance_modifer: 1.75
+    # Should tranquilized players drop items?
+    drop_items: true
+    # The base duration for players to be tranquilized for
+    duration: 5
+    # Determines if 096 rage ends if 096 gets tranquilized
+    end096_rage: true
+    # Can players be Tranquilized in elevators?
+    tranquilize_in_elevators: false
+    # What's the tranquilized reason
+    tranquilized_reason: 'Sedado'
+    # What effects should be applied when a player gets tranquilized?
+    effects:
+    - Invisible
+    - AmnesiaItems
+    - AmnesiaVision
+    - Ensnared
+    - Flashed
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideGr18
+        chance: 20
+      - location: Inside173Armory
+        chance: 20
+      - location: InsideLczCafe
+        chance: 20
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 20
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 1
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  scp1499s:
+  - id: 29
+    name: '<color=#FF0000>SCP-1499</color>'
+    description: 'Es una mÃ¡scara antigÃ¡s que te teletransporta a otra dimensiÃ³n al equiparla'
+    weight: 1.5
+    # Determines how long it lasts, 0 = infinite
+    duration: 15
+    # Determines if you can use SCP 1499 in 106's Pocket Dimension
+    use_in_pocket_dimension: false
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 10
+      - location: Inside079Secondary
+        chance: 10
+      static_spawn_points:
+      - name: 'Escape Hall Building'
+        chance: 10
+        position:
+          x: 133
+          y: 289
+          z: 24
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    # Determines where to teleport the player, must be somewhere static (such as surface zone)
+    teleport_location:
+      x: 38.464
+      y: 314.112
+      z: -32.689
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  emp_grenades:
+  - id: 30
+    name: '<color=#6600CC>PB-42</color>'
+    description: 'Al detonar apaga las luces y abre las puertas'
+    weight: 1.14999998
+    explode_on_collision: true
+    fuse_time: 1.5
+    open_locked_doors: false
+    open_keycard_doors: true
+    disable_teslas: true
+    duration: 12
+    black_listed_doors:
+    - Scp079First
+    - Scp079Second
+    spawn_properties:
+      limit: 3
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 50
+      - location: InsideSurfaceNuke
+        chance: 50
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 50
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  anti_scp096_pills:
+  - id: 31
+    name: '<color=#6600CC>Amnesioflux</color>'
+    description: 'Al consumirlas dejas de ser un objetivo de SCP-096'
+    weight: 1
+    effects:
+    - effect_type: AmnesiaVision
+      intensity: 1
+      duration: 10
+      add_duration_if_active: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 35
+      - location: Inside049Armory
+        chance: 25
+      - location: InsideLczArmory
+        chance: 20
+      - location: InsideSurfaceNuke
+        chance: 20
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 100
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  c4s: []
+  scp2818s:
+  - id: 33
+    name: '<color=#FF0000>SCP-2818</color>'
+    description: 'Al dispararla utiliza la biomasa del tirador como proyectil.'
+    weight: 4
+    damage: 350
+    clip_size: 1
+    # Whether or not the weapon should despawn itself after it was shot and did not miss.
+    despawn_after_use: true
+    # Whether or not the weapon should despawn itself after it was shot and missed.
+    despawn_after_miss: true
+    # Should the player instantly die after missing a shot with this weapon?
+    kill_after_miss: true
+    # Should it check if wherever the player shot was the floor? Note: Disabling this will allow players to get into spots they shouldn't be able to be in.
+    use_raycast_position: true
+    death_reason_user: 'Te has vaporizado al convertirte en una bala.'
+    death_reason_target: 'Vaporizado por una bala humana.'
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 10
+      - location: Inside079Armory
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    type: None
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  infinite_pills:
+  - id: 34
+    name: '<color=#6600CC>PÃ­ldoras infinitas</color>'
+    description: |-
+      Este frasco de pÃ­ldoras parece infinito.
+      Por desgracia estÃ¡ caducado y no te curarÃ¡.
+    weight: 0.5
+    spawn_properties:
+      limit: 3
+      dynamic_spawn_points:
+      - location: Inside939Cryo
+        chance: 50
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: HczTestRoom
+        offset:
+          x: 0.885
+          y: 0.749
+          z: -4.874
+        chance: 50
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 50
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  cluster_grenades:
+  - id: 36
+    name: '<color=#FF0000>Granada de racimo</color>'
+    description: 'Cuando esta granada explota genera granadas adicionales cerca'
+    weight: 1.75
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points:
+      - location: InsideLczArmory
+        chance: 15
+      - location: InsideHczArmory
+        chance: 15
+      - location: Inside049Armory
+        chance: 15
+      - location: InsideSurfaceNuke
+        chance: 15
+      - location: Inside079Armory
+        chance: 15
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    explode_on_collision: false
+    fuse_time: 5
+    # How long is the additional grenades fuse times
+    cluster_grenade_fuse_time: 1.5
+    cluster_grenade_count: 5
+    # Enables a random spread of the cluster grenades, if its off it will spawn all of them on top of the detonation point
+    cluster_grenade_random_spread: true
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  additional_health207s:
+  - id: 37
+    name: '<color=#6600CC>SCP-207 de salud adicional</color>'
+    description: 'AÃ±ade vida adicional al consumirlo'
+    weight: 1
+    health_to_be_added: 20
+    allow_when207_or_anti207_is_active: false
+    text_to_show_to_player_on_fail_cola: 'No es buena idea mezclar esto con el efecto de una cola.'
+    # If UseHints is true, it will show a hint to the player, otherwise it will be a broadcast
+    use_hints: false
+    # If this is false, users can just drink a lot of additional health 207
+    cap_max_health: true
+    max_user_hp_limit: 120
+    text_to_show_to_player_on_fail_hp_limit: 'Ya tienes suficiente vida; no necesitas mÃ¡s.'
+    text_display_duration: 5
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 25
+      - location: Inside079Armory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points:
+      - role: Scp106
+        chance: 25
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  low_gravity_armors:
+  - id: 38
+    name: '<color=#6600CC>Coraza Nebulosa</color>'
+    description: 'Esta armadura pesa tan poco que te hace sentir mucho mÃ¡s ligero'
+    weight: 0.75
+    gravity_changes:
+      x: 0
+      y: -9.8
+      z: 0
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideGr18Glass
+        chance: 25
+      - location: InsideHczArmory
+        chance: 25
+      - location: Inside049Armory
+        chance: 25
+      - location: Inside173Bottom
+        chance: 25
+      - location: Inside939Cryo
+        chance: 25
+      - location: InsideLczCafe
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    # The value must be above 1 and below 2
+    stamina_use_multiplier: 1.14999998
+    # The value must be above 0 and below 100
+    helmet_efficacy: 80
+    # The value must be above 0 and below 100
+    vest_efficacy: 80
+    ammo_limits: []
+    category_limits: []
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  viper_pdws:
+  - id: 39
+    name: '<color=#FF0000>Viper</color>'
+    description: 'Un subfusil compacto cuyo daÃ±o depende de la distancia al objetivo'
+    weight: 1.75
+    # Due to damage being multiplicative, the damage can get really high really quick, so this divider keeps the damage (mostly) in check. Adjust this to your needs
+    damage_divider: 20
+    clip_size: 30
+    allow_attachment_changing: false
+    restricted_attachment_changing_message: 'No puedes cambiar los accesorios de la Viper'
+    use_hints: false
+    restricted_attachment_change_message_time_duration: 5
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 25
+      - location: Inside049Armory
+        chance: 25
+      - location: Inside079Armory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 25
+      locker_spawn_points: []
+    attachments:
+    - None
+    - IronSights
+    - StandardBarrel
+    - RetractedStock
+    - StandardMagJHP
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  pathfinders:
+  - id: 40
+    name: '<color=#0096FF>Pathfinder</color>'
+    description: 'Al alcanzar a un enemigo lo marca durante un tiempo y hace que reciba mÃ¡s daÃ±o'
+    weight: 1.5
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 30
+      - location: Inside049Armory
+        chance: 25
+      - location: Inside079Armory
+        chance: 25
+      - location: InsideLczArmory
+        chance: 20
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    damage: 0
+    clip_size: 1
+    # Handles how long a target should be marked for
+    marked_duration: 10
+    # Handles the damage multipler the tracked target(s) should take (1.10 = 10% more, 1.50 = 50% more, etc
+    damage_multiplier: 1.04999995
+    # If true on a friendly fire on server. Can the Pathfinder mark teammates. If set to true on a friendly fire off server, does nothing.
+    mark_teammates: false
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 1
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  laser_guns:
+  - type: GunE11SR
+    id: 41
+    name: '<color=#FF0000>Rayo Helios X-57</color>'
+    description: 'Â¡Dispara lÃ¡seres!'
+    weight: 2
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 20
+      - location: Inside079Armory
+        chance: 20
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    # Cuánto tiempo permanece visible el láser en pantalla.
+    laser_visible_time: 0.0299999993
+    # Brillo del láser.
+    laser_brightness: 300
+    # Tamaño del láser.
+    laser_scale:
+      x: 0.04
+      y: 0
+      z: 0.04
+    # Color rojo del láser; los valores deben estar entre 0 y 1.
+    laser_color_red:
+    - 0.860000014
+    - 1
+    - 0
+    - 0.550000012
+    - 0.970000029
+    # Color verde del láser; los valores deben estar entre 0 y 1.
+    laser_color_green:
+    - 0.0799999982
+    - 0.270000011
+    - 0.839999974
+    - 0.649999976
+    - 0.5
+    - 0.360000014
+    - 0
+    - 0.970000029
+    # Color azul del láser; los valores deben estar entre 0 y 1.
+    laser_color_blue:
+    - 0.239999995
+    - 0
+    - 0.310000002
+    - 1
+    - 0.959999979
+    # Radio del efecto espiral.
+    spiral_radius: 0.150000006
+    # Número de vueltas completas de la espiral a lo largo del rayo.
+    spiral_turns: 3
+    # Tamaño de los segmentos de la espiral a lo largo del rayo.
+    spiral_particle_size: 0.150000006
+    # Densidad de partículas de la espiral; un valor mayor genera más partículas.
+    spiral_density: 10
+    # Efectos que se aplicarán al impactar.
+    effects_to_apply:
+    - effect_type: Burned
+      intensity: 1
+      duration: 3
+      add_duration_if_active: false
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    damage: -1
+    clip_size: 0
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  multi_flashes:
+  - id: 42
+    name: '<color=#6600CC>Destello Eco</color>'
+    description: 'Al detonar genera otros destellos'
+    weight: 1.75
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points:
+      - location: InsideLczArmory
+        chance: 15
+      - location: InsideHczArmory
+        chance: 15
+      - location: Inside049Armory
+        chance: 15
+      - location: InsideSurfaceNuke
+        chance: 15
+      - location: Inside079Armory
+        chance: 15
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    explode_on_collision: false
+    fuse_time: 2.5
+    flash_grenade_count: 5
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  proxy_bangs:
+  - id: 43
+    name: '<color=#6600CC>Granada Pathfinder</color>'
+    description: 'Al detonar muestra lÃ­neas hacia todos los jugadores de la zona.'
+    weight: 1.75
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 15
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    explode_on_collision: false
+    fuse_time: 10
+    range: 100
+    line_visible_time: 5
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  grenade_launchers:
+  - id: 46
+    name: '<color=#FF0000>ADATS</color>'
+    description: 'Un lanzagranadas'
+    weight: 3
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 10
+      - location: InsideHidChamber
+        chance: 40
+      - location: Inside079Armory
+        chance: 40
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    clip_size: 1
+    # Set to false if you want to include Custom Grenades (such as Cluster Grenades) in the grenade launcher. NOTE: This will not make the grenade launcher launch a Cluster Grenade
+    ignore_custom_grenades: true
+    use_grenades_to_reload: true
+    # If UseGrenadesToReload is true, this message will be shown to the player to be told to dry fire it
+    reload_message_dryfire: 'Necesitas una granada y accionar el disparo en vacÃ­o del ADATS para recargarlo'
+    full_force_set_message: 'El ADATS estÃ¡ en modo de potencia completa'
+    half_force_set_message: 'El ADATS estÃ¡ en modo de media potencia'
+    launch_type_impact_set_message: 'El ADATS estÃ¡ en modo de detonaciÃ³n por impacto'
+    launch_type_roller_set_message: 'El ADATS estÃ¡ en modo de detonaciÃ³n por tiempo'
+    # If true, the player will get a hint when a message is displayed, otherwise it will be a broadcast
+    use_hints: true
+    # How long the hint/broadcast will be shown for
+    message_duration: 3
+    # Sometimes you're able to get more than what ClipSize is set to when reloading, if this is set to true, it will check and correct the ammo count
+    fix_over_clip_size_bug: true
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    attachments: []
+    damage: -1
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  portable_intercoms:
+  - id: 47
+    name: 'Intercomunicador portÃ¡til'
+    description: 'Un intercomunicador portÃ¡til para comunicarse con toda la instalaciÃ³n.'
+    weight: 1
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 10
+      - location: InsideGr18
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points:
+      - role: Scp106
+        chance: 10
+      room_spawn_points:
+      - room: HczTestRoom
+        offset:
+          x: 0.885
+          y: 0.749
+          z: -4.874
+        chance: 10
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 100
+      locker_spawn_points: []
+    portable_intercom_duration: 20
+    # Use %intercomtimeremaining% to show how much time is remaining on the portable intercom.
+    countdown_text_for_portable_intercom: 'Tu intercomunicador portÃ¡til terminarÃ¡ en %intercomtimeremaining% segundos.'
+    # If true, if the portable intercom is active, toggling it again will end the intercom.
+    end_intercom_on_second_interaction: true
+    use_hints: true
+    # If true, the portable intercom will respect stuff like the intercom cooldown and the intercom being disabled.
+    follow_actual_intercom_parameters: true
+    portable_intercom_fail_due_to_intercom_cooldown_text: 'El intercomunicador estÃ¡ en enfriamiento. Espera antes de volver a usarlo.'
+    intercom_room_portable_intercom_in_use_text: 'El intercomunicador estÃ¡ siendo utilizado en una ubicaciÃ³n remota.'
+    has_custom_item_glow: false
+    custom_item_glow_color:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  telewand:
+  - id: 50
+    name: '<color=#0096FF>Televarita</color>'
+    description: '<b>BotÃ³n izquierdo</b> para guardar la posiciÃ³n; <b>botÃ³n derecho</b> para teletransportarte'
+    weight: 1
+    # Time before the item can be used again after teleporting
+    use_cooldown: 15
+    # Delay after using the item before the player is teleported
+    teleport_cooldown: 5
+    # Maximum number of times the item can be used before breaking
+    max_uses: 3
+    # Maximum distance for teleportation (0 for unlimited)
+    max_teleport_range: 0
+    # List of rooms where position saving is not allowed
+    restricted_save_rooms:
+    - EzCollapsedTunnel
+    - Pocket
+    # List of rooms where teleporting from is not allowed
+    restricted_teleport_from_rooms:
+    - EzCollapsedTunnel
+    - Pocket
+    # Spawn Location:
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: Inside079Armory
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 1
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    # Translations:
+    pos_saved: '<color=#808080>PosiciÃ³n guardada</color>'
+    no_pos_saved: '<color=#FF5554>Â¡No hay ninguna posiciÃ³n guardada!</color>'
+    tp_cooldown: '<color=#0096FF>Televarita</color>: espera {remaining} s antes de volver a usarla'
+    tp_in_progress: 'Â¡No te muevas durante <color=yellow>{remaining} s</color> para teletransportarte!'
+    tp_canceled: '<color=#FF5554>Â¡Teletransporte cancelado!</color>'
+    tp_succeeded: '<color=#54FF54>Â¡Teletransporte realizado!</color>'
+    after_warhead: '<color=#FF5554>Â¡La ojiva ha detonado! Solo puedes teletransportarte a la superficie.</color>'
+    after_decontamination: '<color=#FF5554>Â¡No puedes teletransportarte a ContenciÃ³n Ligera: la zona estÃ¡ descontaminada!</color>'
+    to_pocket_dimension: '<color=#FF5554>Â¡No puedes teletransportarte a la dimensiÃ³n de bolsillo!</color>'
+    telewand_broken: '<color=#0096FF>Â¡La Televarita se ha roto!</color>'
+    restricted_save_room: '<color=#FF5554>Â¡No puedes guardar la posiciÃ³n en esta sala!</color>'
+    restricted_teleport_from_room: '<color=#FF5554>Â¡No puedes teletransportarte desde esta sala!</color>'
+    out_of_range: '<color=#FF5554>Â¡El destino estÃ¡ fuera de alcance!</color>'
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  low_gravity_grenades:
+  - id: 51
+    name: '<color=#6600CC>Lanzamiento lunar</color>'
+    description: 'Al detonar aplica un efecto de baja gravedad a los jugadores cercanos'
+    weight: 1
+    explode_on_collision: false
+    fuse_time: 2
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points:
+      - location: InsideLczArmory
+        chance: 15
+      - location: InsideGr18Glass
+        chance: 15
+      - location: InsideGateA
+        chance: 15
+      - location: InsideGateB
+        chance: 15
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    low_gravity:
+      x: 0
+      y: -12.6
+      z: 0
+    duration: 15
+    range: 15
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  bottle_of_rums:
+  - id: 53
+    name: '<color=#6600CC>Botella de ron</color>'
+    description: 'Reproduce una canciÃ³n marinera.'
+    weight: 1
+    effects:
+    - effect_type: Slowness
+      intensity: 255
+      duration: 40
+      add_duration_if_active: false
+    - effect_type: Blurred
+      intensity: 1
+      duration: 40
+      add_duration_if_active: false
+    - effect_type: Blinded
+      intensity: 50
+      duration: 40
+      add_duration_if_active: false
+    - effect_type: Invigorated
+      intensity: 1
+      duration: 40
+      add_duration_if_active: false
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 35
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 35
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 35
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 35
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 35
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  f4s: []
+  guardian_grenades:
+  - id: 55
+    name: '<color=#FF0000>Granada GuardiÃ¡n</color>'
+    description: 'Una granada que detona cuando alguien se acerca'
+    weight: 0.75
+    explode_on_collision: false
+    # Fuse time before the grenade removes itself if no one comes close.
+    fuse_time: 9999
+    # The radius in which the grenade will detonate when a player enters.
+    trigger_radius: 3.5
+    # The delay before the grenade becomes active and can detonate.
+    activation_delay: 2
+    # Delay after a player enters the radius
+    detonation_delay: 2
+    # Fuse time of the grenade after a player enters the radius
+    detonation_time: 2
+    # Should the grenade ignore the thrower's teammates? (This doesnt mean friendly fire on/off)
+    ignore_teammates: false
+    # Should the grenade be associated with the server or the player?
+    associate_as_server: false
+    # How often should the grenade check for players in range? (in seconds)
+    check_interval: 0.25
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideLczArmory
+        chance: 10
+      - location: InsideHczArmory
+        chance: 25
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  a_e_ds:
+  - id: 56
+    name: '<color=red>AED</color>'
+    description: 'Desfibrilador externo automÃ¡tico (DEA)'
+    weight: 1
+    scale:
+      x: 0.5
+      y: 0.5
+      z: 0.5
+    revive_radius: 2
+    revived_health: 55
+    number_of_shocks: 1
+    shock_to_revive: 1
+    charging_time: 15
+    reviver_hint: '<color=#00E5FF>Has reanimado al jugador {target}</color>'
+    revived_hint: '<color=#FFDD00>Has sido reanimado mediante un <color=red>DEA</color></color>'
+    shock_progress_hint: 'Descargas: <color=yellow>{applied}</color>/<color=yellow>{required}</color> para reanimar a {target}'
+    charging_hint: '<color=red>DEA</color> cargando... <color=yellow>{percent}%</color>'
+    fail_used: 'No puedes usar el <color=red>DEA</color> aquÃ­.'
+    shocks_left: 'Cargas del <color=red>DEA</color>: <color=yellow>{left}</color>/<color=yellow>{max}</color>'
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.03921569
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    spawn_properties:
+      limit: 3
+      dynamic_spawn_points:
+      - location: Inside049Armory
+        chance: 30
+      - location: InsideHczArmory
+        chance: 25
+      - location: InsideLczArmory
+        chance: 20
+      - location: InsideGr18
+        chance: 15
+      - location: InsideSurfaceNuke
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Misc
+        chance: 25
+  knives:
+  - id: 57
+    name: '<color=#00FF00>Cuchillo</color>'
+    description: 'Una hoja afilada para el combate cuerpo a cuerpo.'
+    weight: 1
+    # Tiempo de espera en segundos entre ataques.
+    swing_cooldown: 1.5
+    # Usa {time} para mostrar el tiempo de espera restante.
+    cooldown_message: 'El Cuchillo estÃ¡ en enfriamiento durante {time} segundos mÃ¡s.'
+    message_duration: 5
+    use_hints: true
+    # Damage dealt to targets without armor.
+    no_armor_damage: 20
+    # Damage dealt to targets with light, combat, or heavy armor.
+    light_armor_damage: 15
+    combat_armor_damage: 12
+    heavy_armor_damage: 10
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: Inside049Armory
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: false
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: LargeGun
+        chance: 10
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 1
+      b: 0
+      a: 0.4980392
+    glow_range: 0.200000003
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  snipers:
+  - type: GunE11SR
+    id: 58
+    name: '<color=#009F64>Fusil EL-95 de cerrojo</color>'
+    description: 'Fusil de francotirador de cerrojo.'
+    weight: 2.5
+    attachments:
+    - LowcapMagAP
+    - RifleBody
+    - Laser
+    - Foregrip
+    - ScopeSight
+    - SoundSuppressor
+    clip_size: 1
+    damage: 85
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHczArmory
+        chance: 10
+      - location: Inside049Armory
+        chance: 40
+      - location: Inside079Armory
+        chance: 40
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    # If true changing the attachments will be possible. Default: false
+    allow_changing_attachments: true
+    restricted_attachment_changing_message: 'No puedes cambiar los accesorios del fusil EL-95'
+    use_hints: false
+    restricted_attachment_change_message_time_duration: 5
+    # If its not empty, effects will be applied when aiming down sights.
+    apply_effects_on_aim:
+    - effect_type: Slowness
+      intensity: 20
+      duration: 0
+      add_duration_if_active: false
+    # If its a positive, non-zero number, it will determine how long it would take before being allowed to reload again after firing
+    time_before_reload_allowed: 0
+    # Use %time% to display the remaining time before being allowed to reload again.
+    restricted_reload_message: 'Debes esperar %time% segundos antes de volver a recargar'
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0
+      g: 0.5882353
+      b: 0.3921569
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    friendly_fire: false
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  scp427s:
+  - id: 59
+    name: '<color=#FF0000>SCP-427</color>'
+    description: 'Una moneda que regenera la vida al activarse. Una exposiciÃ³n prolongada convierte al usuario en una masa de carne.'
+    weight: 1
+    # How long does it take for the player to die from exposure to the item (in seconds). Set to 0 to disable.
+    time_to_death: 300
+    # At what exposure time (in seconds) should the warning message be shown.
+    warning_threshold: 240
+    # How much health is regenerated per second.
+    regeneration_per_second: 0.300000012
+    # Does the player get AHP from the item
+    give_ahp: true
+    # Whats the limit for the players AHP they can get from the item
+    ahp_limit: 50
+    start_regeneration_message: 'Sientes una sensaciÃ³n cÃ¡lida que se extiende por tu cuerpo.'
+    stop_regeneration_message: 'La sensaciÃ³n cÃ¡lida desaparece.'
+    warning_message: 'Empiezas a sentir que te estÃ¡s convirtiendo en una masa de carne.'
+    death_message: 'Has sucumbido a los efectos de SCP-427.'
+    message_duration: 5
+    use_hints: true
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 20
+      - location: InsideHczArmory
+        chance: 20
+      - location: Inside049Armory
+        chance: 20
+      - location: Inside079Armory
+        chance: 20
+      - location: InsideSurfaceNuke
+        chance: 20
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points:
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp018Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp207Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp244Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp268Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp500Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp1576Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp1344Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp1853Pedestal
+        chance: 10
+      - zone: Unspecified
+        use_chamber: true
+        offset:
+          x: 0
+          y: 0
+          z: 0
+        type: Scp2176Pedestal
+        chance: 10
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  experimental_stims:
+  - id: 60
+    name: '<color=#6600CC>Estimulante experimental</color>'
+    description: 'Al usarlo proporciona un efecto aleatorio, positivo o negativo'
+    weight: 0.5
+    spawn_properties:
+      limit: 1
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: HczTestRoom
+        offset:
+          x: 0.885
+          y: 0.749
+          z: -4.874
+        chance: 50
+      locker_spawn_points: []
+    effects:
+    - effect_type: MovementBoost
+      intensity: 50
+      duration: 10
+      add_duration_if_active: false
+    - effect_type: Invigorated
+      intensity: 1
+      duration: 30
+      add_duration_if_active: false
+    - effect_type: Poisoned
+      intensity: 50
+      duration: 60
+      add_duration_if_active: false
+    - effect_type: Invisible
+      intensity: 1
+      duration: 15
+      add_duration_if_active: false
+    - effect_type: DamageReduction
+      intensity: 50
+      duration: 30
+      add_duration_if_active: false
+    - effect_type: Decontaminating
+      intensity: 1
+      duration: 60
+      add_duration_if_active: false
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+ssss_config:
+  ssss_enabled: false
+  use_hints: true
+  text_display_duration: 5
+  header: 'Objetos personalizados de Vicious Vikki.'
+  detonate_c4_id: 11001
+  custom_item_text_id: 11000
+  detonate_hint: 'Pulsa la tecla asignada para activar el detonador de C4 o F4.'
+  detonate_ssss_text: 'Detonar C4/F4'
+  ssss_no_deployed: 'No has colocado ninguna C4/F4'
+  ssss_detonator_needed: 'Debes llevar equipado el detonador'
+  ssss_too_far_away: 'EstÃ¡s demasiado lejos de tu C4 o F4; acÃ©rcate'
+  ssss_detonate_activation_message: 'Detonando C4/F4'
+  grenade_launcher_force_mode_id: 11002
+  grenade_launcher_force_mode_ssss_text: 'Cambiar potencia del ADATS'
+  grenade_launcher_force_mode_hint: 'Alternar entre potencia completa y media para el ADATS'
+  grenade_launcher_launch_mode_id: 11003
+  grenade_launcher_launch_mode_ssss_text: 'Cambiar modo de detonaciÃ³n del ADATS'
+  grenade_launcher_launch_mode_hint: 'Alternar entre detonaciÃ³n por impacto y por tiempo para el ADATS'
+  laser_gun_red_id: 11004
+  laser_gun_green_id: 11005
+  laser_gun_blue_id: 11006
+  laser_gun_color_text: 'Color del rayo Helios'
+  laser_gun_color_text_red: '(Rojo)'
+  laser_gun_color_text_green: '(Verde)'
+  laser_gun_color_text_blue: '(Azul)'
+  laser_gun_color_hint: 'Introduce un valor entre 0 y 255. Los valores negativos o superiores a 255 serÃ¡n aleatorios'

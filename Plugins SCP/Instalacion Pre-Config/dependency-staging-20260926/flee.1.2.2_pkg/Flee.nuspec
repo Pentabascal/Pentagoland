@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Flee</id>
+    <version>1.2.2</version>
+    <title>Flee</title>
+    <authors>Muhammet Parlak</authors>
+    <owners>Muhammet Parlak</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/mparlak/Flee</licenseUrl>
+    <projectUrl>https://github.com/mparlak/Flee</projectUrl>
+    <iconUrl>https://github.com/mparlak/Flee</iconUrl>
+    <description>Flee - Fast Lightweight Expression Evaluator</description>
+    <releaseNotes>1.2.2
+      • Fixed the In operand only accepting Int values.
+      1.2.1
+      • Fix for IndexOutOfRange when running complex(?) formulas
+      • Update Arithmetic.cs
+      1.2.0
+      • new – digitally sign a strong named assembly
+      1.1.0
+      • new – added strong name key
+      1.0.7
+      • Fixed – Flee fails to parse "if" formula
+      1.0.6
+      • Fixed – Fix for null check is broken
+      • Fixed – signed version of Flee
+      1.0.5
+      • Fixed – Expressions as variables causes InvalidCastException
+      1.0.4
+      • Fixed – Update AndOr.cs pull request
+      • Fixed – Fix issue on TimeSpan pull request
+      • Fixed – Add proper gitignore and apply it retroactively pull request
+      1.0.3
+      • Fixed – The type 'Object' is defined in an assembly that is not referenced. You must add a reference to assembly netstandard 2.0</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>flee,expression evaluator,Expression Evaluator for c#</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.ComponentModel" version="4.3.0" />
+        <dependency id="System.Reflection" version="4.3.0" />
+        <dependency id="System.Reflection.Emit" version="4.3.0" />
+        <dependency id="System.Reflection.Emit.ILGeneration" version="4.3.0" />
+        <dependency id="System.Reflection.Emit.Lightweight" version="4.3.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

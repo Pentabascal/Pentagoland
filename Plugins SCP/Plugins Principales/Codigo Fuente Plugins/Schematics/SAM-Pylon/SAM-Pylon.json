@@ -1,0 +1,355 @@
+{
+  "RootObjectId": 35644,
+  "Blocks": [
+    {
+      "Name": "Cylinder",
+      "ObjectId": 35648,
+      "ParentId": 35644,
+      "Position": {
+        "x": 0.0,
+        "y": -0.284,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.25,
+        "y": 0.25,
+        "z": 0.25
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "003000FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cylinder (1)",
+      "ObjectId": 35650,
+      "ParentId": 35644,
+      "Position": {
+        "x": 0.0,
+        "y": -0.4715,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.3,
+        "y": 0.0625,
+        "z": 0.3
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "000E00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 35652,
+      "ParentId": 35644,
+      "AnimatorName": "Sphere",
+      "Position": {
+        "x": 0.0,
+        "y": 0.118,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.28405,
+        "y": 0.28405,
+        "z": 0.28405
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "07FF00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light",
+      "ObjectId": 35672,
+      "ParentId": 35652,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.6
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FF00FF",
+        "Intensity": 0.3,
+        "Range": 5.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (1)",
+      "ObjectId": 35674,
+      "ParentId": 35652,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.6
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FF00FF",
+        "Intensity": 0.3,
+        "Range": 5.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (2)",
+      "ObjectId": 35676,
+      "ParentId": 35652,
+      "Position": {
+        "x": -0.6,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FF00FF",
+        "Intensity": 0.3,
+        "Range": 5.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Point Light (3)",
+      "ObjectId": 35678,
+      "ParentId": 35652,
+      "Position": {
+        "x": 0.6,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 2,
+      "Properties": {
+        "LightType": 2,
+        "Color": "00FF00FF",
+        "Intensity": 0.3,
+        "Range": 5.0,
+        "Shape": 0,
+        "SpotAngle": 30.0,
+        "InnerSpotAngle": 21.80208,
+        "ShadowStrength": 1.0,
+        "ShadowType": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": 35654,
+      "ParentId": 35644,
+      "AnimatorName": "Cube",
+      "Position": {
+        "x": 0.0,
+        "y": -0.534000039,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "FFFFFFFF",
+        "PrimitiveFlags": 0,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 35660,
+      "ParentId": 35654,
+      "Position": {
+        "x": -0.248,
+        "y": 0.445,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 337.335541
+      },
+      "Scale": {
+        "x": 0.01,
+        "y": 0.5,
+        "z": 0.05
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "008D00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 35662,
+      "ParentId": 35654,
+      "Position": {
+        "x": 0.0,
+        "y": 0.445,
+        "z": 0.248000026
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 90.0,
+        "z": 337.335541
+      },
+      "Scale": {
+        "x": 0.0100000007,
+        "y": 0.5,
+        "z": 0.05000001
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "008D00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 35664,
+      "ParentId": 35654,
+      "Position": {
+        "x": 0.248,
+        "y": 0.445,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 337.335541
+      },
+      "Scale": {
+        "x": 0.009999998,
+        "y": 0.5,
+        "z": 0.04999999
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "008D00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 35666,
+      "ParentId": 35654,
+      "Position": {
+        "x": 0.0,
+        "y": 0.445,
+        "z": -0.248000026
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 270.0,
+        "z": 337.335541
+      },
+      "Scale": {
+        "x": 0.0100000007,
+        "y": 0.5,
+        "z": 0.05000001
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "008D00FF",
+        "PrimitiveFlags": 2,
+        "Static": false
+      }
+    }
+  ]
+}

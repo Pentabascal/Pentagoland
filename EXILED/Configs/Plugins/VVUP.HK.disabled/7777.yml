@@ -1,0 +1,164 @@
+is_enabled: true
+debug: false
+custom_item_config:
+  husk_grenades:
+  - id: 48
+    name: '<color=#FF0000>Granada Husk</color>'
+    description: 'Granada arrojadiza que contiene el virus de la infección Husk. Al explotar, infecta a todos los jugadores cercanos.'
+    weight: 0.75
+    spawn_properties:
+      limit: 5
+      dynamic_spawn_points:
+      - location: InsideHidChamber
+        chance: 10
+      - location: InsideHczArmory
+        chance: 10
+      - location: Inside049Armory
+        chance: 20
+      - location: Inside079Armory
+        chance: 10
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points:
+      - room: Hcz096
+        offset:
+          x: -3.25
+          y: 1
+          z: -0.78
+        chance: 100
+      locker_spawn_points: []
+    explode_on_collision: false
+    fuse_time: 4
+    range: 5
+    ignore_tutorials: false
+    # Tiempo que tarda la infección en alcanzar la fase 1, en segundos.
+    infection_stage_one_delay: 30
+    # Tiempo que tarda en alcanzar la fase 2 después de llegar a la fase 1, en segundos.
+    infection_stage_two_delay: 90
+    # Texto que se muestra al alcanzar la fase 2.
+    infection_text: '<color=red><size=30>Notas algo en la garganta. Intentas gritar, pero no sale ningún sonido.</size></color>'
+    use_hints: false
+    text_display_time: 10
+    husk_zombie_custom_role_id: 56
+    husk_take_over_death_reason: 'La infección Husk se ha apoderado de tu cuerpo.'
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 1
+      g: 0
+      b: 0
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+  calyxanides:
+  - id: 49
+    name: '<color=#6600CC>Calyxanide</color>'
+    description: 'A powerful drug that cures you of a Husk Infection'
+    weight: 1
+    calyxanide_use_text: '<color=green><size=30>You feel a strange sensation in your throat, but it quickly passes.</size></color>'
+    use_hints: false
+    text_display_time: 10
+    spawn_properties:
+      limit: 2
+      dynamic_spawn_points:
+      - location: Inside939Cryo
+        chance: 50
+      - location: InsideHczArmory
+        chance: 50
+      - location: Inside079Armory
+        chance: 50
+      - location: Inside049Armory
+        chance: 50
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    has_custom_item_glow: true
+    custom_item_glow_color:
+      r: 0.4
+      g: 0
+      b: 0.8
+      a: 0.4980392
+    glow_range: 0.25
+    glow_intensity: 0.25
+    shadow_type: None
+    glow_offset:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 1
+      y: 1
+      z: 1
+custom_role_config:
+  husk_zombies:
+  - chance: 0
+    id: 56
+    max_health: 350
+    name: '<color=#FF0000>Husk</color>'
+    description: 'A diferencia de otros zombis, este es un Husk: nació cuando una infección empezó a crecer dentro de un jugador vivo hasta apoderarse de su cuerpo.'
+    custom_info: 'Husk'
+    role: Scp0492
+    start_team: Other
+    custom_abilities:
+    - name: 'Apply Husk Infection On Hit [Passive]'
+      description: 'Al golpear a un jugador tienes una probabilidad de infectarlo con la infección Husk, que se apoderará poco a poco de su cuerpo y lo convertirá en un Husk.'
+      # Probabilidad de infectar a un jugador, entre 0 y 100 %.
+      infection_chance: 50
+      # Tiempo que tarda la infección en alcanzar la fase 1, en segundos.
+      infection_stage_one_delay: 30
+      # Tiempo que tarda en alcanzar la fase 2 después de llegar a la fase 1, en segundos.
+      infection_stage_two_delay: 90
+      # Texto que se muestra al alcanzar la fase 2.
+      infection_text: '<color=red><size=30>Notas algo en la garganta. Intentas gritar, pero no sale ningún sonido.</size></color>'
+      use_hints: false
+      text_display_time: 10
+      husk_zombie_custom_role_id: 56
+      husk_take_over_death_reason: 'La infección Husk se ha apoderado de tu cuerpo.'
+      # Changing this will likely break your config.
+      ability_type: 'ApplyHuskInfection'
+    spawn_properties:
+      limit: 0
+      dynamic_spawn_points: []
+      static_spawn_points: []
+      role_spawn_points: []
+      room_spawn_points: []
+      locker_spawn_points: []
+    ability_usage: 'Tienes habilidades pasivas. No necesitan activarse con ningún botón.'
+    inventory: []
+    ammo: {}
+    min_players: 0
+    keep_position_on_spawn: false
+    keep_inventory_on_spawn: false
+    removal_kills_player: true
+    keep_role_on_death: false
+    keep_role_on_changing_role: false
+    broadcast:
+    # The broadcast content
+      content: ''
+      # The broadcast duration
+      duration: 10
+      # The broadcast type
+      type: Normal
+      # Indicates whether the broadcast should be shown
+      show: true
+    display_custom_item_messages: true
+    scale:
+      x: 1
+      y: 1
+      z: 1
+    gravity: null
+    custom_role_f_f_multiplier: {}
+    console_message: 'You have spawned as a custom role!'
+# SSSS Stuff
+ssss_enabled: true
+header: 'Vicious Vikki''s Husk Infection'
+husk_infection_text_id: 4

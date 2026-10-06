@@ -1,0 +1,56 @@
+AUDITORIA DE COMPATIBILIDAD - SERVIDOR 7777
+Fecha: 24/09/2026
+
+ESTADO
+- Servidor dedicado comprobado en ejecucion.
+- Una unica instancia dedicada detectada.
+- 15 DLL activas en Plugins\7777.
+- 19 DLL experimentales conservadas en staging, fuera de la carga.
+- 36 configuraciones 7777 revisadas.
+- No se encontraron tabuladores en los YAML revisados.
+
+ARQUITECTURA CONSERVADA
+- VVUP es el nucleo de gameplay.
+- VVUP.CustomItems es el unico catalogo activo de objetos.
+- Exiled.CustomItems.dll se conserva como dependencia fisica, pero su plugin
+  propio permanece desactivado.
+- CustomItemsAPI se conserva como API y sus hints automaticos permanecen
+  desactivados.
+- SubclassFramework y VVUP no registran Server-Specific Settings duplicados.
+- RemoteKeycard permanece activo en una unica ruta de configuracion.
+
+RIESGOS DETECTADOS Y DECISIONES
+- UsefulHints y UsefulHints.Addons: desactivados para evitar duplicar HUD,
+  hints, avisos y Server-Specific Settings.
+- Talky: desactivado por ser pre-release y por contener referencias de
+  compilacion a otra instalacion de Windows.
+- EffectKeeper: desactivado porque usa Harmony y modifica efectos globales.
+- ScpSwap y SCPUtils: desactivados para evitar intercambio de roles y comandos
+  paralelos durante la validacion de SubclassFramework.
+- XPSystem, StatsSystem y MvpSystem: desactivados para evitar persistencia,
+  comandos y resumenes duplicados hasta compilar contra las referencias exactas.
+- ScpsInfoDisplay y ServerWatermark: desactivados para evitar solapamientos
+  visuales con otros HUD.
+- AdminTools y VPNGuard: desactivados hasta probar sus comandos y reglas de
+  moderacion de forma aislada.
+- FacilityManagement, UCI, KillMessage, SCP-457 y Sunrise no se activan.
+
+PROBLEMAS DE COMPILACION
+- Los proyectos pendientes apuntan a .NET Framework 4.8/4.8.1 y el entorno
+  actual no tiene instalados todos los targeting packs.
+- Algunas fuentes contienen rutas absolutas de otros equipos.
+- Algunas referencias apuntan a versiones antiguas de EXILED/LabAPI.
+- No se debe certificar ningun DLL pendiente solo por tener una configuracion
+  generada.
+
+DUPLICADOS CONTROLADOS
+- Las copias encontradas en staging, backups y fuentes no se cargan.
+- No se detectaron DLL pendientes dentro de Plugins\7777.
+- Las DLL globales de EXILED se mantienen separadas de las especificas del
+  puerto para evitar copiar dependencias innecesariamente.
+
+VALIDACION PENDIENTE
+- Compilar individualmente contra las DLL reales del servidor.
+- Probar cada plugin aislado en un reinicio independiente.
+- Verificar comandos y experiencia visual dentro de una ronda real.
+- No activar varios plugins que modifiquen el mismo sistema en la misma prueba.

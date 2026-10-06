@@ -1,0 +1,14 @@
+is_enabled: true
+debug: false
+# Whether  Amnesia affects the usage of keycards.
+amnesia_matters: true
+# Whether this plugin works on generators.
+affect_generators: true
+# Whether this plugin works on Warhead's panel.
+affect_warhead_panel: true
+# Whether this plugin works on SCP lockers.
+affect_scp_lockers: true
+# Whether this plugin works on doors.
+affect_doors: true
+# Toggle on/off exceptions/errors in console. (Enable this before reporting ANY bugs)
+show_exceptions: false

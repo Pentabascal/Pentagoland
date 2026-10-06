@@ -1,0 +1,14 @@
+# Enable/Disable AdminTools.
+is_enabled: true
+# Whether or not to show logs used for debugging.
+debug: false
+# Should Staff be in God Mode when they forceclass to Tutorial?? Default: false
+god_tuts: false
+# Extending Command use for Getting a player (such as candy command and other parts of AdminTools). View the README on github for more info.
+extended_command_usage: true
+# Unjail all jailed players automatically when the round restarts? Default: false
+clear_jails_on_restart: false
+# Whether or not to disable RoundLock & LobbyLock when Waiting For Players
+disable_lock_on_waiting: false
+# Name of the jail command, useful if you're also using cedmod (or another plugin) that causes conflicts.
+jail_command_name: 'jail'

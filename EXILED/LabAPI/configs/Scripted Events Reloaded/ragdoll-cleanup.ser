@@ -1,0 +1,44 @@
+# Automatic cleanup and its Remote Admin test command use matching settings.
+# Add a matching test command for every future automatic SER event.
+# After editing a script, run serreload. Keep the countdown text matched to $warningLead.
+
+!-- OnEvent RoundStarted
+$initialWarningDelay = 6m
+$warningDuration = 5s
+$warningLead = 20s
+$timeAfterCleanup = 340s
+$warningText = "<align=center><size=28><b><color=#FFD166>◆</color> <color=#FFFFFF>Se borrarán los Ragdolls en 20 segundos</color> <color=#06D6A0>◆</color></b></size></align>"
+$cleanedText = "<align=center><size=28><b><color=#06D6A0>◆</color> <color=#FFFFFF>Se han limpiado los Ragdolls.</color> <color=#FFD166>◆</color></b></size></align>"
+
+wait $initialWarningDelay
+
+forever
+    Hint @all $warningDuration $warningText
+    wait $warningLead
+
+    Command "/cleanup corpses"
+    Command "/cleanup blood"
+    Command "/cleanup bulletholes"
+    Hint @all $warningDuration $cleanedText
+
+    wait $timeAfterCleanup
+end
+
+!-- CustomCommand forceragdollcleanup
+-- availableFor RemoteAdmin
+-- neededRank owner admin
+-- globalCooldown 20s
+-- description "Starts a 20-second test before cleaning corpses, blood, and bullet holes."
+$warningDuration = 5s
+$warningLead = 20s
+$warningText = "<align=center><size=28><b><color=#FFD166>◆</color> <color=#FFFFFF>Se borrarán los Ragdolls en 20 segundos</color> <color=#06D6A0>◆</color></b></size></align>"
+$cleanedText = "<align=center><size=28><b><color=#06D6A0>◆</color> <color=#FFFFFF>Se han limpiado los Ragdolls.</color> <color=#FFD166>◆</color></b></size></align>"
+
+Reply "Limpieza programada para dentro de 20 segundos."
+Hint @all $warningDuration $warningText
+wait $warningLead
+
+Command "/cleanup corpses"
+Command "/cleanup blood"
+Command "/cleanup bulletholes"
+Hint @all $warningDuration $cleanedText

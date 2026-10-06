@@ -1,0 +1,35 @@
+# Disabled by default: remove # from the filename to enable this script.
+# this script applies different effects for players in SCP-914
+# depending on the current setting of the knob
+# Requires SafeScripts: false so IsAllowed can change the 914 output in time.
+
+!-- OnEvent ProcessingPlayer
+-- require @evPlayer $evKnobSetting
+
+# downgrade the player's role 
+if $evKnobSetting is "Rough"
+    if {@evPlayer -> role} isnt "Scp0492"
+        SetRole @evPlayer Scp0492
+    else
+        Explode @evPlayer
+    end
+
+# damage and TP the player 
+elif $evKnobSetting is "Coarse"
+    Damage @evPlayer 50 "SCP-914 Coarse output"
+    
+    # make the player not teleport to the out section of scp 914, but a random room in HCZ
+    IsAllowed false
+    TPRoom @evPlayer HeavyContainment
+
+# no effect (can add your own)
+elif $evKnobSetting is "OneToOne"
+    
+# no effect (can add your own)
+elif $evKnobSetting is "Fine"
+
+# grant good effects
+elif $evKnobSetting is "VeryFine"
+    GiveEffect @evPlayer MovementBoost 20s 10
+    GiveEffect @evPlayer AntiScp207 10s
+end

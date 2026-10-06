@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Import Project="$(MSBuildThisFileDirectory)..\..\..\..\Directory.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)..\..\..\..\Directory.Build.props')" />
+
+    <!-- StyleCop Analyzers configuration -->
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\ScpSwap.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)\stylecop.json"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,75 @@
+is_enabled: true
+# Path to folder with extended configs.
+extended_config_path: 'C:\Users\migue\AppData\Roaming\EXILED\Configs\XPSystem'
+# Path to the legacy database file.
+legacy_default_database_path: 'C:\Users\migue\AppData\Roaming\EXILED\Configs\Players.db'
+# Print debug messages?
+debug: false
+# The function to calculate XP needed for a level. The inverse of the LevelFunction. Parameter: level. Available functions: https://learn.microsoft.com/en-us/dotnet/api/system.math?view=net-8.0#methods.
+x_p_function: 'Floor((level^a) * b)'
+# The function to calculate level for given XP. Parameter: xp. Available functions: https://learn.microsoft.com/en-us/dotnet/api/system.math?view=net-8.0#methods.
+level_function: 'Floor((xp/b)^(1/a))'
+# Additional parameters for the level/XP functions.
+additional_function_parameters:
+  a: 2
+  b: 100
+# Override XP required for specific levels. Key: level, Value: XP.
+level_x_p_overrides:
+  0: 0
+# Whether or not to pause XP gain when the round ends.
+x_p_after_round_end: true
+# A global XP multiplier.
+global_x_p_multiplier: 1
+# Whether or not the global XP multiplier should apply to XP given to people that aren't online (via commands, etc.).
+global_x_p_multiplier_for_non_online: true
+# Whether or not the global XP multiplier should apply to XP removed.
+x_p_multiplier_for_x_p_loss: false
+# Path to the event configs folder, relative to the ExtendedConfigPath.
+event_configs_folder: 'XPEventConfigs'
+# Whether or not to enable the .xp get (client) command
+enable_get_x_p_command: true
+# Whether or not to enable the .xp leaderboard (client) command
+enable_leaderboard_command: true
+# The maximum amount of entries that may be retrieved with the client leaderboard command.
+leaderboard_max_length: 10
+# Additional update delay for XP Display providers. Increasing may help when it only works for some players.
+extra_delay: 0
+# The message to show to players who have DNT enabled.
+d_n_t_message: |2-
+
+
+  <voffset=2.8em><size=22><color=#7dd3fc><b>No podemos rastrear tus estadísticas porque tienes DNT activado.</b></color></size></voffset>
+# Whether or not to format a message according to a template when adding XP.
+use_added_x_p_template: true
+# When enabled, template used for messages that modify XP. Parameters: %message%, %currentxp%, %currentlevel%, %neededxp%, %nextlevel%.Also: %progressbarfilled%, %progressbarremaining%. Using them requires the same extra calculations as UseTotalXP = false.
+added_x_p_template: '<color=#8be9fd>%message%</color> <color=#b8f2b0>(%currentxp% / %neededxp%)</color>'
+# The characters to use for the progress bar, if present in the AddedXPTemplate.
+added_x_p_progress_bar_chars: '██'
+# The total length (in chars) of the progress bar to be generated.
+added_x_p_progress_bar_length: 20
+# Whether or not to use the total XP instead of only the XP required for the next level. Requires extra calculations if false and progress bar is not present in AddedXPTemplate.
+use_total_x_p: false
+# Whether or not to show a message to a player if they advance a level.
+show_added_l_v_l: true
+# Whether or not to show the XP gain message on level up. If false, only the level will be shown.
+show_x_p_on_level_up: true
+# When enabled, what message to show if player advances a level.
+added_l_v_l_message: '<color=#ffd166>¡NIVEL %level% alcanzado!</color>'
+# Decide how messages (ex. XP gain, level up) are displayed.
+display_mode: Hint
+# The duration of the message, if applicable.
+display_duration: 5
+# Appended to all messages.
+text_prefix: ''
+# Prepended to all messages.
+text_suffix: ''
+# An alias for the client to view their own XP. Empty to disable.
+client_get_command_alias: 'nivel'
+# An alias for the client to view the leaderboard. Empty to disable.
+client_leaderboard_command_alias: 'topxp'
+# The assembly qualified type name of the storage provider to use (default: XPSystem.BuiltInProviders.LiteDB.LiteDBProvider) (not assembly qualified because it's built-in, unlike yours).Available, but I will not help you with: XPSystem.BuiltInProviders.MySql.MySqlProvider
+storage_provider: 'XPSystem.BuiltInProviders.LiteDB.LiteDBProvider'
+# The assembly qualified type names of XP display providers to load, in addition to the built-in rank and nick ones.
+additional_display_providers: []
+# Prints used keys to console at end of round. Not recommended to keep on - performance.
+log_x_p_gained_methods: false

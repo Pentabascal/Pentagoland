@@ -1,0 +1,38 @@
+﻿using LabApi.Features.Wrappers;
+using PlayerRoles;
+using SER.Code.ArgumentSystem.Arguments;
+using SER.Code.ArgumentSystem.BaseArguments;
+using SER.Code.Extensions;
+using SER.Code.MethodSystem.BaseMethods.Synchronous;
+using SER.Code.MethodSystem.Structures;
+
+namespace SER.Code.MethodSystem.Methods.MapMethods;
+
+public class CleanupRagdollsMethod : SynchronousMethod, IEssential
+{
+    public override string Description => "Destroys ragdolls.";
+
+    public override Argument[] ExpectedArguments { get; } =
+    [
+        new EnumArgument<RoleTypeId>("roleToRemove")
+        {
+            DefaultValue = new(RoleTypeId.None, "all"),
+            Description = "Do not provide this argument to destroy all ragdolls."
+        }
+    ];
+    
+    public override void Execute()
+    {
+        var roleToRemove = Args.GetEnum<RoleTypeId>("roleToRemove");
+        IEnumerable<Ragdoll> ragdolls = Ragdoll.List;
+        if (roleToRemove != RoleTypeId.None)
+        {
+            ragdolls = ragdolls.Where(rd => rd.Role == roleToRemove);
+        }
+
+        ragdolls = ragdolls.Where(rd =>
+            rd.Role != RoleTypeId.Scp0492 && rd.Base.Info.ExistenceTime >= 10f);
+        
+        ragdolls.ForEachItem(rd => rd.Destroy());
+    }
+}

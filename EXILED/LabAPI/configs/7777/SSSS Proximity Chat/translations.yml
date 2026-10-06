@@ -1,0 +1,18 @@
+chat_header: Chat de proximidad
+personalization_header: Ajustes del volumen del chat de proximidad
+toggle_label: Activar o desactivar el chat de proximidad como SCP
+toggle_hint: Activa o desactiva el chat de proximidad cuando juegas como SCP.
+input_method_label: Método de activación
+input_method_hint: 'Elige cómo usar el chat de proximidad: pulsa la tecla una vez para activarlo o mantenla pulsada mientras lo usas.'
+toggle: Pulsar para activar o desactivar
+hold: Mantener pulsada
+mute_label: Chat de proximidad de otros jugadores
+mute_hint: Activa o desactiva el audio del chat de proximidad de otros jugadores SCP.
+audible: Audible
+muted: Silenciado
+visibility_label: Visibilidad de los ajustes de volumen
+shown: Visible
+hidden: Oculto
+master_volume_label: Volumen general
+master_volume_hint: Ajusta el volumen general del chat de proximidad SCP.
+volume_for: 'Volumen de: '

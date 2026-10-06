@@ -1,0 +1,19 @@
+type: 'XPSystem.Config.Events.Types.Custom.XPECLimitedDictFile`1[[Exiled.API.Enums.DoorType, Exiled.API, Version=9.14.2.0, Culture=neutral, PublicKeyToken=null]], XPSystem, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null'
+# -------- Don't edit above this line unless you know what you are doing!!!!! Will break config!!!!!!! --------
+AlwaysAllow: false
+ZeroXPGainTriggers: false
+LimitUnified: true
+RoundLimit: 10
+LifeLimit: -1
+Cooldown: 30
+Default:
+# The amount of XP to give. Can be negative.
+  amount: 0
+  # The message to show. Leave empty for none.
+  translation: You opened a door!
+Items:
+  GateA:
+  # The amount of XP to give. Can be negative.
+    amount: 5
+    # The message to show. Leave empty for none.
+    translation: ''

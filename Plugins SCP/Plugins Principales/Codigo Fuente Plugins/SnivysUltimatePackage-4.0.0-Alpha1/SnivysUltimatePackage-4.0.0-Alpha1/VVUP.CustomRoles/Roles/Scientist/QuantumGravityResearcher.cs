@@ -1,0 +1,40 @@
+using System.Collections.Generic;
+using Exiled.API.Features.Attributes;
+using Exiled.API.Features.Spawn;
+using Exiled.CustomRoles.API.Features;
+using PlayerRoles;
+using VVUP.CustomRoles.API;
+using YamlDotNet.Serialization;
+
+namespace VVUP.CustomRoles.Roles.Scientist
+{
+    public class QuantumGravityResearcher : CustomRole, ICustomRole
+    {
+        public int Chance { get; set; } = 15;
+        public StartTeam StartTeam { get; set; } = StartTeam.Scientist;
+        public override uint Id { get; set; } = 62;
+        public override RoleTypeId Role { get; set; } = RoleTypeId.Scientist;
+        public override int MaxHealth { get; set; } = 100;
+        public override string Name { get; set; } = "<color=#FFFF7C>Investigador de gravedad cuántica</color>";
+        public override string Description { get; set; } = "Científico que investiga la gravedad cuántica.";
+        public override string CustomInfo { get; set; } = "Investigador de gravedad cuántica";
+
+        public override SpawnProperties SpawnProperties { get; set; } = new()
+        {
+            Limit = 1,
+        };
+        
+        public override List<string> Inventory { get; set; } = new()
+        {
+            "<color=#6600CC>Lunar Lob</color>",
+            "<color=#6600CC>Nebula Carapace</color>",
+            ItemType.Painkillers.ToString(),
+            ItemType.KeycardJanitor.ToString()
+        };
+        public override string AbilityUsage { get; set; } = "No tienes habilidades personalizadas.";
+        [YamlIgnore] 
+        public override float SpawnChance { get; set; } = 0;
+        [YamlIgnore] 
+        public override bool IgnoreSpawnSystem { get; set; } = true;
+    }
+}

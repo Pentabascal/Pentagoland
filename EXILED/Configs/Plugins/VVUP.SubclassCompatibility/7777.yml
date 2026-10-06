@@ -1,0 +1,16 @@
+is_enabled: true
+debug: false
+# Entrega objetos personalizados a subclases compatibles.
+enable_extra_subclass_items: true
+# Seconds to wait after spawning so SubclassFramework can finish applying the subclass.
+apply_delay: 1.20000005
+# Snivy CustomItems ID for the Demolisher launcher.
+demolisher_launcher_id: 46
+# Snivy CustomItems ID for the MTF sniper.
+mtf_sniper_id: 58
+# Objeto para el Guardia Radiotelegrafista.
+radio_operator_item_id: 47
+# Objeto para el Cientifico Bioquimico.
+biochemist_item_id: 56
+# Objeto para el MTF Escudero.
+mtf_shield_item_id: 55

@@ -1,0 +1,5 @@
+# The ID of the server specific setting, only change this if it conflicts with another plugin.
+server_specific_setting_id: 333
+# The space between each timer, in Ems.
+space_between_timers: 16
+debug: false

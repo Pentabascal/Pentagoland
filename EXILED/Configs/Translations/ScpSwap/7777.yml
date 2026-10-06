@@ -1,0 +1,90 @@
+﻿# ColecciÃ³n de nombres personalizados con su rol correspondiente.
+translatable_swaps:
+  173: Scp173
+  peanut: Scp173
+  939: Scp939
+  079: Scp079
+  79: Scp079
+  computer: Scp079
+  106: Scp106
+  larry: Scp106
+  096: Scp096
+  96: Scp096
+  shyguy: Scp096
+  049: Scp049
+  49: Scp049
+  doctor: Scp049
+  0492: Scp0492
+  492: Scp0492
+  zombie: Scp0492
+  3114: Scp3114
+  skeleton: Scp3114
+# Mensaje mostrado a todos los SCP al comenzar la ronda.
+start_message:
+  content: '<color=yellow><b>Â¿SabÃ­as que puedes intercambiar clase con otros SCP?</b></color> Escribe <color=orange>.scpswap (nÃºmero del rol)</color> en tu consola del juego (no en RA) para intercambiar.'
+  duration: 15
+  type: Normal
+  show: true
+# Broadcast para el destinatario de una solicitud de intercambio.
+request_broadcast:
+  content: |-
+    <i>Tienes una solicitud de intercambio de SCP.
+    Revisa tu consola pulsando [`] o [~]</i>
+  duration: 5
+  type: Normal
+  show: true
+# Mensaje de consola para el destinatario de una solicitud.
+request_console_message:
+  message: 'Has recibido una solicitud de intercambio de $SenderName, que es $RoleName. Â¿Quieres intercambiar con Ã©l? Escribe ".scpswap accept" para aceptar o ".scpswap decline" para rechazar.'
+  color: 'yellow'
+# Mensaje cuando el intercambio tiene Ã©xito.
+swap_successful:
+  message: 'Â¡Intercambio realizado con Ã©xito!'
+  color: 'green'
+# Mensaje cuando la solicitud expira.
+timeout_receiver:
+  message: 'Tu solicitud de intercambio ha caducado.'
+  color: 'red'
+# Mensaje cuando el remitente no responde.
+timeout_sender:
+  message: 'El jugador no respondiÃ³ a tu solicitud.'
+  color: 'red'
+# Instancias de comandos a traducir.
+command_translations:
+  accept:
+    command: accept
+    aliases:
+    - 'yes'
+    - 'y'
+    description: 'Acepta una solicitud de intercambio activa.'
+  cancel:
+    command: cancel
+    aliases:
+    - 'c'
+    description: 'Cancela una solicitud de intercambio activa.'
+  decline:
+    command: decline
+    aliases:
+    - 'no'
+    - 'd'
+    description: 'Rechaza una solicitud de intercambio activa.'
+  list:
+    command: list
+    aliases:
+    - 'l'
+    description: 'Lista todos los roles intercambiables vÃ¡lidos.'
+executor_isnt_player: 'Este comando debe ejecutarse en el juego.'
+round_isnt_started: 'La ronda todavÃ­a no ha comenzado.'
+swap_period_ended: 'El periodo de intercambio ha terminado.'
+allow_user_swap_by_permission: 'No tienes permisos para usar este comando.'
+not_an_scp: 'Debes ser un SCP para usar este comando.'
+already_has_pending_request: 'Â¡Ya tienes una solicitud pendiente!'
+cannot_swap_with_yourself: 'No puedes intercambiar contigo mismo.'
+cannot_swap_off_this_scp: 'No tienes permiso para salir de este SCP.'
+request_sent: 'Â¡Solicitud de intercambio enviada!'
+cannot_find_role: 'No se pudo encontrar el rol indicado.'
+successful_swap: 'Intercambio realizado correctamente.'
+cannot_find_player_with_role: 'No se encontrÃ³ al jugador con el rol solicitado.'
+no_pending_request: 'No tienes ninguna solicitud pendiente.'
+swap_request_cancelled: 'Solicitud de intercambio cancelada.'
+
