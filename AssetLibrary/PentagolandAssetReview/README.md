@@ -25,7 +25,8 @@ BuildReview.cmd
 
 The generated gallery is `Assets/Generated/AssetReviewGallery.unity`; review
 prefabs are under `Assets/Generated/Prefabs`; the CSV and summary are under
-`Assets/Reports`. Failed model imports are written to the report and cause the
+`Assets/Reports`. These outputs are intentionally ignored by Git and are
+rebuilt locally by this command. Failed model imports are written to the report and cause the
 batch invocation to fail. Render FBX files and textures are copied into
 `Assets/SourceAssets`; optional bounds-only collision FBX files are copied to
 `Assets/CollisionProxies_Unassigned`. The sync script overwrites changed or

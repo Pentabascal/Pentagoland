@@ -38,6 +38,9 @@ Desktop.ini
 AssetLibrary/PentagolandAssetReview/Library/
 AssetLibrary/PentagolandAssetReview/Temp/
 AssetLibrary/PentagolandAssetReview/Logs/
+AssetLibrary/PentagolandAssetReview/Assets/Generated/
+AssetLibrary/PentagolandAssetReview/Assets/Reports/
+AssetLibrary/PentagolandAssetReview/ProjectSettings/ProjectAuditorSettings.asset
 AssetLibrary/PentagolandAssetReview/Obj/
 AssetLibrary/PentagolandAssetReview/Build/
 AssetLibrary/PentagolandAssetReview/Builds/
