@@ -2,6 +2,7 @@
 setlocal
 set "PROJECT_DIR=%~dp0"
 set "UNITY_VERSION=6000.6.4f1"
+set "PACKAGE_PATH=%PROJECT_DIR%..\UnityAssetPackage\Pentagoland_Assets.unitypackage"
 
 if not defined UNITY_EDITOR set "UNITY_EDITOR=C:\Program Files\Unity\Hub\Editor\%UNITY_VERSION%\Editor\Unity.exe"
 if not exist "%UNITY_EDITOR%" (
@@ -43,13 +44,13 @@ if errorlevel 1 (
     exit /b 1
 )
 
-powershell.exe -NoProfile -NonInteractive -Command "$report = Import-Csv -LiteralPath '%PROJECT_DIR%Assets\Reports\unity-import-report.csv'; $failed = @($report | Where-Object { $_.Status -ne 'OK' }); $summary = Get-Content -LiteralPath '%PROJECT_DIR%Assets\Reports\unity-import-summary.txt' -Raw; if ($report.Count -eq 0 -or $failed.Count -ne 0 -or $summary -notmatch 'Failures: 0' -or $summary -notmatch ('Successful imports: ' + $report.Count)) { Write-Error 'Unity import report is missing or contains failed models.'; exit 1 }"
+powershell.exe -NoProfile -NonInteractive -Command "$expectedImports = 113; $report = Import-Csv -LiteralPath '%PROJECT_DIR%Assets\Reports\unity-import-report.csv'; $collisions = Import-Csv -LiteralPath '%PROJECT_DIR%Assets\Reports\unity-collision-report.csv'; $failed = @($report | Where-Object { $_.Status -ne 'OK' }); $failedCollisions = @($collisions | Where-Object { $_.Status -ne 'OK' -or $_.EnabledByDefault -ne 'false' }); $summary = Get-Content -LiteralPath '%PROJECT_DIR%Assets\Reports\unity-import-summary.txt' -Raw; $materials = @(Get-ChildItem -LiteralPath '%PROJECT_DIR%Assets\Generated\Materials' -Filter '*.mat' -File); $package = Get-Item -LiteralPath '%PACKAGE_PATH%' -ErrorAction SilentlyContinue; if ($report.Count -ne $expectedImports -or $collisions.Count -ne $expectedImports -or $failed.Count -ne 0 -or $failedCollisions.Count -ne 0 -or $materials.Count -ne 5 -or $null -eq $package -or $package.Length -eq 0 -or $summary -notmatch 'Failures: 0' -or $summary -notmatch ('Render FBX: ' + $expectedImports) -or $summary -notmatch ('Successful imports: ' + $expectedImports) -or $summary -notmatch ('Collision proxy FBX: ' + $expectedImports) -or $summary -notmatch 'URP material presets: 5') { Write-Error 'Expected 113 successful imports, 113 disabled collision prefabs, five URP materials, and a non-empty Unity package.'; exit 1 }"
 if errorlevel 1 (
     echo Asset review validation failed. See "%PROJECT_DIR%Assets\Reports".
     popd
     exit /b 1
 )
 
-echo Unity %UNITY_VERSION% imported all render models. Review the report in Assets\Reports.
+echo Unity %UNITY_VERSION% imported the asset library. Import "%PACKAGE_PATH%" into your Unity project; inspect Assets\Reports first.
 popd
 exit /b 0

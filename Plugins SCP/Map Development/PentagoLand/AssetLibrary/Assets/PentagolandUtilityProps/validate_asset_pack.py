@@ -9,7 +9,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 MANIFEST_PATH = os.path.join(ROOT, "asset_manifest.json")
 BLEND_PATH = os.path.join(ROOT, "PentagolandUtilityProps.blend")
 TEXTURES_PATH = os.path.join(ROOT, "Textures")
-EXPECTED_ASSET_COUNT = 77
+EXPECTED_ASSET_COUNT = 109
 
 
 def validate_render_file(filepath, name, extension):
@@ -61,8 +61,13 @@ def validate_collision_file(filepath, name):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     bpy.ops.import_scene.fbx(filepath=filepath)
     collision_meshes = [obj for obj in bpy.data.objects if obj.type == "MESH"]
-    if len(collision_meshes) != 1 or len(collision_meshes[0].data.polygons) == 0:
-        raise RuntimeError(f"{name} collision proxy should import as one non-empty mesh.")
+    if not 1 <= len(collision_meshes) <= 6:
+        raise RuntimeError(f"{name} collision proxy should contain one to six separate box meshes.")
+    for mesh in collision_meshes:
+        if len(mesh.data.polygons) != 6 or any(
+            not math.isfinite(component) or component <= 0 for component in mesh.dimensions
+        ):
+            raise RuntimeError(f"{name} collision proxy contains a non-box or degenerate component.")
 
 
 def main():
@@ -76,8 +81,14 @@ def main():
         for name in os.listdir(TEXTURES_PATH)
         if name.lower().endswith(".png")
     ] if os.path.isdir(TEXTURES_PATH) else []
-    if len(texture_files) < 10 or any(os.path.getsize(path) == 0 for path in texture_files):
-        raise RuntimeError("Expected ten non-empty packed base-color and normal textures.")
+    texture_names = [os.path.basename(path) for path in texture_files]
+    if (
+        len(texture_files) < 30
+        or not any(name.endswith("_Normal.png") for name in texture_names)
+        or not any(name.endswith("_Roughness.png") for name in texture_names)
+        or any(os.path.getsize(path) == 0 for path in texture_files)
+    ):
+        raise RuntimeError("Expected non-empty base-color, normal, and roughness texture maps.")
 
     if not os.path.isfile(BLEND_PATH):
         raise RuntimeError(f"Missing editable Blender source: {BLEND_PATH}")

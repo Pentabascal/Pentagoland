@@ -2,17 +2,21 @@ import math
 import json
 import os
 import re
+import sys
 
 import bpy
 from mathutils import Vector
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(ROOT))
+from asset_pipeline import collision_source_objects, create_collision_proxy_parts, make_material as make_pbr_material
+
+
 BLEND_PATH = os.path.join(ROOT, "PentagolandUtilityProps.blend")
 SCHEMATICS_ROOT = os.path.abspath(os.path.join(ROOT, "..", "..", "Samples", "Schematics"))
 TEXTURES_ROOT = os.path.join(ROOT, "Textures")
-EXPECTED_ASSET_COUNT = 77
-NORMAL_IMAGE = None
+EXPECTED_ASSET_COUNT = 109
 SCHEMATIC_COLOR_MAP = {
     "#F4A6C8": "#D18A3B",
     "#B99AEF": "#526F78",
@@ -644,6 +648,248 @@ POST_COMPLETION_KIT = {
     ],
 }
 
+EXPANSION_KIT = {
+    "HazmatSuitLocker": [
+        ("box", "Armored carcass", (0, 0, 1.08), (1.12, 0.72, 2.16), "#18212B"),
+        ("box", "Left storage door", (-0.27, -0.38, 1.08), (0.48, 0.035, 1.90), "#35434D"),
+        ("box", "Right storage door", (0.27, -0.38, 1.08), (0.48, 0.035, 1.90), "#293744"),
+        ("box", "Inspection window", (0, -0.41, 1.67), (0.30, 0.02, 0.32), "#A8E8FF"),
+        ("box", "Ventilation grille", (0, -0.41, 0.47), (0.58, 0.02, 0.20), "#71808A"),
+        ("box", "Seal status strip", (0, -0.41, 1.39), (0.34, 0.02, 0.055), "#68E0A7"),
+        ("box", "Hazard band", (0, -0.41, 1.94), (0.72, 0.02, 0.08), "#F4A6C8"),
+        ("box", "Reinforced plinth", (0, 0, 0.08), (1.20, 0.80, 0.16), "#71808A"),
+    ],
+    "MobileAirScrubber": [
+        ("box", "Filter housing", (0, 0, 0.78), (0.86, 0.62, 1.40), "#18212B"),
+        ("box", "Intake grille", (0, -0.32, 0.79), (0.62, 0.025, 0.78), "#71808A"),
+        ("box", "Exhaust hood", (0, 0.04, 1.54), (0.52, 0.42, 0.12), "#293744"),
+        ("box", "Control face", (0.27, -0.33, 1.32), (0.19, 0.035, 0.38), "#35434D"),
+        ("box", "Filter display", (0.27, -0.35, 1.43), (0.12, 0.015, 0.075), "#111923"),
+        ("cylinder", "Pressure gauge", (-0.28, -0.34, 1.34), (0.14, 0.14, 0.035), "#D7E3EB"),
+        ("box", "Lower access panel", (0, -0.33, 0.28), (0.50, 0.025, 0.22), "#293744"),
+        ("box", "Wheel axle housing", (0, -0.20, 0.10), (0.68, 0.16, 0.20), "#18212B"),
+    ],
+    "SpecimenRefrigerator": [
+        ("box", "Insulated cabinet", (0, 0, 1.06), (1.02, 0.78, 2.12), "#18212B"),
+        ("box", "Cold storage door", (0, -0.41, 1.08), (0.86, 0.045, 1.82), "#35434D"),
+        ("box", "Observation pane", (0, -0.44, 1.36), (0.56, 0.025, 0.80), "#A8E8FF"),
+        ("box", "Control module", (0, -0.44, 1.93), (0.48, 0.035, 0.20), "#293744"),
+        ("box", "Temperature display", (0, -0.47, 1.95), (0.27, 0.015, 0.08), "#111923"),
+        ("box", "Door pull", (0.35, -0.47, 1.11), (0.045, 0.035, 0.44), "#71808A"),
+        ("box", "Compressor plinth", (0, 0, 0.08), (1.08, 0.84, 0.16), "#71808A"),
+        ("box", "Warning marker", (-0.28, -0.45, 0.49), (0.18, 0.02, 0.08), "#F4A6C8"),
+    ],
+    "LaboratoryFumeHood": [
+        ("box", "Lower storage base", (0, 0.04, 0.48), (1.42, 0.84, 0.96), "#18212B"),
+        ("box", "Work chamber back", (0, 0.34, 1.44), (1.32, 0.14, 0.96), "#35434D"),
+        ("box", "Left chamber wall", (-0.62, 0, 1.42), (0.10, 0.58, 1.02), "#71808A"),
+        ("box", "Right chamber wall", (0.62, 0, 1.42), (0.10, 0.58, 1.02), "#71808A"),
+        ("box", "Sash frame", (0, -0.27, 1.55), (1.18, 0.06, 0.66), "#293744"),
+        ("box", "Safety glass sash", (0, -0.31, 1.54), (0.96, 0.018, 0.50), "#A8E8FF"),
+        ("box", "Exhaust canopy", (0, 0.02, 2.02), (1.44, 0.68, 0.20), "#18212B"),
+        ("box", "Flow display", (0.48, -0.44, 1.15), (0.22, 0.025, 0.14), "#111923"),
+        ("box", "Work surface", (0, -0.01, 0.96), (1.30, 0.62, 0.08), "#71808A"),
+    ],
+    "EyewashStation": [
+        ("box", "Floor pedestal", (0, 0.05, 0.12), (0.62, 0.44, 0.20), "#18212B"),
+        ("cylinder", "Supply riser", (0, 0.05, 0.82), (0.12, 0.12, 1.28), "#71808A"),
+        ("box", "Rinse basin", (0, -0.03, 1.30), (0.72, 0.44, 0.16), "#35434D"),
+        ("cylinder", "Left rinse head", (-0.20, -0.12, 1.48), (0.18, 0.18, 0.06), "#A8E8FF"),
+        ("cylinder", "Right rinse head", (0.20, -0.12, 1.48), (0.18, 0.18, 0.06), "#A8E8FF"),
+        ("box", "Activation paddle", (0, -0.22, 1.05), (0.36, 0.06, 0.08), "#F4A6C8"),
+        ("box", "Identification plate", (0, -0.20, 0.63), (0.32, 0.025, 0.14), "#68E0A7"),
+    ],
+    "SecurityTurnstile": [
+        ("box", "Armored housing", (0, 0, 0.72), (0.60, 0.54, 1.44), "#18212B"),
+        ("box", "Control deck", (0, 0, 1.48), (0.76, 0.68, 0.12), "#35434D"),
+        ("cylinder", "Rotating hub", (0, 0, 1.02), (0.26, 0.26, 0.20), "#71808A"),
+        ("box", "Turnstile arm one", (0.48, 0, 0.96), (0.96, 0.07, 0.08), "#293744"),
+        ("box", "Turnstile arm two", (-0.24, 0, 0.96), (0.08, 0.07, 0.96), "#293744"),
+        ("box", "Turnstile arm three", (-0.24, 0, 0.96), (0.68, 0.07, 0.08), "#293744"),
+        ("box", "Reader face", (0, -0.29, 1.28), (0.25, 0.025, 0.28), "#111923"),
+        ("box", "Access status lamp", (0, -0.31, 1.32), (0.11, 0.015, 0.045), "#68E0A7"),
+        ("box", "Floor anchor plate", (0, 0, 0.06), (0.88, 0.78, 0.12), "#71808A"),
+    ],
+    "RollingToolCabinet": [
+        ("box", "Cabinet carcass", (0, 0, 0.83), (0.82, 0.62, 1.52), "#18212B"),
+        ("box", "Upper drawer", (0, -0.32, 1.35), (0.70, 0.035, 0.27), "#35434D"),
+        ("box", "Middle drawer", (0, -0.32, 1.02), (0.70, 0.035, 0.27), "#293744"),
+        ("box", "Lower drawer", (0, -0.32, 0.69), (0.70, 0.035, 0.27), "#35434D"),
+        ("box", "Top work tray", (0, 0, 1.63), (0.92, 0.72, 0.10), "#71808A"),
+        ("box", "Drawer handles", (0, -0.36, 1.35), (0.48, 0.035, 0.035), "#A8E8FF"),
+        ("box", "Wheel assembly", (0, 0, 0.14), (0.68, 0.20, 0.28), "#111923"),
+        ("box", "Inventory plate", (0, -0.35, 0.54), (0.34, 0.02, 0.08), "#F4A6C8"),
+    ],
+    "ContainmentPressureGauge": [
+        ("box", "Wall mounting plate", (0, 0.12, 0.82), (0.70, 0.18, 1.42), "#18212B"),
+        ("cylinder", "Gauge housing", (0, -0.02, 1.13), (0.52, 0.52, 0.16), "#293744"),
+        ("cylinder", "Bezel ring", (0, -0.12, 1.13), (0.44, 0.44, 0.05), "#71808A"),
+        ("cylinder", "Dial face", (0, -0.15, 1.13), (0.36, 0.36, 0.025), "#D7E3EB"),
+        ("box", "Needle", (0.03, -0.18, 1.22), (0.02, 0.014, 0.18), "#F0525F"),
+        ("cylinder", "Pipe connector", (0, 0.12, 0.35), (0.14, 0.14, 0.48), "#71808A"),
+        ("box", "Limit marker", (0.15, -0.18, 1.25), (0.10, 0.015, 0.045), "#F4A6C8"),
+        ("box", "Calibration plate", (0, -0.03, 0.61), (0.32, 0.025, 0.11), "#A8E8FF"),
+    ],
+    "WallEmergencyShower": [
+        ("box", "Wall manifold", (0, 0.12, 1.96), (0.88, 0.20, 0.24), "#18212B"),
+        ("cylinder", "Overhead shower head", (0, -0.13, 1.76), (0.32, 0.32, 0.10), "#71808A"),
+        ("box", "Left support rail", (-0.36, 0.12, 1.22), (0.08, 0.08, 1.02), "#35434D"),
+        ("box", "Right support rail", (0.36, 0.12, 1.22), (0.08, 0.08, 1.02), "#35434D"),
+        ("box", "Pull handle crossbar", (0, 0.02, 1.54), (0.76, 0.08, 0.08), "#F0525F"),
+        ("box", "Activation chain", (0.28, 0, 1.38), (0.035, 0.035, 0.26), "#71808A"),
+        ("box", "Foot basin", (0, 0.08, 0.12), (0.88, 0.68, 0.20), "#293744"),
+        ("box", "Instruction marker", (-0.48, 0.02, 1.76), (0.12, 0.08, 0.18), "#68E0A7"),
+    ],
+    "BiometricKeypad": [
+        ("box", "Armored wall housing", (0, 0, 0.65), (0.42, 0.16, 1.18), "#18212B"),
+        ("box", "Faceplate", (0, -0.09, 0.65), (0.34, 0.025, 1.06), "#35434D"),
+        ("box", "Status display", (0, -0.12, 1.00), (0.24, 0.025, 0.18), "#111923"),
+        ("box", "Fingerprint reader", (0, -0.12, 0.70), (0.20, 0.04, 0.18), "#A8E8FF"),
+        ("box", "Keypad cluster", (0, -0.13, 0.43), (0.26, 0.02, 0.12), "#71808A"),
+        ("box", "Tamper indicator", (0, -0.13, 0.25), (0.12, 0.018, 0.035), "#F4A6C8"),
+        ("box", "Mounting lug", (0, 0.08, 0.12), (0.24, 0.10, 0.10), "#293744"),
+    ],
+    "PortableRadioCharger": [
+        ("box", "Charger base", (0, 0, 0.42), (0.76, 0.52, 0.82), "#18212B"),
+        ("box", "Left docking bay", (-0.18, -0.10, 0.82), (0.26, 0.30, 0.10), "#293744"),
+        ("box", "Right docking bay", (0.18, -0.10, 0.82), (0.26, 0.30, 0.10), "#293744"),
+        ("box", "Left radio handset", (-0.18, -0.05, 1.10), (0.16, 0.18, 0.48), "#35434D"),
+        ("box", "Right radio handset", (0.18, -0.05, 1.10), (0.16, 0.18, 0.48), "#35434D"),
+        ("box", "Status panel", (0, -0.28, 0.50), (0.38, 0.025, 0.18), "#111923"),
+        ("box", "Power indicator", (-0.12, -0.30, 0.52), (0.05, 0.015, 0.035), "#68E0A7"),
+        ("box", "Carry handle", (0, 0.20, 0.91), (0.46, 0.07, 0.08), "#71808A"),
+    ],
+    "FloorCableManifold": [
+        ("box", "Armored floor housing", (0, 0, 0.24), (1.42, 0.96, 0.48), "#18212B"),
+        ("box", "Service cover", (0, -0.01, 0.50), (1.20, 0.76, 0.06), "#35434D"),
+        ("box", "Left trunk channel", (-0.36, 0, 0.59), (0.18, 0.16, 0.18), "#71808A"),
+        ("box", "Center trunk channel", (0, 0, 0.59), (0.18, 0.16, 0.18), "#293744"),
+        ("box", "Right trunk channel", (0.36, 0, 0.59), (0.18, 0.16, 0.18), "#71808A"),
+        ("box", "Hazard edge stripe", (0, -0.42, 0.54), (0.86, 0.025, 0.045), "#F4A6C8"),
+        ("box", "Locking lug pair", (0, 0.34, 0.55), (1.04, 0.08, 0.04), "#A8E8FF"),
+    ],
+    "CeilingCableJunction": [
+        ("box", "Ceiling mounting plate", (0, 0, 0.06), (0.74, 0.60, 0.12), "#18212B"),
+        ("box", "Junction enclosure", (0, 0, -0.22), (0.60, 0.48, 0.44), "#35434D"),
+        ("box", "Inspection cover", (0, -0.25, -0.22), (0.42, 0.025, 0.30), "#293744"),
+        ("box", "Left cable entry", (-0.30, 0.05, -0.22), (0.16, 0.14, 0.18), "#71808A"),
+        ("box", "Right cable entry", (0.30, 0.05, -0.22), (0.16, 0.14, 0.18), "#71808A"),
+        ("box", "Service marker", (0, -0.27, -0.12), (0.20, 0.015, 0.045), "#F4A6C8"),
+    ],
+    "ReactorCoolantPump": [
+        ("box", "Skid foundation", (0, 0, 0.10), (1.40, 0.92, 0.20), "#18212B"),
+        ("box", "Pump motor", (-0.30, 0, 0.72), (0.70, 0.62, 0.84), "#35434D"),
+        ("cylinder", "Motor end cap", (-0.30, -0.33, 0.72), (0.48, 0.48, 0.08), "#71808A"),
+        ("cylinder", "Pump casing", (0.34, 0, 0.72), (0.62, 0.54, 0.52), "#293744"),
+        ("cylinder", "Coolant inlet flange", (0.34, 0, 1.06), (0.42, 0.42, 0.14), "#71808A"),
+        ("cylinder", "Coolant outlet", (0.34, -0.30, 0.72), (0.38, 0.16, 0.38), "#71808A"),
+        ("box", "Thermal shield", (-0.30, -0.34, 0.72), (0.42, 0.025, 0.48), "#293744"),
+        ("box", "Service tag", (0.12, -0.35, 0.49), (0.22, 0.025, 0.12), "#F4A6C8"),
+    ],
+    "WallFireAlarmPull": [
+        ("box", "Armored wall backplate", (0, 0, 0.58), (0.42, 0.16, 0.82), "#18212B"),
+        ("box", "Pull station body", (0, -0.10, 0.58), (0.34, 0.035, 0.70), "#B8323A"),
+        ("box", "Protective cover", (0, -0.13, 0.62), (0.26, 0.025, 0.30), "#A8E8FF"),
+        ("box", "Pull handle", (0, -0.17, 0.44), (0.18, 0.04, 0.08), "#F4A6C8"),
+        ("box", "Reset key port", (0, -0.15, 0.82), (0.10, 0.025, 0.075), "#71808A"),
+        ("box", "Alarm status lens", (0.12, -0.15, 0.91), (0.06, 0.025, 0.06), "#68E0A7"),
+        ("box", "Identification strip", (0, -0.15, 0.28), (0.24, 0.018, 0.035), "#D7E3EB"),
+    ],
+    "InstrumentSterilizer": [
+        ("box", "Sterilizer cabinet", (0, 0, 0.82), (0.92, 0.76, 1.64), "#18212B"),
+        ("box", "Chamber door", (0, -0.40, 0.91), (0.72, 0.04, 1.16), "#35434D"),
+        ("cylinder", "Pressure latch", (0.30, -0.44, 0.92), (0.12, 0.12, 0.06), "#71808A"),
+        ("box", "Cycle control panel", (-0.24, -0.44, 1.48), (0.32, 0.04, 0.28), "#293744"),
+        ("box", "Cycle display", (-0.24, -0.47, 1.53), (0.20, 0.015, 0.08), "#111923"),
+        ("box", "Inspection pane", (0, -0.43, 0.96), (0.42, 0.02, 0.40), "#A8E8FF"),
+        ("box", "Lower vent grille", (0, -0.40, 0.28), (0.48, 0.025, 0.12), "#71808A"),
+        ("box", "Base plinth", (0, 0, 0.08), (1.02, 0.84, 0.16), "#71808A"),
+    ],
+    "IsolationChamberPanel": [
+        ("box", "Heavy wall console", (0, 0, 0.82), (1.04, 0.24, 1.58), "#18212B"),
+        ("box", "Recessed instrument face", (0, -0.14, 0.83), (0.90, 0.035, 1.40), "#35434D"),
+        ("box", "Chamber status display", (0, -0.17, 1.35), (0.52, 0.025, 0.26), "#111923"),
+        ("box", "Pressure readout", (-0.25, -0.19, 1.37), (0.18, 0.015, 0.07), "#A8E8FF"),
+        ("box", "Door lock control", (0.28, -0.19, 0.92), (0.18, 0.04, 0.22), "#F4A6C8"),
+        ("box", "Alarm reset", (-0.28, -0.19, 0.57), (0.16, 0.04, 0.16), "#F0525F"),
+        ("box", "Ventilation control", (0.12, -0.19, 0.56), (0.26, 0.035, 0.11), "#71808A"),
+        ("box", "Cable raceway", (0, 0.10, 0.12), (0.32, 0.18, 0.20), "#293744"),
+        ("box", "Upper warning rail", (0, -0.18, 1.57), (0.64, 0.025, 0.055), "#F4A6C8"),
+    ],
+    "AirSamplingAnalyzer": [
+        ("box", "Analyzer housing", (0, 0, 0.72), (0.86, 0.62, 1.32), "#18212B"),
+        ("box", "Front instrument face", (0, -0.32, 0.80), (0.72, 0.035, 0.88), "#35434D"),
+        ("box", "Spectrum display", (-0.12, -0.35, 1.09), (0.42, 0.025, 0.28), "#111923"),
+        ("cylinder", "Sample inlet port", (0.24, -0.36, 0.61), (0.14, 0.14, 0.05), "#71808A"),
+        ("box", "Filter cartridge bay", (-0.12, -0.35, 0.48), (0.42, 0.08, 0.16), "#293744"),
+        ("box", "Status light", (0.25, -0.36, 1.30), (0.06, 0.02, 0.045), "#68E0A7"),
+        ("box", "Carry handle", (0, 0.02, 1.43), (0.48, 0.08, 0.07), "#71808A"),
+        ("box", "Foot base", (0, 0, 0.08), (0.94, 0.68, 0.16), "#293744"),
+    ],
+    "FacilityBatteryBank": [
+        ("box", "Battery rack frame", (0, 0, 0.88), (1.28, 0.82, 1.76), "#18212B"),
+        ("box", "Upper cross rail", (0, -0.44, 1.68), (1.18, 0.06, 0.10), "#71808A"),
+        ("box", "Left battery module", (-0.38, -0.20, 0.88), (0.34, 0.54, 1.38), "#35434D"),
+        ("box", "Center battery module", (0, -0.20, 0.88), (0.34, 0.54, 1.38), "#293744"),
+        ("box", "Right battery module", (0.38, -0.20, 0.88), (0.34, 0.54, 1.38), "#35434D"),
+        ("box", "Front status panel", (0, -0.49, 1.45), (0.46, 0.03, 0.22), "#111923"),
+        ("box", "Charge indicator", (0, -0.51, 1.47), (0.20, 0.015, 0.04), "#68E0A7"),
+        ("box", "Floor plinth", (0, 0, 0.08), (1.36, 0.90, 0.16), "#71808A"),
+        ("box", "High voltage marker", (0, -0.49, 0.48), (0.48, 0.025, 0.10), "#F4A6C8"),
+    ],
+    "HeavyContainmentCrate": [
+        ("box", "Reinforced crate body", (0, 0, 0.72), (1.28, 0.92, 1.44), "#18212B"),
+        ("box", "Armored lid", (0, 0, 1.49), (1.34, 0.98, 0.12), "#35434D"),
+        ("box", "Front armor panel", (0, -0.47, 0.78), (0.94, 0.035, 0.82), "#293744"),
+        ("box", "Left corner guard", (-0.58, -0.49, 0.77), (0.12, 0.06, 1.18), "#71808A"),
+        ("box", "Right corner guard", (0.58, -0.49, 0.77), (0.12, 0.06, 1.18), "#71808A"),
+        ("box", "Left compression latch", (-0.44, -0.51, 1.22), (0.12, 0.035, 0.28), "#A8E8FF"),
+        ("box", "Right compression latch", (0.44, -0.51, 1.22), (0.12, 0.035, 0.28), "#A8E8FF"),
+        ("box", "Hazard inventory plate", (0, -0.50, 0.55), (0.46, 0.025, 0.22), "#F4A6C8"),
+        ("box", "Skid base", (0, 0, 0.08), (1.34, 0.98, 0.16), "#71808A"),
+    ],
+    "WallSpecimenDispenser": [
+        ("box", "Wall cabinet", (0, 0, 0.62), (0.62, 0.20, 1.18), "#18212B"),
+        ("box", "Front service door", (0, -0.12, 0.62), (0.52, 0.03, 1.06), "#35434D"),
+        ("box", "Upper specimen slot", (0, -0.15, 0.86), (0.34, 0.06, 0.18), "#111923"),
+        ("box", "Lower specimen slot", (0, -0.15, 0.56), (0.34, 0.06, 0.18), "#293744"),
+        ("box", "Status display", (0, -0.15, 1.02), (0.20, 0.02, 0.08), "#A8E8FF"),
+        ("box", "Access indicator", (0.19, -0.15, 1.03), (0.04, 0.02, 0.04), "#68E0A7"),
+        ("box", "Tamper seal strip", (0, -0.15, 0.24), (0.34, 0.02, 0.045), "#F4A6C8"),
+    ],
+    "MobileCryogenicCase": [
+        ("box", "Insulated case body", (0, 0, 0.52), (0.92, 0.72, 1.04), "#18212B"),
+        ("box", "Armored lid", (0, 0, 1.08), (0.98, 0.78, 0.14), "#35434D"),
+        ("box", "Temperature display", (0, -0.38, 0.82), (0.30, 0.025, 0.14), "#111923"),
+        ("box", "Pressure relief port", (0.30, 0, 1.18), (0.12, 0.12, 0.08), "#71808A"),
+        ("box", "Left carry handle", (-0.42, 0, 0.67), (0.08, 0.20, 0.18), "#71808A"),
+        ("box", "Right carry handle", (0.42, 0, 0.67), (0.08, 0.20, 0.18), "#71808A"),
+        ("box", "Cold-chain label", (0, -0.38, 0.48), (0.44, 0.025, 0.12), "#A8E8FF"),
+        ("box", "Hazard seal", (0, -0.39, 0.27), (0.20, 0.02, 0.08), "#F4A6C8"),
+    ],
+    "ContainmentDrainUnit": [
+        ("box", "Floor mount frame", (0, 0, 0.06), (0.92, 0.92, 0.12), "#71808A"),
+        ("box", "Recessed drain well", (0, 0, 0.12), (0.76, 0.76, 0.035), "#18212B"),
+        ("box", "Grate crossbar one", (0, -0.24, 0.16), (0.64, 0.04, 0.025), "#35434D"),
+        ("box", "Grate crossbar two", (0, -0.08, 0.16), (0.64, 0.04, 0.025), "#35434D"),
+        ("box", "Grate crossbar three", (0, 0.08, 0.16), (0.64, 0.04, 0.025), "#35434D"),
+        ("box", "Grate crossbar four", (0, 0.24, 0.16), (0.64, 0.04, 0.025), "#35434D"),
+        ("box", "Sample inspection cap", (0.38, 0.38, 0.17), (0.12, 0.12, 0.045), "#A8E8FF"),
+        ("box", "Hazard seal", (0, -0.42, 0.17), (0.36, 0.025, 0.05), "#F4A6C8"),
+    ],
+    "SecureEquipmentPod": [
+        ("box", "Armored equipment shell", (0, 0, 0.76), (1.06, 0.78, 1.52), "#18212B"),
+        ("box", "Front armored door", (0, -0.41, 0.78), (0.88, 0.04, 1.30), "#35434D"),
+        ("box", "Inspection window", (0, -0.44, 1.18), (0.50, 0.02, 0.36), "#A8E8FF"),
+        ("box", "Locking bar", (0.36, -0.45, 0.78), (0.06, 0.04, 0.78), "#71808A"),
+        ("box", "Access keypad", (-0.28, -0.45, 0.62), (0.22, 0.03, 0.30), "#111923"),
+        ("box", "Tamper indicator", (0, -0.45, 0.42), (0.20, 0.02, 0.05), "#68E0A7"),
+        ("box", "Left corner armor", (-0.50, -0.42, 0.76), (0.12, 0.05, 1.34), "#293744"),
+        ("box", "Right corner armor", (0.50, -0.42, 0.76), (0.12, 0.05, 1.34), "#293744"),
+        ("box", "Base skids", (0, 0.02, 0.10), (1.12, 0.84, 0.20), "#71808A"),
+    ],
+}
+
 FACILITY_SUPPORT_KIT = {
     "GasDetector": [
         ("box", "Wall enclosure", (0, 0, 0.48), (0.42, 0.18, 0.78), "#18212B"),
@@ -741,6 +987,86 @@ FACILITY_SUPPORT_KIT = {
         ("box", "Tamper seal", (0, -0.24, 1.15), (0.20, 0.02, 0.10), "#F0525F"),
         ("box", "Push handle", (0, 0.25, 1.02), (0.60, 0.06, 0.06), "#F4A6C8"),
     ],
+    "SpillResponseCart": [
+        ("box", "Low-profile chassis", (0, 0, 0.18), (0.92, 0.58, 0.16), "#18212B"),
+        ("box", "Chemical-resistant tray", (0, -0.02, 0.34), (0.86, 0.52, 0.18), "#35434D"),
+        ("box", "Absorbent canister left", (-0.24, 0, 0.78), (0.30, 0.30, 0.68), "#F4A6C8"),
+        ("cylinder", "Absorbent canister right", (0.24, 0, 0.78), (0.30, 0.30, 0.68), "#71808A"),
+        ("box", "Hazard kit case", (0, -0.02, 1.28), (0.48, 0.38, 0.30), "#18212B"),
+        ("box", "Tamper latch", (0, -0.22, 1.28), (0.12, 0.025, 0.08), "#F4A6C8"),
+        ("box", "Push handle", (0, 0.25, 1.16), (0.64, 0.06, 0.06), "#71808A"),
+        ("box", "Waste bag holder", (0.39, 0.02, 0.72), (0.12, 0.12, 0.54), "#293744"),
+    ],
+    "WallPPEDispenser": [
+        ("box", "Armored dispenser shell", (0, 0.02, 0.78), (0.72, 0.30, 1.52), "#18212B"),
+        ("box", "Recessed front panel", (0, -0.145, 0.79), (0.62, 0.035, 1.34), "#35434D"),
+        ("box", "Upper stock window", (0, -0.17, 1.20), (0.42, 0.02, 0.30), "#111923"),
+        ("box", "Glove dispenser bay", (-0.17, -0.19, 0.76), (0.25, 0.055, 0.32), "#71808A"),
+        ("box", "Mask dispenser bay", (0.17, -0.19, 0.76), (0.25, 0.055, 0.32), "#293744"),
+        ("box", "Pull slot", (0, -0.21, 0.48), (0.36, 0.025, 0.09), "#111923"),
+        ("box", "Stock indicator", (0.24, -0.19, 1.40), (0.055, 0.02, 0.055), "#68E0A7"),
+        ("box", "Lower service lock", (0, -0.19, 0.25), (0.12, 0.025, 0.08), "#F4A6C8"),
+    ],
+    "PortableSpecimenScanner": [
+        ("box", "Weighted instrument base", (0, 0, 0.16), (0.86, 0.62, 0.22), "#18212B"),
+        ("box", "Scanner housing", (0, 0.02, 0.62), (0.72, 0.56, 0.72), "#35434D"),
+        ("box", "Sample chamber", (0, -0.28, 0.66), (0.42, 0.035, 0.40), "#111923"),
+        ("box", "Chamber window", (0, -0.31, 0.68), (0.30, 0.02, 0.26), "#A8E8FF"),
+        ("box", "Control display", (0, -0.31, 1.06), (0.32, 0.025, 0.13), "#111923"),
+        ("box", "Scan status lamp", (0.24, -0.33, 1.06), (0.035, 0.015, 0.035), "#68E0A7"),
+        ("box", "Side service panel", (0.38, 0.02, 0.62), (0.025, 0.34, 0.32), "#71808A"),
+        ("box", "Carry grip", (0, 0.18, 1.04), (0.38, 0.10, 0.08), "#293744"),
+    ],
+    "CeilingAirQualitySampler": [
+        ("box", "Ceiling anchor plate", (0, 0, 0.05), (0.54, 0.46, 0.10), "#18212B"),
+        ("box", "Sampler enclosure", (0, 0, -0.20), (0.44, 0.38, 0.40), "#35434D"),
+        ("box", "Intake grille", (0, -0.20, -0.20), (0.28, 0.025, 0.22), "#111923"),
+        ("box", "Grille fin one", (-0.09, -0.22, -0.20), (0.018, 0.012, 0.17), "#71808A"),
+        ("box", "Grille fin two", (0, -0.22, -0.20), (0.018, 0.012, 0.17), "#71808A"),
+        ("box", "Grille fin three", (0.09, -0.22, -0.20), (0.018, 0.012, 0.17), "#71808A"),
+        ("box", "Air quality status", (0.13, -0.22, -0.08), (0.045, 0.015, 0.04), "#68E0A7"),
+        ("box", "Replace-filter tag", (-0.12, -0.22, -0.08), (0.08, 0.015, 0.035), "#F4A6C8"),
+    ],
+    "FloorDeconMat": [
+        ("box", "Raised containment rim", (0, 0, 0.035), (1.34, 0.94, 0.07), "#18212B"),
+        ("box", "Textured mat surface", (0, 0, 0.075), (1.20, 0.80, 0.025), "#293744"),
+        ("box", "Left safety border", (-0.61, 0, 0.092), (0.045, 0.80, 0.025), "#F4A6C8"),
+        ("box", "Right safety border", (0.61, 0, 0.092), (0.045, 0.80, 0.025), "#F4A6C8"),
+        ("box", "Front drain channel", (0, -0.34, 0.096), (0.38, 0.035, 0.018), "#71808A"),
+        ("box", "Rear drain channel", (0, 0.34, 0.096), (0.38, 0.035, 0.018), "#71808A"),
+        ("box", "Center traction strip", (0, 0, 0.096), (0.90, 0.035, 0.018), "#71808A"),
+        ("box", "Service marker", (0.48, -0.28, 0.098), (0.12, 0.08, 0.012), "#68E0A7"),
+    ],
+    "BenchMicrocentrifuge": [
+        ("box", "Anti-vibration feet", (0, 0, 0.08), (0.62, 0.56, 0.14), "#18212B"),
+        ("box", "Machine body", (0, 0, 0.47), (0.58, 0.52, 0.66), "#35434D"),
+        ("cylinder", "Rotor chamber rim", (0, -0.02, 0.82), (0.40, 0.40, 0.09), "#71808A"),
+        ("cylinder", "Closed chamber lid", (0, -0.02, 0.88), (0.34, 0.34, 0.035), "#293744"),
+        ("box", "Control fascia", (0, -0.27, 0.55), (0.42, 0.025, 0.22), "#111923"),
+        ("box", "Speed display", (-0.06, -0.29, 0.60), (0.20, 0.015, 0.08), "#A8E8FF"),
+        ("box", "Start stop controls", (0.12, -0.29, 0.48), (0.16, 0.018, 0.05), "#F4A6C8"),
+        ("box", "Lid safety latch", (0, -0.20, 0.91), (0.10, 0.045, 0.035), "#F4A6C8"),
+    ],
+    "FireBlanketCabinet": [
+        ("box", "Wall mounting shell", (0, 0.08, 0.80), (0.84, 0.24, 1.58), "#18212B"),
+        ("box", "Door leaf", (0, -0.06, 0.80), (0.74, 0.035, 1.44), "#B8323A"),
+        ("box", "Inset inspection window", (0, -0.085, 1.12), (0.52, 0.02, 0.38), "#A8E8FF"),
+        ("box", "Blanket pull tabs", (-0.16, -0.12, 0.52), (0.08, 0.035, 0.24), "#F4A6C8"),
+        ("box", "Break-glass latch", (0.25, -0.12, 0.82), (0.10, 0.035, 0.14), "#F4A6C8"),
+        ("box", "Top warning band", (0, -0.09, 1.46), (0.58, 0.02, 0.075), "#F4A6C8"),
+        ("box", "Lower service label", (0, -0.09, 0.20), (0.40, 0.02, 0.10), "#D7E3EB"),
+        ("box", "Bottom kick plate", (0, -0.085, 0.10), (0.64, 0.025, 0.08), "#71808A"),
+    ],
+    "PortableContaminationMonitor": [
+        ("box", "Instrument chassis", (0, 0, 0.48), (0.58, 0.38, 0.88), "#18212B"),
+        ("box", "Recessed front panel", (0, -0.205, 0.55), (0.48, 0.025, 0.66), "#35434D"),
+        ("box", "Readout display", (0, -0.225, 0.82), (0.34, 0.02, 0.18), "#111923"),
+        ("box", "Survey probe socket", (-0.15, -0.225, 0.35), (0.12, 0.035, 0.10), "#71808A"),
+        ("cylinder", "Probe cable reel", (0.38, 0, 0.48), (0.26, 0.12, 0.26), "#293744"),
+        ("box", "Probe handle", (0.52, -0.10, 0.22), (0.10, 0.16, 0.28), "#71808A"),
+        ("box", "Alarm indicator", (0.16, -0.225, 0.82), (0.055, 0.018, 0.045), "#F0525F"),
+        ("box", "Carry handle", (0, 0.13, 0.96), (0.34, 0.08, 0.07), "#71808A"),
+    ],
 }
 
 NEW_MER_PART_INDICES = {
@@ -813,6 +1139,38 @@ NEW_MER_PART_INDICES = {
     "MobileMedicalMonitor": (0, 1, 2, 3, 4, 5),
     "IndustrialWaterPump": (0, 1, 2, 3, 4, 5),
     "MobileEvidenceCart": (0, 1, 2, 4, 5, 6, 7),
+    "HazmatSuitLocker": (0, 1, 2, 3, 5, 7),
+    "MobileAirScrubber": (0, 1, 2, 3, 5, 7),
+    "SpecimenRefrigerator": (0, 1, 2, 3, 5, 6),
+    "LaboratoryFumeHood": (0, 1, 2, 3, 4, 5, 6, 8),
+    "EyewashStation": (0, 1, 2, 3, 4, 5, 6),
+    "SecurityTurnstile": (0, 1, 2, 3, 4, 5, 6, 8),
+    "RollingToolCabinet": (0, 1, 2, 3, 4, 5, 6),
+    "ContainmentPressureGauge": (0, 1, 2, 3, 4, 5, 6, 7),
+    "WallEmergencyShower": (0, 1, 2, 3, 4, 5, 6, 7),
+    "BiometricKeypad": (0, 1, 2, 3, 4, 5, 6),
+    "PortableRadioCharger": (0, 1, 2, 3, 4, 5, 7),
+    "FloorCableManifold": (0, 1, 2, 3, 4, 6),
+    "CeilingCableJunction": (0, 1, 2, 3, 4, 5),
+    "ReactorCoolantPump": (0, 1, 2, 3, 4, 5, 6, 7),
+    "WallFireAlarmPull": (0, 1, 2, 3, 4, 5, 6),
+    "InstrumentSterilizer": (0, 1, 2, 3, 4, 5, 6, 7),
+    "IsolationChamberPanel": (0, 1, 2, 3, 4, 5, 6, 7, 8),
+    "AirSamplingAnalyzer": (0, 1, 2, 3, 4, 5, 6, 7),
+    "FacilityBatteryBank": (0, 1, 2, 3, 4, 5, 6, 7, 8),
+    "HeavyContainmentCrate": (0, 1, 2, 3, 4, 5, 6, 7, 8),
+    "WallSpecimenDispenser": (0, 1, 2, 3, 4, 5, 6),
+    "MobileCryogenicCase": (0, 1, 2, 3, 4, 5, 6, 7),
+    "ContainmentDrainUnit": (0, 1, 2, 3, 4, 5, 6, 7),
+    "SecureEquipmentPod": (0, 1, 2, 3, 4, 5, 6, 7, 8),
+    "SpillResponseCart": (0, 1, 2, 3, 4, 6, 7),
+    "WallPPEDispenser": (0, 1, 2, 3, 4, 6, 7),
+    "PortableSpecimenScanner": (0, 1, 2, 3, 4, 5, 6),
+    "CeilingAirQualitySampler": (0, 1, 2, 5, 6, 7),
+    "FloorDeconMat": (0, 1, 2, 3, 4, 6, 7),
+    "BenchMicrocentrifuge": (0, 1, 2, 3, 4, 5, 6, 7),
+    "FireBlanketCabinet": (0, 1, 2, 3, 4, 5, 6),
+    "PortableContaminationMonitor": (0, 1, 2, 3, 4, 5, 6, 7),
 }
 
 ALL_MODULAR_KIT = {
@@ -821,94 +1179,16 @@ ALL_MODULAR_KIT = {
     **ADDITIONAL_MODULAR_KIT,
     **FINAL_MODULAR_KIT,
     **POST_COMPLETION_KIT,
+    **EXPANSION_KIT,
     **FACILITY_SUPPORT_KIT,
 }
 ASSET_NAMES = (*BASE_ASSET_NAMES, *ALL_MODULAR_KIT.keys())
 
 
-def create_micro_normal():
-    image = bpy.data.images.new("Shared | Micro-surface normal", width=128, height=128, alpha=False)
-    pixels = []
-    for y in range(128):
-        v = y / 128
-        for x in range(128):
-            u = x / 128
-            first = 2 * math.pi * (u * 8 + v * 5)
-            second = 2 * math.pi * (u * 17 - v * 13)
-            derivative_u = 0.08 * 2 * math.pi * 8 * math.cos(first) - 0.04 * 2 * math.pi * 17 * math.sin(second)
-            derivative_v = 0.08 * 2 * math.pi * 5 * math.cos(first) + 0.04 * 2 * math.pi * 13 * math.sin(second)
-            nx, ny, nz = -derivative_u * 0.006, -derivative_v * 0.006, 1.0
-            length = math.sqrt(nx * nx + ny * ny + nz * nz)
-            pixels.extend((nx / length * 0.5 + 0.5, ny / length * 0.5 + 0.5, nz / length * 0.5 + 0.5, 1.0))
-    image.pixels.foreach_set(pixels)
-    image.file_format = "PNG"
-    image.colorspace_settings.name = "Non-Color"
-    image.filepath_raw = os.path.join(TEXTURES_ROOT, "Shared_MicroNormal.png")
-    image.save()
-    image.pack()
-    return image
-
-
 def material(name, color, metallic=0.0, roughness=0.45, emission=0.0):
-    global NORMAL_IMAGE
-    mat = bpy.data.materials.new(name)
-    mat.diffuse_color = (*color, 1.0)
-    shader = mat.node_tree.nodes.get("Principled BSDF")
-    shader.inputs["Base Color"].default_value = (*color, 1.0)
-    shader.inputs["Metallic"].default_value = metallic
-    shader.inputs["Roughness"].default_value = roughness
-    if "Coat Weight" in shader.inputs:
-        shader.inputs["Coat Weight"].default_value = 0.12 if metallic < 0.4 else 0.04
-        shader.inputs["Coat Roughness"].default_value = 0.3
-
-    os.makedirs(TEXTURES_ROOT, exist_ok=True)
-    texture_name = re.sub(r"[^A-Za-z0-9_-]+", "_", name).strip("_")
-    texture_path = os.path.join(TEXTURES_ROOT, texture_name + "_BaseColor.png")
-    image = bpy.data.images.new(texture_name + "_BaseColor", width=128, height=128, alpha=True)
-    pixels = []
-    for y in range(128):
-        v = y / 128
-        for x in range(128):
-            u = x / 128
-            grain = (
-                0.55 * math.sin(2 * math.pi * (u * 13 + v * 19))
-                + 0.30 * math.sin(2 * math.pi * (u * 37 - v * 29))
-                + 0.15 * math.sin(2 * math.pi * (u * 59 + v * 47))
-            )
-            variation = 1.0 + grain * 0.045
-            pixels.extend((color[0] * variation, color[1] * variation, color[2] * variation, 1.0))
-    image.pixels.foreach_set(pixels)
-    image.file_format = "PNG"
-    image.filepath_raw = texture_path
-    image.save()
-    image.pack()
-
-    texcoord = mat.node_tree.nodes.new("ShaderNodeTexCoord")
-    texture = mat.node_tree.nodes.new("ShaderNodeTexImage")
-    texture.image = image
-    texture.extension = "REPEAT"
-    texture.interpolation = "Linear"
-    mat.node_tree.links.new(texcoord.outputs["UV"], texture.inputs["Vector"])
-    mat.node_tree.links.new(texture.outputs["Color"], shader.inputs["Base Color"])
-
-    if NORMAL_IMAGE is None:
-        NORMAL_IMAGE = create_micro_normal()
-    normal_texture = mat.node_tree.nodes.new("ShaderNodeTexImage")
-    normal_texture.image = NORMAL_IMAGE
-    normal_texture.interpolation = "Linear"
-    normal_map = mat.node_tree.nodes.new("ShaderNodeNormalMap")
-    normal_map.space = "TANGENT"
-    normal_map.inputs["Strength"].default_value = 0.22
-    mat.node_tree.links.new(texcoord.outputs["UV"], normal_texture.inputs["Vector"])
-    mat.node_tree.links.new(normal_texture.outputs["Color"], normal_map.inputs["Color"])
-    mat.node_tree.links.new(normal_map.outputs["Normal"], shader.inputs["Normal"])
-
-    if emission:
-        shader.inputs["Emission Color"].default_value = (*color, 1.0)
-        shader.inputs["Emission Strength"].default_value = emission
-    mat["interchange_texture"] = os.path.relpath(texture_path, ROOT)
-    mat["surface_detail"] = "Packed base-color and subtle tangent-space micro-normal textures."
-    return mat
+    surface = make_pbr_material(ROOT, name, color, metallic, roughness, emission)
+    surface["surface_detail"] = "256px tileable base-color, tangent-space normal, and roughness maps."
+    return surface
 
 
 def unwrap_mesh(mesh, world_scale=4.0):
@@ -1314,7 +1594,7 @@ def export_optimized_asset(name, selected, base):
     active.data.name = name + "_Mesh"
     active["asset_id"] = name
     active["asset_kind"] = "static_environment_prop"
-    active["collision_guidance"] = "See separate conservative bounds collision FBX; review and assign explicitly in Unity."
+    active["collision_guidance"] = "Separate compound box proxy FBX; review and configure explicitly in Unity."
     try:
         export_selection(
             bpy.ops.export_scene.fbx,
@@ -1341,23 +1621,11 @@ def export_optimized_asset(name, selected, base):
 
 
 def export_collision_proxy(name, source_objects, base):
-    minimum, maximum = bounds_for_objects(source_objects)
-    dimensions = tuple(maximum[axis] - minimum[axis] for axis in range(3))
-    center = tuple((minimum[axis] + maximum[axis]) / 2 for axis in range(3))
-    bpy.ops.mesh.primitive_cube_add(size=1.0, location=center)
-    proxy = bpy.context.object
-    proxy.name = name + "_CollisionProxy"
-    proxy.data.name = proxy.name + "Mesh"
-    proxy.dimensions = dimensions
-    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-    proxy["asset_id"] = name
-    proxy["asset_kind"] = "optional_conservative_box_collision"
-    proxy["collision_note"] = "Review dimensions and placement in Unity; this bounds-only proxy is not gameplay physics."
-    bpy.context.scene.cursor.location = (0, 0, 0)
-    bpy.ops.object.origin_set(type="ORIGIN_CURSOR")
+    proxies = create_collision_proxy_parts(name, source_objects)
     bpy.ops.object.select_all(action="DESELECT")
-    proxy.select_set(True)
-    bpy.context.view_layer.objects.active = proxy
+    for proxy in proxies:
+        proxy.select_set(True)
+    bpy.context.view_layer.objects.active = proxies[0]
     try:
         export_selection(
             bpy.ops.export_scene.fbx,
@@ -1374,7 +1642,8 @@ def export_collision_proxy(name, source_objects, base):
             },
         )
     finally:
-        bpy.data.objects.remove(proxy, do_unlink=True)
+        for proxy in proxies:
+            bpy.data.objects.remove(proxy, do_unlink=True)
 
 
 def bounds_for_objects(objects):
@@ -1392,12 +1661,13 @@ def write_asset_manifest(collections):
     manifest = {
         "format_version": 1,
         "asset_count": len(collections),
-        "physics_note": "Static props have no runtime physics; a conservative bounds-only collision proxy is exported separately for optional review.",
+        "physics_note": "Static props have no runtime physics; separate compound low-poly box proxies remain unassigned until reviewed in Unity.",
         "assets": [],
     }
     for name, collection in collections.items():
         objects = [obj for obj in collection.objects if obj.type == "MESH"]
         minimum, maximum = bounds_for_objects(objects)
+        collision_parts = collision_source_objects(objects)
         parts = ALL_MODULAR_KIT.get(name, ())
         suggested_mer_indices = NEW_MER_PART_INDICES.get(name, range(len(parts)))
         manifest["assets"].append(
@@ -1409,10 +1679,11 @@ def write_asset_manifest(collections):
                 "material_count": len({material.name for obj in objects for material in obj.data.materials}),
                 "approx_material_batches": len({material.name for obj in objects for material in obj.data.materials}),
                 "collision_proxy": name + "-collision.fbx",
-                "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+                "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+                "collision_part_count": len(collision_parts),
                 "bounds_m": [round(maximum[axis] - minimum[axis], 4) for axis in range(3)],
                 "mer_primitive_count": len(suggested_mer_indices) if parts else None,
-                "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+                "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
                 "animation_or_interaction": False,
             }
         )
@@ -1430,9 +1701,12 @@ def main():
     bpy.context.preferences.filepaths.save_version = 0
     scene = bpy.context.scene
     scene.unit_settings.system = "METRIC"
-    scene.render.engine = "BLENDER_WORKBENCH"
-    scene.render.resolution_x = 720
-    scene.render.resolution_y = 720
+    scene.render.engine = "CYCLES"
+    scene.cycles.device = "CPU"
+    scene.cycles.samples = 4
+    scene.cycles.use_denoising = False
+    scene.render.resolution_x = 512
+    scene.render.resolution_y = 512
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.render.image_settings.color_mode = "RGBA"
@@ -1443,6 +1717,10 @@ def main():
     scene.display.shading.background_type = "WORLD"
     scene.world = bpy.data.worlds.new("Studio | World")
     scene.world.color = (0.035, 0.048, 0.068)
+    scene.world.use_nodes = True
+    background = scene.world.node_tree.nodes.get("Background")
+    background.inputs["Color"].default_value = (0.055, 0.065, 0.075, 1.0)
+    background.inputs["Strength"].default_value = 0.35
 
     graphite = material("01 | Graphite polymer", (0.035, 0.045, 0.052), 0.28, 0.42)
     shell = material("02 | Gunmetal shell", (0.10, 0.13, 0.145), 0.42, 0.38)
@@ -1502,6 +1780,18 @@ def main():
     )
     floor = box("Studio | floor", (0, 0, -0.08), (2000, 2000, 0.1), backdrop, "STUDIO", 0)
     floor["asset_id"] = "STUDIO"
+    for name, location, energy, size in (
+        ("Key", (3, -4, 5), 900, 5),
+        ("Fill", (-4, -2, 2.5), 400, 4),
+        ("Rim", (1, 4, 4), 650, 3),
+    ):
+        bpy.ops.object.light_add(type="AREA", location=location)
+        light = bpy.context.object
+        light.name = "STUDIO | " + name
+        light.data.energy = energy
+        light.data.shape = "DISK"
+        light.data.size = size
+        point_at(light, (0, 0, 0.7))
 
     bpy.ops.object.camera_add()
     camera = bpy.context.object
@@ -1528,7 +1818,10 @@ def main():
         base = os.path.join(ROOT, name)
         export_optimized_asset(name, selected, base)
         export_collision_proxy(name, selected, base)
-        scene.render.filepath = base + "-preview.png"
+        preview_path = base + "-preview.png"
+        if os.environ.get("PENTAGOLAND_SKIP_EXISTING_PREVIEWS") == "1" and os.path.isfile(preview_path):
+            continue
+        scene.render.filepath = preview_path
         bpy.ops.render.render(write_still=True)
 
     for collection in collections.values():

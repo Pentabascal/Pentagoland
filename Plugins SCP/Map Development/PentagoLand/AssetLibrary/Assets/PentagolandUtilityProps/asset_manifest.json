@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "asset_count": 77,
-  "physics_note": "Static props have no runtime physics; a conservative bounds-only collision proxy is exported separately for optional review.",
+  "asset_count": 109,
+  "physics_note": "Static props have no runtime physics; separate compound low-poly box proxies remain unassigned until reviewed in Unity.",
   "assets": [
     {
       "name": "AccessReader",
@@ -11,14 +11,15 @@
       "material_count": 7,
       "approx_material_batches": 7,
       "collision_proxy": "AccessReader-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.3,
         0.194,
         0.46
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -29,14 +30,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "SecurityCamera-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         0.43,
         0.563,
         0.345
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -47,14 +49,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "CeilingLight-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         0.92,
         0.352,
         0.236
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -65,14 +68,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "WallVent-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.9,
         0.2175,
         0.66
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -83,14 +87,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "FirstAidCase-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.64,
         0.266,
         0.78
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -101,14 +106,15 @@
       "material_count": 7,
       "approx_material_batches": 7,
       "collision_proxy": "PowerJunction-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.58,
         0.297,
         0.8
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -119,14 +125,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "CargoCrate-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.9,
         0.829,
         0.81
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -137,14 +144,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "PipeSegment-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.36,
         0.36,
         1.7
       ],
       "mer_primitive_count": null,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -155,14 +163,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "SlidingBulkhead-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         1.68,
         0.3325,
         2.24
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -173,14 +182,15 @@
       "material_count": 7,
       "approx_material_batches": 7,
       "collision_proxy": "WallSign-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         1.02,
         0.176,
         0.76
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -191,14 +201,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "FireExtinguisher-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.355,
         0.306,
         1.06
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -209,14 +220,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "CeilingSensor-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.42,
         0.42,
         0.2975
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -227,14 +239,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "FloorDrain-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 1,
       "bounds_m": [
         0.76,
         0.76,
         0.11
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -245,14 +258,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "CableTray-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         1.3,
         0.38,
         0.3675
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -263,14 +277,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WarningBeacon-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.38,
         0.38,
         0.62
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -281,14 +296,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "ServerRack-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.92,
         0.9125,
         2.04
       ],
       "mer_primitive_count": 7,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -299,14 +315,15 @@
       "material_count": 7,
       "approx_material_batches": 7,
       "collision_proxy": "AirlockControlPanel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.48,
         0.29,
         1.12
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -317,14 +334,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallFireHose-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.78,
         0.445,
         1.08
       ],
       "mer_primitive_count": 3,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -335,14 +353,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "BiohazardWasteBin-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.77,
         0.74,
         1.0075
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -353,14 +372,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "SpecimenCanister-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.49,
         0.49,
         1.095
       ],
       "mer_primitive_count": 3,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -371,14 +391,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "DeconShower-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         1.035,
         0.51,
         0.955
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -389,14 +410,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "FloorCableCover-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         1.4,
         0.5,
         0.212
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -407,14 +429,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "CeilingSpeaker-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.46,
         0.46,
         0.2665
       ],
       "mer_primitive_count": 3,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -425,14 +448,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "WallClock-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.64,
         0.675,
         0.46
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -443,14 +467,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "SecurityPillar-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.62,
         0.63,
         2.04
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -461,14 +486,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "Workbench-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         1.6,
         0.8825,
         1.1
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -479,14 +505,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "ToolCart-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.76,
         0.535,
         1.285
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -497,14 +524,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "IndustrialFan-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.72,
         0.77,
         0.76
       ],
       "mer_primitive_count": 7,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -515,14 +543,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "PipeValve-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.56,
         0.5825,
         1.45
       ],
       "mer_primitive_count": 7,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -533,14 +562,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "PressureGauge-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.42,
         0.485,
         0.6175
       ],
       "mer_primitive_count": 3,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -551,14 +581,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "CryoPod-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         1.29,
         0.9425,
         2.24
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -569,14 +600,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "ObservationWindow-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         1.72,
         0.37,
         1.56
       ],
       "mer_primitive_count": 3,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -587,14 +619,15 @@
       "material_count": 8,
       "approx_material_batches": 8,
       "collision_proxy": "BlastDoorControl-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.54,
         0.365,
         1.3
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -605,14 +638,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "HandRailSection-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         1.78,
         0.22,
         2.3
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -623,14 +657,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "UtilityLocker-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.94,
         0.7325,
         2.0
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -641,14 +676,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "HazardBarrel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.72,
         0.74,
         1.125
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -659,14 +695,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "ChemicalSafetyShower-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.915,
         0.49,
         2.23
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -677,14 +714,15 @@
       "material_count": 7,
       "approx_material_batches": 7,
       "collision_proxy": "BiometricScanner-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.4,
         0.29,
         1.12
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -695,14 +733,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "WallIntercom-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.34,
         0.245,
         0.86
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -713,14 +752,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "MedicalSupplyTrolley-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.76,
         0.48,
         1.37
       ],
       "mer_primitive_count": 7,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -731,14 +771,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "AirScrubber-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         1.18,
         0.7925,
         1.68
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -749,14 +790,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "PortableWorkLight-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.52,
         0.339,
         1.205
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -767,14 +809,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "FloorWarningBeacon-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.46,
         0.46,
         0.62
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -785,14 +828,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallFirstAidDispenser-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.72,
         0.28,
         1.04
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -803,14 +847,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "PipeElbow-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         1.14,
         0.38,
         1.52
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -821,14 +866,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "WallCableReel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         0.89,
         0.97,
         0.95
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -839,14 +885,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallMonitor-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.82,
         0.3475,
         1.06
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -857,14 +904,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "EmergencyPhone-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.46,
         0.3,
         1.3
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -875,14 +923,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "CeilingSprinkler-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         0.32,
         0.32,
         0.3375
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -893,14 +942,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "WallJunctionBox-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.62,
         0.2925,
         0.8
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -911,14 +961,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "StorageDrum-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.75,
         0.755,
         1.1825
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -929,14 +980,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallBollard-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.38,
         0.38,
         1.26
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -947,14 +999,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "HazardPlacard-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.84,
         0.1875,
         0.88
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -965,14 +1018,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "VentilationDuct-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         1.2,
         0.5625,
         0.56
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -983,14 +1037,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "RadiationMeter-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 1,
       "bounds_m": [
         0.46,
         0.2825,
         0.9
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1001,14 +1056,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "CeilingAccessPanel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         1.0,
         1.0,
         0.161
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1019,14 +1075,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "DecontaminationCanister-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.56,
         0.56,
         1.0325
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1037,14 +1094,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "ElevatorCallPanel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.38,
         0.27,
         1.04
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1055,14 +1113,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "CeilingEmergencyLight-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         0.6,
         0.26,
         0.2625
       ],
       "mer_primitive_count": 4,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1073,14 +1132,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "WallHydrantCabinet-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.78,
         0.46,
         1.28
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1091,14 +1151,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "FloorServiceHatch-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         1.08,
         1.08,
         0.2075
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1109,14 +1170,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "ChemicalStorageLocker-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         1.1,
         0.8325,
         2.04
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1127,14 +1189,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "LabCentrifuge-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.88,
         0.735,
         1.11
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1145,14 +1208,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "PortableGenerator-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         1.12,
         0.805,
         1.09
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1163,14 +1227,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "ArchiveTerminal-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.86,
         0.75,
         1.46
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1181,14 +1246,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "DeconSink-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 4,
       "bounds_m": [
         1.1,
         0.56,
         1.46
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1199,14 +1265,471 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "SecureStorageSafe-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         1.12,
         1.05,
         1.64
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "HazmatSuitLocker",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 6,
+      "approx_material_batches": 6,
+      "collision_proxy": "HazmatSuitLocker-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        1.2,
+        0.82,
+        2.16
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "MobileAirScrubber",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "MobileAirScrubber-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.86,
+        0.72,
+        1.6
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "SpecimenRefrigerator",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "SpecimenRefrigerator-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        1.08,
+        0.9075,
+        2.12
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "LaboratoryFumeHood",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 882,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "LaboratoryFumeHood-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
+      "bounds_m": [
+        1.44,
+        0.9125,
+        2.12
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "EyewashStation",
+      "source_mesh_objects": 7,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 818,
+      "material_count": 6,
+      "approx_material_batches": 6,
+      "collision_proxy": "EyewashStation-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
+      "bounds_m": [
+        0.72,
+        0.52,
+        1.49
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "SecurityTurnstile",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 926,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "SecurityTurnstile-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        1.54,
+        0.78,
+        1.54
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "RollingToolCabinet",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "RollingToolCabinet-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.92,
+        0.7375,
+        1.68
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "ContainmentPressureGauge",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 960,
+      "material_count": 7,
+      "approx_material_batches": 7,
+      "collision_proxy": "ContainmentPressureGauge-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.7,
+        0.58,
+        1.42
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "WallEmergencyShower",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "WallEmergencyShower-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
+      "bounds_m": [
+        0.98,
+        0.71,
+        2.06
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "BiometricKeypad",
+      "source_mesh_objects": 7,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 686,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "BiometricKeypad-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.42,
+        0.27,
+        1.18
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "PortableRadioCharger",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "PortableRadioCharger-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.76,
+        0.5675,
+        1.33
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "FloorCableManifold",
+      "source_mesh_objects": 7,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 686,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "FloorCableManifold-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        1.42,
+        0.96,
+        0.68
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "CeilingCableJunction",
+      "source_mesh_objects": 6,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 588,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "CeilingCableJunction-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.76,
+        0.6,
+        0.56
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "ReactorCoolantPump",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 960,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "ReactorCoolantPump-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
+      "bounds_m": [
+        1.4,
+        1.03,
+        1.14
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "WallFireAlarmPull",
+      "source_mesh_objects": 7,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 686,
+      "material_count": 7,
+      "approx_material_batches": 7,
+      "collision_proxy": "WallFireAlarmPull-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.42,
+        0.27,
+        0.82
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "InstrumentSterilizer",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "InstrumentSterilizer-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        1.02,
+        0.92,
+        1.64
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "IsolationChamberPanel",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 882,
+      "material_count": 6,
+      "approx_material_batches": 6,
+      "collision_proxy": "IsolationChamberPanel-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        1.04,
+        0.4,
+        1.59
+      ],
+      "mer_primitive_count": 9,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "AirSamplingAnalyzer",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "AirSamplingAnalyzer-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.94,
+        0.77,
+        1.465
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "FacilityBatteryBank",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 882,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "FacilityBatteryBank-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
+      "bounds_m": [
+        1.36,
+        0.9675,
+        1.76
+      ],
+      "mer_primitive_count": 9,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "HeavyContainmentCrate",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 882,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "HeavyContainmentCrate-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        1.34,
+        1.0175,
+        1.55
+      ],
+      "mer_primitive_count": 9,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "WallSpecimenDispenser",
+      "source_mesh_objects": 7,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 686,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "WallSpecimenDispenser-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.62,
+        0.28,
+        1.18
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "MobileCryogenicCase",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "MobileCryogenicCase-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.98,
+        0.79,
+        1.22
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "ContainmentDrainUnit",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "ContainmentDrainUnit-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.92,
+        0.92,
+        0.195
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "SecureEquipmentPod",
+      "source_mesh_objects": 9,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 882,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "SecureEquipmentPod-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        1.12,
+        0.91,
+        1.52
+      ],
+      "mer_primitive_count": 9,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1217,14 +1740,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "GasDetector-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.42,
         0.2475,
         0.86
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1235,14 +1759,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallPatchPanel-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.7,
         0.349,
         1.09
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1253,14 +1778,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "PortableDeconUnit-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.92,
         0.765,
         1.55
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1271,14 +1797,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "CeilingDomeCamera-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.42,
         0.42,
         0.35
       ],
       "mer_primitive_count": 5,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1289,14 +1816,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "EmergencyShutoffValve-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.6,
         0.4025,
         1.135
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1307,14 +1835,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "SpecimenTransportCase-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
       "bounds_m": [
         0.85,
         0.6475,
         0.76
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1325,14 +1854,15 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "WallChargingStation-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
       "bounds_m": [
         0.78,
         0.2925,
         1.15
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1343,14 +1873,15 @@
       "material_count": 6,
       "approx_material_batches": 6,
       "collision_proxy": "MobileMedicalMonitor-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 5,
       "bounds_m": [
         0.74,
         0.54,
         1.91
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1361,14 +1892,15 @@
       "material_count": 4,
       "approx_material_batches": 4,
       "collision_proxy": "IndustrialWaterPump-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         1.1,
         0.87,
         0.99
       ],
       "mer_primitive_count": 6,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     },
     {
@@ -1379,14 +1911,167 @@
       "material_count": 5,
       "approx_material_batches": 5,
       "collision_proxy": "MobileEvidenceCart-collision.fbx",
-      "collision_proxy_shape": "axis-aligned box; review and assign explicitly in Unity",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
       "bounds_m": [
         0.88,
         0.56,
         1.23
       ],
       "mer_primitive_count": 7,
-      "collision": "Optional axis-aligned box proxy exported separately; inspect and assign explicitly in Unity.",
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "SpillResponseCart",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "SpillResponseCart-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 6,
+      "bounds_m": [
+        0.92,
+        0.58,
+        1.33
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "WallPPEDispenser",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "WallPPEDispenser-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.72,
+        0.3925,
+        1.52
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "PortableSpecimenScanner",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "PortableSpecimenScanner-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.86,
+        0.6475,
+        1.075
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "CeilingAirQualitySampler",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "CeilingAirQualitySampler-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.54,
+        0.46,
+        0.5
+      ],
+      "mer_primitive_count": 6,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "FloorDeconMat",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "FloorDeconMat-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        1.34,
+        0.94,
+        0.105
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "BenchMicrocentrifuge",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 872,
+      "material_count": 5,
+      "approx_material_batches": 5,
+      "collision_proxy": "BenchMicrocentrifuge-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.62,
+        0.579,
+        0.9175
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "FireBlanketCabinet",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 784,
+      "material_count": 6,
+      "approx_material_batches": 6,
+      "collision_proxy": "FireBlanketCabinet-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 2,
+      "bounds_m": [
+        0.84,
+        0.3375,
+        1.58
+      ],
+      "mer_primitive_count": 7,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
+      "animation_or_interaction": false
+    },
+    {
+      "name": "PortableContaminationMonitor",
+      "source_mesh_objects": 8,
+      "export_mesh_object_count": 1,
+      "source_polygon_count": 828,
+      "material_count": 4,
+      "approx_material_batches": 4,
+      "collision_proxy": "PortableContaminationMonitor-collision.fbx",
+      "collision_proxy_shape": "compound axis-aligned boxes; review and assign explicitly in Unity",
+      "collision_part_count": 3,
+      "bounds_m": [
+        0.86,
+        0.4325,
+        0.955
+      ],
+      "mer_primitive_count": 8,
+      "collision": "Optional compound low-poly box proxy exported separately; inspect and assign explicitly in Unity.",
       "animation_or_interaction": false
     }
   ]
