@@ -25,6 +25,12 @@ namespace Pentagoland.AssetReview.Editor
         private const string ReportRoot = "Assets/Reports";
         private const int GridColumns = 9;
         private const float GridSpacing = 4f;
+        private const int MaxRenderVerticesPerAsset = 30000;
+        private const int MaxRenderMaterialsPerAsset = 9;
+        private const int MaxRenderMeshesPerAsset = 1;
+        private const float MaxRenderBoundsDimension = 10f;
+        private const int MaxCollisionPartsPerAsset = 6;
+        private const int MaxCollisionTrianglesPerAsset = 96;
 
         private sealed class AssetResult
         {
@@ -106,6 +112,8 @@ namespace Pentagoland.AssetReview.Editor
                     {
                         throw new InvalidDataException("The imported model contains no meshes.");
                     }
+
+                    ValidateRenderBudget(result);
 
                     string prefabPath = PrefabRoot + "/" + model.name + ".prefab";
                     GameObject prefab = PrefabUtility.SaveAsPrefabAsset(model, prefabPath);
@@ -216,6 +224,8 @@ namespace Pentagoland.AssetReview.Editor
                     {
                         throw new InvalidDataException("The imported collision proxy contains no mesh colliders.");
                     }
+
+                    ValidateCollisionBudget(result);
 
                     string prefabPath = CollisionPrefabRoot + "/" + instance.name + ".prefab";
                     if (PrefabUtility.SaveAsPrefabAsset(instance, prefabPath) == null)
@@ -598,6 +608,69 @@ namespace Pentagoland.AssetReview.Editor
             result.Bounds = hasBounds ? bounds.size : Vector3.zero;
         }
 
+        private static void ValidateRenderBudget(AssetResult result)
+        {
+            if (result.MeshCount > MaxRenderMeshesPerAsset)
+            {
+                throw new InvalidDataException(
+                    "Render mesh budget exceeded: " + result.MeshCount + " meshes; maximum is "
+                    + MaxRenderMeshesPerAsset + ".");
+            }
+
+            if (result.VertexCount > MaxRenderVerticesPerAsset)
+            {
+                throw new InvalidDataException(
+                    "Render vertex budget exceeded: " + result.VertexCount + " vertices; maximum is "
+                    + MaxRenderVerticesPerAsset + ".");
+            }
+
+            if (result.MaterialCount > MaxRenderMaterialsPerAsset)
+            {
+                throw new InvalidDataException(
+                    "Render material-slot budget exceeded: " + result.MaterialCount + " slots; maximum is "
+                    + MaxRenderMaterialsPerAsset + ".");
+            }
+
+            if (result.TexturedMaterialCount == 0)
+            {
+                throw new InvalidDataException("The imported model has no textured materials.");
+            }
+
+            if (!IsValidBoundsDimension(result.Bounds.x)
+                || !IsValidBoundsDimension(result.Bounds.y)
+                || !IsValidBoundsDimension(result.Bounds.z))
+            {
+                throw new InvalidDataException(
+                    "Render bounds must be finite, positive, and no larger than "
+                    + MaxRenderBoundsDimension + " metres per axis.");
+            }
+        }
+
+        private static void ValidateCollisionBudget(CollisionResult result)
+        {
+            if (result.ColliderCount > MaxCollisionPartsPerAsset)
+            {
+                throw new InvalidDataException(
+                    "Collision-part budget exceeded: " + result.ColliderCount + " parts; maximum is "
+                    + MaxCollisionPartsPerAsset + ".");
+            }
+
+            if (result.TriangleCount > MaxCollisionTrianglesPerAsset)
+            {
+                throw new InvalidDataException(
+                    "Collision-triangle budget exceeded: " + result.TriangleCount + " triangles; maximum is "
+                    + MaxCollisionTrianglesPerAsset + ".");
+            }
+        }
+
+        private static bool IsValidBoundsDimension(float dimension)
+        {
+            return !float.IsNaN(dimension)
+                && !float.IsInfinity(dimension)
+                && dimension > 0f
+                && dimension <= MaxRenderBoundsDimension;
+        }
+
         private static bool HasTexture(Material material)
         {
             return HasTexture(material, "_BaseMap")
@@ -706,9 +779,18 @@ namespace Pentagoland.AssetReview.Editor
             string summary = "Editor version: " + Application.unityVersion + Environment.NewLine
                 + "Render FBX: " + results.Count + Environment.NewLine
                 + "Successful imports: " + results.Count(result => result.Status == "OK") + Environment.NewLine
+                + "Maximum render vertices per asset: "
+                + results.Max(result => result.VertexCount) + " / " + MaxRenderVerticesPerAsset + Environment.NewLine
+                + "Maximum render material slots per asset: "
+                + results.Max(result => result.MaterialCount) + " / " + MaxRenderMaterialsPerAsset + Environment.NewLine
                 + "Collision proxy FBX: " + collisionResults.Count + Environment.NewLine
                 + "Collision prefabs built with disabled compound MeshColliders: "
                 + collisionResults.Count(result => result.Status == "OK") + Environment.NewLine
+                + "Maximum collision parts per asset: "
+                + collisionResults.Max(result => result.ColliderCount) + " / " + MaxCollisionPartsPerAsset + Environment.NewLine
+                + "Maximum collision triangles per asset: "
+                + collisionResults.Max(result => result.TriangleCount) + " / " + MaxCollisionTrianglesPerAsset + Environment.NewLine
+                + "Performance budgets: " + (failures.Count == 0 ? "PASS" : "FAIL") + Environment.NewLine
                 + "URP material presets: " + materialCount + Environment.NewLine
                 + "Failures: " + failures.Count + Environment.NewLine
                 + "Collision meshes remain unassigned and disabled; review dimensions and placement before use." + Environment.NewLine

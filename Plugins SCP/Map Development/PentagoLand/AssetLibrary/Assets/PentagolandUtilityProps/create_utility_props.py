@@ -1703,8 +1703,8 @@ def main():
     scene.unit_settings.system = "METRIC"
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
-    scene.cycles.samples = 4
-    scene.cycles.use_denoising = False
+    scene.cycles.samples = 32
+    scene.cycles.use_denoising = True
     scene.render.resolution_x = 512
     scene.render.resolution_y = 512
     scene.render.resolution_percentage = 100
@@ -1760,6 +1760,17 @@ def main():
     }
     builders.update({name: modular_asset for name in ALL_MODULAR_KIT})
     collections = {}
+    preview_names = {
+        name.strip()
+        for name in os.environ.get("PENTAGOLAND_PREVIEW_NAMES", "").split(",")
+        if name.strip()
+    }
+    unknown_preview_names = preview_names.difference(ASSET_NAMES)
+    if unknown_preview_names:
+        raise RuntimeError(
+            "Unknown preview asset names: " + ", ".join(sorted(unknown_preview_names))
+        )
+
     for name, builder in builders.items():
         collection = bpy.data.collections.new(name)
         scene.collection.children.link(collection)
@@ -1818,6 +1829,8 @@ def main():
         base = os.path.join(ROOT, name)
         export_optimized_asset(name, selected, base)
         export_collision_proxy(name, selected, base)
+        if preview_names and name not in preview_names:
+            continue
         preview_path = base + "-preview.png"
         if os.environ.get("PENTAGOLAND_SKIP_EXISTING_PREVIEWS") == "1" and os.path.isfile(preview_path):
             continue

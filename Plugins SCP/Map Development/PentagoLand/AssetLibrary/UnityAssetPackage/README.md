@@ -13,6 +13,8 @@ To regenerate and validate the package from source, run `PentagolandAssetReview\
 
 The collision prefabs contain compound low-poly `MeshCollider` components, disabled by default and kept separate from render prefabs. Review them in the Inspector and in your target scene before enabling them. The generated material presets use the Universal Render Pipeline Lit shader; the target Unity project must have a compatible URP version installed.
 
+The reproducible review build enforces per-asset budgets of at most 30,000 render vertices, nine material slots, one render mesh, and 10 metres per bounds axis; collision proxies are capped at six parts and 96 triangles. The generated import summary records the observed maxima and reports whether every asset passed these budgets. These limits support lightweight static dressing but are not a substitute for profiling a populated target scene.
+
 The included Poly Haven metal-plate texture maps are CC0. Their source URL, license note, resolution, and verified file checksums are documented in `Assets/MaterialReferences/PolyHaven/MetalPlate/README.md`.
 
 The build currently uses Unity **6000.6.4f1**. This package is a portable Unity content import, not a compiled SCP:SL AssetBundle and not a guarantee of compatibility with the game's Unity **6000.0.43f1** player. ProjectMER schematics remain separate JSON assets under `Samples\Schematics`; install and test those with ProjectMER on a staging server.
