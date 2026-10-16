@@ -64,7 +64,7 @@ public sealed class ServerDoctorCommand : ICommand
         if (args.Count == 0)
             return Help();
 
-        string operation = args[0].ToLowerInvariant();
+        string operation = GetArgument(args, 0).ToLowerInvariant();
         FileAccessService files = plugin.FileAccess!;
 
         switch (operation)
@@ -124,7 +124,7 @@ public sealed class ServerDoctorCommand : ICommand
                 if (args.Count < 2)
                     throw new ArgumentException("Uso: pdoctor files <raíz> [directorio-relativo]");
                 string relativeDirectory = args.Count > 2 ? string.Join(" ", args.Skip(2)) : ".";
-                var entries = files.ListFiles(args[1], relativeDirectory);
+                var entries = files.ListFiles(GetArgument(args, 1), relativeDirectory);
                 return entries.Count == 0 ? "No hay archivos de texto en ese directorio." : JoinLines(entries);
             }
 
@@ -138,9 +138,9 @@ public sealed class ServerDoctorCommand : ICommand
             {
                 if (args.Count < 2)
                     throw new ArgumentException("Uso: pdoctor tail logs:<archivo.log> [líneas]");
-                string[] file = SplitRootedPath(args[1]);
+                string[] file = SplitRootedPath(GetArgument(args, 1));
                 int lineCount = 40;
-                if (args.Count > 2 && (!int.TryParse(args[2], NumberStyles.None, CultureInfo.InvariantCulture, out lineCount) || lineCount < 1))
+                if (args.Count > 2 && (!int.TryParse(GetArgument(args, 2), NumberStyles.None, CultureInfo.InvariantCulture, out lineCount) || lineCount < 1))
                     throw new ArgumentException("El número de líneas debe ser un entero positivo.");
                 return JoinLines(files.Tail(file[0], file[1], lineCount));
             }
@@ -159,17 +159,17 @@ public sealed class ServerDoctorCommand : ICommand
             }
 
             case "restore":
-                if (args.Count != 3 || !string.Equals(args[2], "confirm", StringComparison.OrdinalIgnoreCase))
+                if (args.Count != 3 || !string.Equals(GetArgument(args, 2), "confirm", StringComparison.OrdinalIgnoreCase))
                     throw new ArgumentException("Uso: pdoctor restore <id-de-copia> confirm");
-                return files.RestoreBackup(args[1], actor, confirmed: true);
+                return files.RestoreBackup(GetArgument(args, 1), actor, confirmed: true);
 
             case "set":
             {
-                if (args.Count < 5 || !string.Equals(args[args.Count - 1], "--confirm", StringComparison.OrdinalIgnoreCase))
+                if (args.Count < 5 || !string.Equals(GetArgument(args, args.Count - 1), "--confirm", StringComparison.OrdinalIgnoreCase))
                     throw new ArgumentException("Uso: pdoctor set <raíz>:<archivo.yml> <clave.ruta> <valor> --confirm");
-                string[] file = SplitRootedPath(args[1]);
+                string[] file = SplitRootedPath(GetArgument(args, 1));
                 string value = string.Join(" ", args.Skip(3).Take(args.Count - 4));
-                return files.SetConfigValue(file[0], file[1], args[2], value, actor, confirmed: true);
+                return files.SetConfigValue(file[0], file[1], GetArgument(args, 2), value, actor, confirmed: true);
             }
 
             default:
@@ -181,7 +181,15 @@ public sealed class ServerDoctorCommand : ICommand
     {
         if (args.Count != 2)
             throw new ArgumentException(usage);
-        return SplitRootedPath(args[1]);
+        return SplitRootedPath(GetArgument(args, 1));
+    }
+
+    private static string GetArgument(ArraySegment<string> arguments, int index)
+    {
+        if (index < 0 || index >= arguments.Count || arguments.Array is null)
+            throw new ArgumentOutOfRangeException(nameof(index));
+
+        return arguments.Array[arguments.Offset + index];
     }
 
     private static string[] SplitRootedPath(string value)
