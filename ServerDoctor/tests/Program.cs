@@ -189,7 +189,7 @@ static void RunFileWorkflowTests(Assertions assertions)
     try
     {
         Environment.CurrentDirectory = serverRoot;
-        File.WriteAllText(Path.Combine(serverRoot, "hoster_policy.txt"), "gamedir_for_configs: true");
+        File.WriteAllText(Path.Combine(serverRoot, "hoster_policy.txt"), "GaMeDiR_fOr_CoNfIgS: TRUE");
         string labApiRoot = Path.Combine(serverRoot, "AppData", "SCP Secret Laboratory", "LabAPI");
         string pluginDirectory = Path.Combine(labApiRoot, "plugins", "global");
         string nestedPluginDirectory = Path.Combine(labApiRoot, "plugins", "custom", "nested");
@@ -206,6 +206,11 @@ static void RunFileWorkflowTests(Assertions assertions)
         File.WriteAllText(Path.Combine(nestedPluginDirectory, "NestedPlugin.dll"), "not loaded");
         File.WriteAllText(Path.Combine(extraPluginDirectory, "ExtraPlugin.dll"), "not loaded");
         File.WriteAllText(Path.Combine(dependencyDirectory, "ExampleDependency.dll"), "not loaded");
+        string listingDirectory = Path.Combine(serverRoot, "listing");
+        Directory.CreateDirectory(listingDirectory);
+        for (int i = 0; i < 100; i++)
+            File.WriteAllText(Path.Combine(listingDirectory, $"entry-{i:D4}.txt"), "entry");
+        Directory.CreateDirectory(Path.Combine(listingDirectory, "extra"));
         File.WriteAllText(Path.Combine(logsDirectory, "server.log"),
             "private_key: | # generated key\n  tail-confidential-line\n  another-line\nround started\n");
         string configPath = Path.Combine(serverRoot, "settings.yml");
@@ -229,6 +234,12 @@ static void RunFileWorkflowTests(Assertions assertions)
             Path.Combine(serverRoot, "AppData", "SCP Secret Laboratory"),
             roots.TryGet("scpsl-data", out AccessRoot gameData) ? gameData.Path : string.Empty,
             "game-data root follows the active LabAPI AppData policy");
+        IReadOnlyList<string> directoryListing = files.ListFiles("server", "listing");
+        assertions.Equal(100, directoryListing.Count, "directory listings remain within the configured entry cap");
+        assertions.Contains("[Listado parcial: se omitieron entradas adicionales.]",
+            string.Join("\n", directoryListing), "directory listing warns when entries are omitted at the cap");
+        assertions.False(directoryListing.Any(entry => entry == "[extra]"),
+            "directory listing reserves a slot for the partial-list warning");
         assertions.Contains("ExamplePlugin.dll", string.Join("\n", files.ScanPluginFiles()),
             "plugin inventory reports installed DLL names only");
         assertions.Contains("UppercasePlugin.DLL", string.Join("\n", files.ScanPluginFiles()),

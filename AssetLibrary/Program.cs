@@ -202,6 +202,11 @@ internal static class SchematicValidator
 
             if (!knownIds.Add(objectId))
                 diagnostics.Add(new ValidationDiagnostic("ERROR", label, $"ObjectId duplicado: {objectId}."));
+            if (objectId == rootObjectId)
+                diagnostics.Add(new ValidationDiagnostic(
+                    "ERROR",
+                    label,
+                    $"ObjectId {objectId} colisiona con RootObjectId."));
 
             if (!TryGetProperty(block, "ParentId", out JsonElement parentIdElement) ||
                 !TryInt32(parentIdElement, out int parentId))
@@ -259,19 +264,30 @@ internal static class SchematicValidator
                 diagnostics.Add(new ValidationDiagnostic("ERROR", file, $"El bloque {parent.Key} es su propio padre."));
         }
 
+        var visitStates = new Dictionary<int, byte>();
         foreach (int id in parents.Keys)
         {
-            var visited = new HashSet<int>();
+            if (visitStates.ContainsKey(id))
+                continue;
+
+            var path = new List<int>();
             int current = id;
             while (current != rootObjectId && parents.TryGetValue(current, out int parentId))
             {
-                if (!visited.Add(current))
+                if (visitStates.TryGetValue(current, out byte state))
                 {
-                    diagnostics.Add(new ValidationDiagnostic("ERROR", file, $"Se detectó un ciclo en la jerarquía de bloques desde {id}."));
+                    if (state == 1)
+                        diagnostics.Add(new ValidationDiagnostic("ERROR", file, $"Se detectó un ciclo en la jerarquía de bloques desde {id}."));
                     break;
                 }
+
+                visitStates[current] = 1;
+                path.Add(current);
                 current = parentId;
             }
+
+            foreach (int visitedId in path)
+                visitStates[visitedId] = 2;
         }
     }
 
@@ -450,6 +466,8 @@ internal static class SchematicValidator
             using JsonDocument document = JsonDocument.Parse(File.ReadAllText(path));
             if (document.RootElement.ValueKind != JsonValueKind.Object)
                 diagnostics.Add(new ValidationDiagnostic("ERROR", relativeFolder, "El archivo de rigidbodies debe ser un objeto JSON."));
+            else
+                ValidateNoDuplicateProperties(document.RootElement, relativeFolder, "$rigidbodies", diagnostics);
         }
         catch (JsonException exception)
         {
@@ -618,7 +636,9 @@ internal static class SchematicValidator
 
     public static int RunSelfTests()
     {
-        string tempRoot = Path.Combine(Path.GetTempPath(), "pentagoland-mer-validator-" + Guid.NewGuid().ToString("N"));
+        string tempRoot = Path.Combine(
+            Environment.CurrentDirectory,
+            ".pentagoland-mer-validator-test-" + Guid.NewGuid().ToString("N"));
         string schematics = Path.Combine(tempRoot, "Schematics");
         string validFolder = Path.Combine(schematics, "Console");
         string invalidFolder = Path.Combine(schematics, "Broken");
@@ -627,6 +647,8 @@ internal static class SchematicValidator
         string duplicateFolder = Path.Combine(schematics, "Duplicate");
         string invalidPrimitiveFolder = Path.Combine(schematics, "InvalidPrimitive");
         string invalidLightFolder = Path.Combine(schematics, "InvalidLight");
+        string rootCollisionFolder = Path.Combine(schematics, "RootCollision");
+        string rigidbodiesFolder = Path.Combine(schematics, "Rigidbodies");
         Directory.CreateDirectory(validFolder);
         Directory.CreateDirectory(invalidFolder);
         Directory.CreateDirectory(escapingFolder);
@@ -634,6 +656,8 @@ internal static class SchematicValidator
         Directory.CreateDirectory(duplicateFolder);
         Directory.CreateDirectory(invalidPrimitiveFolder);
         Directory.CreateDirectory(invalidLightFolder);
+        Directory.CreateDirectory(rootCollisionFolder);
+        Directory.CreateDirectory(rigidbodiesFolder);
         try
         {
             File.WriteAllText(
@@ -747,6 +771,35 @@ internal static class SchematicValidator
                   "Blocks": []
                 }
                 """);
+            File.WriteAllText(
+                Path.Combine(rootCollisionFolder, "RootCollision.json"),
+                """
+                {
+                  "RootObjectId": 1,
+                  "Blocks": [
+                    {
+                      "Name": "Root ID collision",
+                      "ObjectId": 1,
+                      "ParentId": 1,
+                      "Position": [0, 0, 0],
+                      "Rotation": [0, 0, 0],
+                      "Scale": [1, 1, 1],
+                      "BlockType": 0
+                    }
+                  ]
+                }
+                """);
+            File.WriteAllText(
+                Path.Combine(rigidbodiesFolder, "Rigidbodies.json"),
+                """
+                {
+                  "RootObjectId": 0,
+                  "Blocks": []
+                }
+                """);
+            File.WriteAllText(
+                Path.Combine(rigidbodiesFolder, "Rigidbodies-Rigidbodies.json"),
+                """{"Bodies": [], "bodies": []}""");
 
             IReadOnlyList<ValidationDiagnostic> diagnostics = Validate(schematics);
             bool detectsOrphan = diagnostics.Any(diagnostic =>
@@ -777,9 +830,16 @@ internal static class SchematicValidator
             bool rejectsIncompleteLight = diagnostics.Any(diagnostic =>
                 diagnostic.Severity == "ERROR" && diagnostic.File.StartsWith("InvalidLight", StringComparison.Ordinal) &&
                 diagnostic.Message.Contains("ShadowType", StringComparison.Ordinal));
+            bool detectsRootIdCollision = diagnostics.Any(diagnostic =>
+                diagnostic.Severity == "ERROR" && diagnostic.File.StartsWith("RootCollision", StringComparison.Ordinal) &&
+                diagnostic.Message.Contains("colisiona con RootObjectId", StringComparison.Ordinal));
+            bool detectsDuplicateRigidbodyProperty = diagnostics.Any(diagnostic =>
+                diagnostic.Severity == "ERROR" && diagnostic.File.StartsWith("Rigidbodies", StringComparison.Ordinal) &&
+                diagnostic.Message.Contains("Propiedad JSON duplicada", StringComparison.Ordinal));
             if (!detectsOrphan || !detectsMissingProperty || !acceptsValidSchematic ||
                 !rejectsAnimatorTraversal || !detectsCycle || !warnsUnsupportedBlock || !detectsDuplicateProperty ||
-                !rejectsInvalidPrimitive || !rejectsIncompleteLight)
+                !rejectsInvalidPrimitive || !rejectsIncompleteLight || !detectsRootIdCollision ||
+                !detectsDuplicateRigidbodyProperty)
             {
                 Console.Error.WriteLine("Self-test fallido: el validador no detectó todos los casos esperados.");
                 foreach (ValidationDiagnostic diagnostic in diagnostics)
@@ -787,7 +847,7 @@ internal static class SchematicValidator
                 return 1;
             }
 
-            Console.WriteLine("Self-test correcto: comprueba JSON, jerarquías, propiedades MER, colores, flags, rutas y bloques no implementados.");
+            Console.WriteLine("Self-test correcto: comprueba JSON, jerarquías, IDs raíz, propiedades MER, colores, flags, rutas y bloques no implementados.");
             return 0;
         }
         finally

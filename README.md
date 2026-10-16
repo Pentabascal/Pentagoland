@@ -19,7 +19,7 @@ cd PentagolandSCPServerToolkit
 .\verify.cmd
 ```
 
-`verify.cmd` ejecuta las pruebas aisladas de Server Doctor, compila y prueba el validador MER y revisa los 82 esquemáticos. Si encuentra Blender, valida además el paquete de modelos; se puede indicar su ruta con `set BLENDER_EXE=C:\ruta\blender.exe`. Para instalar Blender y Unity en otro PC, usa sus instaladores oficiales. El proyecto Unity está fijado a 6000.6.4f1 y se abre desde Unity Hub tras instalar esa versión.
+`verify.cmd` ejecuta las pruebas aisladas de Server Doctor, compila y prueba el validador MER y revisa los 82 esquemáticos. Si encuentra Blender en la ubicación habitual o como `blender.exe` en `PATH`, valida además el paquete de modelos; para otra ubicación se puede indicar la ruta con `set BLENDER_EXE=C:\ruta\blender.exe`. Para instalar Blender y Unity en otro PC, usa sus instaladores oficiales. El proyecto Unity está fijado a 6000.6.4f1 y se abre desde Unity Hub tras instalar esa versión.
 
 Para compilar e instalar Server Doctor hace falta, además, un servidor dedicado SCP:SL con LabAPI instalado. Sus assemblies no se distribuyen:
 

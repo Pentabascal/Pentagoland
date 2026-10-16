@@ -32,10 +32,13 @@ if not defined BLENDER_EXE (
 )
 
 :blender_check
-if not exist "%BLENDER_EXE%" (
-    echo Blender executable not found: "%BLENDER_EXE%"
-    exit /b 1
-)
+if exist "%BLENDER_EXE%" goto :run_blender
+where.exe "%BLENDER_EXE%" >nul 2>&1
+if not errorlevel 1 goto :run_blender
+echo Blender executable not found: "%BLENDER_EXE%"
+exit /b 1
+
+:run_blender
 "%BLENDER_EXE%" --background --python "%ROOT%AssetLibrary\Assets\PentagolandUtilityProps\validate_asset_pack.py"
 if errorlevel 1 exit /b 1
 

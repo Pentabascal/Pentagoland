@@ -182,28 +182,47 @@ public sealed class FileAccessService
             throw new DirectoryNotFoundException($"No existe el directorio '{rootName}:{relativeDirectory}'.");
 
         var entries = new List<string>();
+        bool omittedEntries = false;
         foreach (string file in Directory.EnumerateFiles(directory)
                      .Where(path => ReadableExtensions.Contains(Path.GetExtension(path)))
-                     .Take(MaximumDirectoryEntries)
+                     .Take(MaximumDirectoryEntries + 1)
                      .OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
         {
+            if (entries.Count == MaximumDirectoryEntries)
+            {
+                omittedEntries = true;
+                break;
+            }
+
             string relative = file.Substring(root.Path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Length)
                 .TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             entries.Add($"{root.Name}:{relative}");
         }
 
-        foreach (string child in Directory.EnumerateDirectories(directory)
-                     .Take(MaximumDirectoryEntries)
-                     .OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
+        int directoryEntryLimit = MaximumDirectoryEntries - entries.Count;
+        if (!omittedEntries)
+        {
+            int inspectedDirectories = 0;
+            foreach (string child in Directory.EnumerateDirectories(directory))
+            {
+                if ((File.GetAttributes(child) & FileAttributes.ReparsePoint) != 0)
+                    continue;
+
+                if (inspectedDirectories++ >= directoryEntryLimit)
+                {
+                    omittedEntries = true;
+                    break;
+                }
+
+                entries.Add($"[{Path.GetFileName(child)}]");
+            }
+        }
+
+        if (omittedEntries)
         {
             if (entries.Count >= MaximumDirectoryEntries)
-                break;
-            if ((File.GetAttributes(child) & FileAttributes.ReparsePoint) != 0)
-                continue;
-
-            entries.Add($"[{Path.GetFileName(child)}]");
-            if (entries.Count >= MaximumDirectoryEntries)
-                break;
+                entries.RemoveAt(entries.Count - 1);
+            entries.Add("[Listado parcial: se omitieron entradas adicionales.]");
         }
 
         return entries;

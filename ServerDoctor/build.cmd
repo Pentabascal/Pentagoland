@@ -9,7 +9,7 @@ if "%SL_REFERENCES%"=="" (
     exit /b 1
 )
 
-for %%F in (Assembly-CSharp.dll CommandSystem.Core.dll LabApi.dll) do (
+for %%F in (Assembly-CSharp.dll CommandSystem.Core.dll LabApi.dll Mirror.dll UnityEngine.CoreModule.dll) do (
     if not exist "%SL_REFERENCES%\%%F" (
         echo Required server reference not found: "%SL_REFERENCES%\%%F"
         exit /b 1

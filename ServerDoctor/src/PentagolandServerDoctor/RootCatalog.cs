@@ -273,7 +273,7 @@ public sealed class RootCatalog
         string policyPath = System.IO.Path.Combine(workingDirectory, "hoster_policy.txt");
         usesHostedAppData = File.Exists(policyPath) &&
                             File.ReadAllLines(policyPath).Any(line =>
-                                line.Contains("gamedir_for_configs: true", StringComparison.OrdinalIgnoreCase));
+                                line.IndexOf("gamedir_for_configs: true", StringComparison.OrdinalIgnoreCase) >= 0);
 
         if (usesHostedAppData)
             return System.IO.Path.GetFullPath(System.IO.Path.Combine(workingDirectory, "AppData"));

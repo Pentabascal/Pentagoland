@@ -10,7 +10,7 @@ Point it at the `LabAPI/configs/ProjectMER/Schematics` directory:
 dotnet run --project .\PentagolandMERTools.csproj -- "D:\SCP Server\AppData\SCP Secret Laboratory\LabAPI\configs\ProjectMER\Schematics"
 ```
 
-The validator checks the expected `<name>\<name>.json` layout, JSON syntax and duplicate keys, root and block IDs, parent references, hierarchy cycles, vector shapes, block-property requirements, optional rigidbody JSON, and local animator references. It returns exit code `0` when there are no errors, `1` when the files have errors, and `2` for invocation or I/O failures. Warnings do not change the exit code.
+The validator checks the expected `<name>\<name>.json` layout, JSON syntax and duplicate keys (including rigidbody sidecars), root and block IDs, parent references, hierarchy cycles, vector shapes, block-property requirements, optional rigidbody JSON, and local animator references. It rejects block IDs that collide with the schematic's root ID and returns exit code `0` when there are no errors, `1` when the files have errors, and `2` for invocation or I/O failures. Warnings do not change the exit code.
 
 Run its built-in fixtures with:
 
